@@ -6,6 +6,7 @@ import {ThemeProvider} from "next-themes";
 import ClickSpark from "@/components/ClickSpark";
 import SplashCursor from "@/components/SplashCursor";
 import MinimalNavbar from "@/components/Navbar";
+import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 		<body
-			className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+			className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden`}
 		>
 		<ThemeProvider
 			attribute="class"
@@ -55,11 +56,12 @@ export default function RootLayout({
 				sparkCount={10}
 				duration={700}
 			>
-				{children}
-				<MinimalNavbar/>
-
-
+				<ScrollArea className="w-screen h-screen">
+					{children}
+					<ScrollBar className="opacity-50"/>
+				</ScrollArea>
 			</ClickSpark>
+			<MinimalNavbar/>
 		</ThemeProvider>
 		</body>
 		</html>

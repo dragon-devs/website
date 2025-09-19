@@ -1,11 +1,9 @@
 'use client';
 
-import React, {useState, useEffect} from 'react';
-import {Home, User, FolderOpen, Settings, Mail, Menu, X} from 'lucide-react';
+import React, {useEffect, useState} from 'react';
+import {FolderOpen, Home, Mail, Menu, Settings, User, X} from 'lucide-react';
 import {useRouter} from "next/navigation";
 import Magnet from "@/components/Magnet";
-import ShapeBlur from "@/components/ShapeBlur";
-import ElectricBorder from "@/components/ElectricBorder";
 
 const MinimalNavbar = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -66,7 +64,7 @@ const MinimalNavbar = () => {
             absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
             backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none  
             shadow-xl space-nowrap
-            transition-all duration-300 ease-out border p-2 border-muted
+            transition-all duration-300 ease-out border p-2 border-foreground/20
             ${isMobile
 							? 'opacity-100 translate-x-0 visible'
 							: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'

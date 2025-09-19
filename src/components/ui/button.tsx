@@ -10,6 +10,7 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
+				simple: "",
 				default: "bg-primary/20 text-foreground hover:bg-primary/",
 				destructive:
 					"bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
@@ -26,6 +27,7 @@ const buttonVariants = cva(
 				sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
 				lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
 				icon: "size-9",
+				simple: ""
 			},
 		},
 		defaultVariants: {
@@ -40,6 +42,7 @@ function Button({
 	                variant,
 	                size,
 	                asChild = false,
+	                children,
 	                ...props
                 }: React.ComponentProps<"button"> &
 	VariantProps<typeof buttonVariants> & {
@@ -48,14 +51,14 @@ function Button({
 	const Comp = asChild ? Slot : "button"
 
 	return (
-		<Magnet padding={50} disabled={false} magnetStrength={10}>
+		<Magnet padding={25} disabled={false} magnetStrength={10}>
 			<Comp
 				data-slot="button"
 				className={cn(buttonVariants({variant, size, className}))}
 				{...props}
 			>
-				<Magnet padding={50} disabled={false} magnetStrength={8}>
-					{...props.children}
+				<Magnet padding={25} disabled={false} magnetStrength={8}>
+					{children}
 				</Magnet>
 			</Comp>
 		</Magnet>
