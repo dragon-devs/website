@@ -1,9 +1,12 @@
+import {Button} from "@/components/ui/button";
+
 export default function Home() {
 	return (
-		<main>
-			<div className="m-20 p-10 bg-card/70 rounded-xl shadow border border-border">
-				Something goes here
-			</div>
+		<main className="p-20">
+			Hero page
+			<Button>
+				here we go again
+			</Button>
 		</main>
 	);
 }
