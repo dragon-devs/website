@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {FolderOpen, Home, Mail, Menu, Settings, User, X} from 'lucide-react';
 import {useRouter} from "next/navigation";
 import Magnet from "@/components/Magnet";
+import {motion, AnimatePresence} from "framer-motion";
 
 const MinimalNavbar = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -136,32 +137,38 @@ const MinimalNavbar = () => {
 				</button>
 
 				{/* Mobile Menu Panel */}
-				<div
-					className={`
-            fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40
-            transition-all duration-500 ease-out
-            ${isMobileOpen
-						? 'opacity-100 translate-x-0 visible'
-						: 'opacity-0 translate-x-8 invisible'
-					}
-          `}
-				>
-					<div className="flex flex-col space-y-4">
-						{navItems.map((item, index) => (
-							<div
-								key={item.id}
-								className="transition-all duration-400 ease-out"
-								style={{
-									transitionDelay: isMobileOpen ? `${index * 80}ms` : `${(navItems.length - index - 1) * 50}ms`,
-									transform: isMobileOpen ? 'translateX(0)' : 'translateX(30px)',
-									opacity: isMobileOpen ? 1 : 0,
-								}}
-							>
-								<NavIcon item={item} isMobile={true}/>
+				<AnimatePresence>
+					{isMobileOpen && (
+						<motion.div
+							initial={{ opacity: 0, x: 32 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: 32 }}
+							transition={{ duration: 0.5, ease: 'easeOut' }}
+							className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40"
+						>
+							<div className="flex flex-col space-y-4">
+								{navItems.map((item, index) => (
+									<motion.div
+										key={item.id}
+										initial={{ opacity: 0, x: 30 }}
+										animate={{ opacity: 1, x: 0 }}
+										exit={{ opacity: 0, x: 30 }}
+										transition={{
+											duration: 0.4,
+											ease: 'easeOut',
+											delay: index * 0.08, // Stagger entrance
+										}}
+										exitTransition={{
+											delay: (navItems.length - index - 1) * 0.05, // Reverse stagger on exit
+										}}
+									>
+										<NavIcon item={item} isMobile={true} />
+									</motion.div>
+								))}
 							</div>
-						))}
-					</div>
-				</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
 
 				{/* Mobile Backdrop */}
 				<div
