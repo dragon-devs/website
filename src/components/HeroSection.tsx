@@ -31,16 +31,16 @@ const HeroSection = () => {
 
 	return (
 		<div
-			className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
+			className="relative md:py-0 py-20 min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
 			{/* Animated Grid Background */}
 			<div className="absolute inset-0">
 				<svg className="w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
 					<defs>
-						<pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-							<path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="1"/>
+						<pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+							<path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1"/>
 						</pattern>
 					</defs>
-					<rect width="100%" height="100%" fill="url(#grid)" className="text-blue-500/30"/>
+					<rect width="100%" height="100%" fill="url(#grid)" className="text-primary/30"/>
 				</svg>
 			</div>
 
@@ -83,7 +83,7 @@ const HeroSection = () => {
 					}}
 					style={{left: item.x, top: item.y}}
 				>
-					<div className="p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+					<div className="p-3 rounded-xl opacity-50 bg-white/5 backdrop-blur-sm border border-white/10">
 						<item.icon size={24} className="text-blue-400"/>
 					</div>
 				</motion.div>
@@ -123,7 +123,7 @@ const HeroSection = () => {
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.6}}
-						className="text-xl tracking-tight md:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
+						className="text-xl tracking-tight md:text-2xl  text-gray-300 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
 					>
 						We craft intelligent software solutions that transform ideas into reality.
 						From AI-powered applications to scalable enterprise systems, we build the future.
@@ -140,7 +140,7 @@ const HeroSection = () => {
 							<motion.div
 								whileHover={{scale: 1.02, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"}}
 								whileTap={{scale: 0.98}}
-								className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg flex items-center gap-3 shadow-xl"
+								className="md:w-auto w-full group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg flex items-center gap-3 shadow-xl"
 							>
 								<Magnet padding={25} disabled={false} magnetStrength={8}>
 									<div className="flex justify-center items-center gap-2">
@@ -163,7 +163,7 @@ const HeroSection = () => {
 							<motion.div
 								whileHover={{scale: 1.02}}
 								whileTap={{scale: 0.98}}
-								className="px-8 py-4 border border-white/20 rounded-full text-white font-semibold text-lg backdrop-blur-sm hover:bg-white/5 transition-all duration-300"
+								className="md:w-auto w-full px-8 py-4 border border-white/20 rounded-full text-white font-semibold text-lg backdrop-blur-sm hover:bg-white/5 transition-all duration-300"
 							>
 								<Magnet padding={25} disabled={false} magnetStrength={8}>
 									View Our Work
@@ -191,7 +191,7 @@ const HeroSection = () => {
 								transition={{delay: 1.2 + index * 0.1}}
 								className="text-center"
 							>
-								<div className="text-3xl md:text-5xl font-bold text-white mb-2">
+								<div className="text-4xl md:text-5xl font-bold text-white mb-2">
 									<CountUp
 										from={-100}
 										to={stat.number}

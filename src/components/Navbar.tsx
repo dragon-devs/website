@@ -63,9 +63,14 @@ const MinimalNavbar = () => {
 					<div
 						className={`
             absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
-            backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none  
+            backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none
+            ${isActive
+							? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
+							: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
+						} 
             shadow-xl space-nowrap
             transition-all duration-300 ease-out border p-2 border-foreground/20
+            
             ${isMobile
 							? 'opacity-100 translate-x-0 visible'
 							: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'
@@ -140,19 +145,19 @@ const MinimalNavbar = () => {
 				<AnimatePresence>
 					{isMobileOpen && (
 						<motion.div
-							initial={{ opacity: 0, x: 32 }}
-							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: 32 }}
-							transition={{ duration: 0.5, ease: 'easeOut' }}
+							initial={{opacity: 0, x: 32}}
+							animate={{opacity: 1, x: 0}}
+							exit={{opacity: 0, x: 32}}
+							transition={{duration: 0.5, ease: 'easeOut'}}
 							className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40"
 						>
 							<div className="flex flex-col space-y-4">
 								{navItems.map((item, index) => (
 									<motion.div
 										key={item.id}
-										initial={{ opacity: 0, x: 30 }}
-										animate={{ opacity: 1, x: 0 }}
-										exit={{ opacity: 0, x: 30 }}
+										initial={{opacity: 0, x: 30}}
+										animate={{opacity: 1, x: 0}}
+										exit={{opacity: 0, x: 30}}
 										transition={{
 											duration: 0.4,
 											ease: 'easeOut',
@@ -162,7 +167,7 @@ const MinimalNavbar = () => {
 											delay: (navItems.length - index - 1) * 0.05, // Reverse stagger on exit
 										}}
 									>
-										<NavIcon item={item} isMobile={true} />
+										<NavIcon item={item} isMobile={true}/>
 									</motion.div>
 								))}
 							</div>
