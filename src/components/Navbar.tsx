@@ -5,6 +5,7 @@ import {FolderOpen, Home, Mail, Menu, Settings, User, X} from 'lucide-react';
 import {useRouter} from "next/navigation";
 import Magnet from "@/components/Magnet";
 import {motion, AnimatePresence} from "framer-motion";
+import GlassSurface from "@/components/GlassSurface";
 
 const MinimalNavbar = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -32,56 +33,75 @@ const MinimalNavbar = () => {
 		const router = useRouter()
 		return (
 			<div className="relative group">
-				<button
-					onClick={() => {
-						setActiveItem(item.id)
-						router.push(item.href)
-						if (isMobile) {
-							setIsMobileOpen(false);
-						}
-					}}
-					className={`
-            w-12 h-12 rounded-full flex items-center justify-center
-            transition-all duration-300 ease-out
-            backdrop-blur-sm border border-foreground/20
-            hover:scale-110 hover:shadow-lg hover:shadow-primary/20
-            ${isActive
-						? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
-						: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
-					}
-          `}
+				<div
+					className={`top-2 absolute blur-sm size-5 ${isActive ? 'text-primary bg-primary' : 'group-hover:text-foreground'} `}></div>
+				<GlassSurface
+					width={50}
+					height={50}
+					borderRadius={100}
+					className="my-custom-class"
 				>
-					<Magnet padding={25} disabled={false} magnetStrength={6}>
-						<Icon
-							size={18}
-							className={`
+					<button
+						onClick={() => {
+							setActiveItem(item.id)
+							router.push(item.href)
+							if (isMobile) {
+								setIsMobileOpen(false);
+							}
+						}}
+						// className={`
+						//   w-12 h-12 rounded-full flex items-center justify-center
+						//   transition-all duration-300 ease-out
+						//   backdrop-blur-sm border border-foreground/20
+						//   hover:scale-110 hover:shadow-lg hover:shadow-primary/20
+						//   ${isActive
+						// 	? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
+						// 	: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
+						// }
+						// `}
+						className={`
 	              transition-all duration-300
 	              ${isActive ? 'text-primary' : 'text-gray-300 group-hover:text-foreground'}
 	            `}
-						/>
-					</Magnet>
-					<div
-						className={`
-            absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
-            backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none
-            ${isActive
-							? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
-							: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
-						} 
-            shadow-xl space-nowrap
-            transition-all duration-300 ease-out border p-2 border-foreground/20
-            
-            ${isMobile
-							? 'opacity-100 translate-x-0 visible'
-							: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'
-						}
-          `}
 					>
-						<div>
-							{item.label}
-						</div>
-					</div>
-				</button>
+						<Magnet padding={25} disabled={false} magnetStrength={6}>
+
+							<Icon
+								size={18}
+								className={`
+	              transition-all duration-300
+	              ${isActive ? 'text-primary' : 'text-gray-300 group-hover:text-foreground'}
+	            `}
+							/>
+						</Magnet>
+
+					</button>
+				</GlassSurface>
+
+
+				<div
+					className={`
+            absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
+            text-foreground text-sm font-semibold  leading-none
+            shadow-xl space-nowrap
+            transition-all duration-300 ease-out 
+            ${isMobile
+						? 'opacity-100 translate-x-0 visible'
+						: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'
+					}
+          `}
+				>
+					<div
+						className={` absolute blur-sm size-5 w-20 ${isActive ? 'text-primary bg-primary' : 'group-hover:text-foreground'} `}></div>
+					<GlassSurface
+						height={30}
+						width={120}
+						borderRadius={5}
+						className={`${isActive ? 'text-primary' : ''}`}
+					>
+						{item.label}
+					</GlassSurface>
+				</div>
 			</div>
 		);
 	};
@@ -121,24 +141,31 @@ const MinimalNavbar = () => {
 				<button
 					onClick={() => setIsMobileOpen(!isMobileOpen)}
 					className={`
-            fixed top-4 md:top-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full
+            fixed top-4 md:top-6 right-4 md:right-6 z-50 rounded-full
             flex items-center justify-center
-            backdrop-blur-sm border transition-all duration-700 ease-out
+            transition-all duration-700 ease-out
             ${isLoaded
 						? 'opacity-100 translate-x-0'
 						: 'opacity-0 translate-x-full'
 					}
             ${isMobileOpen
 						? 'bg-red-500/20 border-red-400/40 shadow-lg shadow-red-500/20'
-						: 'bg-foreground/5 border-foreground/20 hover:bg-foreground/10 hover:scale-110'
+						: ''
 					}
           `}
 				>
-					{isMobileOpen ? (
-						<X size={18} className="text-red-400"/>
-					) : (
-						<Menu size={18} className="text-foreground"/>
-					)}
+					<GlassSurface
+						width={50}
+						height={50}
+						borderRadius={100}
+						className="my-custom-class"
+					>
+						{isMobileOpen ? (
+							<X size={18} className="text-red-400"/>
+						) : (
+							<Menu size={18} className="text-foreground"/>
+						)}
+					</GlassSurface>
 				</button>
 
 				{/* Mobile Menu Panel */}
