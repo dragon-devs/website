@@ -1,0 +1,182 @@
+'use client';
+
+import React, {useState, useEffect} from 'react';
+import {Home, User, FolderOpen, Settings, Mail, Menu, X} from 'lucide-react';
+import {useRouter} from "next/navigation";
+import Magnet from "@/components/Magnet";
+import ShapeBlur from "@/components/ShapeBlur";
+import ElectricBorder from "@/components/ElectricBorder";
+
+const MinimalNavbar = () => {
+	const [isLoaded, setIsLoaded] = useState(false);
+	const [isMobileOpen, setIsMobileOpen] = useState(false);
+	const [activeItem, setActiveItem] = useState('home');
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsLoaded(true);
+		}, 300);
+		return () => clearTimeout(timer);
+	}, []);
+
+	const navItems = [
+		{id: 'home', icon: Home, label: 'Home', href: '/'},
+		{id: 'about', icon: User, label: 'About Us', href: '/about'},
+		{id: 'projects', icon: FolderOpen, label: 'Projects', href: '/projects'},
+		{id: 'services', icon: Settings, label: 'Services', href: '/services'},
+		{id: 'contact', icon: Mail, label: 'Contact Us', href: '/contact'},
+	];
+
+	const NavIcon = ({item, isMobile = false}) => {
+		const Icon = item.icon;
+		const isActive = activeItem === item.id;
+		const router = useRouter()
+		return (
+			<div className="relative group">
+				<button
+					onClick={() => {
+						setActiveItem(item.id)
+						router.push(item.href)
+						if (isMobile) {
+							setIsMobileOpen(false);
+						}
+					}}
+					className={`
+            w-12 h-12 rounded-full flex items-center justify-center
+            transition-all duration-300 ease-out
+            backdrop-blur-sm border border-foreground/20
+            hover:scale-110 hover:shadow-lg hover:shadow-primary/20
+            ${isActive
+						? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
+						: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
+					}
+          `}
+				>
+					<Magnet padding={25} disabled={false} magnetStrength={6}>
+						<Icon
+							size={18}
+							className={`
+	              transition-all duration-300
+	              ${isActive ? 'text-primary' : 'text-gray-300 group-hover:text-foreground'}
+	            `}
+						/>
+					</Magnet>
+					<div
+						className={`
+            absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
+            backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none  
+            shadow-xl space-nowrap
+            transition-all duration-300 ease-out border p-2 border-muted
+            ${isMobile
+							? 'opacity-100 translate-x-0 visible'
+							: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'
+						}
+          `}
+					>
+						<div>
+							{item.label}
+						</div>
+					</div>
+				</button>
+			</div>
+		);
+	};
+
+	return (
+		<>
+			{/* Desktop Navigation */}
+			<nav
+				className={`
+          fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50
+          hidden lg:flex flex-col space-y-4
+          transition-all duration-700 ease-out
+          ${isLoaded
+					? 'opacity-100 translate-x-0'
+					: 'opacity-0 translate-x-full'
+				}
+        `}
+			>
+				{navItems.map((item, index) => (
+					<div
+						key={item.id}
+						className="transition-all duration-500 ease-out"
+						style={{
+							transitionDelay: isLoaded ? `${index * 100 + 200}ms` : '0ms',
+							transform: isLoaded ? 'translateX(0)' : 'translateX(50px)',
+							opacity: isLoaded ? 1 : 0,
+						}}
+					>
+						<NavIcon item={item}/>
+					</div>
+				))}
+			</nav>
+
+			{/* Mobile Navigation */}
+			<div className="lg:hidden">
+				{/* Mobile Menu Button */}
+				<button
+					onClick={() => setIsMobileOpen(!isMobileOpen)}
+					className={`
+            fixed top-4 md:top-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full
+            flex items-center justify-center
+            backdrop-blur-sm border transition-all duration-700 ease-out
+            ${isLoaded
+						? 'opacity-100 translate-x-0'
+						: 'opacity-0 translate-x-full'
+					}
+            ${isMobileOpen
+						? 'bg-red-500/20 border-red-400/40 shadow-lg shadow-red-500/20'
+						: 'bg-foreground/5 border-foreground/20 hover:bg-foreground/10 hover:scale-110'
+					}
+          `}
+				>
+					{isMobileOpen ? (
+						<X size={18} className="text-red-400"/>
+					) : (
+						<Menu size={18} className="text-foreground"/>
+					)}
+				</button>
+
+				{/* Mobile Menu Panel */}
+				<div
+					className={`
+            fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40
+            transition-all duration-500 ease-out
+            ${isMobileOpen
+						? 'opacity-100 translate-x-0 visible'
+						: 'opacity-0 translate-x-8 invisible'
+					}
+          `}
+				>
+					<div className="flex flex-col space-y-4">
+						{navItems.map((item, index) => (
+							<div
+								key={item.id}
+								className="transition-all duration-400 ease-out"
+								style={{
+									transitionDelay: isMobileOpen ? `${index * 80}ms` : `${(navItems.length - index - 1) * 50}ms`,
+									transform: isMobileOpen ? 'translateX(0)' : 'translateX(30px)',
+									opacity: isMobileOpen ? 1 : 0,
+								}}
+							>
+								<NavIcon item={item} isMobile={true}/>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Mobile Backdrop */}
+				<div
+					className={`
+            fixed inset-0 bg-black/10 backdrop-blur-sm z-30
+            transition-opacity duration-300 ease-out
+            ${isMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
+          `}
+					onClick={() => setIsMobileOpen(false)}
+				/>
+			</div>
+		</>
+	);
+};
+
+export default MinimalNavbar;

@@ -5,6 +5,7 @@ import Silk from "@/components/Silk";
 import {ThemeProvider} from "next-themes";
 import ClickSpark from "@/components/ClickSpark";
 import SplashCursor from "@/components/SplashCursor";
+import MinimalNavbar from "@/components/Navbar";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -37,7 +38,7 @@ export default function RootLayout({
 			enableSystem
 			disableTransitionOnChange
 		>
-			<SplashCursor />
+			{/*<SplashCursor />*/}
 			<div className="fixed inset-0 opacity-50 -z-50 pointer-events-none">
 				<Silk
 					speed={1.5}
@@ -47,15 +48,18 @@ export default function RootLayout({
 					rotation={0}
 				/>
 			</div>
-			{children}
-			{/*<ClickSpark*/}
-			{/*	sparkColor='#fff'*/}
-			{/*	sparkSize={10}*/}
-			{/*	sparkRadius={25}*/}
-			{/*	sparkCount={10}*/}
-			{/*	duration={700}*/}
-			{/*>*/}
-			{/*</ClickSpark>*/}
+			<ClickSpark
+				sparkColor='#fff'
+				sparkSize={10}
+				sparkRadius={25}
+				sparkCount={10}
+				duration={700}
+			>
+				{children}
+				<MinimalNavbar/>
+
+
+			</ClickSpark>
 		</ThemeProvider>
 		</body>
 		</html>
