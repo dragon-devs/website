@@ -32,7 +32,13 @@ const MinimalNavbar = () => {
 		const isActive = activeItem === item.id;
 		const router = useRouter()
 		return (
-			<div className="relative group">
+			<button className="relative group"  onClick={() => {
+				setActiveItem(item.id)
+				router.push(item.href)
+				if (isMobile) {
+					setIsMobileOpen(false);
+				}
+			}}>
 				<div
 					className={`top-2 absolute blur-sm size-5 ${isActive ? 'text-primary bg-primary' : 'group-hover:text-foreground'} `}></div>
 				<GlassSurface
@@ -41,14 +47,7 @@ const MinimalNavbar = () => {
 					borderRadius={100}
 					className="my-custom-class"
 				>
-					<button
-						onClick={() => {
-							setActiveItem(item.id)
-							router.push(item.href)
-							if (isMobile) {
-								setIsMobileOpen(false);
-							}
-						}}
+					<div
 						// className={`
 						//   w-12 h-12 rounded-full flex items-center justify-center
 						//   transition-all duration-300 ease-out
@@ -75,7 +74,7 @@ const MinimalNavbar = () => {
 							/>
 						</Magnet>
 
-					</button>
+					</div>
 				</GlassSurface>
 
 
@@ -102,7 +101,7 @@ const MinimalNavbar = () => {
 						{item.label}
 					</GlassSurface>
 				</div>
-			</div>
+			</button>
 		);
 	};
 
@@ -149,7 +148,7 @@ const MinimalNavbar = () => {
 						: 'opacity-0 translate-x-full'
 					}
             ${isMobileOpen
-						? 'bg-red-500/20 border-red-400/40 shadow-lg shadow-red-500/20'
+						? ''
 						: ''
 					}
           `}
@@ -158,7 +157,7 @@ const MinimalNavbar = () => {
 						width={50}
 						height={50}
 						borderRadius={100}
-						className="my-custom-class"
+						className=""
 					>
 						{isMobileOpen ? (
 							<X size={18} className="text-red-400"/>
