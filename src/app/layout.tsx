@@ -42,8 +42,8 @@ export default function RootLayout({
 			{/*<SplashCursor />*/}
 			<div className="fixed inset-0 opacity-50 -z-50 pointer-events-none">
 				<Silk
-					speed={1.5}
-					scale={0.7}
+					speed={0}
+					scale={0.5}
 					color="#52525b"
 					noiseIntensity={10}
 					rotation={0}
