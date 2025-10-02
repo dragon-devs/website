@@ -36,7 +36,7 @@ const HeroSection = () => {
 
 	return (
 		<div
-			className="relative md:py-0 py-20 min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
+			className="relative md:py-0 py-20 min-h-screen  overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
 			{/* Animated Grid Background */}
 			<div className="absolute inset-0">
 				<svg className="w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +95,7 @@ const HeroSection = () => {
 			))}
 
 			{/* Main Content */}
-			<div className="relative z-10 flex items-center justify-center min-h-screen px-6">
+			<div className="relative z-10 flex items-center justify-center min-h-screen px-6 scale-90">
 				<div className="max-w-6xl mx-auto text-center">
 					{/* Badge */}
 					<motion.div

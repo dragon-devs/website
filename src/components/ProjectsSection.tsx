@@ -4,6 +4,7 @@ import {ArrowRight, ChevronRight, Layers} from "lucide-react";
 import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export const ProjectsSection = () => {
   const projects = [
@@ -48,7 +49,7 @@ export const ProjectsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Work</span>
+          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Work</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
             Featured Projects
           </h2>
@@ -59,13 +60,14 @@ export const ProjectsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {projects.slice(0,2).map((project, index) => (
+           <SpotlightCard >
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all group"
+              className="b  overflow-hidden  transition-all group"
             >
               <div className="bg-slate-800/50 h-64 flex items-center justify-center border-b border-white/10">
                 <div className="text-center text-gray-500">
@@ -74,21 +76,23 @@ export const ProjectsSection = () => {
                 </div>
               </div>
               <div className="p-8">
-                <span className="text-blue-400 text-sm font-semibold">{project.category}</span>
+                <span className="text-primary text-sm font-semibold">{project.category}</span>
                 <h3 className="text-2xl font-bold text-white mt-2 mb-3">{project.title}</h3>
                 <p className="text-gray-400 mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">
+                    <span key={idx} className="px-3 py-1 bg-blue-500/10 text-primary text-xs rounded-full border border-blue-500/20">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <button className="text-blue-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                <button className="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
                   View Case Study <ArrowRight size={16}/>
                 </button>
               </div>
             </motion.div>
+           </SpotlightCard>
+
           ))}
         </div>
 
