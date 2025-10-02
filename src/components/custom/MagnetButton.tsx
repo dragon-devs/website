@@ -14,6 +14,7 @@ interface MagnetButtonProps {
   magnetStrength?: number;
   disabled?: boolean;
   variant?: "primary" | "secondary";
+  size?: "sm" | "md" | "lg";
 }
 
 const MagnetButton: React.FC<MagnetButtonProps> = ({
@@ -24,7 +25,15 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
                                                      magnetStrength = 10,
                                                      disabled = false,
                                                      variant = "primary",
+                                                     size = "md",
                                                    }) => {
+  // Size variants
+  const sizes = {
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
+  };
+
   return (
     <Magnet padding={25} disabled={disabled} magnetStrength={magnetStrength}>
       <motion.button
@@ -38,7 +47,8 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
         onClick={onClick}
         disabled={disabled}
         className={cn(
-          "md:w-auto w-full px-8 py-4 rounded-full font-semibold text-lg",
+          "md:w-auto w-full rounded-full font-semibold",
+          sizes[size],
           variant === "primary" &&
           "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-xl flex items-center gap-3",
           variant === "secondary" &&
@@ -47,14 +57,14 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
         )}
       >
         <Magnet padding={25} disabled={disabled} magnetStrength={8}>
-          {variant === "primary" ? (
+          { icon || variant === "primary" ?  (
             <div className="flex justify-center items-center gap-2">
               <p>{label}</p>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                {icon || <ArrowRight size={20} />}
+                {icon || <ArrowRight size={size === "sm" ? 16 : size === "md" ? 20 : 24} />}
               </motion.div>
             </div>
           ) : (

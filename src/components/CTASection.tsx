@@ -1,0 +1,34 @@
+"use client"
+import {motion} from "framer-motion";
+import {ArrowRight, Magnet, Star} from "lucide-react";
+import React from "react";
+import MagnetButton from "@/components/custom/MagnetButton";
+
+export const CTASection = () => {
+  return (
+    <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20"></div>
+
+      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Star size={48} className="text-yellow-300 mx-auto mb-6"/>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+            Join the ranks of successful businesses that trust DragonDevs with their digital transformation.
+            Let's create something extraordinary together.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <MagnetButton label={"Start Your Project"} />
+              <MagnetButton variant={'secondary'} label={"Schedule a Call"} />
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
