@@ -5,11 +5,16 @@ import {motion, useScroll, useTransform} from 'motion/react';
 import {ArrowRight, Code, Zap, Globe, Shield, Cpu} from 'lucide-react';
 import Magnet from "@/components/Magnet";
 import CountUp from './CountUp';
+import MagnetButton from "@/components/custom/MagnetButton";
+import {useRouter} from "next/navigation";
+
 
 const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
 	const {scrollY} = useScroll();
 	const y = useTransform(scrollY, [0, 500], [0, 150]);
+
+  const router = useRouter()
 
 	useEffect(() => {
 		const handleMouseMove = (e) => {
@@ -136,40 +141,8 @@ const HeroSection = () => {
 						transition={{delay: 0.8}}
 						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
-						<Magnet padding={25} disabled={false} magnetStrength={10}>
-							<motion.div
-								whileHover={{scale: 1.02, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"}}
-								whileTap={{scale: 0.98}}
-								className="md:w-auto w-full group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg flex items-center gap-3 shadow-xl"
-							>
-								<Magnet padding={25} disabled={false} magnetStrength={8}>
-									<div className="flex justify-center items-center gap-2">
-										<p>
-											Start Your Project
-										</p>
-										<motion.div
-											animate={{x: [0, 5, 0]}}
-											transition={{duration: 1.5, repeat: Infinity}}
-										>
-											<ArrowRight size={20}/>
-										</motion.div>
-									</div>
-								</Magnet>
-							</motion.div>
-						</Magnet>
-
-
-						<Magnet padding={25} disabled={false} magnetStrength={10}>
-							<motion.div
-								whileHover={{scale: 1.02}}
-								whileTap={{scale: 0.98}}
-								className="md:w-auto w-full px-8 py-4 border border-white/20 rounded-full text-white font-semibold text-lg backdrop-blur-sm hover:bg-white/5 transition-all duration-300"
-							>
-								<Magnet padding={25} disabled={false} magnetStrength={8}>
-									View Our Work
-								</Magnet>
-							</motion.div>
-						</Magnet>
+            <MagnetButton label="Start Your Project"  onClick={() => router.push("/contact") } />
+            <MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/projects") } />
 					</motion.div>
 
 					{/* Stats */}
