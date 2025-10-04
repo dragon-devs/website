@@ -8,7 +8,7 @@ export const TestimonialsSection = () => {
     {
       name: "Sarah Johnson",
       role: "CEO, TechStart Inc",
-      content: "DragonDevs transformed our outdated system into a modern, efficient platform. Their expertise and dedication exceeded our expectations.",
+      content: "Dragondevs transformed our outdated system into a modern, efficient platform. Their expertise and dedication exceeded our expectations.",
       rating: 5
     },
     {

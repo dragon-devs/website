@@ -11,7 +11,7 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section className="py-24 relative">
+    <section id={"contact"} className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

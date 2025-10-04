@@ -15,7 +15,7 @@ export const AboutSection = () => {
   const router = useRouter();
 
   return (
-    <section className="py-24 pt-10 relative overflow-hidden">
+    <section id={"about"} className="py-24 pt-10 relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <motion.div
@@ -24,7 +24,7 @@ export const AboutSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">About DragonDevs</span>
+          <span className="text-primary font-semibold text-sm tracking-wider uppercase">About dragondevs</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 tracking-tight">
             Building the Future, One Line at a Time
           </h2>
@@ -43,7 +43,7 @@ export const AboutSection = () => {
             <div className="p-8 border border-border">
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                DragonDevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
+                dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
                 We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
               </p>
               <p className="text-muted-foreground leading-relaxed">

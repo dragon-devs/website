@@ -20,7 +20,7 @@ export const CTASection = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-            Join the ranks of successful businesses that trust DragonDevs with their digital transformation.
+            Join the ranks of successful businesses that trust dragondevs with their digital transformation.
             Let's create something extraordinary together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

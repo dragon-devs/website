@@ -41,7 +41,7 @@ export const ProjectsSection = () => {
   const router = useRouter()
 
   return (
-    <section className="py-24  relative">
+    <section id={"projects"} className="py-24  relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

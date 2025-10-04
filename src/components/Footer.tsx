@@ -1,7 +1,7 @@
 
 import {Code, Github, Linkedin, Twitter} from "lucide-react";
 import React from "react";
-
+import Image from "next/image"
 export const Footer = () => {
   const socialLinks = [
     { icon: Github, label: "GitHub", link: "#" },
@@ -36,10 +36,10 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-                <Code size={24} className="text-foreground"/>
+              <div className="w-10 h-10  p-2 rounded-lg flex items-center justify-center">
+                <Image alt={"dragondevs logo"} width={50} height={50} src="/svg-transparent-white.svg" />
               </div>
-              <span className="text-2xl font-bold text-foreground">DragonDevs</span>
+              <span className="text-2xl font-bold text-foreground">dragondevs</span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Building innovative software solutions that empower businesses and transform ideas into reality.
@@ -100,7 +100,7 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2025 DragonDevs. All rights reserved.
+            © 2025 dragondevs. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Terms of Service</a>
