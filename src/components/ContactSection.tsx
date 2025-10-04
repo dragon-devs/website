@@ -5,13 +5,13 @@ import React from "react";
 
 export const ContactSection = () => {
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "hello@dragondevs.com", link: "mailto:hello@dragondevs.com" },
-    { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", link: "tel:+15551234567" },
+    { icon: Mail, label: "Email", value: "support@dragondevs.co", link: "mailto:support@dragondevs.co" },
+    { icon: Phone, label: "Phone", value: "+92 346 6955928", link: "tel:+923466955928" },
     { icon: MapPin, label: "Location", value: "Lahore, Punjab, Pakistan", link: null }
   ];
 
   return (
-    <section id={"contact"} className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 relative">
+    <section id={"contact"} className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

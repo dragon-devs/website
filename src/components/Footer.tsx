@@ -4,9 +4,9 @@ import React from "react";
 import Image from "next/image"
 export const Footer = () => {
   const socialLinks = [
-    { icon: Github, label: "GitHub", link: "#" },
-    { icon: Linkedin, label: "LinkedIn", link: "#" },
-    { icon: Twitter, label: "Twitter", link: "#" }
+    { icon: Github, label: "GitHub", link: "https://github.com/dragon-devs" },
+    { icon: Linkedin, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/" },
+    { icon: Twitter, label: "X", link: "https://x.com/dragondevs_" }
   ];
 
   const footerLinks = {
@@ -36,7 +36,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10  p-2 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 p-1 rounded-lg flex items-center justify-center">
                 <Image alt={"dragondevs logo"} width={50} height={50} src="/svg-transparent-white.svg" />
               </div>
               <span className="text-2xl font-bold text-foreground">dragondevs</span>
@@ -50,7 +50,7 @@ export const Footer = () => {
                   key={index}
                   href={social.link}
                   aria-label={social.label}
-                  className="w-10 h-1 border-border rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary/80 hover:border-blue-500/30 transition-all"
+                  className="w-10 h-10 border border-muted-foreground/50 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary/80 hover:border-blue-500/30 transition-all"
                 >
                   <social.icon size={20}/>
                 </a>
