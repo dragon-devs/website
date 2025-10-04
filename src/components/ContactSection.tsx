@@ -11,7 +11,7 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id={"contact"} className="py-24 relative">
+    <section id={"contact"} className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

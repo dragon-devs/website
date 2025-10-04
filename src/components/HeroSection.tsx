@@ -95,7 +95,7 @@ const HeroSection = () => {
 			{/*))}*/}
 
 			{/* Main Content */}
-			<div className="relative overfly flex items-center justify-center min-h-screen md:px-6 px-4 md:pb-20 pb-10 scale-90">
+			<div className="relative scale-90 z-10 flex items-center justify-center min-h-screen px-6">
 				<div className="max-w-6xl mx-auto text-center">
 					{/* Badge */}
 					<motion.div
