@@ -27,8 +27,8 @@ export const ContactSection = () => {
             Ready to start your project? Contact us today and let's discuss how we can help bring your vision to life.
           </p>
         </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className={"flex"}>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {contactInfo.map((info, index) => (
             <motion.div
               key={index}
@@ -103,6 +103,7 @@ export const ContactSection = () => {
             </button>
           </form>
         </motion.div>
+        </div>
       </div>
     </section>
   );
