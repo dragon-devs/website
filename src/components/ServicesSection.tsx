@@ -80,7 +80,7 @@ export const ServicesSection = () => {
               transition={{ delay: index * 0.1 }}
               className=" p-8 transition-all group"
             >
-              <div className="bg-blue-500/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
+              <div className="bg-blue-500/10 w-14 h-14  flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
                 <service.icon size={28} className="text-blue-400"/>
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
