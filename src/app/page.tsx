@@ -7,16 +7,22 @@ import {TestimonialsSection} from "@/components/TestimonialsSection";
 import {CTASection} from "@/components/CTASection";
 import {ContactSection} from "@/components/ContactSection";
 import {Footer} from "@/components/Footer";
+import {Separator} from "@/components/ui/separator";
 
 export default function Home() {
 	return (
 		<main >
 			<HeroSection />
       <AboutSection/>
+      <Separator/>
       <ServicesSection/>
+      <Separator/>
       <ProjectsSection/>
+      <Separator/>
       <TestimonialsSection/>
+      <Separator/>
       <CTASection/>
+      <Separator/>
       <ContactSection/>
       <Footer/>
 		</main>

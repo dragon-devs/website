@@ -17,7 +17,7 @@ const HeroSection = () => {
   const router = useRouter()
 
 	useEffect(() => {
-		const handleMouseMove = (e) => {
+		const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
 			setMousePosition({x: e.clientX, y: e.clientY});
 		};
 		window.addEventListener('mousemove', handleMouseMove);
@@ -36,22 +36,22 @@ const HeroSection = () => {
 
 	return (
 		<div
-			className=" relative md:py-0 py-20 min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
+			className="relative md:py-0 py-20 min-h-screen overflow-hidden ">
 			{/* Animated Grid Background */}
-			<div className="absolute inset-0">
-				<svg className="w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
-					<defs>
-						<pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-							<path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1"/>
-						</pattern>
-					</defs>
-					<rect width="100%" height="100%" fill="url(#grid)" className="text-primary/30"/>
-				</svg>
-			</div>
+			{/*<div className="absolute inset-0">*/}
+			{/*	<svg className="w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">*/}
+			{/*		<defs>*/}
+			{/*			<pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">*/}
+			{/*				<path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" strokeWidth="1"/>*/}
+			{/*			</pattern>*/}
+			{/*		</defs>*/}
+			{/*		<rect width="100%" height="100%" fill="url(#grid)" className="text-primary/30"/>*/}
+			{/*	</svg>*/}
+			{/*</div>*/}
 
 			{/* Dynamic Gradient Orbs */}
 			<motion.div
-				className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl"
+				className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl opacity-30"
 				animate={{
 					x: mousePosition.x * 0.02,
 					y: mousePosition.y * 0.02,
@@ -59,7 +59,7 @@ const HeroSection = () => {
 				style={{left: '10%', top: '20%'}}
 			/>
 			<motion.div
-				className="absolute w-80 h-80 rounded-full bg-gradient-to-r from-emerald-500/15 to-cyan-500/15 blur-3xl"
+				className="absolute w-80 h-80 rounded-full bg-gradient-to-r from-emerald-500/15 to-cyan-500/15 blur-3xl opacity-30"
 				animate={{
 					x: mousePosition.x * -0.015,
 					y: mousePosition.y * -0.015,
@@ -68,31 +68,31 @@ const HeroSection = () => {
 			/>
 
 			{/* Floating Tech Icons */}
-			{floatingIcons.map((item, index) => (
-				<motion.div
-					key={index}
-					className="absolute"
-					initial={{opacity: 0, scale: 0}}
-					animate={{
-						opacity: 0.6,
-						scale: 1,
-						y: [-10, 10, -10],
-					}}
-					transition={{
-						delay: item.delay,
-						y: {
-							duration: 4,
-							repeat: Infinity,
-							ease: "easeInOut"
-						}
-					}}
-					style={{left: item.x, top: item.y}}
-				>
-					<div className="p-3 rounded-xl opacity-50 bg-white/5 backdrop-blur-sm border border-white/10">
-						<item.icon size={24} className="text-blue-400"/>
-					</div>
-				</motion.div>
-			))}
+			{/*{floatingIcons.map((item, index) => (*/}
+			{/*	<motion.div*/}
+			{/*		key={index}*/}
+			{/*		className="absolute"*/}
+			{/*		initial={{opacity: 0, scale: 0}}*/}
+			{/*		animate={{*/}
+			{/*			opacity: 0.6,*/}
+			{/*			scale: 1,*/}
+			{/*			y: [-10, 10, -10],*/}
+			{/*		}}*/}
+			{/*		transition={{*/}
+			{/*			delay: item.delay,*/}
+			{/*			y: {*/}
+			{/*				duration: 4,*/}
+			{/*				repeat: Infinity,*/}
+			{/*				ease: "easeInOut"*/}
+			{/*			}*/}
+			{/*		}}*/}
+			{/*		style={{left: item.x, top: item.y}}*/}
+			{/*	>*/}
+			{/*		<div className="p-3 rounded-xl opacity-50 backdrop-blur-sm border border-border">*/}
+			{/*			<item.icon size={24} className="text-primary/80"/>*/}
+			{/*		</div>*/}
+			{/*	</motion.div>*/}
+			{/*))}*/}
 
 			{/* Main Content */}
 			<div className="relative scale-90 z-10 flex items-center justify-center min-h-screen px-6">
@@ -102,7 +102,7 @@ const HeroSection = () => {
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.2}}
-						className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8"
+						className="inline-flex items-center px-4 py-2  border border-primary/80 text-primary/80 text-sm font-medium mb-8"
 					>
 						<Zap size={16} className="mr-2"/>
 						Next-Generation Software Solutions
@@ -128,7 +128,7 @@ const HeroSection = () => {
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.6}}
-						className="text-xl tracking-tight md:text-2xl  text-gray-300 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
+						className="text-xl tracking-tight md:text-2xl  text-foreground/80 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
 					>
 						We craft intelligent software solutions that transform ideas into reality.
 						From AI-powered applications to scalable enterprise systems, we build the future.
@@ -164,7 +164,7 @@ const HeroSection = () => {
 								transition={{delay: 1.2 + index * 0.1}}
 								className="text-center"
 							>
-								<div className="text-4xl md:text-5xl font-bold text-white mb-2">
+								<div className="text-4xl md:text-5xl font-bold text-foreground mb-2">
 									<CountUp
 										from={-100}
 										to={stat.number}
@@ -174,7 +174,7 @@ const HeroSection = () => {
 										className="count-up-text"
 									/>{stat.segment}
 								</div>
-								<div className="text-gray-400">{stat.label}</div>
+								<div className="text-muted-foreground">{stat.label}</div>
 							</motion.div>
 						))}
 					</motion.div>
@@ -186,12 +186,12 @@ const HeroSection = () => {
 				initial={{opacity: 0}}
 				animate={{opacity: 1}}
 				transition={{delay: 1.5}}
-				className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+				className="absolute md:bottom-6 bottom-10 left-1/2 transform -translate-x-1/2 z-20"
 			>
 				<motion.div
 					animate={{y: [0, 10, 0]}}
 					transition={{duration: 2, repeat: Infinity}}
-					className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+					className="w-6 h-10 border-2 rounded-full border-border  flex justify-center"
 				>
 					<motion.div
 						animate={{y: [0, 12, 0]}}

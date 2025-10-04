@@ -320,7 +320,7 @@ const AboutSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">About DragonDevs</span>
+          <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">About dragondevs</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
             Building the Future, One Line at a Time
           </h2>
@@ -339,7 +339,7 @@ const AboutSection = () => {
             <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-8 border border-white/10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-white mb-4">Our Story</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                DragonDevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
+                dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
                 We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
               </p>
               <p className="text-gray-300 leading-relaxed">
@@ -740,7 +740,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
                 <Code size={24} className="text-white"/>
               </div>
-              <span className="text-2xl font-bold text-white">DragonDevs</span>
+              <span className="text-2xl font-bold text-white">dragondevs</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Building innovative software solutions that empower businesses and transform ideas into reality.
@@ -801,7 +801,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2025 DragonDevs. All rights reserved.
+            © 2025 dragondevs. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a>
@@ -831,7 +831,7 @@ const CTASection = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-            Join the ranks of successful businesses that trust DragonDevs with their digital transformation.
+            Join the ranks of successful businesses that trust dragondevs with their digital transformation.
             Let's create something extraordinary together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -858,7 +858,7 @@ const TestimonialsSection = () => {
     {
       name: "Sarah Johnson",
       role: "CEO, TechStart Inc",
-      content: "DragonDevs transformed our outdated system into a modern, efficient platform. Their expertise and dedication exceeded our expectations.",
+      content: "dragondevs transformed our outdated system into a modern, efficient platform. Their expertise and dedication exceeded our expectations.",
       rating: 5
     },
     {

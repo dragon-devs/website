@@ -1,7 +1,7 @@
 
 import {Code, Github, Linkedin, Twitter} from "lucide-react";
 import React from "react";
-
+import Image from "next/image"
 export const Footer = () => {
   const socialLinks = [
     { icon: Github, label: "GitHub", link: "#" },
@@ -31,17 +31,17 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-slate-950 border-t border-white/10 py-16">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className=" border-t border-border py-16">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
-                <Code size={24} className="text-white"/>
+              <div className="w-10 h-10  p-2 rounded-lg flex items-center justify-center">
+                <Image alt={"dragondevs logo"} width={50} height={50} src="/svg-transparent-white.svg" />
               </div>
-              <span className="text-2xl font-bold text-white">DragonDevs</span>
+              <span className="text-2xl font-bold text-foreground">dragondevs</span>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               Building innovative software solutions that empower businesses and transform ideas into reality.
             </p>
             <div className="flex gap-4">
@@ -50,7 +50,7 @@ export const Footer = () => {
                   key={index}
                   href={social.link}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-slate-900 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-blue-400 hover:border-blue-500/30 transition-all"
+                  className="w-10 h-1 border-border rounded-lg flex items-center justify-center text-muted-foreground hover:text-primary/80 hover:border-blue-500/30 transition-all"
                 >
                   <social.icon size={20}/>
                 </a>
@@ -59,11 +59,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Company</h4>
+            <h4 className="text-foreground font-semibold mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -72,11 +72,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <h4 className="text-foreground font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -85,11 +85,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
+            <h4 className="text-foreground font-semibold mb-4">Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -98,14 +98,14 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            © 2025 DragonDevs. All rights reserved.
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm">
+            © 2025 dragondevs. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Cookie Policy</a>
+            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Terms of Service</a>
+            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Privacy Policy</a>
+            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export const ServicesSection = () => {
   const services = [
@@ -49,47 +50,49 @@ export const ServicesSection = () => {
 
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-950/50 to-slate-900/50 relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id={"services"} className="py-24 bg-gradient-to-b from-slate-950/50 to-slate-900/50 relative">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Services</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Services</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
             Comprehensive Digital Solutions
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             From concept to deployment, we offer end-to-end development services tailored to your business needs.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {services.slice(0, 3).map((service, index) => (
+            <SpotlightCard>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
+              className="relative p-8 transition-all group"
             >
-              <div className="bg-blue-500/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                <service.icon size={28} className="text-blue-400"/>
+              <div className="absolute -right-10 -bottom-10  opacity-10">
+                <service.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-2xl tracking-tight font-bold text-foreground mb-3">{service.title}</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed ">{service.description}</p>
               <ul className="space-y-2">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-gray-300 text-sm">
+                  <li key={idx} className="flex items-center gap-2 text-foreground/80">
                     <CheckCircle2 size={16} className="text-green-400 flex-shrink-0"/>
                     {feature}
                   </li>
                 ))}
               </ul>
             </motion.div>
+            </SpotlightCard>
           ))}
         </div>
 
