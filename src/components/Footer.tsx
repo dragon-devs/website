@@ -32,7 +32,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-slate-950 border-t border-white/10 py-16">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">

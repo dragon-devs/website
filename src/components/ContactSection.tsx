@@ -12,7 +12,7 @@ export const ContactSection = () => {
 
   return (
     <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
