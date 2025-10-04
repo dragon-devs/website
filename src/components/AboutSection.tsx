@@ -15,8 +15,7 @@ export const AboutSection = () => {
   const router = useRouter();
 
   return (
-    <section className="py-24 bg-slate-950/50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-950/10 to-transparent"></div>
+    <section className="py-24  relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
@@ -41,7 +40,7 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-gradient-to-bborder-background/20 to-purple-500/20 rounded-2xl p-8 border border-border/10 backdrop-blur-sm">
+            <div className="p-8 border border-border">
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 DragonDevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
@@ -58,7 +57,7 @@ export const AboutSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-background/50 rounded-2xl h-80 border border-border/10 flex items-center justify-center"
+            className="h-80 border border-border flex items-center justify-center"
           >
             <div className="text-center text-foreground">
               <Layers size={64} className="mx-auto mb-4 opacity-50"/>
@@ -75,7 +74,7 @@ export const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-background/50 border border-border/10 rounded-xl p-6 text-center hover:border-background/30 transition-all"
+              className=" border border-border p-6 text-center hover:border-primary/50 transition-all duration-700"
             >
               <value.icon size={32} className="text-primary mx-auto mb-4"/>
               <h4 className="text-foreground font-semibold mb-2">{value.title}</h4>

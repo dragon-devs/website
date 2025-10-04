@@ -17,7 +17,7 @@ const HeroSection = () => {
   const router = useRouter()
 
 	useEffect(() => {
-		const handleMouseMove = (e) => {
+		const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
 			setMousePosition({x: e.clientX, y: e.clientY});
 		};
 		window.addEventListener('mousemove', handleMouseMove);

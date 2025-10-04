@@ -4,7 +4,6 @@ import {motion} from "framer-motion";
 import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
-import PixelCard from "@/components/PixelCard";
 import SpotlightCard from "@/components/SpotlightCard";
 
 export const ServicesSection = () => {
@@ -71,7 +70,6 @@ export const ServicesSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.slice(0, 3).map((service, index) => (
             <SpotlightCard>
-            {/*<PixelCard variant={"blue"} className={"w-full"}>*/}
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -94,7 +92,6 @@ export const ServicesSection = () => {
                 ))}
               </ul>
             </motion.div>
-            {/*</PixelCard>*/}
             </SpotlightCard>
           ))}
         </div>
