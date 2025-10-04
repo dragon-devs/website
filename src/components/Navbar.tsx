@@ -62,7 +62,7 @@ const MinimalNavbar = () => {
 					</Magnet>
 					<div
 						className={`
-            absolute text-center font-mono ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
+            absolute text-center ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
             backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none  tracking-wider
             space-nowrap
             transition-all duration-300 ease-out border p-2  py-1.5

@@ -34,14 +34,13 @@ export const AboutSection = () => {
           </p>
         </motion.div>
 
-        <div className=" items-center mb-20 md:h-80">
+        <div className="grid md:grid-cols-2 items-center mb-20 md:h-80 md:gap-6 gap-4">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className={"grid md:grid-cols-5 items-center mb-20"}
           >
-            <div className="p-8 border border-border">
+            <div className="p-8 md:h-80 border border-border">
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
@@ -52,17 +51,6 @@ export const AboutSection = () => {
                 informs our product development, and every product we build enhances our service delivery.
               </p>
             </div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="md:col-span-2 bg-background/50 md:h-full rounded-2xl md:rounded-l-none  border border-border md:border-l-0 flex items-center justify-center"
-            >
-              <div className="text-center text-foreground">
-                <Layers size={64} className="mx-auto mb-4 opacity-50"/>
-                <p className="text-sm">Team Photo / Office Image Placeholder</p>
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
