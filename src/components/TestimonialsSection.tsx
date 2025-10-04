@@ -27,7 +27,7 @@ export const TestimonialsSection = () => {
 
   return (
     <section className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 md:gap-8 gap-4">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}

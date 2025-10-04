@@ -42,7 +42,7 @@ export const ProjectsSection = () => {
 
   return (
     <section className="py-24  relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export const ProjectsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 md:gap-8 gap-4">
           {projects.slice(0,2).map((project, index) => (
            <SpotlightCard >
             <motion.div

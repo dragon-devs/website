@@ -15,9 +15,9 @@ export const AboutSection = () => {
   const router = useRouter();
 
   return (
-    <section className="py-24  relative overflow-hidden">
+    <section className="py-24 pt-10 relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export const AboutSection = () => {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6 mb-12">
+        <div className="grid md:grid-cols-4 md:gap-6 gap-4 mb-12">
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -74,7 +74,7 @@ export const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className=" border border-border p-6 text-center hover:border-primary/50 transition-all duration-700"
+              className=" border border-border md:p-6 p-4 text-center hover:border-primary/50 transition-all duration-700"
             >
               <value.icon size={32} className="text-primary mx-auto mb-4"/>
               <h4 className="text-foreground font-semibold mb-2">{value.title}</h4>

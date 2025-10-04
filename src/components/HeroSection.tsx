@@ -95,14 +95,14 @@ const HeroSection = () => {
 			{/*))}*/}
 
 			{/* Main Content */}
-			<div className="relative z-10 flex items-center justify-center min-h-screen px-6 scale-90">
+			<div className="relative overfly flex items-center justify-center min-h-screen md:px-6 px-4 md:pb-20 pb-10 scale-90">
 				<div className="max-w-6xl mx-auto text-center">
 					{/* Badge */}
 					<motion.div
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.2}}
-						className="inline-flex items-center px-4 py-2  rounded-full border border-primary/80 text-primary/80 text-sm font-medium mb-8"
+						className="inline-flex items-center px-4 py-2  border border-primary/80 text-primary/80 text-sm font-medium mb-8"
 					>
 						<Zap size={16} className="mr-2"/>
 						Next-Generation Software Solutions
@@ -182,24 +182,24 @@ const HeroSection = () => {
 			</div>
 
 			{/* Scroll Indicator */}
-			{/*<motion.div*/}
-			{/*	initial={{opacity: 0}}*/}
-			{/*	animate={{opacity: 1}}*/}
-			{/*	transition={{delay: 1.5}}*/}
-			{/*	className="absolute bottom-8 left-1/2 transform -translate-x-1/2"*/}
-			{/*>*/}
-			{/*	<motion.div*/}
-			{/*		animate={{y: [0, 10, 0]}}*/}
-			{/*		transition={{duration: 2, repeat: Infinity}}*/}
-			{/*		className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"*/}
-			{/*	>*/}
-			{/*		<motion.div*/}
-			{/*			animate={{y: [0, 12, 0]}}*/}
-			{/*			transition={{duration: 2, repeat: Infinity}}*/}
-			{/*			className="w-1 h-3 bg-white/50 rounded-full mt-2"*/}
-			{/*		/>*/}
-			{/*	</motion.div>*/}
-			{/*</motion.div>*/}
+			<motion.div
+				initial={{opacity: 0}}
+				animate={{opacity: 1}}
+				transition={{delay: 1.5}}
+				className="absolute md:bottom-6 bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+			>
+				<motion.div
+					animate={{y: [0, 10, 0]}}
+					transition={{duration: 2, repeat: Infinity}}
+					className="w-6 h-10 border-2 rounded-full border-border  flex justify-center"
+				>
+					<motion.div
+						animate={{y: [0, 12, 0]}}
+						transition={{duration: 2, repeat: Infinity}}
+						className="w-1 h-3 bg-white/50 rounded-full mt-2"
+					/>
+				</motion.div>
+			</motion.div>
 
 			{/* Code-like decoration */}
 			<motion.div

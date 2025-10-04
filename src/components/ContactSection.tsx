@@ -12,7 +12,7 @@ export const ContactSection = () => {
 
   return (
     <section className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,8 +27,8 @@ export const ContactSection = () => {
             Ready to start your project? Contact us today and let's discuss how we can help bring your vision to life.
           </p>
         </motion.div>
-        <div className={"flex"}>
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className={"flex md:flex-row flex-col md:gap-8 gap-4 justify-center"}>
+        <div className="grid md:grid-cols-1 md:gap-8 gap-4">
           {contactInfo.map((info, index) => (
             <motion.div
               key={index}
@@ -36,7 +36,7 @@ export const ContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className=" border border-border  p-6 text-center hover:border-primary/50 transition-all duration-700"
+              className=" border border-border px-10 p-6 text-center hover:border-primary/50 transition-all duration-700"
             >
               <div className=" w-14 h-14  flex items-center justify-center mx-auto mb-4">
                 <info.icon size={24} className="text-primary"/>
@@ -57,11 +57,11 @@ export const ContactSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto  border border-border l p-8"
+          className="max-w-2xl border border-border md:p-8 p-4"
         >
           <h3 className="text-2xl font-bold text-foreground mb-6 text-center">Send Us a Message</h3>
           <form className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 md:gap-6 gap-4" >
               <div>
                 <label className="block text-foreground/80 mb-2 text-sm font-medium">Full Name</label>
                 <input
