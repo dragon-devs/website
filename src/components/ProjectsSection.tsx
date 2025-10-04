@@ -41,7 +41,7 @@ export const ProjectsSection = () => {
   const router = useRouter()
 
   return (
-    <section className="py-24 bg-slate-950/50 relative">
+    <section className="py-24  relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,10 +50,10 @@ export const ProjectsSection = () => {
           className="text-center mb-16"
         >
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Work</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 tracking-tight">
             Featured Projects
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             Explore our portfolio of successful projects that showcase our expertise and commitment to excellence.
           </p>
         </motion.div>
@@ -69,19 +69,19 @@ export const ProjectsSection = () => {
               transition={{ delay: index * 0.1 }}
               className="b  overflow-hidden  transition-all group"
             >
-              <div className="bg-slate-800/50 h-64 flex items-center justify-center border-b border-white/10">
-                <div className="text-center text-gray-500">
+              <div className=" h-64 flex items-center justify-center border-b border-border">
+                <div className="text-center text-muted-foreground">
                   <Layers size={48} className="mx-auto mb-3 opacity-50"/>
                   <p className="text-sm">Project Screenshot Placeholder</p>
                 </div>
               </div>
               <div className="p-8">
                 <span className="text-primary text-sm font-semibold">{project.category}</span>
-                <h3 className="text-2xl font-bold text-white mt-2 mb-3">{project.title}</h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">{project.description}</p>
+                <h3 className="text-2xl font-bold text-foreground mt-2 mb-3">{project.title}</h3>
+                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-blue-500/10 text-primary text-xs rounded-full border border-blue-500/20">
+                    <span key={idx} className="px-3 py-1  text-primary text-xs border border-border">
                       {tag}
                     </span>
                   ))}
