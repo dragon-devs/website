@@ -48,10 +48,10 @@ const AboutHero = () => {
       {/* Gradient Orbs */}
       <motion.div
         style={{ y }}
-        className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl"
+        className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl opacity-30"
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto md:px-6 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -100,7 +100,7 @@ const WhatIsDragonDevs = () => {
 
   return (
     <section className="md:py-24 py-0 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
             <span className="text-primary font-semibold text-sm tracking-wider uppercase">Who We Are</span>
@@ -113,7 +113,7 @@ const WhatIsDragonDevs = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <SectionContainer>
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl"></div>
+              <div className="absolute opacity-30 -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl"></div>
               <div className="relative border border-border  overflow-hidden h-[400px] flex items-center justify-center">
                 <div className="text-center text-gray-500">
                   <Code size={64} className="mx-auto mb-4 opacity-50"/>
@@ -142,7 +142,7 @@ const WhatIsDragonDevs = () => {
 
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Our name, <span className="text-primary font-semibold">DragonDevs</span>, symbolizes power, wisdom, and
-                transformation—qualities we bring to every project we undertake. Like a dragon, we're fierce in our
+                transformation qualities we bring to every project we undertake. Like a dragon, we're fierce in our
                 commitment to excellence, protective of our clients' interests, and capable of breathing fire into ideas
                 that might otherwise remain dormant.
               </p>
@@ -160,7 +160,7 @@ const WhatIsDragonDevs = () => {
                     <div className=" p-2">
                       <item.icon size={20} className="text-primary"/>
                     </div>
-                    <span className="text-gray-300 text-sm font-medium">{item.text}</span>
+                    <span className="text-foreground/80 text-sm font-medium">{item.text}</span>
                   </motion.div>
                 ))}
               </div>
@@ -175,14 +175,14 @@ const WhatIsDragonDevs = () => {
 // Mission Section
 const MissionSection = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-950 to-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Purpose</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Purpose</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Our Mission
             </h2>
           </div>
@@ -191,20 +191,20 @@ const MissionSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <SectionContainer>
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-2xl">
-                <Target size={48} className="text-white mb-4"/>
-                <h3 className="text-2xl font-bold text-white mb-4">
+              <div className=" border border-border p-8">
+                <Target size={48} className="text-foreground mb-4"/>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
                   Empowering Businesses Through Technology
                 </h3>
-                <p className="text-blue-50 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   Our mission is to democratize access to cutting-edge technology by delivering enterprise-grade software
                   solutions that are accessible, scalable, and transformative. We believe every business, regardless of
                   size, deserves the power to compete in the digital age.
                 </p>
               </div>
 
-              <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8">
-                <h4 className="text-xl font-bold text-white mb-4">We are committed to:</h4>
+              <div className=" border border-border p-8">
+                <h4 className="text-xl font-bold text-foreground mb-4">We are committed to:</h4>
                 <ul className="space-y-4">
                   {[
                     "Building software that solves real business problems, not just technical challenges",
@@ -222,7 +222,7 @@ const MissionSection = () => {
                       className="flex items-start gap-3"
                     >
                       <CheckCircle2 size={20} className="text-green-400 flex-shrink-0 mt-1"/>
-                      <span className="text-gray-300">{item}</span>
+                      <span className="text-foreground/80">{item}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -232,9 +232,9 @@ const MissionSection = () => {
 
           <SectionContainer>
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur-2xl"></div>
-              <div className="relative bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden h-[500px] flex items-center justify-center">
-                <div className="text-center text-gray-500">
+              <div className="absolute -inset-4 blur-2xl"></div>
+              <div className="relative border border-border overflow-hidden h-[500px] flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
                   <Target size={64} className="mx-auto mb-4 opacity-50"/>
                   <p className="text-sm">Mission Visualization</p>
                   <p className="text-xs mt-2">Replace with: /images/about/mission.jpg</p>
@@ -313,7 +313,7 @@ const CoreValuesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
+              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
             >
               <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <value.icon size={32} className="text-white"/>
@@ -355,7 +355,7 @@ const VisionSection = () => {
           <SectionContainer>
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-2xl blur-2xl"></div>
-              <div className="relative bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden h-[400px] flex items-center justify-center">
+              <div className="relative bg-slate-900/50 border border-border rounded-2xl overflow-hidden h-[400px] flex items-center justify-center">
                 <div className="text-center text-gray-500">
                   <Rocket size={64} className="mx-auto mb-4 opacity-50"/>
                   <p className="text-sm">Vision Concept Image</p>
@@ -383,11 +383,11 @@ const VisionSection = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-900/50 border border-white/10 rounded-xl p-6 text-center">
+                <div className="bg-slate-900/50 border border-border rounded-xl p-6 text-center">
                   <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
                   <div className="text-gray-400 text-sm">Products in Pipeline</div>
                 </div>
-                <div className="bg-slate-900/50 border border-white/10 rounded-xl p-6 text-center">
+                <div className="bg-slate-900/50 border border-border rounded-xl p-6 text-center">
                   <div className="text-3xl font-bold text-purple-400 mb-2">50+</div>
                   <div className="text-gray-400 text-sm">Team Members (Target)</div>
                 </div>
@@ -398,7 +398,7 @@ const VisionSection = () => {
 
         {/* Timeline */}
         <SectionContainer>
-          <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 md:p-12">
+          <div className="bg-slate-900/50 border border-border rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">Our Journey</h3>
             <div className="grid md:grid-cols-4 gap-8">
               {milestones.map((milestone, index) => (
@@ -503,7 +503,7 @@ const WhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all"
+              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all"
             >
               <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
                 <service.icon size={28} className="text-blue-400"/>
@@ -539,7 +539,7 @@ const WhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-slate-900/50 border border-white/10 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
+              className="relative bg-slate-900/50 border border-border rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <step.icon size={28} className="text-white"/>
@@ -590,7 +590,7 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
+              className="bg-slate-900/50 border border-border rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
             >
               <stat.icon size={32} className="text-blue-400 mx-auto mb-4"/>
               <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
@@ -600,7 +600,7 @@ const TeamSection = () => {
         </div>
 
         <SectionContainer>
-          <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-12">
+          <div className="bg-slate-900/50 border border-border rounded-2xl p-12">
             <div className="text-center max-w-3xl mx-auto">
               <Users size={64} className="text-blue-400 mx-auto mb-6 opacity-50"/>
               <h3 className="text-2xl font-bold text-white mb-4">Building Something Special</h3>
@@ -609,7 +609,7 @@ const TeamSection = () => {
                 to build software that makes a difference. Each team member brings unique expertise and perspective,
                 creating a collaborative environment where innovation thrives.
               </p>
-              <div className="relative bg-slate-800/50 rounded-xl h-64 flex items-center justify-center border border-white/10">
+              <div className="relative bg-slate-800/50 rounded-xl h-64 flex items-center justify-center border border-border">
                 <div className="text-center text-gray-500">
                   <Users size={48} className="mx-auto mb-3 opacity-50"/>
                   <p className="text-sm">Team Grid Photo</p>
@@ -684,7 +684,7 @@ const WhyChooseUsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
+              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
             >
               <div className="bg-blue-500/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
                 <reason.icon size={28} className="text-blue-400"/>
@@ -733,7 +733,7 @@ const TechnologiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-white/10 rounded-2xl p-8"
+              className="bg-slate-900/50 border border-border rounded-2xl p-8"
             >
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
@@ -747,7 +747,7 @@ const TechnologiesSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + idx * 0.05 }}
-                    className="px-4 py-2 bg-slate-800/50 border border-white/10 rounded-lg text-gray-300 text-sm hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-default"
+                    className="px-4 py-2 bg-slate-800/50 border border-border rounded-lg text-gray-300 text-sm hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-default"
                   >
                     {tech}
                   </motion.span>
