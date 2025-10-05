@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";
+import Image from "next/image";
 
 export const AboutSection = () => {
   const values = [
@@ -59,10 +60,6 @@ export const AboutSection = () => {
             viewport={{ once: true }}
             className="h-80 border border-border flex items-center justify-center"
           >
-            <div className="text-center text-foreground">
-              <Layers size={64} className="mx-auto mb-4 opacity-50"/>
-              <p className="text-sm">Team Photo / Office Image Placeholder</p>
-            </div>
           </motion.div>
         </div>
 

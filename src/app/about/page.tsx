@@ -620,7 +620,7 @@ const TeamSection = () => {
         <SectionContainer>
           <div className=" border border-border p-12">
             <div className="text-center max-w-3xl mx-auto">
-              <Users size={64} className="text-primary mx-auto mb-6 opacity-50"/>
+              {/*<Users size={64} className="text-primary mx-auto mb-6 opacity-50"/>*/}
               <h3 className="text-2xl font-bold text-foreground mb-4">Building Something Special</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 We're a growing team of developers, designers, project managers, and innovators who share a common goal:
