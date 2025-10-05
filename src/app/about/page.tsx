@@ -114,7 +114,7 @@ const WhatIsDragonDevs = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <SectionContainer>
             <div className="relative">
-              <div className="absolute opacity-30 -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-2xl"></div>
+              <div className="absolute opacity-30 -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20  blur-2xl"></div>
               <div className="relative border border-border  overflow-hidden h-[400px] flex items-center justify-center">
                 <div className="text-center text-gray-500">
                   <Code size={64} className="mx-auto mb-4 opacity-50"/>
@@ -405,7 +405,7 @@ const VisionSection = () => {
 
         {/* Timeline */}
         {/*<SectionContainer>*/}
-        {/*  <div className="bg-slate-900/50 border border-border rounded-2xl p-8 md:p-12">*/}
+        {/*  <div className="bg-slate-900/50 border border-border  p-8 md:p-12">*/}
         {/*    <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Our Journey</h3>*/}
         {/*    <div className="grid md:grid-cols-4 gap-8">*/}
         {/*      {milestones.map((milestone, index) => (*/}
@@ -487,58 +487,60 @@ const WhatWeDoSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24  relative">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Expertise</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               What We Do
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               We offer comprehensive software development services that cover the entire lifecycle of digital products,
               from initial concept to ongoing maintenance and growth.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4 mb-20">
           {services.map((service, index) => (
+            <SpotlightCard>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all"
+              className="relative overflow-hidden p-8"
             >
-              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 w-14 h-14 rounded-xl flex items-center justify-center mb-6">
-                <service.icon size={28} className="text-blue-400"/>
+              <div className="absolute -right-10 -bottom-10  opacity-10">
+                <service.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
               <div className="flex flex-wrap gap-2">
                 {service.features.map((feature, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full border border-blue-500/20">
+                  <span key={idx} className="px-3 py-1  text-primary text-xs border border-border">
                     {feature}
                   </span>
                 ))}
               </div>
             </motion.div>
+            </SpotlightCard>
           ))}
         </div>
 
         {/* Our Process */}
         <SectionContainer>
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-white mb-4">Our Process</h3>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <h3 className="text-3xl font-bold text-foreground mb-4">Our Process</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               A proven methodology that ensures successful project delivery, every time.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-4 md:gap-6 gap-4">
           {process.map((step, index) => (
             <motion.div
               key={index}
@@ -546,16 +548,16 @@ const WhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-slate-900/50 border border-border rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
+              className="relative  border border-border  p-6 text-center hover:border-primary/50 duration-700 transition-all"
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <step.icon size={28} className="text-white"/>
+                <step.icon size={28} className="text-foreground"/>
               </div>
-              <div className="absolute -top-3 -right-3 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+              <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-foreground text-sm font-bold">
                 {index + 1}
               </div>
-              <h4 className="text-white font-bold mb-2">{step.title}</h4>
-              <p className="text-gray-400 text-sm">{step.desc}</p>
+              <h4 className="text-foreground font-bold mb-2">{step.title}</h4>
+              <p className="text-muted-foreground text-sm">{step.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -574,22 +576,22 @@ const TeamSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-950 to-slate-900 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 relative">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">The People Behind DragonDevs</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">The People Behind DragonDevs</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Meet Our Team
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               Our strength lies in our diverse, talented team of professionals who are passionate about creating
               exceptional software solutions.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-4 md:gap-6 gap-4 mb-16">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -597,27 +599,27 @@ const TeamSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border rounded-xl p-6 text-center hover:border-blue-500/30 transition-all"
+              className="border border-border p-6 text-center hover:border-primary/50 duration-700 transition-all"
             >
-              <stat.icon size={32} className="text-blue-400 mx-auto mb-4"/>
-              <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-              <div className="text-gray-400">{stat.label}</div>
+              <stat.icon size={32} className="text-primary mx-auto mb-4"/>
+              <div className="text-3xl font-bold text-foreground mb-2">{stat.number}</div>
+              <div className="text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
         <SectionContainer>
-          <div className="bg-slate-900/50 border border-border rounded-2xl p-12">
+          <div className=" border border-border p-12">
             <div className="text-center max-w-3xl mx-auto">
-              <Users size={64} className="text-blue-400 mx-auto mb-6 opacity-50"/>
-              <h3 className="text-2xl font-bold text-white mb-4">Building Something Special</h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
+              <Users size={64} className="text-primary mx-auto mb-6 opacity-50"/>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Building Something Special</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
                 We're a growing team of developers, designers, project managers, and innovators who share a common goal:
                 to build software that makes a difference. Each team member brings unique expertise and perspective,
                 creating a collaborative environment where innovation thrives.
               </p>
-              <div className="relative bg-slate-800/50 rounded-xl h-64 flex items-center justify-center border border-border">
-                <div className="text-center text-gray-500">
+              <div className="relative  h-64 flex items-center justify-center border border-border">
+                <div className="text-center text-muted-foreground">
                   <Users size={48} className="mx-auto mb-3 opacity-50"/>
                   <p className="text-sm">Team Grid Photo</p>
                   <p className="text-xs mt-2">Replace with: /images/about/team-grid.jpg</p>
@@ -667,38 +669,40 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+    <section className="py-24 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+      <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Why DragonDevs</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Why DragonDevs</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Why Choose Us?
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               We're not just another software agency. Here's what sets us apart from the competition.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {reasons.map((reason, index) => (
+            <SpotlightCard>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
+              className="relative overflow-hidden p-8 group"
             >
-              <div className="bg-blue-500/10 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-all">
-                <reason.icon size={28} className="text-blue-400"/>
+              <div className="absolute -right-10 -bottom-10  opacity-10">
+                <reason.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{reason.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{reason.description}</p>
+              <h3 className="text-xl font-bold text-foreground mb-3">{reason.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
             </motion.div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -723,7 +727,7 @@ const TechnologiesSection = () => {
         <SectionContainer>
           <div className="text-center mb-16">
             <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Tech Stack</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Technologies We Master
             </h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
@@ -740,9 +744,9 @@ const TechnologiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border rounded-2xl p-8"
+              className="bg-slate-900/50 border border-border  p-8"
             >
-              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                 {stack.category}
               </h3>
@@ -781,7 +785,7 @@ const CTASection = () => {
           viewport={{ once: true }}
         >
           <Sparkles size={48} className="text-yellow-300 mx-auto mb-6"/>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Work With Us?
           </h2>
           <p className="text-xl text-blue-100 mb-10 leading-relaxed">
@@ -799,7 +803,7 @@ const CTASection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all"
+              className="px-8 py-4 border-2 border-white text-foreground rounded-full font-semibold text-lg hover:bg-white/10 transition-all"
             >
               Schedule a Call
             </motion.button>
