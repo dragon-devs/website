@@ -27,35 +27,33 @@ const chakraPetch = Chakra_Petch({
 
 export const metadata: Metadata = {
 	title: {
-		default: "dragondevs – Custom Software Development & SEO-Friendly Web Solutions",
+		default: "dragondevs – Code Beyond Boundaries | Custom Software & Web Apps",
 		template: "%s | dragondevs"
 	},
 	description:
-		"dragondevs is a professional software development agency building custom SEO-friendly websites, MVPs, and full-stack applications. We craft powerful digital products with stunning design and scalable architecture.",
+		"dragondevs builds SEO-friendly websites, custom software, and full-stack web apps. We help businesses launch digital products faster with clean code, and strong design.",
 
 	metadataBase: new URL("https://www.dragondevs.co"),
 
 	keywords: [
-		"software development agency",
-		"custom web apps development",
-		"seo friendly websites",
+		"dragondevs",
+		"custom software development",
+		"seo-friendly websites",
+		"web app development",
 		"MVP development",
 		"product development",
-		"ai development",
-		"full stack applications",
-		"Nextjs development",
+		"Next.js developers",
 		"React developers",
-		"dragondevs",
-		"skdrh",
-		"dragondevs.com",
-		"dragondevs.co",
-		"bizstock",
+		"full stack development",
+		"AI web solutions",
+		"software agency",
+		"Code Beyond Boundaries",
+		"skdrh"
 	],
-
 	openGraph: {
-		title: "dragondevs – Custom Software Development & SEO-Friendly Web Solutions",
+		title: "dragondevs – Code Beyond Boundaries | Custom Software & Web Apps",
 		description:
-			"dragondevs creates modern, high-performance websites and full-stack apps. We help startups and businesses launch digital products fast with elegant, maintainable code.",
+			"dragondevs creates high-performance websites and full-stack apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
 		url: "https://www.dragondevs.co",
 		siteName: "dragondevs",
 		type: "website",
@@ -65,30 +63,24 @@ export const metadata: Metadata = {
 				url: "https://www.dragondevs.co/og-image.jpg",
 				width: 1200,
 				height: 630,
-				alt: "dragondevs – Custom Software Development Agency"
+				alt: "dragondevs – Code Beyond Boundaries | Software Development Agency"
 			}
 		]
 	},
 
 	twitter: {
 		card: "summary_large_image",
-		title: "dragondevs – Custom Software Development & SEO-Friendly Web Solutions",
+		title: "dragondevs – Code Beyond Boundaries | Software Development Agency",
 		description:
-			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications with modern design and performance in mind.",
+			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
 		creator: "@dragondevs",
 		images: ["https://www.dragondevs.co/og-image.jpg"]
-	},
-
-	alternates: {
-		canonical: "https://www.dragondevs.co"
 	},
 
 	icons: {
 		icon: "/favicon.ico",
 		apple: "/apple-icon.png"
-	},
-
-	themeColor: "#0f172a"
+	}
 };
 
 export default function RootLayout({
