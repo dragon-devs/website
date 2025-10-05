@@ -2,6 +2,7 @@
 import {ArrowRight, Mail, MapPin, Phone} from "lucide-react";
 import {motion} from "framer-motion";
 import React from "react";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export const ContactSection = () => {
   const contactInfo = [
@@ -59,6 +60,7 @@ export const ContactSection = () => {
           viewport={{ once: true }}
           className="max-w-2xl border border-border md:p-8 p-4"
         >
+
           <h3 className="text-2xl font-bold text-foreground mb-6 text-center">Send Us a Message</h3>
           <form className="space-y-6">
             <div className="grid md:grid-cols-2 md:gap-6 gap-4" >
@@ -67,7 +69,7 @@ export const ContactSection = () => {
                 <input
                   type="text"
                   placeholder="John Doe"
-                  className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"
                 />
               </div>
               <div>
@@ -75,7 +77,7 @@ export const ContactSection = () => {
                 <input
                   type="email"
                   placeholder="john@example.com"
-                  className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-all"
+                  className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"
                 />
               </div>
             </div>
@@ -84,20 +86,20 @@ export const ContactSection = () => {
               <input
                 type="text"
                 placeholder="Project Inquiry"
-                className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-all"
+                className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"
               />
             </div>
             <div>
               <label className="block text-foreground/80 mb-2 text-sm font-medium">Message</label>
               <textarea
-                rows="5"
+                rows={5}
                 placeholder="Tell us about your project..."
-                className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary focus:outline-none transition-all resize-none"
+                className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all resize-none"
               ></textarea>
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-foreground  font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              className="w-full px-8 py-4 text-foreground border border-border hover:border-primary/50  font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               Send Message <ArrowRight size={20}/>
             </button>

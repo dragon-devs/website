@@ -34,13 +34,13 @@ export const AboutSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 items-center mb-20 md:h-80 md:gap-6 gap-4">
+        <div className="grid md:grid-cols-2 items-center mb-20 lg:h-80 md:gap-6 gap-4">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-8 md:h-80 border border-border">
+            <div className="p-8 lg:h-80 border border-border">
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.

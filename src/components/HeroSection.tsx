@@ -20,6 +20,7 @@ const HeroSection = () => {
 		return () => window.removeEventListener('mousemove', handleMouseMove);
 	}, []);
 
+
 	return (
 		<div className="relative md:py-0 py-20 min-h-screen  ">
 			{/* Logo with Spotlight Effect */}
@@ -121,7 +122,7 @@ const HeroSection = () => {
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.2}}
-						className="inline-flex items-center px-4 py-2  border border-primary/80 text-primary/80 text-sm font-medium mb-8"
+						className="inline-flex items-center px-4 py-2  border border-primary/80 text-primary/80 text-sm font-medium mb-8 rounded-full"
 					>
 						<Zap size={16} className="mr-2"/>
 						Next-Generation Software Solutions
@@ -205,12 +206,12 @@ const HeroSection = () => {
 				initial={{opacity: 0}}
 				animate={{opacity: 1}}
 				transition={{delay: 1.5}}
-				className="absolute md:bottom-6 bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+				className="absolute md:bottom-0 bottom-10 left-1/2 transform -translate-x-1/2 z-20"
 			>
 				<motion.div
 					animate={{y: [0, 10, 0]}}
 					transition={{duration: 2, repeat: Infinity}}
-					className="w-6 h-10 border-2 rounded-full border-border  flex justify-center"
+					className="w-6 h-10 border-2 rounded-full border-border flex justify-center"
 				>
 					<motion.div
 						animate={{y: [0, 12, 0]}}

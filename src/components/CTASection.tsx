@@ -23,7 +23,7 @@ export const CTASection = () => {
             Join the ranks of successful businesses that trust dragondevs with their digital transformation.
             Let's create something extraordinary together.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <MagnetButton label={"Start Your Project"} />
               <MagnetButton variant={'secondary'} label={"Schedule a Call"} />
           </div>
