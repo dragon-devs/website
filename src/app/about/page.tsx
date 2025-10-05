@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import {Footer} from "@/components/Footer";
 import SpotlightCard from "@/components/SpotlightCard";
+import MagnetButton from "@/components/custom/MagnetButton";
 
 // Animated Section Container
 const SectionContainer = ({ children, className = "" }) => {
@@ -423,7 +424,7 @@ const VisionSection = () => {
         {/*            </div>*/}
         {/*            <div className="text-blue-400 font-bold text-lg mb-2">{milestone.year}</div>*/}
         {/*            <div className="text-foreground font-semibold mb-2">{milestone.title}</div>*/}
-        {/*            <div className="text-gray-400 text-sm">{milestone.desc}</div>*/}
+        {/*            <div className="text-muted-foreground text-sm">{milestone.desc}</div>*/}
         {/*          </div>*/}
         {/*          {index < milestones.length - 1 && (*/}
         {/*            <div className="hidden md:block absolute top-6 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>*/}
@@ -722,32 +723,33 @@ const TechnologiesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24  relative">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Our Tech Stack</span>
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Tech Stack</span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Technologies We Master
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               We work with cutting-edge technologies to build robust, scalable, and future-proof solutions.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {techStack.map((stack, index) => (
+            <SpotlightCard>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border  p-8"
+              className="p-8"
             >
               <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
                 {stack.category}
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -758,13 +760,14 @@ const TechnologiesSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + idx * 0.05 }}
-                    className="px-4 py-2 bg-slate-800/50 border border-border rounded-lg text-gray-300 text-sm hover:border-blue-500/30 hover:text-blue-400 transition-all cursor-default"
+                    className="px-4 py-2  border border-border  text-foreground/80 text-sm "
                   >
                     {tech}
                   </motion.span>
                 ))}
               </div>
             </motion.div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -775,7 +778,7 @@ const TechnologiesSection = () => {
 // CTA Section
 const CTASection = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-blue-700 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20"></div>
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -784,29 +787,17 @@ const CTASection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Sparkles size={48} className="text-yellow-300 mx-auto mb-6"/>
+          {/*<Sparkles size={48} className="text-yellow-300 mx-auto mb-6"/>*/}
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Work With Us?
           </h2>
-          <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+          <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
             Let's discuss how DragonDevs can help transform your business with innovative software solutions.
             We're excited to hear about your project!
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all shadow-xl flex items-center justify-center gap-2"
-            >
-              Get Started Today <ArrowRight size={20}/>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-white text-foreground rounded-full font-semibold text-lg hover:bg-white/10 transition-all"
-            >
-              Schedule a Call
-            </motion.button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <MagnetButton label={"Get Started Today"} size={"lg"} icon={<ArrowRight size={20}/>} />
+            <MagnetButton variant={"secondary"} label={"Schedule a Call"} size={"lg"}/>
           </div>
         </motion.div>
       </div>
