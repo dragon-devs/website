@@ -61,7 +61,7 @@ const AboutHero = () => {
           className="inline-flex items-center px-4 py-2  border border-primary/80 text-primary/80 text-sm font-medium mb-8 rounded-full"
         >
           <Sparkles size={16} className="mr-2"/>
-          About DragonDevs
+          About dragondevs
         </motion.div>
 
         <motion.h1
@@ -91,8 +91,8 @@ const AboutHero = () => {
   );
 };
 
-// What is DragonDevs Section
-const WhatIsDragonDevs = () => {
+// What is dragondevs Section
+const WhatIsdragondevs = () => {
   const highlights = [
     { icon: Users, text: "Expert Team of Developers" },
     { icon: Globe, text: "Global Client Base" },
@@ -107,7 +107,7 @@ const WhatIsDragonDevs = () => {
           <div className="text-center mb-16">
             <span className="text-primary font-semibold text-sm tracking-wider uppercase">Who We Are</span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
-              What is DragonDevs?
+              What is dragondevs?
             </h2>
           </div>
         </SectionContainer>
@@ -129,7 +129,7 @@ const WhatIsDragonDevs = () => {
           <SectionContainer>
             <div className="space-y-6">
               <p className="text-muted-foreground text-lg leading-relaxed">
-                <span className="text-primary font-semibold">DragonDevs</span> is a dynamic software development company
+                <span className="text-primary font-semibold">dragondevs</span> is a dynamic software development company
                 founded with a singular vision: to transform innovative ideas into powerful digital realities. We're a team
                 of passionate developers, designers, and strategists who believe technology should solve real problems and
                 create tangible value.
@@ -143,7 +143,7 @@ const WhatIsDragonDevs = () => {
               </p>
 
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our name, <span className="text-primary font-semibold">DragonDevs</span>, symbolizes power, wisdom, and
+                Our name, <span className="text-primary font-semibold">dragondevs</span>, symbolizes power, wisdom, and
                 transformation qualities we bring to every project we undertake. Like a dragon, we're fierce in our
                 commitment to excellence, protective of our clients' interests, and capable of breathing fire into ideas
                 that might otherwise remain dormant.
@@ -304,7 +304,7 @@ const CoreValuesSection = () => {
             </h2>
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               These fundamental principles guide every decision we make and every solution we deliver.
-              They're not just words on a page they're the DNA of DragonDevs.
+              They're not just words on a page they're the DNA of dragondevs.
             </p>
           </div>
         </SectionContainer>
@@ -318,13 +318,18 @@ const CoreValuesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative overflow-hidden p-8"
+              className="relative flex flex-col h-full overflow-hidden p-8"
             >
               <div className="absolute -right-10 -bottom-10  opacity-10">
                 <value.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              <div className="flex gap-4 items-center mb-4">
+                <div className="w-10 h-10  hover:border-primary/50 rounded-full flex items-center justify-center">
+                  <value.icon size={25} className={`text-muted-foreground`}/>
+                </div>
+                <h3 className={`text-2xl font-bold bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>{value.title}</h3>
+              </div>
+              <p className="text-muted-foreground leading-relaxed ">{value.description}</p>
             </motion.div>
             </SpotlightCard>
           ))}
@@ -337,7 +342,7 @@ const CoreValuesSection = () => {
 // Vision Section
 const VisionSection = () => {
   const milestones = [
-    { year: "2024", title: "Foundation", desc: "DragonDevs is born with a clear mission" },
+    { year: "2024", title: "Foundation", desc: "dragondevs is born with a clear mission" },
     { year: "2025", title: "Growth", desc: "Expanding team and client portfolio" },
     { year: "2026", title: "Products", desc: "Launch of our first SaaS products" },
     { year: "2027+", title: "Innovation", desc: "Leading the future of software development" }
@@ -385,7 +390,7 @@ const VisionSection = () => {
                   quality of our client work, but for the innovative products we create that solve universal challenges.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  We envision a future where DragonDevs is synonymous with innovation, reliability, and transformative
+                  We envision a future where dragondevs is synonymous with innovation, reliability, and transformative
                   technology. We're building a company that doesn't just follow trends we set them.
                 </p>
               </div>
@@ -512,8 +517,11 @@ const WhatWeDoSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative overflow-hidden p-8"
+              className="relative flex flex-col h-full overflow-hidden p-8"
             >
+              {/*<div className="w-14 h-14 border border-border hover:border-primary/50 rounded-full flex items-center justify-center mb-6 ">*/}
+              {/*  <service.icon size={28} className="text-primary"/>*/}
+              {/*</div>*/}
               <div className="absolute -right-10 -bottom-10  opacity-10">
                 <service.icon size={250} className="text-primary"/>
               </div>
@@ -581,7 +589,7 @@ const TeamSection = () => {
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-primary font-semibold text-sm tracking-wider uppercase">The People Behind DragonDevs</span>
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">The People Behind dragondevs</span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Meet Our Team
             </h2>
@@ -676,7 +684,7 @@ const WhyChooseUsSection = () => {
       <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Why DragonDevs</span>
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Why dragondevs</span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Why Choose Us?
             </h2>
@@ -695,8 +703,11 @@ const WhyChooseUsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative overflow-hidden p-8 group"
+              className="relative flex flex-col h-full overflow-hidden p-8 group"
             >
+              <div className="w-14 h-14 border border-border hover:border-primary/50 rounded-full flex items-center justify-center mb-6 ">
+                <reason.icon size={28} className="text-primary"/>
+              </div>
               <div className="absolute -right-10 -bottom-10  opacity-10">
                 <reason.icon size={250} className="text-primary"/>
               </div>
@@ -792,7 +803,7 @@ const CTASection = () => {
             Ready to Work With Us?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-            Let's discuss how DragonDevs can help transform your business with innovative software solutions.
+            Let's discuss how dragondevs can help transform your business with innovative software solutions.
             We're excited to hear about your project!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -810,7 +821,7 @@ const AboutPage = () => {
   return (
     <div className=" min-h-screen">
       <AboutHero />
-      <WhatIsDragonDevs />
+      <WhatIsdragondevs />
       <MissionSection />
       <CoreValuesSection />
       <VisionSection />
