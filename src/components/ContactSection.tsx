@@ -104,6 +104,17 @@ export const ContactSection = () => {
               Send Message <ArrowRight size={20}/>
             </button>
           </form>
+          <div className={"pt-6 text-lg "}>
+            Not a fan of forms?
+            <a
+              href="https://calendly.com/dragondevs/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-primary ml-2"
+            >
+              Book a call directly instead!
+            </a>
+          </div>
         </motion.div>
         </div>
       </div>
