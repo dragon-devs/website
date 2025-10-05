@@ -42,7 +42,7 @@ export const AboutSection = () => {
             viewport={{ once: true }}
           >
             <div className="p-8 lg:h-80 border border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-4 tracking-tight">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
                 We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
@@ -73,8 +73,8 @@ export const AboutSection = () => {
               transition={{ delay: index * 0.1 }}
               className="relative overflow-hidden border border-border md:p-6 p-4  hover:border-primary/50 transition-all duration-700"
             >
-              <value.icon size={100} className="absolute -right-4 opacity-15 -bottom-8 text-primary mx-auto mb-4"/>
-              <h4 className="text-foreground font-semibold mb-2 text-3xl">{value.title}</h4>
+              <value.icon size={100} className="absolute -right-4 opacity-10 -bottom-8  mx-auto mb-4"/>
+              <h4 className="text-foreground font-semibold mb-2 tracking-tight text-2xl">{value.title}</h4>
               <p className="text-muted-foreground text-sm">{value.desc}</p>
             </motion.div>
           ))}

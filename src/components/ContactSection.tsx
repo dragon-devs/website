@@ -40,8 +40,8 @@ export const ContactSection = () => {
 								transition={{delay: index * 0.1}}
 								className="relative  overflow-hidden border border-border  p-6  hover:border-primary/50 transition-all duration-700"
 							>
-								<div className="absolute -right-4 -top-4 flex items-center justify-center  mb-4">
-									<info.icon size={120} className="text-primary opacity-15"/>
+								<div className="absolute -right-2 -bottom-8  flex items-center justify-center  ">
+									<info.icon size={140} className="opacity-10"/>
 								</div>
 								<h4 className="text-foreground font-semibold mb-2 text-2xl tracking-tight">{info.label}</h4>
 								{info.link ? (
@@ -68,6 +68,7 @@ export const ContactSection = () => {
 								<div>
 									<label className="block text-foreground/80 mb-2 text-sm font-medium">Full Name</label>
 									<input
+										required
 										type="text"
 										placeholder="John Doe"
 										className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"
@@ -76,6 +77,7 @@ export const ContactSection = () => {
 								<div>
 									<label className="block text-foreground/80 mb-2 text-sm font-medium">Email</label>
 									<input
+										required
 										type="email"
 										placeholder="john@example.com"
 										className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"
@@ -85,6 +87,7 @@ export const ContactSection = () => {
 							<div>
 								<label className="block text-foreground/80 mb-2 text-sm font-medium">Subject</label>
 								<input
+									required
 									type="text"
 									placeholder="Project Inquiry"
 									className="w-full px-4 py-3  border border-border  text-foreground placeholder-muted-foreground focus:border-primary/50 focus:outline-none transition-all"

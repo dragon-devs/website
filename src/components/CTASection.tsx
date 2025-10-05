@@ -3,8 +3,10 @@ import {motion} from "framer-motion";
 import {ArrowRight, Magnet, Star} from "lucide-react";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
+import {useRouter} from "next/navigation";
 
 export const CTASection = () => {
+  const router = useRouter();
   return (
     <section className="py-24  relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20"></div>
@@ -24,8 +26,8 @@ export const CTASection = () => {
             Let's create something extraordinary together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <MagnetButton label={"Start Your Project"} />
-              <MagnetButton variant={'secondary'} label={"Schedule a Call"} />
+              <MagnetButton label={"Start Your Project"} onClick={() => router.push("/#contact")} />
+              <MagnetButton variant={'secondary'} label={"Schedule a Call"} onClick={() => router.push("https://calendly.com/dragondevs/30min")} />
           </div>
         </motion.div>
       </div>
