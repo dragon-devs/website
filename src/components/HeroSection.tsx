@@ -149,7 +149,7 @@ const HeroSection = () => {
 						transition={{delay: 0.6}}
 						className="text-xl tracking-tight md:text-2xl  text-foreground/80 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
 					>
-						We craft intelligent software solutions that transform ideas into reality.
+						Code beyond boundaries We craft intelligent software solutions that transform ideas into reality.
 						From AI-powered applications to scalable enterprise systems, we build the future.
 					</motion.p>
 

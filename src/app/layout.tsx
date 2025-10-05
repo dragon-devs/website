@@ -27,11 +27,11 @@ const chakraPetch = Chakra_Petch({
 
 export const metadata: Metadata = {
 	title: {
-		default: "dragondevs – Code Beyond Boundaries | Custom Software & Web Apps",
+		default: "dragondevs | Code Beyond Boundaries",
 		template: "%s | dragondevs"
 	},
 	description:
-		"dragondevs builds SEO-friendly websites, custom software, and full-stack web apps. We help businesses launch digital products faster with clean code, and strong design.",
+		"dragondevs builds SEO-friendly websites, custom software, and full-stack web apps. We help businesses launch digital products faster with clean code.",
 
 	metadataBase: new URL("https://www.dragondevs.co"),
 
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
 		"skdrh"
 	],
 	openGraph: {
-		title: "dragondevs – Code Beyond Boundaries | Custom Software & Web Apps",
+		title: "dragondevs | Code Beyond Boundaries",
 		description:
-			"dragondevs creates high-performance websites and full-stack apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
+			"dragondevs creates high-performance websites and web apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
 		url: "https://www.dragondevs.co",
 		siteName: "dragondevs",
 		type: "website",
@@ -63,14 +63,14 @@ export const metadata: Metadata = {
 				url: "https://www.dragondevs.co/og-image.jpg",
 				width: 1200,
 				height: 630,
-				alt: "dragondevs – Code Beyond Boundaries | Software Development Agency"
+				alt: "dragondevs – Code Beyond Boundaries | Product Builders"
 			}
 		]
 	},
 
 	twitter: {
 		card: "summary_large_image",
-		title: "dragondevs – Code Beyond Boundaries | Software Development Agency",
+		title: "dragondevs – Code Beyond Boundaries | Product Builders",
 		description:
 			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
 		creator: "@dragondevs",
