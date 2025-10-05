@@ -23,19 +23,19 @@ export const AboutSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className=" mb-16"
         >
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">About dragondevs</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 tracking-tight">
             Building the Future, One Line at a Time
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto ">
+          <p className="text-muted-foreground text-lg max-w-3xl  ">
             We're a passionate team of developers and designers committed to creating exceptional digital experiences.
             While we work with clients today, we're building our own innovative products for tomorrow.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 items-center mb-20 lg:h-80 md:gap-6 gap-4">
+        <div className="grid md:grid-cols-2 items-center mb-6 lg:h-80 md:gap-6 gap-4">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -71,10 +71,10 @@ export const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className=" border border-border md:p-6 p-4 text-center hover:border-primary/50 transition-all duration-700"
+              className="relative overflow-hidden border border-border md:p-6 p-4  hover:border-primary/50 transition-all duration-700"
             >
-              <value.icon size={32} className="text-primary mx-auto mb-4"/>
-              <h4 className="text-foreground font-semibold mb-2 text-lg">{value.title}</h4>
+              <value.icon size={100} className="absolute -right-4 opacity-15 -bottom-8 text-primary mx-auto mb-4"/>
+              <h4 className="text-foreground font-semibold mb-2 text-3xl">{value.title}</h4>
               <p className="text-muted-foreground text-sm">{value.desc}</p>
             </motion.div>
           ))}
