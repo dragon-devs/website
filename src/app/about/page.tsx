@@ -10,6 +10,7 @@ import {
   Brain, Palette, Database, Settings, Coffee, Star
 } from 'lucide-react';
 import {Footer} from "@/components/Footer";
+import SpotlightCard from "@/components/SpotlightCard";
 
 // Animated Section Container
 const SectionContainer = ({ children, className = "" }) => {
@@ -155,7 +156,7 @@ const WhatIsDragonDevs = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3 border border-border  p-4"
+                    className="flex items-center gap-3 border border-border hover:border-primary/50 duration-700 transition-all  p-4"
                   >
                     <div className=" p-2">
                       <item.icon size={20} className="text-primary"/>
@@ -191,8 +192,10 @@ const MissionSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <SectionContainer>
             <div className="space-y-6">
-              <div className=" border border-border p-8">
-                <Target size={48} className="text-foreground mb-4"/>
+              <div className=" border border-border p-8 relative overflow-hidden">
+                <div className="absolute -right-10 -bottom-10  opacity-10">
+                  <Target size={250} className="text-foreground"/>
+                </div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">
                   Empowering Businesses Through Technology
                 </h3>
@@ -290,37 +293,39 @@ const CoreValuesSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24  relative">
+      <div className="max-w-7xl mx-auto md:px-6 px-4">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">What Drives Us</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">What Drives Us</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Our Core Values
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               These fundamental principles guide every decision we make and every solution we deliver.
-              They're not just words on a page—they're the DNA of DragonDevs.
+              They're not just words on a page they're the DNA of DragonDevs.
             </p>
           </div>
         </SectionContainer>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {values.map((value, index) => (
+            <SpotlightCard>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-slate-900/50 border border-border rounded-2xl p-8 hover:border-blue-500/30 transition-all group"
+              className="relative overflow-hidden p-8"
             >
-              <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                <value.icon size={32} className="text-white"/>
+              <div className="absolute -right-10 -bottom-10  opacity-10">
+                <value.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{value.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{value.description}</p>
+              <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
             </motion.div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -338,14 +343,14 @@ const VisionSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <SectionContainer>
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Looking Ahead</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <span className="text-primary font-semibold text-sm tracking-wider uppercase">Looking Ahead</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
               Our Vision
             </h2>
           </div>
@@ -354,9 +359,9 @@ const VisionSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <SectionContainer>
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-emerald-500/20 rounded-2xl blur-2xl"></div>
-              <div className="relative bg-slate-900/50 border border-border rounded-2xl overflow-hidden h-[400px] flex items-center justify-center">
-                <div className="text-center text-gray-500">
+              <div className="absolute -inset-4 blur-2xl"></div>
+              <div className="relative  border border-border overflow-hidden h-[400px] flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
                   <Rocket size={64} className="mx-auto mb-4 opacity-50"/>
                   <p className="text-sm">Vision Concept Image</p>
                   <p className="text-xs mt-2">Replace with: /images/about/vision.jpg</p>
@@ -367,29 +372,31 @@ const VisionSection = () => {
 
           <SectionContainer>
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-emerald-600 to-blue-600 p-8 rounded-2xl">
-                <Rocket size={48} className="text-white mb-4"/>
-                <h3 className="text-2xl font-bold text-white mb-4">
+              <div className="relative p-8 border border-border overflow-hidden">
+                <div className="absolute -right-10 -bottom-10  opacity-10">
+                  <Rocket size={250} className="text-foreground"/>
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
                   Building the Future of Software
                 </h3>
-                <p className="text-blue-50 leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   Our vision is to become a leading force in the global software industry, recognized not just for the
                   quality of our client work, but for the innovative products we create that solve universal challenges.
                 </p>
-                <p className="text-blue-50 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   We envision a future where DragonDevs is synonymous with innovation, reliability, and transformative
-                  technology. We're building a company that doesn't just follow trends—we set them.
+                  technology. We're building a company that doesn't just follow trends we set them.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-900/50 border border-border rounded-xl p-6 text-center">
+                <div className=" border border-border p-6 text-center hover:border-primary/50 duration-700 transition-all">
                   <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
-                  <div className="text-gray-400 text-sm">Products in Pipeline</div>
+                  <div className="text-muted-foreground text-sm">Products in Pipeline</div>
                 </div>
-                <div className="bg-slate-900/50 border border-border rounded-xl p-6 text-center">
+                <div className=" border border-border  p-6 text-center hover:border-primary/50 duration-700 transition-all">
                   <div className="text-3xl font-bold text-purple-400 mb-2">50+</div>
-                  <div className="text-gray-400 text-sm">Team Members (Target)</div>
+                  <div className="text-muted-foreground text-sm">Team Members (Target)</div>
                 </div>
               </div>
             </div>
@@ -397,35 +404,35 @@ const VisionSection = () => {
         </div>
 
         {/* Timeline */}
-        <SectionContainer>
-          <div className="bg-slate-900/50 border border-border rounded-2xl p-8 md:p-12">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">Our Journey</h3>
-            <div className="grid md:grid-cols-4 gap-8">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="relative"
-                >
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mb-4 mx-auto">
-                      {index + 1}
-                    </div>
-                    <div className="text-blue-400 font-bold text-lg mb-2">{milestone.year}</div>
-                    <div className="text-white font-semibold mb-2">{milestone.title}</div>
-                    <div className="text-gray-400 text-sm">{milestone.desc}</div>
-                  </div>
-                  {index < milestones.length - 1 && (
-                    <div className="hidden md:block absolute top-6 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </SectionContainer>
+        {/*<SectionContainer>*/}
+        {/*  <div className="bg-slate-900/50 border border-border rounded-2xl p-8 md:p-12">*/}
+        {/*    <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Our Journey</h3>*/}
+        {/*    <div className="grid md:grid-cols-4 gap-8">*/}
+        {/*      {milestones.map((milestone, index) => (*/}
+        {/*        <motion.div*/}
+        {/*          key={index}*/}
+        {/*          initial={{ opacity: 0, y: 20 }}*/}
+        {/*          whileInView={{ opacity: 1, y: 0 }}*/}
+        {/*          viewport={{ once: true }}*/}
+        {/*          transition={{ delay: index * 0.1 }}*/}
+        {/*          className="relative"*/}
+        {/*        >*/}
+        {/*          <div className="text-center">*/}
+        {/*            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-foreground font-bold mb-4 mx-auto">*/}
+        {/*              {index + 1}*/}
+        {/*            </div>*/}
+        {/*            <div className="text-blue-400 font-bold text-lg mb-2">{milestone.year}</div>*/}
+        {/*            <div className="text-foreground font-semibold mb-2">{milestone.title}</div>*/}
+        {/*            <div className="text-gray-400 text-sm">{milestone.desc}</div>*/}
+        {/*          </div>*/}
+        {/*          {index < milestones.length - 1 && (*/}
+        {/*            <div className="hidden md:block absolute top-6 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>*/}
+        {/*          )}*/}
+        {/*        </motion.div>*/}
+        {/*      ))}*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</SectionContainer>*/}
       </div>
     </section>
   );
