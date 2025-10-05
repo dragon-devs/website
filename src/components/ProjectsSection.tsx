@@ -47,13 +47,13 @@ export const ProjectsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className=" mb-16"
         >
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Work</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 ">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl ">
             Explore our portfolio of successful projects that showcase our expertise and commitment to excellence.
           </p>
         </motion.div>

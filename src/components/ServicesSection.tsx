@@ -56,13 +56,13 @@ export const ServicesSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="flex flex-col items-end text-end mb-16"
         >
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
             Comprehensive Digital Solutions
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl">
             From concept to deployment, we offer end-to-end development services tailored to your business needs.
           </p>
         </motion.div>

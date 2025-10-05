@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";
+import Image from "next/image";
 
 export const AboutSection = () => {
   const values = [
@@ -22,26 +23,26 @@ export const AboutSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className=" mb-16"
         >
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">About dragondevs</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 tracking-tight">
             Building the Future, One Line at a Time
           </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl mx-auto ">
+          <p className="text-muted-foreground text-lg max-w-3xl  ">
             We're a passionate team of developers and designers committed to creating exceptional digital experiences.
             While we work with clients today, we're building our own innovative products for tomorrow.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 items-center mb-20 md:h-80 md:gap-6 gap-4">
+        <div className="grid md:grid-cols-2 items-center mb-6 lg:h-80 md:gap-6 gap-4">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="p-8 md:h-80 border border-border">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Our Story</h3>
+            <div className="p-8 lg:h-80 border border-border">
+              <h3 className="text-3xl font-bold text-foreground mb-4 tracking-tight">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
                 We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
@@ -59,10 +60,6 @@ export const AboutSection = () => {
             viewport={{ once: true }}
             className="h-80 border border-border flex items-center justify-center"
           >
-            <div className="text-center text-foreground">
-              <Layers size={64} className="mx-auto mb-4 opacity-50"/>
-              <p className="text-sm">Team Photo / Office Image Placeholder</p>
-            </div>
           </motion.div>
         </div>
 
@@ -74,10 +71,10 @@ export const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className=" border border-border md:p-6 p-4 text-center hover:border-primary/50 transition-all duration-700"
+              className="relative overflow-hidden border border-border md:p-6 p-4  hover:border-primary/50 transition-all duration-700"
             >
-              <value.icon size={32} className="text-primary mx-auto mb-4"/>
-              <h4 className="text-foreground font-semibold mb-2 text-lg">{value.title}</h4>
+              <value.icon size={100} className="absolute -right-4 opacity-10 -bottom-8  mx-auto mb-4"/>
+              <h4 className="text-foreground font-semibold mb-2 tracking-tight text-2xl">{value.title}</h4>
               <p className="text-muted-foreground text-sm">{value.desc}</p>
             </motion.div>
           ))}
