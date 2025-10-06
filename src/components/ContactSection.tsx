@@ -6,7 +6,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 
 export const ContactSection = () => {
 	const contactInfo = [
-		{icon: Mail, label: "Email", value: "support@dragondevs.co", link: "mailto:support@dragondevs.co"},
+		{icon: Mail, label: "Email", value: "info@dragondevs.co", link: "mailto:info@dragondevs.co"},
 		{icon: Phone, label: "Phone", value: "+92 346 6955928", link: "tel:+923466955928"},
 		{icon: MapPin, label: "Location", value: "Islamabad, Pakistan", link: null}
 	];

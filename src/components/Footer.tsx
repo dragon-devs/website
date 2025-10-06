@@ -8,7 +8,7 @@ export const Footer = () => {
     { icon: FaGithub, label: "GitHub", link: "https://github.com/dragon-devs" },
     { icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/", color: "text-blue-500" },
     { icon: FaXTwitter, label: "X", link: "https://x.com/dragondevs_" },
-    { icon: FaWhatsapp, label: "Whatsapp", link: "https://x.com/dragondevs_", color: "text-green-500", }
+    { icon: FaWhatsapp, label: "Whatsapp", link: "https://wa.me/+923466955928?text=Hello%20%2C%20I'm%20interested%20in%20your%20services!" , color: "text-green-500", }
   ];
 
   const footerLinks = {
