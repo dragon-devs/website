@@ -1,12 +1,14 @@
 
-import {Code, Github, Linkedin, Twitter} from "lucide-react";
 import React from "react";
 import Image from "next/image"
+import {Separator} from "@/components/ui/separator";
+import {FaGithub, FaLinkedinIn, FaWhatsapp, FaXTwitter} from "react-icons/fa6";
 export const Footer = () => {
   const socialLinks = [
-    { icon: Github, label: "GitHub", link: "https://github.com/dragon-devs" },
-    { icon: Linkedin, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/" },
-    { icon: Twitter, label: "X", link: "https://x.com/dragondevs_" }
+    { icon: FaGithub, label: "GitHub", link: "https://github.com/dragon-devs" },
+    { icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/", color: "text-blue-500" },
+    { icon: FaXTwitter, label: "X", link: "https://x.com/dragondevs_" },
+    { icon: FaWhatsapp, label: "Whatsapp", link: "https://x.com/dragondevs_", color: "text-green-500", }
   ];
 
   const footerLinks = {
@@ -31,7 +33,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className=" border-t border-border py-16">
+    <footer className="border-t border-border py-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
@@ -52,7 +54,7 @@ export const Footer = () => {
                   aria-label={social.label}
                   className="w-10 h-10 border border-muted-foreground/50 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary/80 hover:border-blue-500/30 transition-all"
                 >
-                  <social.icon size={20}/>
+                  <social.icon className={social.color} size={20}/>
                 </a>
               ))}
             </div>
@@ -98,7 +100,10 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+
+        <Separator />
+
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © 2025 dragondevs. All rights reserved.
           </p>

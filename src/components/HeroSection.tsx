@@ -6,6 +6,7 @@ import {Zap} from 'lucide-react';
 import CountUp from './CountUp';
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";
+import Image from "next/image";
 
 
 const HeroSection = () => {
@@ -26,6 +27,14 @@ const HeroSection = () => {
 
 	return (
 		<div className="relative md:py-0 py-10 min-h-screen  ">
+			{/*<div className="max-w-6xl mx-auto text-2xl font-semibold">*/}
+			{/*	<div className="absolute flex justify-center items-center gap-2 md:py-6 md:mt-0 -mt-5 px-4">*/}
+			{/*		<div className="w-10 h-10 p-1 rounded-lg flex items-center justify-center">*/}
+			{/*			<Image alt={"dragondevs logo"} width={50} height={50} src="/svg-transparent-white.svg" />*/}
+			{/*		</div>*/}
+			{/*		<div>dragondevs</div>*/}
+			{/*	</div>*/}
+			{/*</div>*/}
 			{/* Logo with Spotlight Effect */}
 			<div className=" mx-auto">
 				{/* High opacity layer - revealed by mouse */}
@@ -90,36 +99,12 @@ const HeroSection = () => {
 			/>
 
 
-			{/* Floating Tech Icons */}
-			{/*{floatingIcons.map((item, index) => (*/}
-			{/*	<motion.div*/}
-			{/*		key={index}*/}
-			{/*		className="absolute"*/}
-			{/*		initial={{opacity: 0, scale: 0}}*/}
-			{/*		animate={{*/}
-			{/*			opacity: 0.6,*/}
-			{/*			scale: 1,*/}
-			{/*			y: [-10, 10, -10],*/}
-			{/*		}}*/}
-			{/*		transition={{*/}
-			{/*			delay: item.delay,*/}
-			{/*			y: {*/}
-			{/*				duration: 4,*/}
-			{/*				repeat: Infinity,*/}
-			{/*				ease: "easeInOut"*/}
-			{/*			}*/}
-			{/*		}}*/}
-			{/*		style={{left: item.x, top: item.y}}*/}
-			{/*	>*/}
-			{/*		<div className="p-3 rounded-xl opacity-50 backdrop-blur-sm border border-border">*/}
-			{/*			<item.icon size={24} className="text-primary/80"/>*/}
-			{/*		</div>*/}
-			{/*	</motion.div>*/}
-			{/*))}*/}
 
 			{/* Main Content */}
 			<div className="relative scale-90 z-10 flex items-center justify-center min-h-screen px-6">
-				<div className="max-w-6xl mx-auto text-center">
+
+				<div className="max-w-7xl mx-auto text-center">
+
 					{/* Badge */}
 					<motion.div
 						initial={{opacity: 0, y: 30}}

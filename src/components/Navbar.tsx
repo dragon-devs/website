@@ -21,9 +21,9 @@ const MinimalNavbar = () => {
 	const navItems = [
 		{id: 'home', icon: Home, label: 'Home', href: '/'},
 		{id: 'about', icon: User, label: 'About Us', href: '/about'},
-		{id: 'projects', icon: FolderOpen, label: 'Projects', href: '#projects'},
-		{id: 'services', icon: Settings, label: 'Services', href: '#services'},
-		{id: 'contact', icon: Mail, label: 'Contact Us', href: '#contact'},
+		{id: 'projects', icon: FolderOpen, label: 'Projects', href: '/projects'},
+		{id: 'services', icon: Settings, label: 'Services', href: '/services'},
+		{id: 'contact', icon: Mail, label: 'Contact Us', href: '/#contact'},
 	];
 
 	const NavIcon = ({item, isMobile = false}) => {
