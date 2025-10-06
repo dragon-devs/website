@@ -12,6 +12,7 @@ import {
 import {Footer} from "@/components/Footer";
 import SpotlightCard from "@/components/SpotlightCard";
 import MagnetButton from "@/components/custom/MagnetButton";
+import {useRouter} from "next/navigation";
 
 // Animated Section Container
 const SectionContainer = ({ children, className = "" }) => {
@@ -157,11 +158,10 @@ const WhatIsdragondevs = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3 border border-border hover:border-primary/50 duration-700 transition-all  p-4"
+                    className="relative overflow-hidden flex items-center md:p-6 p-4  gap-4 border border-border hover:border-primary/50 duration-700 transition-all"
                   >
-                    <div className=" p-2">
-                      <item.icon size={20} className="text-primary"/>
-                    </div>
+                      <item.icon size={80} className="absolute -right-4 opacity-10 -bottom-8  mx-auto mb-4"/>
+                      {/*<item.icon size={20} className="text-primary"/>*/}
                     <span className="text-foreground/80 text-sm font-medium">{item.text}</span>
                   </motion.div>
                 ))}
@@ -195,7 +195,7 @@ const MissionSection = () => {
             <div className="space-y-6">
               <div className=" border border-border p-8 relative overflow-hidden">
                 <div className="absolute -right-10 -bottom-10  opacity-10">
-                  <Target size={250} className="text-foreground"/>
+                  <Target size={250} className="text-muted-foreground"/>
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">
                   Empowering Businesses Through Technology
@@ -321,7 +321,7 @@ const CoreValuesSection = () => {
               className="relative flex flex-col h-full overflow-hidden p-8"
             >
               <div className="absolute -right-10 -bottom-10  opacity-10">
-                <value.icon size={250} className="text-primary"/>
+                <value.icon size={250} className="text-muted-foreground"/>
               </div>
               <div className="flex gap-4 items-center mb-4">
                 <div className="w-10 h-10  hover:border-primary/50 rounded-full flex items-center justify-center">
@@ -380,7 +380,7 @@ const VisionSection = () => {
             <div className="space-y-6">
               <div className="relative p-8 border border-border overflow-hidden">
                 <div className="absolute -right-10 -bottom-10  opacity-10">
-                  <Rocket size={250} className="text-foreground"/>
+                  <Rocket size={250} className="text-muted-foreground"/>
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">
                   Building the Future of Software
@@ -581,7 +581,7 @@ const TeamSection = () => {
     { icon: Users, number: "15+", label: "Team Members" },
     { icon: Globe, number: "12+", label: "Countries Served" },
     { icon: Star, number: "5.0", label: "Client Rating" },
-    { icon: Coffee, number: "10K+", label: "Cups of Coffee" }
+    { icon: Coffee, number: "10K+", label: "Cups of Tea" }
   ];
 
   return (
@@ -709,7 +709,7 @@ const WhyChooseUsSection = () => {
                 <reason.icon size={28} className="text-primary"/>
               </div>
               <div className="absolute -right-10 -bottom-10  opacity-10">
-                <reason.icon size={250} className="text-primary"/>
+                <reason.icon size={250} className="text-muted-foreground"/>
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">{reason.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
@@ -788,6 +788,7 @@ const TechnologiesSection = () => {
 
 // CTA Section
 const CTASection = () => {
+ const  router = useRouter()
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjEiLz48L2c+PC9zdmc+')] opacity-20"></div>
@@ -808,7 +809,7 @@ const CTASection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <MagnetButton label={"Get Started Today"} size={"lg"} icon={<ArrowRight size={20}/>} />
-            <MagnetButton variant={"secondary"} label={"Schedule a Call"} size={"lg"}/>
+            <MagnetButton variant={"secondary"} label={"Schedule a Call"} size={"lg"} onClick={() => router.push("https://calendly.com/dragondevs/30min")}/>
           </div>
         </motion.div>
       </div>

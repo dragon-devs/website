@@ -5,12 +5,15 @@ import {motion, useScroll, useTransform} from 'motion/react';
 import {Zap} from 'lucide-react';
 import CountUp from './CountUp';
 import MagnetButton from "@/components/custom/MagnetButton";
+import {useRouter} from "next/navigation";
 
 
 const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
 	const {scrollY} = useScroll();
 	const y = useTransform(scrollY, [0, 500], [0, 150]);
+
+  const router = useRouter()
 
 	useEffect(() => {
 		const handleMouseMove = (e) => {

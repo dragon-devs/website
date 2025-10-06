@@ -41,7 +41,7 @@ export const ContactSection = () => {
 								className="relative  overflow-hidden border border-border  p-6  hover:border-primary/50 transition-all duration-700"
 							>
 								<div className="absolute -right-2 -bottom-8  flex items-center justify-center  ">
-									<info.icon size={140} className="opacity-10"/>
+									<info.icon size={140} className="text-muted-foreground opacity-10"/>
 								</div>
 								<h4 className="text-foreground font-semibold mb-2 text-2xl tracking-tight">{info.label}</h4>
 								{info.link ? (
