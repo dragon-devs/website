@@ -6,7 +6,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 
 export const ContactSection = () => {
 	const contactInfo = [
-		{icon: Mail, label: "Email", value: "support@dragondevs.co", link: "mailto:support@dragondevs.co"},
+		{icon: Mail, label: "Email", value: "info@dragondevs.co", link: "mailto:info@dragondevs.co"},
 		{icon: Phone, label: "Phone", value: "+92 346 6955928", link: "tel:+923466955928"},
 		{icon: MapPin, label: "Location", value: "Islamabad, Pakistan", link: null}
 	];
@@ -41,7 +41,7 @@ export const ContactSection = () => {
 								className="relative  overflow-hidden border border-border  p-6  hover:border-primary/50 transition-all duration-700"
 							>
 								<div className="absolute -right-2 -bottom-8  flex items-center justify-center  ">
-									<info.icon size={140} className="opacity-10"/>
+									<info.icon size={140} className="text-muted-foreground opacity-10"/>
 								</div>
 								<h4 className="text-foreground font-semibold mb-2 text-2xl tracking-tight">{info.label}</h4>
 								{info.link ? (

@@ -5,8 +5,9 @@ import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
 import SpotlightCard from "@/components/SpotlightCard";
+import Pill from "@/components/Pill";
 
-export const ProjectsSection = () => {
+export const WorkSection = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -41,7 +42,7 @@ export const ProjectsSection = () => {
   const router = useRouter()
 
   return (
-    <section id={"projects"}  className="py-24 relative">
+    <section id={"case-study"}  className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,9 +82,7 @@ export const ProjectsSection = () => {
                 <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1  text-primary text-xs border border-border">
-                      {tag}
-                    </span>
+                    <Pill key={idx} label={tag} />
                   ))}
                 </div>
                 <button className="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">

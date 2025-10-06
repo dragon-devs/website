@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Chakra_Petch } from "next/font/google";
+import type {Metadata} from "next";
+import {Geist, Geist_Mono, Chakra_Petch} from "next/font/google";
 import "./globals.css";
 import Silk from "@/components/Silk";
-import { ThemeProvider } from "next-themes";
+import {ThemeProvider} from "next-themes";
 import ClickSpark from "@/components/ClickSpark";
 import MinimalNavbar from "@/components/Navbar";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 import Script from "next/script";
+import {Footer} from "@/components/Footer";
+import BackToTopButton from "@/components/BackToTop";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -92,10 +94,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 		<head>
-			<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
-			<link rel="apple-touch-icon" href="/apple-icon.png" />
-			<link rel="canonical" href="https://www.dragondevs.co" />
-			<meta name="theme-color" content="#0f172a" />
+			<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48"/>
+			<link rel="apple-touch-icon" href="/apple-icon.png"/>
+			<link rel="canonical" href="https://www.dragondevs.co"/>
+			<meta name="theme-color" content="#0f172a"/>
 
 			{/* ✅ Google Tag Manager */}
 			<Script id="gtm-init" strategy="afterInteractive">
@@ -123,7 +125,7 @@ export default function RootLayout({
 				src="https://www.googletagmanager.com/ns.html?id=GTM-MLLSL7RX"
 				height="0"
 				width="0"
-				style={{ display: "none", visibility: "hidden" }}
+				style={{display: "none", visibility: "hidden"}}
 			></iframe>
 		</noscript>
 
@@ -134,7 +136,7 @@ export default function RootLayout({
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
-			<div className="fixed inset-0 opacity-50 -z-50 pointer-events-none">
+			<div className="fixed  inset-0 opacity-30 -z-50 pointer-events-none">
 				<Silk
 					speed={0}
 					scale={0.5}
@@ -148,16 +150,17 @@ export default function RootLayout({
 				sparkColor="#fff"
 				sparkSize={10}
 				sparkRadius={25}
-				sparkCount={10}
-				duration={700}
+				sparkCount={20}
+				duration={500}
 			>
 				<ScrollArea className="w-screen h-screen">
 					{children}
-					<ScrollBar className="opacity-50" />
+					<ScrollBar className="opacity-40"/>
+					<Footer/>
 				</ScrollArea>
 			</ClickSpark>
-
-			<MinimalNavbar />
+			<BackToTopButton/>
+			<MinimalNavbar/>
 		</ThemeProvider>
 		</body>
 		</html>
