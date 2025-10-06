@@ -151,13 +151,13 @@ export default function RootLayout({
 				/>
 			</div>
 
-			<ClickSpark
-				sparkColor="#fff"
-				sparkSize={10}
-				sparkRadius={25}
-				sparkCount={10}
-				duration={700}
-			>
+      <ClickSpark
+        sparkColor="#fff"
+        sparkSize={10}
+        sparkRadius={25}
+        sparkCount={20}
+        duration={500}
+      >
 				<ScrollArea className="w-screen h-screen">
 					{children}
 					<ScrollBar className="opacity-50" />
