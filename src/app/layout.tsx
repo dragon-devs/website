@@ -7,6 +7,7 @@ import ClickSpark from "@/components/ClickSpark";
 import MinimalNavbar from "@/components/Navbar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import Script from "next/script";
+import {Footer} from "@/components/Footer";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -160,7 +161,8 @@ export default function RootLayout({
       >
 				<ScrollArea className="w-screen h-screen">
 					{children}
-					<ScrollBar className="opacity-50" />
+					<ScrollBar className="opacity-40" />
+					<Footer/>
 				</ScrollArea>
 			</ClickSpark>
 

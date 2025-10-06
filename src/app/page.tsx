@@ -24,7 +24,6 @@ export default function Home() {
       <CTASection/>
       <Separator/>
       <ContactSection/>
-      <Footer/>
 		</main>
 	);
 }

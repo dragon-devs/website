@@ -25,7 +25,7 @@ const HeroSection = () => {
 
 
 	return (
-		<div className="relative md:py-0 py-20 min-h-screen  ">
+		<div className="relative md:py-0 py-10 min-h-screen  ">
 			{/* Logo with Spotlight Effect */}
 			<div className=" mx-auto">
 				{/* High opacity layer - revealed by mouse */}
