@@ -525,7 +525,7 @@ const WhyChooseUsSection = () => {
     {
       icon: Award,
       title: "Proven Track Record",
-      description: "With 28+ successfully delivered projects and a 98% client satisfaction rate, our results speak for themselves."
+      description: "With 28+ successfully delivered case-study and a 98% client satisfaction rate, our results speak for themselves."
     },
     {
       icon: Shield,

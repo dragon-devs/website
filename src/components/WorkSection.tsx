@@ -7,7 +7,7 @@ import MagnetButton from "@/components/custom/MagnetButton";
 import SpotlightCard from "@/components/SpotlightCard";
 import Pill from "@/components/Pill";
 
-export const ProjectsSection = () => {
+export const WorkSection = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -42,7 +42,7 @@ export const ProjectsSection = () => {
   const router = useRouter()
 
   return (
-    <section id={"projects"}  className="py-24 relative">
+    <section id={"case-study"}  className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -724,7 +724,7 @@ const Footer = () => {
       { label: "AI Integration", link: "#services" }
     ],
     resources: [
-      { label: "Case Studies", link: "#projects" },
+      { label: "Case Studies", link: "#case-study" },
       { label: "Documentation", link: "#docs" },
       { label: "Support", link: "#support" },
       { label: "Privacy Policy", link: "#privacy" }
