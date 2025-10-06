@@ -27,7 +27,7 @@ const chakraPetch = Chakra_Petch({
 
 export const metadata: Metadata = {
 	title: {
-		default: "dragondevs | Code Beyond Boundaries",
+		default: "dragondevs | From idea to deployment",
 		template: "%s | dragondevs"
 	},
 	description:
@@ -47,11 +47,12 @@ export const metadata: Metadata = {
 		"full stack development",
 		"AI web solutions",
 		"software agency",
-		"Code Beyond Boundaries",
+		"From idea to deployment",
+		"Code beyond boundaries",
 		"skdrh"
 	],
 	openGraph: {
-		title: "dragondevs | Code Beyond Boundaries",
+		title: "dragondevs | From idea to deployment",
 		description:
 			"dragondevs creates high-performance websites and web apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
 		url: "https://www.dragondevs.co",
@@ -63,14 +64,14 @@ export const metadata: Metadata = {
 				url: "https://www.dragondevs.co/og-image.jpg",
 				width: 1200,
 				height: 630,
-				alt: "dragondevs – Code Beyond Boundaries | Product Builders"
+				alt: "dragondevs – From idea to deployment | Product Builders"
 			}
 		]
 	},
 
 	twitter: {
 		card: "summary_large_image",
-		title: "dragondevs – Code Beyond Boundaries | Product Builders",
+		title: "dragondevs – From idea to deployment | Product Builders",
 		description:
 			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
 		creator: "@dragondevs",
