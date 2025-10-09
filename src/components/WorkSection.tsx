@@ -101,7 +101,7 @@ export const WorkSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <MagnetButton label={"View All Projects"} variant={"secondary"}   onClick={()=> router.push("/projects")} />
+          <MagnetButton label={"View All Projects"} variant={"secondary"}   onClick={()=> router.push("/case-study")} />
 
         </motion.div>
       </div>
