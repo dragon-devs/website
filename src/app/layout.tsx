@@ -9,6 +9,7 @@ import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
+import AnimatedCursor from "@/components/AnimatedCursor";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
