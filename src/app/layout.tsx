@@ -136,7 +136,7 @@ export default function RootLayout({
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
-			<div className="fixed  inset-0 opacity-30 -z-50 pointer-events-none">
+			<div className="fixed inset-0 opacity-50 -z-50 pointer-events-none">
 				<Silk
 					speed={0}
 					scale={0.5}
