@@ -59,7 +59,7 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, margin: "-50px" }}
-            className="relative h-80 border border-border overflow-hidden shadow-md group"
+            className="relative h-52 md:h-80 border border-border overflow-hidden shadow-md group"
           >
             <Image
               src="/about.jpeg"
