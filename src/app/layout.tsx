@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono, Chakra_Petch} from "next/font/google";
+import {Geist, Geist_Mono, Chakra_Petch, Bricolage_Grotesque} from "next/font/google";
 import "./globals.css";
 import Silk from "@/components/Silk";
 import {ThemeProvider} from "next-themes";
@@ -26,6 +26,13 @@ const chakraPetch = Chakra_Petch({
 	weight: ["700", "600", "500", "400", "300"],
 	subsets: ["latin"],
 });
+
+const bricolage_Grotesque = Bricolage_Grotesque({
+	variable: "--font-bricolage",
+	weight: ["700", "600", "500", "400", "300"],
+	subsets: ["latin"],
+});
+
 
 
 export const metadata: Metadata = {
@@ -82,7 +89,6 @@ export const metadata: Metadata = {
 	},
 
 	icons: {
-		icon: "/favicon.ico",
 		apple: "/apple-icon.png"
 	}
 };
@@ -95,10 +101,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 		<head>
-			<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48"/>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
 			<link rel="canonical" href="https://www.dragondevs.co"/>
-			<meta name="theme-color" content="#0f172a"/>
 
 			{/* ✅ Google Tag Manager */}
 			<Script id="gtm-init" strategy="afterInteractive">
@@ -118,7 +122,7 @@ export default function RootLayout({
 		</head>
 
 		<body
-			className={`${geistSans.variable} ${geistMono.variable} ${chakraPetch.variable} antialiased relative overflow-hidden`}
+			className={`${geistSans.variable} ${geistMono.variable} ${chakraPetch.variable} ${bricolage_Grotesque.variable} antialiased relative overflow-hidden`}
 		>
 		{/* ✅ Google Tag Manager (noscript) */}
 		<noscript>

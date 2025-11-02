@@ -123,11 +123,11 @@ const HeroSection = () => {
 						transition={{delay: 0.4}}
 						className="text-5xl md:text-7xl tracking-tight lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
 					>
-						Code Beyond
+						From Idea to
 						<br/>
 						<span
 							className="bg-gradient-to-r tracking-tight from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-              Boundaries
+              Deployment
             </span>
 					</motion.h1>
 
@@ -138,7 +138,7 @@ const HeroSection = () => {
 						transition={{delay: 0.6}}
 						className="text-xl tracking-tight md:text-2xl  text-foreground/80 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
 					>
-						We craft intelligent software solutions that transform ideas into reality.
+						From idea to deployment We craft intelligent software solutions that transform ideas into reality.
 						From AI-powered applications to scalable enterprise systems, we build the future.
 					</motion.p>
 
@@ -149,8 +149,8 @@ const HeroSection = () => {
 						transition={{delay: 0.8}}
 						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
-            <MagnetButton label="Start Your Project"  onClick={() => router.push("/contact")} size={'lg'} />
-            <MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/projects") } size={'lg'} />
+            <MagnetButton label="Start Your Project"  onClick={() => router.push("/#contact")} size={'lg'} />
+            <MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-study") } size={'lg'} />
 					</motion.div>
 
 					{/* Stats */}

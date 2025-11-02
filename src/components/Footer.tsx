@@ -61,7 +61,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Company</h4>
+            <p className="text-foreground font-semibold mb-4">Company</p>
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
@@ -74,7 +74,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Services</h4>
+            <p className="text-foreground font-semibold mb-4">Services</p>
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
@@ -87,7 +87,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-foreground font-semibold mb-4">Resources</h4>
+            <p className="text-foreground font-semibold mb-4">Resources</p>
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>

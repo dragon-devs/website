@@ -3,13 +3,7 @@ import BlurText from "@/components/BlurText";
 
 const Contact = () => {
 	return (
-		<div className="font-sans">
-			<div className="font-sans">
-				Something
-			</div>
-			<div className="font-sans">
-				Something
-			</div>
+		<div >
 			<div className="text-7xl font-bold">
 				<BlurText
 					text="Isn't this so cool?!"
