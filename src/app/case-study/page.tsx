@@ -103,7 +103,7 @@ const StatsOverviewSection = () => {
 							transition={{ delay: index * 0.1 }}
 							className="border border-border p-8 text-center hover:border-primary/50 duration-700 transition-all relative overflow-hidden"
 						>
-							<stat.icon size={150} className="text-primary/10 absolute -right-4 -bottom-4" />
+							<stat.icon size={150} className="text-muted-foreground absolute -right-4 -bottom-4 opacity-10" />
 							<stat.icon size={40} className="text-primary mx-auto mb-4" />
 							<div className="text-4xl md:text-5xl font-bold text-foreground mb-2">{stat.number}</div>
 							<div className="text-muted-foreground text-sm">{stat.label}</div>
@@ -132,7 +132,7 @@ const CategoryTabs = ({ activeTab, setActiveTab }) => {
 					onClick={() => setActiveTab(tab.id)}
 					className={`px-6 py-3 rounded-full border transition-all duration-300 flex items-center gap-2 ${
 						activeTab === tab.id
-							? 'bg-primary text-primary-foreground border-primary'
+							? 'bg-primary text-foreground border-primary'
 							: 'border-border text-muted-foreground hover:border-primary/50 hover:text-foreground'
 					}`}
 				>
@@ -200,7 +200,7 @@ const ProjectCard = ({ project, index }) => {
 
 					<div className="flex gap-3 mt-auto">
 						{project.liveUrl && (
-							<button className="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm font-medium">
+							<button className="flex-1 px-4 py-2 bg-primary text-foreground rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm font-medium">
 								View Live <ExternalLink size={14} />
 							</button>
 						)}

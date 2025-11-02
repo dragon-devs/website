@@ -1,6 +1,6 @@
 "use client"
 import {motion} from "framer-motion";
-import {ArrowRight, ChevronRight, Layers} from "lucide-react";
+import {ArrowRight, Layers} from "lucide-react";
 import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
@@ -14,7 +14,7 @@ export const WorkSection = () => {
       category: "Web Development",
       description: "A fully-featured online marketplace with payment integration, inventory management, and real-time analytics.",
       image: "placeholder",
-      tags: ["Next.js", "Stripe", "PostgreSQL"]
+      tags: ["Next.js", "Stripe", "PostgresSQL"]
     },
     {
       title: "Healthcare Management System",

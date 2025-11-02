@@ -9,6 +9,7 @@ import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
+import AnimatedCursor from "@/components/AnimatedCursor";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -140,7 +141,7 @@ export default function RootLayout({
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
-			<div className="fixed inset-0 opacity-50 -z-50 pointer-events-none">
+			<div className="fixed  inset-0 opacity-50 -z-50 pointer-events-none">
 				<Silk
 					speed={0}
 					scale={0.5}

@@ -55,12 +55,21 @@ export const AboutSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="h-80 border border-border flex items-center justify-center"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="relative h-52 md:h-80 border border-border overflow-hidden shadow-md group"
           >
+            <Image
+              src="/about.jpeg"
+              alt="About DragonDevs"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out"
+              priority
+            />
           </motion.div>
+
         </div>
 
         <div className="grid md:grid-cols-4 md:gap-6 gap-4 mb-12">
