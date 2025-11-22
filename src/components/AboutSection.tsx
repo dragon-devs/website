@@ -1,10 +1,10 @@
 'use client'
 import {Award, ChevronRight, Layers, Target, TrendingUp, Users} from "lucide-react";
-import {motion} from "framer-motion";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export const AboutSection = () => {
   const values = [

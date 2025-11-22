@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import Image from 'next/image';
 import {
   Target, Heart, Users, Zap, Shield, TrendingUp, Award,

@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {FolderOpen, Home, Mail, Menu, Settings, User, X} from 'lucide-react';
 import {useRouter} from "next/navigation";
 import Magnet from "@/components/Magnet";
-import {motion, AnimatePresence} from "framer-motion";
+import {motion, AnimatePresence} from "motion/react";
 
 const MinimalNavbar = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
