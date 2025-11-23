@@ -99,7 +99,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
 			<link rel="canonical" href="https://www.dragondevs.co"/>
@@ -141,7 +141,7 @@ export default function RootLayout({
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
-			<div className="fixed  inset-0 opacity-50 -z-50 pointer-events-none">
+			<div className="fixed inset-0 -z-50 pointer-events-none">
 				<Silk
 					speed={0}
 					scale={0.5}

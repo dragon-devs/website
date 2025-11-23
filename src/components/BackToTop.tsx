@@ -1,63 +1,63 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
 const BackToTopButton = () => {
 	const [isVisible, setIsVisible] = useState(false);
+	const scrollRef = useRef<HTMLElement | null>(null);
+	const { resolvedTheme } = useTheme();
+
+	// Precompute classes once (no re-render jitter)
+	const baseStyles =
+		"fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 size-12 rounded-full flex items-center justify-center backdrop-blur-sm border transition-colors duration-300 hover:shadow-lg hover:shadow-primary/20";
+
+	const themeBg = resolvedTheme === "dark" ? "bg-foreground/5" : "bg-black/5";
+	const themeBorder = resolvedTheme === "dark" ? "border-foreground/20" : "border-black/20";
+	const iconColor = resolvedTheme === "dark" ? "text-muted-foreground" : "text-black/60";
 
 	useEffect(() => {
-		// Find the scroll container (ScrollArea viewport)
-		const scrollContainer = document.querySelector('[data-radix-scroll-area-viewport]');
+		const sc = document.querySelector('[data-radix-scroll-area-viewport]') as HTMLElement;
+		if (!sc) return;
 
-		if (!scrollContainer) return;
+		scrollRef.current = sc;
 
-		const toggleVisibility = () => {
-			if (scrollContainer.scrollTop > 300) {
-				setIsVisible(true);
-			} else {
-				setIsVisible(false);
-			}
+		const handleScroll = () => {
+			setIsVisible(sc.scrollTop > 300);
 		};
 
-		scrollContainer.addEventListener('scroll', toggleVisibility);
-		return () => scrollContainer.removeEventListener('scroll', toggleVisibility);
+		sc.addEventListener('scroll', handleScroll, { passive: true });
+
+		return () => sc.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	const scrollToTop = () => {
-		const scrollContainer = document.querySelector('[data-radix-scroll-area-viewport]');
-		if (scrollContainer) {
-			scrollContainer.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			});
-		}
+		if (!scrollRef.current) return;
+		scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
 	return (
 		<AnimatePresence>
 			{isVisible && (
 				<motion.button
-					initial={{ opacity: 0, scale: 0.5, y: 20 }}
+					initial={{ opacity: 0, scale: 0.7, y: 20 }}
 					animate={{ opacity: 1, scale: 1, y: 0 }}
-					exit={{ opacity: 0, scale: 0.5, y: 20 }}
+					exit={{ opacity: 0, scale: 0.7, y: 20 }}
 					transition={{
-						duration: 0.3,
-						ease: [0.4, 0, 0.2, 1]
+						duration: 0.35,
+						ease: [0.16, 1, 0.3, 1], // smoother, iOS-like easing
 					}}
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.95 }}
+					whileHover={{ scale: 1.12 }}
+					whileTap={{ scale: 0.94 }}
 					onClick={scrollToTop}
-					className="
-            fixed md:bottom-6 md:right-6 bottom-4 right-4 z-50
-            size-12 rounded-full flex items-center justify-center
-            bg-foreground/5 backdrop-blur-sm border border-foreground/20
-            hover:bg-primary/20 hover:border-primary/40
-            hover:shadow-lg hover:shadow-primary/20
-            transition-colors duration-300
-          "
+					className={`${baseStyles} ${themeBg} ${themeBorder} hover:bg-primary/20 hover:border-primary/40`}
 				>
-					<ArrowUp size={20} className="text-gray-300 hover:text-primary transition-colors" />
+					<ArrowUp
+						size={20}
+						className={`${iconColor} transition-colors hover:text-primary`}
+					/>
 				</motion.button>
 			)}
 		</AnimatePresence>

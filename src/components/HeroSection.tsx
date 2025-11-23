@@ -121,7 +121,7 @@ const HeroSection = () => {
 						initial={{opacity: 0, y: 30}}
 						animate={{opacity: 1, y: 0}}
 						transition={{delay: 0.4}}
-						className="text-5xl md:text-7xl tracking-tight lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
+						className="text-5xl md:text-7xl lg:text-8xl tracking-tight  font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
 					>
 						From Idea to
 						<br/>

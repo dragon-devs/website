@@ -38,7 +38,7 @@ const AboutHero = () => {
   const y = useTransform(scrollY, [0, 300], [0, 100]);
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className=" relative min-h-[70vh] flex items-center justify-center overflow-hidden">
       {/* Gradient Orbs */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
         <div className="max-w-6xl mx-auto text-center">
@@ -58,7 +58,7 @@ const AboutHero = () => {
             initial={{opacity: 0, y: 30}}
             animate={{opacity: 1, y: 0}}
             transition={{delay: 0.4}}
-            className="text-5xl md:text-7xl tracking-tight lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl tracking-tight font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
           >
             Empowering Innovation
             <br/>
@@ -307,7 +307,7 @@ const CoreValuesSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {values.map((value, index) => (
-            <SpotlightCard>
+            <SpotlightCard key={index}>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -563,7 +563,7 @@ const WhyChooseUsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-2 md:gap-8 gap-4">
           {reasons.map((reason, index) => (
-            <SpotlightCard>
+            <SpotlightCard key={index}>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}

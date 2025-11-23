@@ -1,6 +1,6 @@
 'use client'
 import {Award, ChevronRight, Layers, Target, TrendingUp, Users} from "lucide-react";
-import {motion} from "framer-motion";
+import {motion} from "motion/react";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";

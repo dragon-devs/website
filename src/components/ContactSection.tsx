@@ -44,9 +44,9 @@ export const ContactSection = () => {
                 </div>
                 <h4 className="text-foreground font-semibold mb-2 text-2xl tracking-tight">{info.label}</h4>
                 {info.link ? (
-                  <a href={info.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <p href={info.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {info.value}
-                  </a>
+                  </p>
                 ) : (
                   <p className="text-muted-foreground">{info.value}</p>
                 )}
