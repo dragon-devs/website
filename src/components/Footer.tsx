@@ -13,7 +13,7 @@ export const Footer = () => {
 
   const footerLinks = {
     company: [
-      { label: "About Us", link: "#about" },
+      { label: "About Us", link: "/about" },
       { label: "Our Team", link: "#team" },
       { label: "Careers", link: "#careers" },
       { label: "Blog", link: "#blog" }
@@ -25,7 +25,7 @@ export const Footer = () => {
       { label: "AI Integration", link: "#services" }
     ],
     resources: [
-      { label: "Case Studies", link: "#case-study" },
+      { label: "Case Studies", link: "/case-study" },
       { label: "Documentation", link: "#docs" },
       { label: "Support", link: "#support" },
       { label: "Privacy Policy", link: "#privacy" }
@@ -39,9 +39,10 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 p-1 rounded-lg flex items-center justify-center">
-                <Image alt={"dragondevs logo"} width={50} height={50} src="/svg-transparent-white.svg" />
+                <Image alt={"dragondevs"} className="dark:block hidden" width={50} height={50} src="/svg-transparent-white.svg" />
+                <Image alt={"dragondevs"} className="dark:hidden block" width={50} height={50} src="/svg-transparent-black.svg" />
               </div>
-              <span className="text-2xl font-bold text-foreground">dragondevs</span>
+              <span className="text-2xl font-black text-foreground">dragon<span className="font-light">devs</span></span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Building innovative software solutions that empower businesses and transform ideas into reality.
@@ -100,8 +101,9 @@ export const Footer = () => {
           </div>
         </div>
 
-
-        <Separator />
+        <div className="my-6 w-screen relative left-1/2 right-1/2 -ml-[50vw]">
+          <Separator />
+        </div>
 
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
