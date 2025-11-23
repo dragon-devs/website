@@ -10,6 +10,8 @@ import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
 import AnimatedCursor from "@/components/AnimatedCursor";
+import {SpotlightLogo} from "@/components/hero/SpotLightLog";
+import React from "react";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -136,12 +138,16 @@ export default function RootLayout({
 
 		<ThemeProvider
 			attribute="class"
-			defaultTheme="dark"
+			defaultTheme="system"
 			enableSystem
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
 			<div className="fixed inset-0 -z-50 pointer-events-none">
+				<SpotlightLogo
+					spotlightRadius={150}
+					scale=""
+				/>
 				<Silk
 					speed={0}
 					scale={0.5}
