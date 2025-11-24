@@ -102,7 +102,7 @@ export const ServicesSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <MagnetButton label={"View All Services"} icon={<ChevronRight size={20}/>} onClick={()=> router.push("/services")} />
+          <MagnetButton label={"View All Services"} onClick={()=> router.push("/services")} />
         </motion.div>
       </div>
     </section>
