@@ -1,20 +1,25 @@
+// Updated MinimalNavbar with next-themes + shadcn/ui styling
+// Drop this into your component file. Assumes you have next-themes Provider in layout.
+
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import {FolderOpen, Home, Mail, Menu, Settings, User, X} from 'lucide-react';
-import {useRouter} from "next/navigation";
-import Magnet from "@/components/Magnet";
-import {motion, AnimatePresence} from "motion/react";
+import {FolderOpen, Home, Mail, Menu, Moon, Settings, Sun, User, X} from 'lucide-react';
+import {useRouter} from 'next/navigation';
+import {motion, AnimatePresence} from 'motion/react';
+import Magnet from '@/components/Magnet';
+import {useTheme} from 'next-themes';
 
 const MinimalNavbar = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [isMobileOpen, setIsMobileOpen] = useState(false);
 	const [activeItem, setActiveItem] = useState('home');
+	const {resolvedTheme, setTheme} = useTheme();
+
+	const {theme} = useTheme();
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			setIsLoaded(true);
-		}, 300);
+		const timer = setTimeout(() => setIsLoaded(true), 300);
 		return () => clearTimeout(timer);
 	}, []);
 
@@ -26,60 +31,57 @@ const MinimalNavbar = () => {
 		{id: 'contact', icon: Mail, label: 'Contact Us', href: '/#contact'},
 	];
 
+	// Light/Dark dynamic styles
+	const themeStyles = {
+		bg: resolvedTheme === 'dark' ? 'bg-foreground/5' : 'bg-black/5',
+		hoverBg: resolvedTheme === 'dark' ? 'hover:bg-foreground/10' : 'hover:bg-black/10',
+		border: resolvedTheme === 'dark' ? 'border-foreground/20' : 'border-black/20',
+		labelBg: resolvedTheme === 'dark' ? 'bg-foreground/5' : 'bg-black/5',
+	};
+
 	const NavIcon = ({item, isMobile = false}) => {
 		const Icon = item.icon;
+		const router = useRouter();
 		const isActive = activeItem === item.id;
-		const router = useRouter()
+
 		return (
 			<div className="relative group">
 				<button
 					onClick={() => {
-						setActiveItem(item.id)
-						router.push(item.href)
-						if (isMobile) {
-							setIsMobileOpen(false);
-						}
+						setActiveItem(item.id);
+						router.push(item.href);
+						if (isMobile) setIsMobileOpen(false);
 					}}
 					className={`
             w-12 h-12 rounded-full flex items-center justify-center
-            transition-all duration-300 ease-out
-            backdrop-blur-sm border border-foreground/20
-            hover:scale-110 hover:shadow-lg hover:shadow-primary/20
-            ${isActive
-						? 'bg-primary/20 border-primary/40 shadow-md shadow-primary/25'
-						: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
-					}
+            backdrop-blur-sm border transition-all duration-300
+            ${themeStyles.bg} ${themeStyles.border}
+            ${themeStyles.hoverBg} hover:scale-110 hover:shadow-lg
+            ${isActive ? 'bg-primary/20 border-primary/40 shadow-primary/25 text-primary' : ''}
           `}
 				>
-					<Magnet padding={25} disabled={false} magnetStrength={6}>
+					<Magnet padding={25} magnetStrength={6}>
 						<Icon
 							size={18}
-							className={`
-	              transition-all duration-300
-	              ${isActive ? 'text-primary' : 'text-gray-300 group-hover:text-foreground'}
-	            `}
+							className={`transition-all duration-300 ${isActive ? 'text-primary' : 'text-muted-foreground'} group-hover:text-foreground`}
 						/>
 					</Magnet>
-					<div
-						className={`
-            absolute text-center ${isMobile ? 'right-16' : 'right-16'} top-1/2 -translate-y-1/2 
-            backdrop-blur-md text-foreground text-sm font-semibold w-28 leading-none  tracking-wider
-            space-nowrap
-            transition-all duration-300 ease-out border p-2  py-1.5
-            ${isActive
-							? 'bg-primary/20 text-primary border-primary/40 shadow-md shadow-primary/25'
-							: 'bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30'
-							}
-            ${isMobile
-							? 'opacity-100 translate-x-0 visible'
-							: 'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible opacity-0 translate-x-2 invisible'
-						}
-          `}
-					>
-						<div>
-							{item.label}
-						</div>
-					</div>
+
+					{/* Label */}
+					{item.label && <div
+              className={`
+              absolute right-16 top-1/2 -translate-y-1/2 w-28 text-sm font-semibold
+              text-center whitespace-nowrap border backdrop-blur-md py-1.5 px-2
+              ${themeStyles.labelBg} ${themeStyles.border}
+              transition-all duration-300
+              ${isActive ? 'bg-primary/20 text-primary border-primary/40 shadow-primary/25' : ''}
+              ${isMobile
+								? 'opacity-100 translate-x-0 visible'
+								: 'opacity-0 translate-x-2 invisible group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible'}
+            `}
+          >
+						{item.label}
+          </div>}
 				</button>
 			</div>
 		);
@@ -87,23 +89,28 @@ const MinimalNavbar = () => {
 
 	return (
 		<>
-			{/* Desktop Navigation */}
-			<nav
-				className={`
-          fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50
-          hidden lg:flex flex-col space-y-4
-          transition-all duration-700 ease-out
-          ${isLoaded
-					? 'opacity-100 translate-x-0'
-					: 'opacity-0 translate-x-full'
-				}
-        `}
+			<button
+				onClick={() => setTheme(theme === "dark" ? 'light' : 'dark')}
+				className={`lg:flex hidden fixed top-4 md:top-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full items-center justify-center backdrop-blur-sm border transition-all duration-700 ${
+					isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
+				} ${themeStyles.bg} ${themeStyles.border}`}
 			>
+				<Magnet padding={25} magnetStrength={6}>
+					{theme === "dark" ? <Moon size={18}/> : <Sun size={18}/>}
+				</Magnet>
+			</button>
+			{/* Desktop */}
+			<nav
+				className={`fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col space-y-4 transition-all duration-700 ${
+					isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
+				}`}
+			>
+
 				{navItems.map((item, index) => (
 					<div
 						key={item.id}
-						className="transition-all duration-500 ease-out"
 						style={{
+							transition: 'all 0.5s ease-out',
 							transitionDelay: isLoaded ? `${index * 100 + 200}ms` : '0ms',
 							transform: isLoaded ? 'translateX(0)' : 'translateX(50px)',
 							opacity: isLoaded ? 1 : 0,
@@ -114,59 +121,46 @@ const MinimalNavbar = () => {
 				))}
 			</nav>
 
-			{/* Mobile Navigation */}
+			{/* Mobile */}
 			<div className="lg:hidden">
-				{/* Mobile Menu Button */}
+				{/* Toggle */}
+				<button
+					onClick={() => setTheme(theme === "dark" ? 'light' : 'dark')}
+					className={`fixed top-4 md:top-6 left-4 md:left-6 z-50 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm border transition-all duration-700 ${
+						isLoaded ? 'opacity-100 -translate-x-0' : 'opacity-0 -translate-x-full'
+					} ${themeStyles.bg} ${themeStyles.border}`}
+				>
+					{theme === "dark" ? <Moon size={18}/> : <Sun size={18}/>}
+				</button>
 				<button
 					onClick={() => setIsMobileOpen(!isMobileOpen)}
-					className={`
-            fixed top-4 md:top-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full
-            flex items-center justify-center
-            backdrop-blur-sm border transition-all duration-700 ease-out
-            ${isLoaded
-						? 'opacity-100 translate-x-0'
-						: 'opacity-0 translate-x-full'
-					}
-            ${isMobileOpen
-						? 'bg-red-500/20 border-red-400/40 shadow-lg shadow-red-500/20'
-						: 'bg-foreground/5 border-foreground/20 hover:bg-foreground/10 hover:scale-110'
-					}
-          `}
+					className={`fixed top-4 md:top-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm border transition-all duration-700 ${
+						isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
+					} ${themeStyles.bg} ${themeStyles.border}`}
 				>
-					{isMobileOpen ? (
-						<X size={18} className="text-red-400"/>
-					) : (
-						<Menu size={18} className="text-foreground"/>
-					)}
+					{isMobileOpen ? <X size={18} className="text-red-400"/> : <Menu size={18} className="text-foreground"/>}
 				</button>
 
-				{/* Mobile Menu Panel */}
+				{/* Mobile panel */}
 				<AnimatePresence>
 					{isMobileOpen && (
 						<motion.div
-							initial={{ opacity: 0, x: 32 }}
-							animate={{ opacity: 1, x: 0 }}
-							exit={{ opacity: 0, x: 32 }}
-							transition={{ duration: 0.5, ease: 'easeOut' }}
+							initial={{opacity: 0, x: 32}}
+							animate={{opacity: 1, x: 0}}
+							exit={{opacity: 0, x: 32}}
+							transition={{duration: 0.5, ease: 'easeOut'}}
 							className="fixed right-4 md:right-6 top-1/2 -translate-y-1/2 z-40"
 						>
 							<div className="flex flex-col space-y-4">
 								{navItems.map((item, index) => (
 									<motion.div
 										key={item.id}
-										initial={{ opacity: 0, x: 30 }}
-										animate={{ opacity: 1, x: 0 }}
-										exit={{ opacity: 0, x: 30 }}
-										transition={{
-											duration: 0.4,
-											ease: 'easeOut',
-											delay: index * 0.08, // Stagger entrance
-										}}
-										exitTransition={{
-											delay: (navItems.length - index - 1) * 0.05, // Reverse stagger on exit
-										}}
+										initial={{opacity: 0, x: 30}}
+										animate={{opacity: 1, x: 0}}
+										exit={{opacity: 0, x: 30}}
+										transition={{duration: 0.4, ease: 'easeOut', delay: index * 0.08}}
 									>
-										<NavIcon item={item} isMobile={true} />
+										<NavIcon item={item} isMobile/>
 									</motion.div>
 								))}
 							</div>
@@ -174,14 +168,12 @@ const MinimalNavbar = () => {
 					)}
 				</AnimatePresence>
 
-				{/* Mobile Backdrop */}
+				{/* Backdrop */}
 				<div
-					className={`
-            fixed inset-0 bg-black/10 backdrop-blur-sm z-30
-            transition-opacity duration-300 ease-out
-            ${isMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}
-          `}
 					onClick={() => setIsMobileOpen(false)}
+					className={`fixed inset-0 bg-black/10 backdrop-blur-sm z-30 transition-opacity duration-300 ${
+						isMobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+					}`}
 				/>
 			</div>
 		</>

@@ -10,6 +10,8 @@ import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
 import AnimatedCursor from "@/components/AnimatedCursor";
+import {SpotlightLogo} from "@/components/hero/SpotLightLog";
+import React from "react";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -99,7 +101,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning={true}>
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
 			<link rel="canonical" href="https://www.dragondevs.co"/>
@@ -136,12 +138,16 @@ export default function RootLayout({
 
 		<ThemeProvider
 			attribute="class"
-			defaultTheme="dark"
+			defaultTheme="system"
 			enableSystem
 			disableTransitionOnChange
 		>
 			{/* Optional: <SplashCursor /> */}
-			<div className="fixed  inset-0 opacity-50 -z-50 pointer-events-none">
+			<div className="fixed inset-0 -z-50 pointer-events-none">
+				<SpotlightLogo
+					spotlightRadius={150}
+					scale=""
+				/>
 				<Silk
 					speed={0}
 					scale={0.5}
@@ -150,20 +156,11 @@ export default function RootLayout({
 					rotation={0}
 				/>
 			</div>
-
-			<ClickSpark
-				sparkColor="#fff"
-				sparkSize={10}
-				sparkRadius={25}
-				sparkCount={20}
-				duration={500}
-			>
 				<ScrollArea className="w-screen h-screen">
 					{children}
 					<ScrollBar className="opacity-40"/>
 					<Footer/>
 				</ScrollArea>
-			</ClickSpark>
 			<BackToTopButton/>
 			<MinimalNavbar/>
 		</ThemeProvider>

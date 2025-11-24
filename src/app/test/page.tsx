@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import {
   ArrowRight, Code, Zap, Globe, Shield, Cpu, ChevronRight,
   Layers, Rocket, Users, CheckCircle2, Mail, Phone, MapPin,
   Github, Linkedin, Twitter, Star, TrendingUp, Award, Target
 } from 'lucide-react';
+import {GradientText} from "@/components/hero/GradientText";
 
 // Magnet Effect Component
 const Magnet = ({ children, padding = 25, magnetStrength = 10, disabled = false }) => {
@@ -614,9 +615,9 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <span className="text-blue-400 font-semibold text-sm tracking-wider uppercase">Get In Touch</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+          <GradientText className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
             Let's Build Something Amazing
-          </h2>
+          </GradientText>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
             Ready to start your project? Contact us today and let's discuss how we can help bring your vision to life.
           </p>

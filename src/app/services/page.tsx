@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, {useState} from 'react';
+import {motion} from 'motion/react';
 import {
 	Code, Rocket, Layers, Smartphone, Globe, Database,
 	Zap, Shield, TrendingUp, CheckCircle2, ArrowRight,
@@ -14,15 +14,18 @@ import {Separator} from "@/components/ui/separator";
 import SpotlightCard from "@/components/SpotlightCard";
 import {CTASection} from "@/components/CTASection";
 import Pill from "@/components/Pill";
+import Badge from "@/components/hero/Badge";
+import {HeroTitle} from "@/components/hero/HeroTitle";
+import {GradientText} from "@/components/hero/GradientText";
 
 // Animated Section Container
-const SectionContainer = ({ children, className = "" }) => {
+const SectionContainer = ({children, className = ""}) => {
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 30 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true, margin: "-100px" }}
-			transition={{ duration: 0.6 }}
+			initial={{opacity: 0, y: 30}}
+			whileInView={{opacity: 1, y: 0}}
+			viewport={{once: true, margin: "-100px"}}
+			transition={{duration: 0.6}}
 			className={className}
 		>
 			{children}
@@ -33,44 +36,21 @@ const SectionContainer = ({ children, className = "" }) => {
 // Hero Section
 const ServicesHero = () => {
 	return (
-		<section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+		<section className="scale-90 relative min-h-[70vh] flex items-center justify-center overflow-hidden">
 			<div className="relative z-10 flex items-center justify-center min-h-screen px-6">
 				<div className="max-w-6xl mx-auto text-center">
-					{/* Badge */}
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="inline-flex items-center px-4 py-2 border border-primary/80 text-primary/80 text-sm font-medium mb-8 rounded-full"
-					>
-						<Sparkles size={16} className="mr-2" />
+
+					<Badge icon={Sparkles}>
 						Our Services
-					</motion.div>
-
-					{/* Main Heading */}
-					<motion.h1
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.4 }}
-						className="text-5xl md:text-7xl tracking-tight lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
-					>
-						Transforming Ideas
-						<br />
-						<span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-              Into Digital Reality
-            </span>
-					</motion.h1>
-
-					{/* Subtitle */}
-					<motion.p
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.6 }}
-						className="text-xl tracking-tight md:text-2xl text-foreground/80 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
-					>
+					</Badge>
+					<HeroTitle
+						mainText="Transforming Ideas"
+						accentText="Into Digital Reality"
+					/>
+					<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 						From concept to deployment, we deliver custom software solutions that drive growth,
 						streamline operations, and give you a competitive edge in the digital landscape.
-					</motion.p>
+					</GradientText>
 				</div>
 			</div>
 			<motion.div
@@ -177,21 +157,22 @@ const CoreServicesSection = () => {
 					{services.map((service, index) => (
 						<SpotlightCard key={index}>
 							<motion.div
-								initial={{ opacity: 0, y: 30 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
+								initial={{opacity: 0, y: 30}}
+								whileInView={{opacity: 1, y: 0}}
+								viewport={{once: true}}
+								transition={{delay: index * 0.1}}
 								className="relative flex flex-col h-full overflow-hidden p-8"
 							>
 								<div className="absolute -right-10 -bottom-10 opacity-10">
-									<service.icon size={250} className="text-muted-foreground" />
+									<service.icon size={250} className="text-muted-foreground"/>
 								</div>
 								<div className="flex gap-4 items-center mb-4">
 									<div className="w-12 h-12 rounded-full flex items-center justify-center border border-border">
-										<service.icon size={24} className="text-primary" />
+										<service.icon size={24} className="text-primary"/>
 									</div>
 								</div>
-								<h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
+								<h3
+									className={`text-2xl font-bold mb-3 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
 									{service.title}
 								</h3>
 								<p className="text-muted-foreground leading-relaxed mb-6">
@@ -200,7 +181,7 @@ const CoreServicesSection = () => {
 								<ul className="space-y-2 mt-auto">
 									{service.features.map((feature, idx) => (
 										<li key={idx} className="flex items-start gap-2 text-sm">
-											<CheckCircle2 size={16} className="text-green-400 flex-shrink-0 mt-0.5" />
+											<CheckCircle2 size={16} className="text-green-400 flex-shrink-0 mt-0.5"/>
 											<span className="text-foreground/70">{feature}</span>
 										</li>
 									))}
@@ -269,17 +250,17 @@ const SpecializedServicesSection = () => {
 					{specialServices.map((service, index) => (
 						<SpotlightCard key={index}>
 							<motion.div
-								initial={{ opacity: 0, y: 30 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
+								initial={{opacity: 0, y: 30}}
+								whileInView={{opacity: 1, y: 0}}
+								viewport={{once: true}}
+								transition={{delay: index * 0.1}}
 								className="relative flex flex-col h-full overflow-hidden p-6 group"
 							>
 								<div className="absolute -right-10 -bottom-10 opacity-10">
-									<service.icon size={200} className="text-muted-foreground" />
+									<service.icon size={200} className="text-muted-foreground"/>
 								</div>
 								<div className="w-12 h-12 border border-border rounded-full flex items-center justify-center mb-4">
-									<service.icon size={24} className="text-primary" />
+									<service.icon size={24} className="text-primary"/>
 								</div>
 								<h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
 								<p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
@@ -341,24 +322,25 @@ const ProcessSection = () => {
 					{steps.map((step, index) => (
 						<motion.div
 							key={index}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ delay: index * 0.1 }}
+							initial={{opacity: 0, y: 30}}
+							whileInView={{opacity: 1, y: 0}}
+							viewport={{once: true}}
+							transition={{delay: index * 0.1}}
 							className="relative overflow-hidden"
 						>
 							<div className="border border-border p-6 h-full hover:border-primary/50 duration-700 transition-all">
-								<div className="absolute leading-none -bottom-8 -z-10 -right-4 text-[12rem] font-black text-primary/10">{step.number}</div>
-									<step.icon size={32} className="text-primary mb-4" />
-									<h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
+								<div
+									className="absolute leading-none -bottom-8 -z-10 -right-4 text-[12rem] font-black text-primary/10">{step.number}</div>
+								<step.icon size={32} className="text-primary mb-4"/>
+								<h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
 								<p className="text-muted-foreground leading-relaxed text-sm">{step.description}</p>
 							</div>
 							{index < steps.length - 1 ? (
 								<div className="hidden lg:block absolute top-0 right-0 z-10">
-									<ArrowRight className="opacity-10 text-muted-foreground" size={70} />
+									<ArrowRight className="opacity-10 text-muted-foreground" size={70}/>
 								</div>
 							) : <div className="hidden lg:block absolute top-0 right-0 z-10">
-								<Target className="opacity-10 text-muted-foreground" size={70} />
+								<Target className="opacity-10 text-muted-foreground" size={70}/>
 							</div>}
 						</motion.div>
 					))}
@@ -413,17 +395,17 @@ const TechnologyStackSection = () => {
 					{techCategories.map((category, index) => (
 						<motion.div
 							key={index}
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ delay: index * 0.1 }}
+							initial={{opacity: 0, y: 30}}
+							whileInView={{opacity: 1, y: 0}}
+							viewport={{once: true}}
+							transition={{delay: index * 0.1}}
 							className="relative border border-border p-6 hover:border-primary/50 duration-700 transition-all overflow-hidden"
 						>
-							<category.icon size={100 } className="absolute right-0 text-muted-foreground opacity-10 mb-4" />
+							<category.icon size={100} className="absolute right-0 text-muted-foreground opacity-10 mb-4"/>
 							<h3 className="text-2xl tracking-tight font-bold text-foreground mb-4">{category.category}</h3>
 							<div className="flex flex-wrap gap-2">
 								{category.technologies.map((tech, idx) => (
-									<Pill key={idx} label={tech} />
+									<Pill key={idx} label={tech}/>
 								))}
 							</div>
 						</motion.div>
@@ -455,7 +437,7 @@ const WhyChooseSection = () => {
 		{
 			icon: Users,
 			title: "Dedicated Support",
-			description: "Our relationship doesn't end at launch. We're here for updates, maintenance, and growth."
+			description: "Our relationship doesn't end at launch. We're hero for updates, maintenance, and growth."
 		},
 		{
 			icon: TrendingUp,
@@ -474,7 +456,8 @@ const WhyChooseSection = () => {
 			<div className="max-w-7xl mx-auto md:px-6 px-4">
 				<SectionContainer>
 					<div className="text-center mb-16">
-						<span className="text-primary font-semibold text-sm tracking-wider uppercase">The dragondevs Advantage</span>
+						<span
+							className="text-primary font-semibold text-sm tracking-wider uppercase">The dragondevs Advantage</span>
 						<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
 							Why Work With Us?
 						</h2>
@@ -489,17 +472,17 @@ const WhyChooseSection = () => {
 					{benefits.map((benefit, index) => (
 						<SpotlightCard key={index}>
 							<motion.div
-								initial={{ opacity: 0, y: 30 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ delay: index * 0.1 }}
+								initial={{opacity: 0, y: 30}}
+								whileInView={{opacity: 1, y: 0}}
+								viewport={{once: true}}
+								transition={{delay: index * 0.1}}
 								className="relative flex flex-col h-full overflow-hidden p-8"
 							>
 								<div className="absolute -right-10 -bottom-10 opacity-10">
-									<benefit.icon size={200} className="text-muted-foreground" />
+									<benefit.icon size={200} className="text-muted-foreground"/>
 								</div>
 								<div className="w-14 h-14 border border-border rounded-full flex items-center justify-center mb-6">
-									<benefit.icon size={28} className="text-primary" />
+									<benefit.icon size={28} className="text-primary"/>
 								</div>
 								<h3 className="text-xl font-bold text-foreground mb-3">{benefit.title}</h3>
 								<p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
@@ -515,10 +498,10 @@ const WhyChooseSection = () => {
 // Stats Section
 const StatsSection = () => {
 	const stats = [
-		{ number: "28+", label: "Projects Delivered", icon: Boxes },
-		{ number: "98%", label: "Client Satisfaction", icon: Star },
-		{ number: "24/7", label: "Support Available", icon: Clock },
-		{ number: "10+", label: "Technologies Mastered", icon: Cpu }
+		{number: "28+", label: "Projects Delivered", icon: Boxes},
+		{number: "98%", label: "Client Satisfaction", icon: Star},
+		{number: "24/7", label: "Support Available", icon: Clock},
+		{number: "10+", label: "Technologies Mastered", icon: Cpu}
 	];
 
 	return (
@@ -528,13 +511,13 @@ const StatsSection = () => {
 					{stats.map((stat, index) => (
 						<motion.div
 							key={index}
-							initial={{ opacity: 0, scale: 0.9 }}
-							whileInView={{ opacity: 1, scale: 1 }}
-							viewport={{ once: true }}
-							transition={{ delay: index * 0.1 }}
+							initial={{opacity: 0, scale: 0.9}}
+							whileInView={{opacity: 1, scale: 1}}
+							viewport={{once: true}}
+							transition={{delay: index * 0.1}}
 							className="border border-border p-8 text-center hover:border-primary/50 duration-700 transition-all"
 						>
-							<stat.icon size={40} className="text-primary mx-auto mb-4" />
+							<stat.icon size={40} className="text-primary mx-auto mb-4"/>
 							<div className="text-4xl md:text-5xl font-bold text-foreground mb-2">{stat.number}</div>
 							<div className="text-muted-foreground text-sm">{stat.label}</div>
 						</motion.div>
@@ -549,21 +532,21 @@ const StatsSection = () => {
 const ServicesPage = () => {
 	return (
 		<div className="min-h-screen">
-			<ServicesHero />
-			<Separator />
-			<CoreServicesSection />
-			<Separator />
-			<SpecializedServicesSection />
-			<Separator />
-			<ProcessSection />
-			<Separator />
-			<TechnologyStackSection />
-			<Separator />
-			<WhyChooseSection />
-			<Separator />
-			<StatsSection />
-			<Separator />
-			<CTASection />
+			<ServicesHero/>
+			<Separator/>
+			<CoreServicesSection/>
+			<Separator/>
+			<SpecializedServicesSection/>
+			<Separator/>
+			<ProcessSection/>
+			<Separator/>
+			<TechnologyStackSection/>
+			<Separator/>
+			<WhyChooseSection/>
+			<Separator/>
+			<StatsSection/>
+			<Separator/>
+			<CTASection/>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import {
 	Code, Rocket, Layers, Smartphone, Globe, Database,
 	Zap, Shield, TrendingUp, CheckCircle2, ArrowRight,
@@ -17,6 +17,9 @@ import SpotlightCard from '@/components/SpotlightCard';
 import Pill from "@/components/Pill";
 import {CTASection} from "@/components/CTASection";
 import {FaGithub} from "react-icons/fa6";
+import Badge from "@/components/hero/Badge";
+import {HeroTitle} from "@/components/hero/HeroTitle";
+import {GradientText} from "@/components/hero/GradientText";
 
 // Animated Section Container
 const SectionContainer = ({ children, className = "" }) => {
@@ -37,41 +40,20 @@ const SectionContainer = ({ children, className = "" }) => {
 // Hero Section
 const WorkHero = () => {
 	return (
-		<section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+		<section className="scale-90 relative min-h-[70vh] flex items-center justify-center overflow-hidden">
 			<div className="relative z-10 flex items-center justify-center min-h-screen px-6">
 				<div className="max-w-6xl mx-auto text-center">
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.2 }}
-						className="inline-flex items-center px-4 py-2 border border-primary/80 text-primary/80 text-sm font-medium mb-8 rounded-full"
-					>
-						<Sparkles size={16} className="mr-2" />
-						Our Work
-					</motion.div>
-
-					<motion.h1
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.4 }}
-						className="text-5xl md:text-7xl tracking-tight lg:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent"
-					>
-						Building The Future
-						<br />
-						<span className="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
-              One Project at a Time
-            </span>
-					</motion.h1>
-
-					<motion.p
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.6 }}
-						className="text-xl tracking-tight md:text-2xl text-foreground/80 max-w-4xl mx-auto mb-12 md:leading-relaxed leading-tight"
-					>
-						From enterprise solutions to open source contributions, explore the work
-						we've delivered for clients and the products we're building for the world.
-					</motion.p>
+						<Badge icon={Sparkles}>
+							Our Work
+						</Badge>
+						<HeroTitle
+							mainText="Building The Future"
+							accentText="One Project at a Time"
+						/>
+						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
+							From enterprise solutions to open source contributions, explore the work
+							we've delivered for clients and the products we're building for the world.
+						</GradientText>
 				</div>
 			</div>
 			<motion.div

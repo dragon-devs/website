@@ -1,7 +1,8 @@
 "use client"
 import {ArrowRight, Mail, MapPin, Phone} from "lucide-react";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 import React from "react";
+import {GradientText} from "@/components/hero/GradientText";
 
 export const ContactSection = () => {
   const contactInfo = [
@@ -21,9 +22,9 @@ export const ContactSection = () => {
         >
           <div>
             <span className="text-primary font-semibold text-sm tracking-wider uppercase">Get In Touch</span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mt-4 mb-6">
+            <GradientText size="4-5" className="block font-bold my-4" >
               Let's Build Something Amazing
-            </h2>
+            </GradientText>
             <p className="text-muted-foreground text-lg max-w-3xl ">
               Ready to start your project? Contact us today and let's discuss how we can help bring your vision to life.
             </p>
@@ -37,16 +38,16 @@ export const ContactSection = () => {
                 whileInView={{opacity: 1, y: 0}}
                 viewport={{once: true}}
                 transition={{delay: index * 0.1}}
-                className="relative  overflow-hidden border border-border  p-6  hover:border-primary/50 transition-all duration-700"
+                className="relative group overflow-hidden border border-border  p-6  hover:border-primary/50 transition-all duration-700"
               >
                 <div className="absolute -right-2 -bottom-8  flex items-center justify-center  ">
                   <info.icon size={140} className="text-muted-foreground opacity-10"/>
                 </div>
                 <h4 className="text-foreground font-semibold mb-2 text-2xl tracking-tight">{info.label}</h4>
                 {info.link ? (
-                  <a href={info.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <p className="text-muted-foreground group-hover:text-primary/80 transition-colors">
                     {info.value}
-                  </a>
+                  </p>
                 ) : (
                   <p className="text-muted-foreground">{info.value}</p>
                 )}

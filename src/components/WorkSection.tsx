@@ -61,7 +61,7 @@ export const WorkSection = () => {
 
         <div className="grid md:grid-cols-2 md:gap-8 gap-4">
           {projects.slice(0,2).map((project, index) => (
-           <SpotlightCard >
+           <SpotlightCard key={index}>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

@@ -69,7 +69,7 @@ export const ServicesSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {services.slice(0, 3).map((service, index) => (
-            <SpotlightCard>
+            <SpotlightCard key={index}>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

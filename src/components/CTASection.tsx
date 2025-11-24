@@ -1,9 +1,9 @@
 "use client"
+import {motion} from "motion/react";
 import {ArrowRight, Magnet, Star} from "lucide-react";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {useRouter} from "next/navigation";
-import { motion } from "motion/react";
 
 export const CTASection = () => {
   const router = useRouter();

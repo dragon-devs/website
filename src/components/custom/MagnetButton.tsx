@@ -50,9 +50,9 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
           "md:w-auto w-full rounded-full font-semibold",
           sizes[size],
           variant === "primary" &&
-          "bg-gradient-to-r from-blue-600 to-purple-600 text-foreground shadow-xl flex items-center gap-3",
+          "bg-gradient-to-r from-blue-600 to-purple-600 text-white/80 shadow-xl flex items-center gap-3",
           variant === "secondary" &&
-          "border border-white/20 text-foreground backdrop-blur-sm hover:bg-white/5 transition-all duration-300",
+          "border border-border text-foreground backdrop-blur-sm hover:bg-muted transition-all duration-300",
           className
         )}
       >
