@@ -21,6 +21,7 @@ import Badge from "@/components/hero/Badge";
 import {HeroTitle} from "@/components/hero/HeroTitle";
 import {GradientText} from "@/components/hero/GradientText";
 import {useRouter, useSearchParams} from "next/navigation";
+import MagnetButton from "@/components/custom/MagnetButton";
 
 const ICONS = {
     ShoppingCart,
@@ -135,7 +136,7 @@ const CategoryTabs = ({ activeTab, router }) => {
                     onClick={() => updateCategory(tab.id)}
                     className={`px-6 py-3 rounded-full border transition-all duration-300 flex items-center gap-2 ${
                         activeTab === tab.id
-                            ? "bg-primary text-foreground border-primary"
+                            ? "bg-primary/20 text-primary border-primary/40"
                             : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                     }`}
                 >
@@ -203,23 +204,37 @@ const ProjectCard = ({ project, index }) => {
                         )}
                     </div>
 
-                    <div className="flex gap-3 mt-auto">
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 mt-auto">
                         {project.liveUrl && (
-                            <button className="flex-1 px-4 py-2 bg-primary text-foreground rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                View Live <ExternalLink size={14} />
-                            </button>
+                            <MagnetButton
+                                label="View Live"
+                                icon={<ExternalLink size={14} />}
+                                size="sm"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
 
                         {project.githubUrl && (
-                            <button className="flex-1 px-4 py-2 border border-border rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                GitHub <FaGithub size={14} />
-                            </button>
+                            <MagnetButton
+                                label="GitHub"
+                                icon={<FaGithub size={14} />}
+                                size="sm"
+                                variant="secondary"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
 
                         {project.caseStudy && (
-                            <button className="flex-1 px-4 py-2 border border-border rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                Case Study <ArrowRight size={14} />
-                            </button>
+                            <MagnetButton
+                                label="Case Study"
+                                icon={<ArrowRight size={14} />}
+                                size="sm"
+                                variant="secondary"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
                     </div>
                 </div>
@@ -250,9 +265,6 @@ const ProjectsSection = () => {
             ? projects
             : projects.filter((p) => p.type === category);
 
-    // 🔥 Show only TWO projects
-    const visibleProjects = filteredProjects
-
     return (
         <section className="py-24 relative">
             <div className="max-w-7xl mx-auto md:px-6 px-4">
@@ -271,7 +283,7 @@ const ProjectsSection = () => {
                     </div>
                 </SectionContainer>
                 <div className="grid md:grid-cols-2 md:gap-8 gap-4">
-                    {visibleProjects.map((project, index) => (
+                    {filteredProjects.map((project, index) => (
                         <ProjectCard key={project.id} project={project} index={index} />
                     ))}
                 </div>

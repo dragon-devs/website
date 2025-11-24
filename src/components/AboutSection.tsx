@@ -95,7 +95,7 @@ export const AboutSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <MagnetButton label={"Learn More About Us"} onClick={()=> router.push("/about")} />
+          <MagnetButton label={"Learn More About Us"}  onClick={()=> router.push("/about")} />
         </motion.div>
       </div>
     </section>

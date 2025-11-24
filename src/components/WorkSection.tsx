@@ -122,7 +122,7 @@ const CategoryTabs = ({ activeTab, router }) => {
                     onClick={() => updateCategory(tab.id)}
                     className={`px-6 py-3 rounded-full border transition-all duration-300 flex items-center gap-2 ${
                         activeTab === tab.id
-                            ? "bg-primary text-foreground border-primary"
+                            ? "bg-primary/20 text-primary border-primary/40"
                             : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
                     }`}
                 >
@@ -191,23 +191,37 @@ const ProjectCard = ({ project, index }) => {
                         )}
                     </div>
 
-                    <div className="flex gap-3 mt-auto">
+                    <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 mt-auto">
                         {project.liveUrl && (
-                            <button className="flex-1 px-4 py-2 bg-primary text-foreground rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                View Live <ExternalLink size={14} />
-                            </button>
+                            <MagnetButton
+                                label="View Live"
+                                icon={<ExternalLink size={14} />}
+                                size="sm"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
 
                         {project.githubUrl && (
-                            <button className="flex-1 px-4 py-2 border border-border rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                GitHub <FaGithub size={14} />
-                            </button>
+                            <MagnetButton
+                                label="GitHub"
+                                icon={<FaGithub size={14} />}
+                                size="sm"
+                                variant="secondary"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
 
                         {project.caseStudy && (
-                            <button className="flex-1 px-4 py-2 border border-border rounded-lg flex items-center justify-center gap-2 text-sm font-medium">
-                                Case Study <ArrowRight size={14} />
-                            </button>
+                            <MagnetButton
+                                label="Case Study"
+                                icon={<ArrowRight size={14} />}
+                                size="sm"
+                                variant="secondary"
+                                magnetStrength={0}
+                                className={"flex justify-center items-center"}
+                            />
                         )}
                     </div>
                 </div>
