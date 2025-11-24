@@ -6,7 +6,7 @@
 import React, {useEffect, useState} from 'react';
 import {FolderOpen, Home, Mail, Menu, Moon, Settings, Sun, User, X} from 'lucide-react';
 import {useRouter} from 'next/navigation';
-import {motion, AnimatePresence} from 'framer-motion';
+import {motion, AnimatePresence} from 'motion/react';
 import Magnet from '@/components/Magnet';
 import {useTheme} from 'next-themes';
 

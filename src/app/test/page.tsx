@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'motion/react';
 import {
   ArrowRight, Code, Zap, Globe, Shield, Cpu, ChevronRight,
   Layers, Rocket, Users, CheckCircle2, Mail, Phone, MapPin,

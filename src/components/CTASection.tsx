@@ -1,5 +1,5 @@
 "use client"
-import {motion} from "framer-motion";
+import {motion} from "motion/react";
 import {ArrowRight, Magnet, Star} from "lucide-react";
 import React from "react";
 import MagnetButton from "@/components/custom/MagnetButton";

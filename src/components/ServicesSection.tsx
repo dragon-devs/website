@@ -1,6 +1,6 @@
 'use client'
 import {CheckCircle2, ChevronRight, Code, Cpu, Globe, Layers, Rocket, Shield} from "lucide-react";
-import {motion} from "framer-motion";
+import {motion} from "motion/react";
 import React from "react";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
