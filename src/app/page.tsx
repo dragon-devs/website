@@ -6,10 +6,12 @@ import {TestimonialsSection} from "@/components/TestimonialsSection";
 import {CTASection} from "@/components/CTASection";
 import {ContactSection} from "@/components/ContactSection";
 import {Separator} from "@/components/ui/separator";
+import DevNotice from "@/components/DevNotice";
 
 export default function Home() {
 	return (
 		<main>
+			<DevNotice/>
 			<HeroSection/>
 			<AboutSection/>
 			<Separator/>
