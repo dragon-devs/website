@@ -8,10 +8,11 @@ import { FaGithub } from "react-icons/fa6";
 
 import {
     ArrowRight, Boxes, Brain, Building2, Calendar, CheckCircle2, Code, Database,
-    ExternalLink, Heart, Layers, Lightbulb, Palette, Rocket, Shield,
+    ExternalLink, Heart, Icon, Layers, Lightbulb, Palette, Rocket, Shield,
     ShoppingCart, Target, TrendingUp, Workflow, Zap
 } from "lucide-react";
 import MagnetButton from "@/components/custom/MagnetButton";
+import Image from "next/image";
 
 
 // 🔥 Icon Mapper (string → actual component)
@@ -136,9 +137,7 @@ const CategoryTabs = ({ activeTab, router }) => {
 
 
 // 🔥 Project Card (Icons auto-converted)
-const ProjectCard = ({ project, index }) => {
-    const Icon = ICONS[project.icon] ?? Boxes;
-    const StatusIcon = ICONS[project.statusIcon] ?? CheckCircle2;
+const ProjectCard = ({ project, index }: any ) => {
 
     return (
         <SpotlightCard>
@@ -147,18 +146,19 @@ const ProjectCard = ({ project, index }) => {
                 transition={{ delay: index * 0.1 }}
                 className="relative flex flex-col h-full overflow-hidden group"
             >
-                <div className="relative h-64 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
+                <div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <Icon size={80} className="text-primary/30" />
+                        {project.image ?  <Image src={project.image} alt={project.name} width={300} height={300} className={"w-full h-full object-cover"}/> : <Boxes size={80} className="text-primary/30" />}
+
                     </div>
 
                     <div className="absolute top-4 left-4">
-                        <Pill label={project.category} icon={StatusIcon} />
+                        <Pill label={project.category} icon={CheckCircle2}/>
                     </div>
 
                     {project.status && (
                         <div className="absolute top-4 right-4">
-                            <Pill label={project.status} icon={StatusIcon} />
+                            <Pill label={project.status} icon={CheckCircle2} />
                         </div>
                     )}
                 </div>
