@@ -101,7 +101,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en" suppressHydrationWarning={true}>
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
 			<link rel="canonical" href="https://www.dragondevs.co"/>
@@ -156,20 +156,11 @@ export default function RootLayout({
 					rotation={0}
 				/>
 			</div>
-
-			<ClickSpark
-				sparkColor="#fff"
-				sparkSize={10}
-				sparkRadius={25}
-				sparkCount={20}
-				duration={500}
-			>
 				<ScrollArea className="w-screen h-screen">
 					{children}
 					<ScrollBar className="opacity-40"/>
 					<Footer/>
 				</ScrollArea>
-			</ClickSpark>
 			<BackToTopButton/>
 			<MinimalNavbar/>
 		</ThemeProvider>

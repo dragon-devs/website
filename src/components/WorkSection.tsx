@@ -1,110 +1,236 @@
-"use client"
+"use client";
 import {motion} from "motion/react";
-import {ArrowRight, Layers} from "lucide-react";
-import React from "react";
-import {useRouter} from "next/navigation";
-import MagnetButton from "@/components/custom/MagnetButton";
+import React, {useEffect, useState} from "react";
+import {useSearchParams, useRouter} from "next/navigation";
 import SpotlightCard from "@/components/SpotlightCard";
 import Pill from "@/components/Pill";
+import {FaGithub} from "react-icons/fa6";
+
+import {
+	ArrowRight, Boxes, Brain, Building2, Calendar, CheckCircle2, Code, Database,
+	ExternalLink, Heart, Icon, Layers, Lightbulb, Palette, Rocket, Shield,
+	ShoppingCart, Target, TrendingUp, Workflow, Zap
+} from "lucide-react";
+import MagnetButton from "@/components/custom/MagnetButton";
+import Image from "next/image";
+
+
+// 🔥 Icon Mapper (string → actual component)
+const ICONS = {
+	ShoppingCart,
+	Heart,
+	Workflow,
+	Brain,
+	Code,
+	Database,
+	Target,
+	Palette,
+	Rocket,
+	Shield,
+	Zap,
+	Lightbulb,
+	CheckCircle2
+};
+
 
 export const WorkSection = () => {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      category: "Web Development",
-      description: "A fully-featured online marketplace with payment integration, inventory management, and real-time analytics.",
-      image: "placeholder",
-      tags: ["Next.js", "Stripe", "PostgresSQL"]
-    },
-    {
-      title: "Healthcare Management System",
-      category: "Custom Software",
-      description: "Comprehensive patient management system with appointment scheduling, medical records, and billing.",
-      image: "placeholder",
-      tags: ["React", "Node.js", "MongoDB"]
-    },
-    {
-      title: "AI Content Generator",
-      category: "SaaS Product",
-      description: "AI-powered tool that generates marketing copy, blog posts, and social media content in seconds.",
-      image: "placeholder",
-      tags: ["OpenAI", "Python", "React"]
-    },
-    {
-      title: "Real Estate Portal",
-      category: "Web Application",
-      description: "Modern property listing platform with advanced search, virtual tours, and agent management.",
-      image: "placeholder",
-      tags: ["Next.js", "Google Maps", "AWS"]
-    }
-  ];
+	const router = useRouter();
+	const [projects, setProjects] = useState([]);
+	const [category, setCategory] = useState("all");
 
-  const router = useRouter()
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search);
+		setCategory(params.get("category") || "all");
+	}, [])
 
-  return (
-    <section id={"case-study"}  className="py-24 relative">
-      <div className="max-w-7xl mx-auto md:px-6 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className=" mb-16"
-        >
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Work</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 ">
-            Featured Projects
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-3xl ">
-            Explore our portfolio of successful projects that showcase our expertise and commitment to excellence.
-          </p>
-        </motion.div>
 
-        <div className="grid md:grid-cols-2 md:gap-8 gap-4">
-          {projects.slice(0,2).map((project, index) => (
-           <SpotlightCard key={index}>
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="b  overflow-hidden  transition-all group"
-            >
-              <div className=" h-64 flex items-center justify-center border-b border-border">
-                <div className="text-center text-muted-foreground">
-                  <Layers size={48} className="mx-auto mb-3 opacity-50"/>
-                  <p className="text-sm">Project Screenshot Placeholder</p>
-                </div>
-              </div>
-              <div className="p-8">
-                <span className="text-primary text-sm font-semibold">{project.category}</span>
-                <h3 className="text-2xl font-bold text-foreground mt-2 mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, idx) => (
-                    <Pill key={idx} label={tag} />
-                  ))}
-                </div>
-                <button className="text-primary font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                  View Case Study <ArrowRight size={16}/>
-                </button>
-              </div>
-            </motion.div>
-           </SpotlightCard>
+	// 🔥 Fetch from JSON file
+	useEffect(() => {
+		fetch("/data/projects.json")
+			.then((res) => res.json())
+			.then((data) => setProjects(data.projects || []));
+	}, []);
 
-          ))}
-        </div>
+	// 🔥 Filtering
+	const filteredProjects =
+		category === "all"
+			? projects
+			: projects.filter((p) => p.type === category);
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <MagnetButton label={"View All Projects"} variant={"secondary"}   onClick={()=> router.push("/case-study")} />
+	// 🔥 Show only TWO projects
+	const visibleProjects = filteredProjects.slice(0, 2);
+	return (
+		<section className="py-24 relative">
+			<div className="max-w-7xl mx-auto md:px-6 px-4">
+				<motion.div
+					initial={{opacity: 0, y: 20}}
+					whileInView={{opacity: 1, y: 0}}
+					viewport={{once: true}}
+					className="mb-16 flex flex-col items-center justify-center text-center"
+				>
+            <span className="text-primary font-semibold text-sm tracking-widest uppercase">
+                Our Work
+            </span>
 
-        </motion.div>
-      </div>
-    </section>
-  );
+					<h2 className="mt-4 mb-6 text-4xl md:text-5xl font-bold text-foreground">
+						Featured Projects
+					</h2>
+
+					<p className="max-w-3xl text-lg text-muted-foreground">
+						Explore our portfolio of projects that highlight our expertise, creativity, and dedication to delivering
+						outstanding results for every client.
+					</p>
+				</motion.div>
+
+				<div className="text-center mb-16">
+					<CategoryTabs activeTab={category} router={router}/>
+				</div>
+
+				<div className="grid md:grid-cols-2 md:gap-8 gap-4">
+					{visibleProjects.map((project, index) => (
+						<ProjectCard key={project.id} project={project} index={index}/>
+					))}
+				</div>
+
+				{/* Centered MagnetButton */}
+				<div className="mt-12 flex justify-center">
+					<MagnetButton
+						label="View All Projects"
+						onClick={() => router.push(`/case-study?category=${category}`)}
+					/>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+
+// 🔥 Category Tabs — Updates URL Search Params
+const CategoryTabs = ({activeTab, router}) => {
+	const tabs = [
+		{id: "all", label: "All Work", icon: Boxes},
+		{id: "client", label: "Client Projects", icon: Building2},
+		{id: "products", label: "Our Products", icon: Rocket},
+		{id: "opensource", label: "Open Source", icon: Heart}
+	];
+
+	const updateCategory = (cat) => {
+		router.push(`?category=${cat}`, {scroll: false});
+	};
+
+	return (
+		<div className="flex flex-wrap justify-center gap-4 mb-16">
+			{tabs.map((tab) => (
+				<button
+					key={tab.id}
+					onClick={() => updateCategory(tab.id)}
+					className={`px-6 py-3 rounded-full border transition-all duration-300 flex items-center gap-2 ${
+						activeTab === tab.id
+							? "bg-primary/20 text-primary border-primary/40"
+							: "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+					}`}
+				>
+					<tab.icon size={18}/>
+					<span className="font-medium">{tab.label}</span>
+				</button>
+			))}
+		</div>
+	);
+};
+
+
+// 🔥 Project Card (Icons auto-converted)
+const ProjectCard = ({project, index}: any) => {
+
+	return (
+		<SpotlightCard>
+			<motion.div
+				whileInView={{opacity: 1, y: 0}}
+				transition={{delay: index * 0.1}}
+				className="relative flex flex-col h-full overflow-hidden group"
+			>
+				<div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
+					<div className="absolute inset-0 flex items-center justify-center">
+						{project.image ? <Image src={project.image} alt={project.name} width={300} height={300}
+						                        className={"w-full h-full object-cover"}/> :
+							<Boxes size={80} className="text-primary/30"/>}
+
+					</div>
+
+					<div className="absolute top-4 left-4">
+						<Pill label={project.category} icon={CheckCircle2}/>
+					</div>
+
+					{project.status && (
+						<div className="absolute top-4 right-4">
+							<Pill label={project.status} icon={CheckCircle2}/>
+						</div>
+					)}
+				</div>
+
+				<div className="p-6 flex flex-col flex-grow">
+					<h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+						{project.title}
+					</h3>
+
+					<p className="text-muted-foreground mb-4">{project.description}</p>
+
+					<div className="flex flex-wrap gap-2 mb-4">
+						{project.technologies.map((tech, i) => (
+							<Pill key={i} label={tech}/>
+						))}
+					</div>
+
+					<div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+						{project.year && (
+							<span className="flex items-center gap-1">
+                <Calendar size={14}/>
+								{project.year}
+              </span>
+						)}
+						{project.metrics && (
+							<span className="flex items-center gap-1">
+                <TrendingUp size={14}/>
+								{project.metrics}
+              </span>
+						)}
+					</div>
+
+					<div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 mt-auto">
+						{project.liveUrl && (
+							<MagnetButton
+								label="View Live"
+								icon={<ExternalLink size={14}/>}
+								size="sm"
+								magnetStrength={0}
+								className={"flex justify-center items-center"}
+							/>
+						)}
+
+						{project.githubUrl && (
+							<MagnetButton
+								label="GitHub"
+								icon={<FaGithub size={14}/>}
+								size="sm"
+								variant="secondary"
+								magnetStrength={0}
+								className={"flex justify-center items-center"}
+							/>
+						)}
+
+						{project.caseStudy && (
+							<MagnetButton
+								label="Case Study"
+								icon={<ArrowRight size={14}/>}
+								size="sm"
+								variant="secondary"
+								magnetStrength={0}
+								className={"flex justify-center items-center"}
+							/>
+						)}
+					</div>
+				</div>
+			</motion.div>
+		</SpotlightCard>
+	);
 };

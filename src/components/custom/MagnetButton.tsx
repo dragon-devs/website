@@ -47,7 +47,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
         onClick={onClick}
         disabled={disabled}
         className={cn(
-          "md:w-auto w-full rounded-full font-semibold",
+          " w-full rounded-full font-semibold",
           sizes[size],
           variant === "primary" &&
           "bg-gradient-to-r from-blue-600 to-purple-600 text-white/80 shadow-xl flex items-center gap-3",
