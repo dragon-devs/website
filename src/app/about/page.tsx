@@ -1,25 +1,31 @@
 'use client';
 
-import React, {useState} from 'react';
+import React from 'react';
 import {motion, useScroll, useTransform} from 'motion/react';
-import Image from 'next/image';
 import {
-	Target, Heart, Users, Zap, Shield, TrendingUp, Award,
-	Lightbulb, Code, Rocket, Globe, CheckCircle2, ArrowRight,
-	Sparkles, Clock, ThumbsUp, MessageSquare, Workflow,
-	Brain, Palette, Database, Settings, Coffee, Star
+	Award,
+	CheckCircle2,
+	Clock,
+	Coffee,
+	Globe,
+	Heart,
+	Lightbulb,
+	Rocket,
+	Shield,
+	Sparkles,
+	Star,
+	Target,
+	ThumbsUp,
+	TrendingUp,
+	Users,
+	Zap
 } from 'lucide-react';
-import {Footer} from "@/components/Footer";
 import SpotlightCard from "@/components/SpotlightCard";
-import MagnetButton from "@/components/custom/MagnetButton";
-import {useRouter} from "next/navigation";
 import {CTASection} from "@/components/CTASection";
 import {Separator} from "@/components/ui/separator";
-import CountUp from "@/components/CountUp";
 import Badge from "@/components/hero/Badge";
 import {HeroTitle} from "@/components/hero/HeroTitle";
 import {GradientText} from "@/components/hero/GradientText";
-import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 
 // Animated Section Container
 const SectionContainer = ({children, className = ""}) => {

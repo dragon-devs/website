@@ -7,6 +7,8 @@ import {CTASection} from "@/components/CTASection";
 import {ContactSection} from "@/components/ContactSection";
 import {Separator} from "@/components/ui/separator";
 import DevNotice from "@/components/DevNotice";
+import Loading from "@/app/loading";
+import React, {Suspense} from "react";
 
 export default function Home() {
 	return (
@@ -17,7 +19,9 @@ export default function Home() {
 			<Separator/>
 			<ServicesSection/>
 			<Separator/>
-			<WorkSection/>
+			<Suspense fallback={<Loading/>}>
+				<WorkSection/>
+			</Suspense>
 			<Separator/>
 			<TestimonialsSection/>
 			<Separator/>

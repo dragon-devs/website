@@ -1,16 +1,31 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import React, {Suspense, useState} from 'react';
 import {motion} from 'motion/react';
 import {
-	Code, Rocket, Layers, Smartphone, Globe, Database,
-	Zap, Shield, TrendingUp, CheckCircle2, ArrowRight,
-	Sparkles, Users, Settings, Palette, Search, BarChart,
-	Lock, Cloud, Cpu, Package, MessagesSquare, Workflow,
-	Brain, Target, Clock, Award, ThumbsUp, Star,
-	FileCode, Layout, ShoppingCart, Boxes, ExternalLink,
-	Github, Heart, Building2, Lightbulb,
-	LineChart, Calendar, Tag, ArrowUpRight
+	ArrowRight,
+	Boxes,
+	Brain,
+	Building2,
+	Calendar,
+	CheckCircle2,
+	Clock,
+	Code,
+	Database,
+	ExternalLink,
+	Heart,
+	Lightbulb,
+	Palette,
+	Rocket,
+	Shield,
+	ShoppingCart,
+	Sparkles,
+	Star,
+	Target,
+	TrendingUp,
+	Users,
+	Workflow,
+	Zap
 } from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
 import SpotlightCard from '@/components/SpotlightCard';
@@ -22,6 +37,9 @@ import {HeroTitle} from "@/components/hero/HeroTitle";
 import {GradientText} from "@/components/hero/GradientText";
 import {useRouter, useSearchParams} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
+import projectsData from "@/data/projects.json";
+import Spinner from "@/components/Spinner";
+import Loading from "@/app/loading";
 
 const ICONS = {
 	ShoppingCart,
@@ -246,22 +264,11 @@ const ProjectCard = ({project, index}) => {
 // Projects Section
 const ProjectsSection = () => {
 	const router = useRouter();
-	const [projects, setProjects] = useState([]);
-	const [category, setCategory] = useState("all");
+	const searchParams = useSearchParams();
+	const category = searchParams?.get("category") ?? "all";
 
-	useEffect(() => {
-		const params = new URLSearchParams(window.location.search);
-		setCategory(params.get("category") || "all");
-	}, []);
+	const [projects] = useState(projectsData.projects || []);
 
-	// 🔥 Fetch from JSON file
-	useEffect(() => {
-		fetch("/data/projects.json")
-			.then((res) => res.json())
-			.then((data) => setProjects(data.projects || []));
-	}, []);
-
-	// 🔥 Filtering
 	const filteredProjects =
 		category === "all"
 			? projects
@@ -439,7 +446,9 @@ const WorkPage = () => {
 			<Separator/>
 			<StatsOverviewSection/>
 			<Separator/>
-			<ProjectsSection/>
+			<Suspense fallback={<Loading/>}>
+				<ProjectsSection/>
+			</Suspense>
 			<Separator/>
 			<TestimonialsSection/>
 			<Separator/>

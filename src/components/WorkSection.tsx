@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import MagnetButton from "@/components/custom/MagnetButton";
 import Image from "next/image";
+import projectsData from "@/data/projects.json";
 
 
 // 🔥 Icon Mapper (string → actual component)
@@ -35,30 +36,18 @@ const ICONS = {
 
 export const WorkSection = () => {
 	const router = useRouter();
-	const [projects, setProjects] = useState([]);
-	const [category, setCategory] = useState("all");
+	const searchParams = useSearchParams();
+	const category = searchParams?.get("category") ?? "all";
 
-	useEffect(() => {
-		const params = new URLSearchParams(window.location.search);
-		setCategory(params.get("category") || "all");
-	}, [])
+	const [projects, setProjects] = useState(projectsData.projects || []);
 
-
-	// 🔥 Fetch from JSON file
-	useEffect(() => {
-		fetch("/data/projects.json")
-			.then((res) => res.json())
-			.then((data) => setProjects(data.projects || []));
-	}, []);
-
-	// 🔥 Filtering
 	const filteredProjects =
 		category === "all"
 			? projects
 			: projects.filter((p) => p.type === category);
 
-	// 🔥 Show only TWO projects
 	const visibleProjects = filteredProjects.slice(0, 2);
+
 	return (
 		<section className="py-24 relative">
 			<div className="max-w-7xl mx-auto md:px-6 px-4">
@@ -151,8 +140,9 @@ const ProjectCard = ({project, index}: any) => {
 			>
 				<div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
 					<div className="absolute inset-0 flex items-center justify-center">
-						{project.image ? <Image src={project.image} alt={project.name} width={300} height={300}
-						                        className={"w-full h-full object-cover"}/> :
+						{project.image ?
+							<Image src={project.image} alt={project.name || "dragondevs work 01"} width={300} height={300}
+							       className={"w-full h-full object-cover"}/> :
 							<Boxes size={80} className="text-primary/30"/>}
 
 					</div>
