@@ -30,14 +30,16 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 	}[align];
 
 	return (
-		<h1 className={`tracking-tight font-bold mb-6 ${alignClass} ${className}`}>
+		<div className={`tracking-tight font-bold mb-6 ${alignClass} ${className}`}>
 			<GradientText
 				variant="primary"
 				size="3xl"
 				animate
 				animationDelay={animationDelay}
 			>
-				{mainText}
+				<h1>
+					{mainText}
+				</h1>
 				<br />
 				<span className="inline-block mt-2">
 					<GradientText variant="accent" size="3xl">
@@ -45,6 +47,6 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 					</GradientText>
 				</span>
 			</GradientText>
-		</h1>
+		</div>
 	);
 };

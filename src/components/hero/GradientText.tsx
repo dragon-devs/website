@@ -87,13 +87,13 @@ export const GradientText: React.FC<GradientTextProps> = ({
 
 	if (animate) {
 		return (
-			<motion.div
+			<motion.p
 				initial={{opacity: 0, y: 30}}
 				animate={{opacity: 1, y: 0}}
 				transition={{delay: animationDelay}}
 			>
 				{content}
-			</motion.div>
+			</motion.p>
 		);
 	}
 
