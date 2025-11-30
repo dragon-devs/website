@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 	description:
 		"dragondevs builds SEO-friendly websites, custom software, and full-stack web apps. We help businesses launch digital products faster with clean code.",
 
-	metadataBase: new URL("https://www.dragondevs.co"),
+	metadataBase: new URL("https://dragondevs.co"),
 
 	keywords: [
 		"dragondevs",
@@ -67,13 +67,13 @@ export const metadata: Metadata = {
 		title: "dragondevs | From idea to deployment",
 		description:
 			"dragondevs creates high-performance websites and web apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
-		url: "https://www.dragondevs.co",
+		url: "https://dragondevs.co",
 		siteName: "dragondevs",
 		type: "website",
 		locale: "en_US",
 		images: [
 			{
-				url: "https://www.dragondevs.co/og-image.jpg",
+				url: "https://dragondevs.co/og-image.jpg",
 				width: 1200,
 				height: 630,
 				alt: "dragondevs – From idea to deployment | Product Builders"
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
 		description:
 			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
 		creator: "@dragondevs",
-		images: ["https://www.dragondevs.co/og-image.jpg"]
+		images: ["https://dragondevs.co/og-image.jpg"]
 	},
 
 	icons: {
@@ -104,7 +104,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
-			<link rel="canonical" href="https://www.dragondevs.co"/>
+			<link rel="canonical" href="https://dragondevs.co"/>
 
 			{/* ✅ Google Tag Manager */}
 			<Script id="gtm-init" strategy="afterInteractive">
