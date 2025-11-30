@@ -6,7 +6,7 @@
       "category": "E-commerce",
       "title": "ShopFlow Platform",
       "description": "A complete e-commerce solution for a retail chain with 10K+ products, real-time inventory management, and seamless payment integration. Reduced checkout time by 40%.",
-      "technologies": ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+      "technologies": ["Next.js", "Node.js", "PostgresSQL", "Stripe"],
       "icon": "ShoppingCart",
       "image": "/about.jpeg",
       "year": "2024",
@@ -38,7 +38,7 @@
       "category": "SaaS Product",
       "title": "CodeSnap AI",
       "description": "AI-powered code snippet manager that helps developers organize, search, and share code snippets across teams. Smart tagging and context-aware search.",
-      "technologies": ["Next.js", "OpenAI", "PostgreSQL", "Vercel"],
+      "technologies": ["Next.js", "OpenAI", "PostgresSQL", "Vercel"],
       "icon": "Code",
       "image": "/about.jpeg",
 

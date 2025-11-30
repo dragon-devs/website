@@ -6,14 +6,12 @@ import {TestimonialsSection} from "@/components/TestimonialsSection";
 import {CTASection} from "@/components/CTASection";
 import {ContactSection} from "@/components/ContactSection";
 import {Separator} from "@/components/ui/separator";
-import DevNotice from "@/components/DevNotice";
 import Loading from "@/app/loading";
 import React, {Suspense} from "react";
 
 export default function Home() {
 	return (
 		<main>
-			<DevNotice/>
 			<HeroSection/>
 			<AboutSection/>
 			<Separator/>
