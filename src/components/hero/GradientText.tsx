@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useMemo} from 'react';
+import React, {JSX, useMemo} from 'react';
 import {useTheme} from 'next-themes';
 import {motion} from 'motion/react';
 
@@ -18,6 +18,7 @@ interface GradientTextProps {
 	/** Optional: Animation props */
 	animate?: boolean;
 	animationDelay?: number;
+	tag?: string;
 	/** Optional: Text size */
 	size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4-5';
 }
@@ -55,6 +56,7 @@ export const GradientText: React.FC<GradientTextProps> = ({
 	                                                          className = '',
 	                                                          animate = false,
 	                                                          animationDelay = 0,
+	                                                          tag = "span",
 	                                                          size = 'xl'
                                                           }) => {
 	const {theme, systemTheme} = useTheme();
@@ -79,21 +81,27 @@ export const GradientText: React.FC<GradientTextProps> = ({
 		return null;
 	}
 
+	const Tag = tag as any;
+
+	// @ts-ignore
 	const content = (
-		<span className={`bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent ${sizeClasses[size]} ${className}`}>
+		<Tag
+			className={`bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent ${sizeClasses[size]} ${className}`}
+		>
 			{children}
-		</span>
+		</Tag>
 	);
+
 
 	if (animate) {
 		return (
-			<motion.p
+			<motion.div
 				initial={{opacity: 0, y: 30}}
 				animate={{opacity: 1, y: 0}}
 				transition={{delay: animationDelay}}
 			>
 				{content}
-			</motion.p>
+			</motion.div>
 		);
 	}
 

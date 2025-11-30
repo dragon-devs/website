@@ -36,11 +36,10 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 				size="3xl"
 				animate
 				animationDelay={animationDelay}
+				tag={"h1"}
 			>
-				<h1>
-					{mainText}
-				</h1>
-				<br />
+				{mainText}
+				<br/>
 				<span className="inline-block mt-2">
 					<GradientText variant="accent" size="3xl">
 						{accentText}

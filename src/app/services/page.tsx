@@ -47,7 +47,7 @@ const ServicesHero = () => {
 						mainText="Transforming Ideas"
 						accentText="Into Digital Reality"
 					/>
-					<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
+					<GradientText variant="subtle" size="xl" tag={"p"} animate animationDelay={0.6}>
 						From concept to deployment, we deliver custom software solutions that drive growth,
 						streamline operations, and give you a competitive edge in the digital landscape.
 					</GradientText>

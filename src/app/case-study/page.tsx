@@ -46,7 +46,7 @@ const WorkHero = () => {
                         mainText="Building The Future"
                         accentText="One Project at a Time"
                     />
-                    <GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
+                    <GradientText variant="subtle" size="xl" tag={"p"} animate animationDelay={0.6}>
                         From enterprise solutions to open source contributions, explore the work
                         we've delivered for clients and the products we're building for the world.
                     </GradientText>

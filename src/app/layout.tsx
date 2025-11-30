@@ -12,6 +12,7 @@ import BackToTopButton from "@/components/BackToTop";
 import AnimatedCursor from "@/components/AnimatedCursor";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 import React from "react";
+import DevNotice from "@/components/DevNotice";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -157,6 +158,7 @@ export default function RootLayout({
 				/>
 			</div>
 				<ScrollArea className="w-screen h-screen">
+					<DevNotice />
 					{children}
 					<ScrollBar className="opacity-40"/>
 					<Footer/>
