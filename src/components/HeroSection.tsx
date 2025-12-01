@@ -91,9 +91,9 @@ const HeroSection = () => {
 							mainText="From Idea to"
 							accentText="Deployment"
 						/>
-						<GradientText variant="subtle" size="xl" tag={"p"} animate animationDelay={0.6}>
-							From idea to deployment We craft intelligent software solutions that transform ideas into reality.
-							From AI-powered applications to scalable enterprise systems, we build the future.
+						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
+								From idea to deployment We craft intelligent software solutions that transform ideas into reality.
+								From AI-powered applications to scalable enterprise systems, we build the future.
 						</GradientText>
 					</div>
 					{/* CTA Buttons */}

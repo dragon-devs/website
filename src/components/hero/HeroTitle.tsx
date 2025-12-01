@@ -39,13 +39,12 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 				tag={"h1"}
 			>
 				{mainText}
-				<br/>
-				<span className="inline-block mt-2">
-					<GradientText variant="accent" size="3xl">
+			</GradientText>
+			<span className="inline-block mt-2">
+					<GradientText tag={"h1"} variant="accent" size="3xl">
 						{accentText}
 					</GradientText>
 				</span>
-			</GradientText>
 		</div>
 	);
 };

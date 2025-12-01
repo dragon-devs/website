@@ -60,7 +60,7 @@ const AboutHero = () => {
 						mainText="Empowering Innovation"
 						accentText="Through Technology"
 					/>
-					<GradientText variant="subtle" size="xl" tag={"p"} animate animationDelay={0.6}>
+					<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 						We're more than just developers. We're architects of digital transformation,
 						building the future one innovative solution at a time.
 					</GradientText>
