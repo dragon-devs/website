@@ -1,23 +1,23 @@
 'use client';
 
-import React, {useEffect, useState, useMemo} from 'react';
-import {motion, useScroll, useTransform} from 'motion/react';
-import {Sparkles, Zap} from 'lucide-react';
-import {useTheme} from 'next-themes';
+import React, { useEffect, useState, useMemo } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { Sparkles, Zap } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import CountUp from './CountUp';
 import MagnetButton from "@/components/custom/MagnetButton";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import {HeroTitle} from "@/components/hero/HeroTitle";
-import {GradientText} from '@/components/hero/GradientText';
-import {SpotlightLogo} from "@/components/hero/SpotLightLog";
+import { HeroTitle } from "@/components/hero/HeroTitle";
+import { GradientText } from '@/components/hero/GradientText';
+import { SpotlightLogo } from "@/components/hero/SpotLightLog";
 import Badge from "@/components/hero/Badge";
 
 const HeroSection = () => {
-	const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
-	const {scrollY} = useScroll();
+	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+	const { scrollY } = useScroll();
 	const y = useTransform(scrollY, [0, 500], [0, 150]);
-	const {theme, systemTheme} = useTheme();
+	const { theme, systemTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
 	const router = useRouter();
@@ -32,7 +32,7 @@ const HeroSection = () => {
 
 	useEffect(() => {
 		const handleMouseMove = (e) => {
-			setMousePosition({x: e.clientX, y: e.clientY});
+			setMousePosition({ x: e.clientX, y: e.clientY });
 		};
 		window.addEventListener('mousemove', handleMouseMove);
 		return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -68,7 +68,7 @@ const HeroSection = () => {
 					x: mousePosition.x * 0.02,
 					y: mousePosition.y * 0.02,
 				}}
-				style={{left: '10%', top: '20%'}}
+				style={{ left: '10%', top: '20%' }}
 			/>
 			<motion.div
 				className={`absolute w-80 h-80 rounded-full bg-gradient-to-r ${gradientColors.orb2} blur-3xl opacity-30`}
@@ -76,7 +76,7 @@ const HeroSection = () => {
 					x: mousePosition.x * -0.015,
 					y: mousePosition.y * -0.015,
 				}}
-				style={{right: '15%', bottom: '20%'}}
+				style={{ right: '15%', bottom: '20%' }}
 			/>
 
 			{/* Main Content */}
@@ -92,39 +92,39 @@ const HeroSection = () => {
 							accentText="Deployment"
 						/>
 						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
-								From idea to deployment We craft intelligent software solutions that transform ideas into reality.
-								From AI-powered applications to scalable enterprise systems, we build the future.
+							From idea to deployment We craft intelligent software solutions that transform ideas into reality.
+							From AI-powered applications to scalable enterprise systems, we build the future.
 						</GradientText>
 					</div>
 					{/* CTA Buttons */}
 					<motion.div
-						initial={{opacity: 0, y: 30}}
-						animate={{opacity: 1, y: 0}}
-						transition={{delay: 0.8}}
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.8 }}
 						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
-						<MagnetButton label="Start Your Project" onClick={() => router.push("/#contact")} size={'lg'}/>
+						<MagnetButton label="Start Your Project" onClick={() => router.push("/#contact")} size={'lg'} />
 						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-study")}
-						              size={'lg'}/>
+							size={'lg'} />
 					</motion.div>
 
 					{/* Stats */}
 					<motion.div
-						initial={{opacity: 0, y: 30}}
-						animate={{opacity: 1, y: 0}}
-						transition={{delay: 1}}
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 1 }}
 						className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto"
 					>
 						{[
-							{number: 28, segment: "+", label: "Projects Delivered"},
-							{number: 19, segment: "+", label: "Happy Clients"},
-							{number: 98, segment: "%", label: "Success Rate"}
+							{ number: 28, segment: "+", label: "Projects Delivered" },
+							{ number: 19, segment: "+", label: "Happy Clients" },
+							{ number: 98, segment: "%", label: "Success Rate" }
 						].map((stat, index) => (
 							<motion.div
 								key={index}
-								initial={{opacity: 0, scale: 0.8}}
-								animate={{opacity: 1, scale: 1}}
-								transition={{delay: 1.2 + index * 0.1}}
+								initial={{ opacity: 0, scale: 0.8 }}
+								animate={{ opacity: 1, scale: 1 }}
+								transition={{ delay: 1.2 + index * 0.1 }}
 								className="text-center"
 							>
 								<div className={`text-4xl md:text-5xl font-bold ${gradientColors.stats} mb-2`}>
@@ -145,7 +145,7 @@ const HeroSection = () => {
 			</div>
 
 			{/* Scroll Indicator */}
-			<motion.div
+			{/* <motion.div
 				initial={{opacity: 0}}
 				animate={{opacity: 1}}
 				transition={{delay: 1.5}}
@@ -162,13 +162,13 @@ const HeroSection = () => {
 						className={`w-1 h-3 ${isDark ? 'bg-white/50' : 'bg-black/50'} rounded-full mt-2`}
 					/>
 				</motion.div>
-			</motion.div>
+			</motion.div> */}
 
 			{/* Code-like decoration */}
 			<motion.div
-				initial={{opacity: 0}}
-				animate={{opacity: 0.1}}
-				transition={{delay: 2}}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 0.1 }}
+				transition={{ delay: 2 }}
 				className={`absolute top-1/4 left-8 ${isDark ? 'text-green-400' : 'text-green-600'} font-mono text-sm hidden lg:block`}
 			>
 				<div>{'{'}</div>
@@ -179,9 +179,9 @@ const HeroSection = () => {
 			</motion.div>
 
 			<motion.div
-				initial={{opacity: 0}}
-				animate={{opacity: 0.1}}
-				transition={{delay: 2.2}}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 0.1 }}
+				transition={{ delay: 2.2 }}
 				className={`absolute bottom-1/4 right-8 ${isDark ? 'text-blue-400' : 'text-blue-600'} font-mono text-sm hidden lg:block`}
 			>
 				<div>const future = () =&gt; {'{'}</div>

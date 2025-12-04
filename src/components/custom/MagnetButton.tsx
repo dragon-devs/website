@@ -10,7 +10,8 @@ interface MagnetButtonProps {
   label: string;
   onClick?: () => void;
   icon?: React.ReactNode;
-  className?: string;
+  className?: string
+  wrapperClassName?: string;
   magnetStrength?: number;
   disabled?: boolean;
   variant?: "primary" | "secondary";
@@ -22,6 +23,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
                                                      onClick,
                                                      icon,
                                                      className,
+                                                     wrapperClassName,
                                                      magnetStrength = 10,
                                                      disabled = false,
                                                      variant = "primary",
@@ -35,7 +37,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
   };
 
   return (
-    <Magnet padding={25} disabled={disabled} magnetStrength={magnetStrength}>
+    <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={magnetStrength}>
       <motion.button
         whileHover={{
           scale: 1.02,
@@ -47,7 +49,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
         onClick={onClick}
         disabled={disabled}
         className={cn(
-          " w-full rounded-full font-semibold",
+          "w-full rounded-full font-semibold",
           sizes[size],
           variant === "primary" &&
           "bg-gradient-to-r from-blue-600 to-purple-600 text-white/80 shadow-xl flex items-center gap-3",
@@ -58,10 +60,10 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
       >
         <Magnet padding={25} disabled={disabled} magnetStrength={8}>
           { icon || variant === "primary" ?  (
-            <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-2 w-full">
               <p>{label}</p>
               <motion.div
-                animate={{ x: [0, 5, 0] }}
+                animate={icon ? {} : { x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
                 {icon || <ArrowRight size={size === "sm" ? 16 : size === "md" ? 20 : 24} />}

@@ -66,7 +66,7 @@ const Magnet: React.FC<MagnetProps> = ({
   return (
     <div
       ref={magnetRef}
-      className={wrapperClassName}
+      className={`${wrapperClassName}`}
       style={{ position: 'relative', display: 'inline-block' }}
       {...props}
     >

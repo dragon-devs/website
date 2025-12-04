@@ -36,66 +36,69 @@ export const ProjectCard = ({project, index}: any) => {
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                        {project.title}
-                    </h3>
+	                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+		                {project.title}
+	                </h3>
 
-                    <p className="text-muted-foreground mb-4">{project.description}</p>
+	                <p className="text-muted-foreground mb-4">{project.description}</p>
 
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.map((tech:any, i:any) => (
-                            <Pill key={i} label={tech}/>
-                        ))}
-                    </div>
+	                <div className="flex flex-wrap gap-2 mb-4">
+		                {project.technologies.map((tech: any, i: any) => (
+			                <Pill key={i} label={tech}/>
+		                ))}
+	                </div>
 
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                        {project.year && (
-                            <span className="flex items-center gap-1">
-                <Calendar size={14}/>
-                                {project.year}
-              </span>
-                        )}
-                        {project.metrics && (
-                            <span className="flex items-center gap-1">
-                <TrendingUp size={14}/>
-                                {project.metrics}
-              </span>
-                        )}
-                    </div>
+	                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+		                {project.year && (
+			                <span className="flex items-center gap-1">
+				                <Calendar size={14}/>
+								                {project.year}
+				              </span>
+		                )}
+		                {project.metrics && (
+			                <span className="flex items-center gap-1">
+				                <TrendingUp size={14}/>
+								                {project.metrics}
+				              </span>
+		                )}
+	                </div>
 
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-3 mt-auto">
-                        {project.liveUrl && (
-                            <MagnetButton
-                                label="View Live"
-                                icon={<ExternalLink size={14}/>}
-                                size="sm"
-                                magnetStrength={0}
-                                className={"flex justify-center items-center"}
-                            />
-                        )}
+	                <div className="flex items-center justify-center gap-3 w-full">
+		                {project.liveUrl && (
+			                <MagnetButton
+				                label="View Live"
+				                icon={<ExternalLink size={14}/>}
+				                size="sm"
+				                magnetStrength={0}
+				                wrapperClassName="w-full"
+				                className="flex justify-center items-center"
+			                />
+		                )}
 
-                        {project.githubUrl && (
-                            <MagnetButton
-                                label="GitHub"
-                                icon={<FaGithub size={14}/>}
-                                size="sm"
-                                variant="secondary"
-                                magnetStrength={0}
-                                className={"flex justify-center items-center"}
-                            />
-                        )}
+		                {project.githubUrl && (
+			                <MagnetButton
+				                label="GitHub"
+				                icon={<FaGithub size={14}/>}
+				                size="sm"
+				                variant="secondary"
+				                magnetStrength={0}
+				                wrapperClassName="w-full"
+				                className="flex justify-center items-center"
+			                />
+		                )}
 
-                        {project.caseStudy && (
-                            <MagnetButton
-                                label="Case Study"
-                                icon={<ArrowRight size={14}/>}
-                                size="sm"
-                                variant="secondary"
-                                magnetStrength={0}
-                                className={"flex justify-center items-center"}
-                            />
-                        )}
-                    </div>
+		                {project.caseStudy && (
+			                <MagnetButton
+				                label="Case Study"
+				                icon={<ArrowRight size={14}/>}
+				                size="sm"
+				                variant="secondary"
+				                magnetStrength={0}
+				                wrapperClassName="w-full"
+				                className="flex justify-center items-center"
+			                />
+		                )}
+	                </div>
                 </div>
             </motion.div>
         </SpotlightCard>
