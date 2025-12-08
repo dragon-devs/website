@@ -251,6 +251,7 @@ export const caseStudies: CaseStudyDetails[] = [{
 	statusIcon: "CheckCircle2",
 
 	liveUrl: "https://shopflow.example.com",
+	githubUrl: "https://shopflow.example.com",
 
 	content: [
 		{
@@ -349,9 +350,10 @@ export const caseStudies: CaseStudyDetails[] = [{
 			images: [
 				{ url: "https://picsum.photos/400/300?random=11", alt: "Conversion metrics", caption: "Conversion improvements" },
 				{ url: "https://picsum.photos/400/300?random=12", alt: "Performance metrics", caption: "Performance gains" },
+				{ url: "https://picsum.photos/400/300?random=13", alt: "Revenue growth", caption: "Revenue impact" },
 				{ url: "https://picsum.photos/400/300?random=13", alt: "Revenue growth", caption: "Revenue impact" }
 			],
-			gridCols: 3
+			gridCols: 2
 		},
 		// {
 		// 	type: "divider"

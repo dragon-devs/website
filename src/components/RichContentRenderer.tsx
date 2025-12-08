@@ -41,7 +41,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								className="text-3xl md:text-4xl font-bold mb-4 mt-12"
+								className="text-3xl md:text-4xl font-bold mb-4 mt-10"
 							>
 								{block.content}
 							</motion.h2>

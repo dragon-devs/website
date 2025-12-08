@@ -1,8 +1,8 @@
 'use client';
 
-import React, {JSX, useMemo} from 'react';
-import {useTheme} from 'next-themes';
-import {motion} from 'motion/react';
+import React, { JSX, useMemo } from 'react';
+import { useTheme } from 'next-themes';
+import { motion } from 'motion/react';
 
 interface GradientTextProps {
 	/** The text content */
@@ -49,17 +49,17 @@ const sizeClasses = {
 };
 
 export const GradientText: React.FC<GradientTextProps> = ({
-	                                                          children,
-	                                                          variant = 'primary',
-	                                                          darkGradient,
-	                                                          lightGradient,
-	                                                          className = '',
-	                                                          animate = false,
-	                                                          animationDelay = 0,
-	                                                          tag = "span",
-	                                                          size = 'xl'
-                                                          }) => {
-	const {theme, systemTheme} = useTheme();
+	children,
+	variant = 'primary',
+	darkGradient,
+	lightGradient,
+	className = '',
+	animate = false,
+	animationDelay = 0,
+	tag = "span",
+	size = 'xl'
+}) => {
+	const { theme, systemTheme } = useTheme();
 	const [mounted, setMounted] = React.useState(false);
 
 	React.useEffect(() => {
@@ -86,7 +86,7 @@ export const GradientText: React.FC<GradientTextProps> = ({
 	// @ts-ignore
 	const content = (
 		<Tag
-			className={`bg-gradient-to-r ${gradientClass} bg-clip-text text-transparent ${sizeClasses[size]} ${className}`}
+			className={`bg-gradient-to-r pb-2 ${gradientClass} bg-clip-text text-transparent ${sizeClasses[size]} ${className}`}
 		>
 			{children}
 		</Tag>
@@ -96,9 +96,9 @@ export const GradientText: React.FC<GradientTextProps> = ({
 	if (animate) {
 		return (
 			<motion.div
-				initial={{opacity: 0, y: 30}}
-				animate={{opacity: 1, y: 0}}
-				transition={{delay: animationDelay}}
+				initial={{ opacity: 0, y: 30 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: animationDelay }}
 			>
 				{content}
 			</motion.div>

@@ -58,7 +58,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
           className
         )}
       >
-        <Magnet padding={25} disabled={disabled} magnetStrength={8}>
+        <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={8}>
           { icon || variant === "primary" ?  (
             <div className="flex justify-center items-center gap-2 w-full">
               <p>{label}</p>
