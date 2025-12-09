@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import {
 	Calendar, Clock, Users, DollarSign, ExternalLink, Github,
 	CheckCircle2, ArrowRight, TrendingUp, TrendingDown, Zap,
