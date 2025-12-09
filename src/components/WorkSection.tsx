@@ -60,7 +60,7 @@ export const WorkSection = () => {
                 <div className="mt-12 flex justify-center">
                     <MagnetButton
                         label="View All Projects"
-                        onClick={() => router.push(`/case-study?category=${category}`)}
+                        onClick={() => router.push(`/case-studies?category=${category}`)}
                     />
                 </div>
             </div>

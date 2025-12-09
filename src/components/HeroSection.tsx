@@ -104,7 +104,7 @@ const HeroSection = () => {
 						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
 						<MagnetButton label="Start Your Project" onClick={() => router.push("/#contact")} size={'lg'} />
-						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-study")}
+						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-studies")}
 							size={'lg'} />
 					</motion.div>
 

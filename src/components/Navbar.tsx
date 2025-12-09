@@ -24,7 +24,7 @@ const MinimalNavbar = () => {
     const navItems = [
         { id: 'home', icon: Home, label: 'Home', href: '/' },
         { id: 'about', icon: User, label: 'About Us', href: '/about' },
-        { id: 'case-study', icon: FolderOpen, label: 'Work', href: '/case-study' },
+        { id: 'case-studies', icon: FolderOpen, label: 'Work', href: '/case-studies' },
         { id: 'services', icon: Settings, label: 'Services', href: '/services' },
         { id: 'contact', icon: Mail, label: 'Contact Us', href: '/#contact' },
     ];

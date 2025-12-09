@@ -367,9 +367,9 @@ export const caseStudies: CaseStudyDetails[] = [{
 	],
 
 	seo: {
-		title: "ShopFlow E-commerce Platform Case Study | 40% Faster Checkout",
+		title: "ShopFlow E-commerce Platform Case Study | dragondevs",
 		description: "Discover how we transformed RetailCorp's e-commerce platform, reducing checkout time by 40% and increasing conversions by 156%. Full case study with metrics and insights.",
-		keywords: ["e-commerce development", "Next.js case study", "online store optimization", "checkout optimization", "retail technology"],
+		keywords: ["e-commerce development", "Next.js case study", "online store optimization", "checkout optimization", "retail technology", "dragondevs"],
 		ogImage: "https://picsum.photos/1200/630?random=14",
 		canonical: "https://yoursite.com/case-studies/shopflow-ecommerce-platform"
 	},
