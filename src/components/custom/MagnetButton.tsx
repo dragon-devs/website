@@ -1,10 +1,10 @@
 'use client';
 
 import React from "react";
-import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import {motion} from "motion/react";
+import {ArrowRight} from "lucide-react";
 import Magnet from "@/components/Magnet";
-import { cn } from "@/lib/utils";
+import {cn} from "@/lib/utils";
 
 interface MagnetButtonProps {
   label: string;

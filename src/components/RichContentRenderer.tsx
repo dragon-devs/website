@@ -1,11 +1,6 @@
-
 import React from 'react';
-import { motion } from 'motion/react';
-import {
-	Calendar, Clock, Users, DollarSign, ExternalLink, Github,
-	CheckCircle2, ArrowRight, TrendingUp, TrendingDown, Zap,
-	ShoppingCart, Quote, Minus
-} from 'lucide-react';
+import {motion} from 'motion/react';
+import {ArrowRight, CheckCircle2, ExternalLink, Quote, ShoppingCart, TrendingDown, TrendingUp, Zap} from 'lucide-react';
 import {Separator} from "@/components/ui/separator";
 
 // Content Renderer Component
@@ -31,6 +26,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 								className="text-4xl md:text-5xl font-bold mb-6"
 							>
 								{block.content}
+
 							</motion.h1>
 						);
 
