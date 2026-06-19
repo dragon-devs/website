@@ -13,7 +13,7 @@ import {Reveal, StaggerGroup, StaggerItem} from "@/components/motion";
 const AboutHero = () => (
 	<section className="scale-90 relative min-h-[60vh] flex items-center justify-center overflow-hidden">
 		<div className="relative z-10 flex items-center justify-center min-h-[60vh] px-6">
-			<div className="max-w-4xl mx-auto text-center">
+			<div className="max-w-5xl mx-auto text-center">
 				<Badge icon={Sparkles}>About dragondevs</Badge>
 				<HeroTitle mainText="A small studio that" accentText="ships real products"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>

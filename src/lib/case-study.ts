@@ -129,21 +129,21 @@ export const caseStudies: CaseStudyDetails[] = [{
 	id: 1,
 	slug: "bizstock-pos-inventory",
 
-	title: "BizStock",
+	title: "bizstock",
 	subtitle: "An offline-first POS and inventory system for retail",
 	category: "Our Product",
 	type: "products",
 
-	heroImage: "/about.jpeg",
-	thumbnail: "/about.jpeg",
+	heroImage: "/bizstock/img1.png",
+	thumbnail: "/bizstock/img1.png",
 
-	description: "BizStock is a point-of-sale and inventory system built to keep working when the internet doesn't. Billing, stock and reports run locally and sync across devices over the local network.",
+	description: "bizstock is a point-of-sale and inventory system built to keep working when the internet doesn't. Billing, stock and reports run locally and sync across devices over the local network.",
 
 	challenge: "Most retail software assumes a reliable internet connection. For small shops with flaky connectivity, that means sales stop the moment the network drops. We wanted a system where selling never has to wait on the cloud.",
 
-	solution: "We built BizStock around an offline-first model: every checkout, stock update and report runs on the device first, then syncs with other devices over the local network. The principle is simple — sell first, manage later. It runs as a web app and as a native Android app so a shop can mix tablets, phones and desktop counters.",
+	solution: "We built bizstock around an offline-first model: every checkout, stock update and report runs on the device first, then syncs with other devices over the local network. The principle is simple — sell first, manage later. It runs as a web app and as a native Android app so a shop can mix tablets, phones and desktop counters.",
 
-	results: "Shops can keep billing and tracking stock through outages, set up additional counters on the same local network without complex configuration, and review sales reports without depending on a connection. BizStock ships on a free trial with simple tiered licensing.",
+	results: "Shops can keep billing and tracking stock through outages, set up additional counters on the same local network without complex configuration, and review sales reports without depending on a connection. bizstock ships on a free trial with simple tiered licensing.",
 
 	owner: {
 		name: "dragondevs",
@@ -154,11 +154,11 @@ export const caseStudies: CaseStudyDetails[] = [{
 	year: "2025",
 	duration: "Ongoing product",
 
-	technologies: ["Next.js", "React", "Android", "Offline-first", "LAN Sync"],
+	technologies: ["Rust", "React", "Desktop" , "Android", "Linux", "iOS", "Cross-platform", "Local Ai (AVA)", "Minimal", "Offline-first", "LAN Sync", "Frictionless", "Unified Invenotry", "POS", ],
 
 	technologiesDetails: [
 		{
-			name: "Next.js & React",
+			name: "Rust & React",
 			purpose: "Web app for management, reporting and the browser-based POS"
 		},
 		{
@@ -203,7 +203,7 @@ export const caseStudies: CaseStudyDetails[] = [{
 		},
 		{
 			type: "paragraph",
-			content: "BizStock is built offline-first. Every sale, stock change and report runs on the device the moment it happens, then syncs with the rest of the shop's devices over the local network. We summed up the model in a phrase that drives the whole product: sell first, manage later."
+			content: "bizstock is built offline-first. Every sale, stock change and report runs on the device the moment it happens, then syncs with the rest of the shop's devices over the local network. We summed up the model in a phrase that drives the whole product: sell first, manage later."
 		},
 		{
 			type: "list",
@@ -220,7 +220,7 @@ export const caseStudies: CaseStudyDetails[] = [{
 		},
 		{
 			type: "paragraph",
-			content: "BizStock runs as a web app and as a native Android app, so a shop can set up the mix of devices it already has. Adding another counter is a matter of putting it on the same local network — not provisioning cloud accounts or fighting configuration."
+			content: "bizstock runs as a web app and as a native Android app, so a shop can set up the mix of devices it already has. Adding another counter is a matter of putting it on the same local network — not provisioning cloud accounts or fighting configuration."
 		},
 		{
 			type: "h2",
@@ -228,15 +228,15 @@ export const caseStudies: CaseStudyDetails[] = [{
 		},
 		{
 			type: "paragraph",
-			content: "BizStock is live and offered on a 7-day free trial with straightforward tiered licensing. It's one of the products we build and maintain as a studio alongside our client work."
+			content: "bizstock is live and offered on a 7-day free trial with straightforward tiered licensing. It's one of the products we build and maintain as a studio alongside our client work."
 		}
 	],
 
 	seo: {
-		title: "BizStock — Offline-first POS & inventory | dragondevs case study",
-		description: "How dragondevs built BizStock, an offline-first point-of-sale and inventory system that keeps billing, stock and reports running without internet and syncs across devices over the local network.",
-		keywords: ["offline POS", "inventory management", "point of sale", "offline-first software", "retail software", "BizStock", "dragondevs"],
-		ogImage: "/about.jpeg",
+		title: "bizstock — Offline-first POS & inventory | dragondevs case study",
+		description: "How dragondevs built bizstock, an offline-first point-of-sale and inventory system that keeps billing, stock and reports running without internet and syncs across devices over the local network.",
+		keywords: ["offline POS", "inventory management", "point of sale", "offline-first software", "retail software", "bizstock", "dragondevs", "skdrh", "dragon devs", "salman khan dragondevs"],
+		ogImage: "/bizstock/img1.png",
 		canonical: "https://dragondevs.co/case-studies/bizstock-pos-inventory"
 	}
 }];
