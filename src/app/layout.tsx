@@ -5,14 +5,12 @@ import Silk from "@/components/Silk";
 import {ThemeProvider} from "next-themes";
 import ClickSpark from "@/components/ClickSpark";
 import MinimalNavbar from "@/components/Navbar";
-import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
 import AnimatedCursor from "@/components/AnimatedCursor";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 import React from "react";
-import DevNotice from "@/components/DevNotice";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -40,60 +38,71 @@ const bricolage_Grotesque = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "dragondevs | From idea to deployment",
+		default: "dragondevs — Digital product engineering studio",
 		template: "%s | dragondevs"
 	},
 	description:
-		"dragondevs builds SEO-friendly websites, custom software, and full-stack web apps. We help businesses launch digital products faster with clean code.",
+		"dragondevs is a small product engineering studio. We design and build web apps, custom software, and our own products like BizStock — from idea to deployment.",
 
 	metadataBase: new URL("https://dragondevs.co"),
+	alternates: {
+		canonical: "/"
+	},
 
 	keywords: [
 		"dragondevs",
+		"digital product engineering",
 		"custom software development",
-		"seo-friendly websites",
 		"web app development",
 		"MVP development",
-		"product development",
 		"Next.js developers",
 		"React developers",
 		"full stack development",
-		"AI web solutions",
-		"software agency",
-		"From idea to deployment",
-		"Code beyond boundaries",
-		"skdrh"
+		"BizStock",
+		"product studio"
 	],
 	openGraph: {
-		title: "dragondevs | From idea to deployment",
+		title: "dragondevs — Digital product engineering studio",
 		description:
-			"dragondevs creates high-performance websites and web apps. We turn your ideas into scalable digital products with modern design and powerful functionality.",
+			"A small studio that designs and builds web apps, custom software, and its own products. From idea to deployment.",
 		url: "https://dragondevs.co",
 		siteName: "dragondevs",
 		type: "website",
-		locale: "en_US",
-		images: [
-			{
-				url: "https://dragondevs.co/og-image.jpg",
-				width: 1200,
-				height: 630,
-				alt: "dragondevs – From idea to deployment | Product Builders"
-			}
-		]
+		locale: "en_US"
 	},
 
 	twitter: {
 		card: "summary_large_image",
-		title: "dragondevs – From idea to deployment | Product Builders",
+		title: "dragondevs — Digital product engineering studio",
 		description:
-			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
-		creator: "@dragondevs",
-		images: ["https://dragondevs.co/og-image.jpg"]
+			"A small studio that designs and builds web apps, custom software, and its own products.",
+		creator: "@dragondevs"
 	},
 
 	icons: {
 		apple: "/apple-icon.png"
 	}
+};
+
+const organizationJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "dragondevs",
+	url: "https://dragondevs.co",
+	description:
+		"A small digital product engineering studio that designs and builds web apps, custom software, and its own products.",
+	email: "info@dragondevs.co",
+	telephone: "+92-346-6955928",
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Islamabad",
+		addressCountry: "PK"
+	},
+	sameAs: [
+		"https://github.com/dragon-devs",
+		"https://www.linkedin.com/company/dragondevs/",
+		"https://x.com/dragondevs_"
+	]
 };
 
 export default function RootLayout({
@@ -105,7 +114,12 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
-			<link rel="canonical" href="https://dragondevs.co"/>
+
+			<Script
+				id="org-jsonld"
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{__html: JSON.stringify(organizationJsonLd)}}
+			/>
 
 			{/* ✅ Google Tag Manager */}
 			<Script id="gtm-init" strategy="afterInteractive">
@@ -125,7 +139,7 @@ export default function RootLayout({
 		</head>
 
 		<body
-			className={`${geistSans.variable} ${geistMono.variable} ${chakraPetch.variable} ${bricolage_Grotesque.variable} antialiased relative overflow-hidden`}
+			className={`${geistSans.variable} ${geistMono.variable} ${chakraPetch.variable} ${bricolage_Grotesque.variable} antialiased relative overflow-x-clip`}
 		>
 		{/* ✅ Google Tag Manager (noscript) */}
 		<noscript>
@@ -157,12 +171,8 @@ export default function RootLayout({
 					rotation={0}
 				/>
 			</div>
-				<ScrollArea className="w-screen h-screen">
-					<DevNotice />
-					{children}
-					<ScrollBar className="opacity-40"/>
-					<Footer/>
-				</ScrollArea>
+				{children}
+				<Footer/>
 			<BackToTopButton/>
 			<MinimalNavbar/>
 		</ThemeProvider>

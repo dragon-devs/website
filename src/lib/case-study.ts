@@ -125,262 +125,118 @@ export interface CaseStudyDetails {
 	};
 }
 
-// Example Case Study Data
 export const caseStudies: CaseStudyDetails[] = [{
 	id: 1,
-	slug: "shopflow-ecommerce-platform",
+	slug: "bizstock-pos-inventory",
 
-	title: "ShopFlow Platform",
-	subtitle: "Transforming Retail with Next-Gen E-commerce",
-	category: "E-commerce",
-	type: "client",
+	title: "BizStock",
+	subtitle: "An offline-first POS and inventory system for retail",
+	category: "Our Product",
+	type: "products",
 
-	heroImage: "https://picsum.photos/1200/600?random=1",
-	thumbnail: "https://picsum.photos/600/400?random=2",
-	gallery: [
-		"https://picsum.photos/800/600?random=3",
-		"https://picsum.photos/800/600?random=4",
-		"https://picsum.photos/800/600?random=5"
-	],
+	heroImage: "/about.jpeg",
+	thumbnail: "/about.jpeg",
 
-	description: "A complete e-commerce solution for a retail chain with 10K+ products, real-time inventory management, and seamless payment integration.",
+	description: "BizStock is a point-of-sale and inventory system built to keep working when the internet doesn't. Billing, stock and reports run locally and sync across devices over the local network.",
 
-	challenge: "The client struggled with an outdated e-commerce platform that resulted in high cart abandonment rates (68%) and poor mobile experience. Managing 10,000+ products across multiple warehouses was becoming impossible.",
+	challenge: "Most retail software assumes a reliable internet connection. For small shops with flaky connectivity, that means sales stop the moment the network drops. We wanted a system where selling never has to wait on the cloud.",
 
-	solution: "We built a modern, scalable platform using Next.js 14 with server-side rendering for optimal performance. Implemented real-time inventory sync across 5 warehouses and integrated Stripe for seamless payments with one-click checkout.",
+	solution: "We built BizStock around an offline-first model: every checkout, stock update and report runs on the device first, then syncs with other devices over the local network. The principle is simple — sell first, manage later. It runs as a web app and as a native Android app so a shop can mix tablets, phones and desktop counters.",
 
-	results: "Reduced checkout time by 40%, decreased cart abandonment to 32%, and increased mobile conversions by 156%. The platform now handles 50K+ monthly transactions with 99.9% uptime.",
+	results: "Shops can keep billing and tracking stock through outages, set up additional counters on the same local network without complex configuration, and review sales reports without depending on a connection. BizStock ships on a free trial with simple tiered licensing.",
 
-	client: {
-		name: "RetailCorp Inc.",
-		logo: "https://picsum.photos/200/200?random=6",
-		website: "https://retailcorp.example.com",
-		industry: "Retail & Consumer Goods",
-		size: "500-1000 employees"
+	owner: {
+		name: "dragondevs",
+		role: "Studio & product team",
+		website: "https://dragondevs.co"
 	},
 
-	year: "2024",
-	duration: "6 months",
-	timeline: [
-		{
-			phase: "Discovery & Planning",
-			duration: "3 weeks",
-			description: "Stakeholder interviews, user research, technical architecture planning"
-		},
-		{
-			phase: "Design & Prototyping",
-			duration: "4 weeks",
-			description: "UI/UX design, interactive prototypes, design system creation"
-		},
-		{
-			phase: "Development",
-			duration: "12 weeks",
-			description: "Frontend & backend development, API integration, testing"
-		},
-		{
-			phase: "Launch & Optimization",
-			duration: "5 weeks",
-			description: "Soft launch, user feedback, performance optimization, full rollout"
-		}
-	],
+	year: "2025",
+	duration: "Ongoing product",
 
-	budget: {
-		range: "$50,000 - $75,000",
-		type: "fixed"
-	},
-
-	team: {
-		size: "5 members",
-		roles: ["Full-stack Developer", "UI/UX Designer", "Backend Engineer", "QA Engineer", "Project Manager"]
-	},
-
-	technologies: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+	technologies: ["Next.js", "React", "Android", "Offline-first", "LAN Sync"],
 
 	technologiesDetails: [
 		{
-			name: "Next.js 14",
-			purpose: "Server-side rendering for blazing fast page loads and SEO optimization"
+			name: "Next.js & React",
+			purpose: "Web app for management, reporting and the browser-based POS"
 		},
 		{
-			name: "Node.js",
-			purpose: "Robust backend API with real-time inventory management"
+			name: "Android",
+			purpose: "Native app so counters and mobile devices work without a browser"
 		},
 		{
-			name: "PostgreSQL",
-			purpose: "Reliable database handling 10K+ products and transactions"
+			name: "Offline-first architecture",
+			purpose: "Transactions complete on-device and never block on connectivity"
 		},
 		{
-			name: "Stripe",
-			purpose: "Secure payment processing with one-click checkout"
-		}
-	],
-
-	metrics: [
-		{
-			label: "Faster Checkout",
-			value: "40%",
-			icon: "Zap"
-		},
-		{
-			label: "Cart Abandonment Reduced",
-			value: "36%",
-			icon: "TrendingDown"
-		},
-		{
-			label: "Mobile Conversions",
-			value: "+156%",
-			icon: "TrendingUp"
-		},
-		{
-			label: "Monthly Transactions",
-			value: "50K+",
-			icon: "ShoppingCart"
+			name: "Local network sync",
+			purpose: "Multiple devices stay consistent over LAN, no cloud round-trip required"
 		}
 	],
 
 	keyFeatures: [
-		"Real-time inventory synchronization across 5 warehouses",
-		"One-click checkout with saved payment methods",
-		"Advanced product filtering and search",
-		"Personalized product recommendations using AI",
-		"Multi-currency and multi-language support",
-		"Admin dashboard with analytics and reporting"
+		"Local-first billing and checkout that works without internet",
+		"Inventory tracking synced across devices over the local network",
+		"Sales reports and analytics available offline",
+		"Multi-device support across POS terminals, tablets and phones",
+		"7-day free trial with simple tiered licensing"
 	],
 
 	status: "Live",
 	statusIcon: "CheckCircle2",
 
-	liveUrl: "https://shopflow.example.com",
-	githubUrl: "https://shopflow.example.com",
+	liveUrl: "https://bizstock.net",
 
 	content: [
 		{
 			type: "h2",
-			content: "The Challenge"
+			content: "The problem"
 		},
 		{
 			type: "paragraph",
-			content: "RetailCorp came to us with a critical problem: their aging e-commerce platform was costing them millions in lost sales. With a cart abandonment rate of 68% and a mobile experience that frustrated users, they needed a complete overhaul."
-		},
-		{
-			type: "image",
-			url: "https://picsum.photos/800/400?random=7",
-			alt: "Old platform issues"
+			content: "Retail shops can't afford for sales to stop. But most point-of-sale tools route every action through the cloud, so a dropped connection means a stalled checkout, an out-of-date stock count, or a report that won't load. For shops with unreliable internet, that's a daily cost."
 		},
 		{
 			type: "h2",
-			content: "Our Approach"
+			content: "Our approach"
 		},
 		{
 			type: "paragraph",
-			content: "We started with extensive user research to understand pain points. Through interviews with 50+ customers and analysis of user behavior, we identified three critical areas:"
+			content: "BizStock is built offline-first. Every sale, stock change and report runs on the device the moment it happens, then syncs with the rest of the shop's devices over the local network. We summed up the model in a phrase that drives the whole product: sell first, manage later."
 		},
 		{
 			type: "list",
 			items: [
-				"Slow page loads killing conversions (average 8s load time)",
-				"Complicated checkout process with 7 steps",
-				"Poor mobile experience with unresponsive design"
+				"Checkout completes instantly on-device — no waiting on a server",
+				"Stock stays accurate across counters via local network sync",
+				"Reports and analytics are available even with no connection",
+				"Counters, tablets and phones can run side by side"
 			]
 		},
 		{
 			type: "h3",
-			content: "Technical Architecture"
+			content: "Built for real shops"
 		},
 		{
 			type: "paragraph",
-			content: "We designed a modern architecture leveraging Next.js 14's App Router for optimal performance. The system was built with scalability in mind, using microservices for inventory, payments, and user management."
-		},
-		{
-			type: "imageGrid",
-			images: [
-				{ url: "https://picsum.photos/600/400?random=8", alt: "System architecture", caption: "High-level architecture" },
-				{ url: "https://picsum.photos/600/400?random=9", alt: "Database schema", caption: "Database design" }
-			],
-			gridCols: 2
+			content: "BizStock runs as a web app and as a native Android app, so a shop can set up the mix of devices it already has. Adding another counter is a matter of putting it on the same local network — not provisioning cloud accounts or fighting configuration."
 		},
 		{
 			type: "h2",
-			content: "Key Features Delivered"
-		},
-		{
-			type: "h3",
-			content: "1. Lightning-Fast Performance"
+			content: "Where it is now"
 		},
 		{
 			type: "paragraph",
-			content: "Using Next.js server components and aggressive caching strategies, we reduced page load times from 8 seconds to under 1.5 seconds. Product pages now render in milliseconds using incremental static regeneration."
-		},
-		{
-			type: "h3",
-			content: "2. Streamlined Checkout"
-		},
-		{
-			type: "paragraph",
-			content: "We reduced the checkout process from 7 steps to just 3, implementing Stripe's one-click payment solution. Returning customers can complete purchases in under 30 seconds."
-		},
-		{
-			type: "image",
-			url: "https://picsum.photos/800/400?random=10",
-			alt: "New checkout flow"
-		},
-		{
-			type: "h3",
-			content: "3. Real-Time Inventory Management"
-		},
-		{
-			type: "paragraph",
-			content: "Built a custom inventory system that syncs across 5 warehouses in real-time using WebSockets. Customers always see accurate stock levels, eliminating overselling issues."
-		},
-		{
-			type: "quote",
-			content: "The new platform has transformed our business. We're seeing record sales and customer satisfaction has never been higher.",
-			author: "John Smith, CEO at RetailCorp"
-		},
-		{
-			type: "h2",
-			content: "Results & Impact"
-		},
-		{
-			type: "paragraph",
-			content: "The platform launched in Q1 2024 and exceeded all expectations. Within the first 3 months, RetailCorp saw a complete transformation of their online business."
-		},
-		{
-			type: "imageGrid",
-			images: [
-				{ url: "https://picsum.photos/400/300?random=11", alt: "Conversion metrics", caption: "Conversion improvements" },
-				{ url: "https://picsum.photos/400/300?random=12", alt: "Performance metrics", caption: "Performance gains" },
-				{ url: "https://picsum.photos/400/300?random=13", alt: "Revenue growth", caption: "Revenue impact" },
-				{ url: "https://picsum.photos/400/300?random=13", alt: "Revenue growth", caption: "Revenue impact" }
-			],
-			gridCols: 2
-		},
-		// {
-		// 	type: "divider"
-		// },
-		// {
-		// 	type: "cta",
-		// 	content: "Want similar results for your business?",
-		// 	label: "Let's Talk",
-		// 	href: "/contact"
-		// }
+			content: "BizStock is live and offered on a 7-day free trial with straightforward tiered licensing. It's one of the products we build and maintain as a studio alongside our client work."
+		}
 	],
 
 	seo: {
-		title: "ShopFlow E-commerce Platform Case Study | dragondevs",
-		description: "Discover how we transformed RetailCorp's e-commerce platform, reducing checkout time by 40% and increasing conversions by 156%. Full case study with metrics and insights.",
-		keywords: ["e-commerce development", "Next.js case study", "online store optimization", "checkout optimization", "retail technology", "dragondevs"],
-		ogImage: "https://picsum.photos/1200/630?random=14",
-		canonical: "https://yoursite.com/case-studies/shopflow-ecommerce-platform"
-	},
-
-	relatedProjects: [5, 8],
-
-	testimonial: {
-		quote: "Working with this team was incredible. They not only delivered a beautiful platform but also understood our business needs deeply. The results speak for themselves - our online revenue has doubled since launch.",
-		author: "John Smith",
-		role: "CEO",
-		avatar: "https://picsum.photos/100/100?random=15",
-		company: "RetailCorp Inc."
+		title: "BizStock — Offline-first POS & inventory | dragondevs case study",
+		description: "How dragondevs built BizStock, an offline-first point-of-sale and inventory system that keeps billing, stock and reports running without internet and syncs across devices over the local network.",
+		keywords: ["offline POS", "inventory management", "point of sale", "offline-first software", "retail software", "BizStock", "dragondevs"],
+		ogImage: "/about.jpeg",
+		canonical: "https://dragondevs.co/case-studies/bizstock-pos-inventory"
 	}
 }];

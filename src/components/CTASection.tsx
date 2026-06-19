@@ -19,11 +19,11 @@ export const CTASection = () => {
         >
           {/*<Star size={48} className="text-yellow-300 mx-auto mb-6"/>*/}
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ready to Transform Your Business?
+            Have an idea worth building?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-            Join the ranks of successful businesses that trust dragondevs with their digital transformation.
-            Let's create something extraordinary together.
+            Tell us what you're working on. We'll tell you honestly whether we're the right fit
+            and how we'd approach it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <MagnetButton label={"Start Your Project"} onClick={() => router.push("/#contact")} />

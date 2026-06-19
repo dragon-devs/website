@@ -1,16 +1,14 @@
 'use client';
 
 import {
+	Boxes,
 	Calendar,
 	CheckCircle2,
 	Clock,
-	DollarSign,
 	ExternalLink,
-	Github,
 	ShoppingCart,
 	TrendingDown,
 	TrendingUp,
-	Users,
 	Zap
 } from "lucide-react";
 import {RichContentRenderer} from "./RichContentRenderer";
@@ -71,9 +69,9 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 				<div className="grid md:grid-cols-4 md:gap-6 gap-4">
 					{[
 						{icon: Calendar, label: "Year", value: caseStudy.year},
-						{icon: Clock, label: "Duration", value: caseStudy.duration},
-						{icon: DollarSign, label: "Budget", value: caseStudy.budget?.range || "N/A"},
-						{icon: Users, label: "Client", value: caseStudy.client?.name || "N/A"}
+						{icon: Boxes, label: "Type", value: caseStudy.category},
+						{icon: Clock, label: "Stage", value: caseStudy.duration || "—"},
+						{icon: CheckCircle2, label: "Status", value: caseStudy.status}
 					].map((item, i) => (
 						<SpotlightCard key={i}>
 							<motion.div

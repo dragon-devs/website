@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { Sparkles, Zap } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import CountUp from './CountUp';
 import MagnetButton from "@/components/custom/MagnetButton";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -15,8 +14,6 @@ import Badge from "@/components/hero/Badge";
 
 const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-	const { scrollY } = useScroll();
-	const y = useTransform(scrollY, [0, 500], [0, 150]);
 	const { theme, systemTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
@@ -84,7 +81,7 @@ const HeroSection = () => {
 				<div className="max-w-7xl mx-auto text-center">
 					{/* Badge */}
 					<Badge icon={Zap}>
-						Next-Generation Software Solutions
+						Digital product engineering studio
 					</Badge>
 					<div className="max-w-4xl text-center mb-6">
 						<HeroTitle
@@ -92,8 +89,8 @@ const HeroSection = () => {
 							accentText="Deployment"
 						/>
 						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
-							From idea to deployment We craft intelligent software solutions that transform ideas into reality.
-							From AI-powered applications to scalable enterprise systems, we build the future.
+							We're a small studio that designs and builds web apps and custom software —
+							and our own products like BizStock. Tight team, direct communication, shipped work.
 						</GradientText>
 					</div>
 					{/* CTA Buttons */}
@@ -106,40 +103,6 @@ const HeroSection = () => {
 						<MagnetButton label="Start Your Project" onClick={() => router.push("/#contact")} size={'lg'} />
 						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-studies")}
 							size={'lg'} />
-					</motion.div>
-
-					{/* Stats */}
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 1 }}
-						className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto"
-					>
-						{[
-							{ number: 28, segment: "+", label: "Projects Delivered" },
-							{ number: 19, segment: "+", label: "Happy Clients" },
-							{ number: 98, segment: "%", label: "Success Rate" }
-						].map((stat, index) => (
-							<motion.div
-								key={index}
-								initial={{ opacity: 0, scale: 0.8 }}
-								animate={{ opacity: 1, scale: 1 }}
-								transition={{ delay: 1.2 + index * 0.1 }}
-								className="text-center"
-							>
-								<div className={`text-4xl md:text-5xl font-bold ${gradientColors.stats} mb-2`}>
-									<CountUp
-										from={-100}
-										to={stat.number}
-										separator=","
-										direction="up"
-										duration={1}
-										className="count-up-text"
-									/>{stat.segment}
-								</div>
-								<div className="text-muted-foreground">{stat.label}</div>
-							</motion.div>
-						))}
 					</motion.div>
 				</div>
 			</div>

@@ -29,7 +29,7 @@ export const ServicesSection = () => {
     {
       icon: Code,
       title: "Custom Software",
-      description: "Enterprise-grade custom software solutions designed specifically for your unique business requirements.",
+      description: "Custom software built around your specific business requirements, not someone else's template.",
       features: ["API Development", "Database Design", "Cloud Integration", "Third-party Integrations"]
     },
     {
@@ -41,7 +41,7 @@ export const ServicesSection = () => {
     {
       icon: Shield,
       title: "Maintenance & Support",
-      description: "Ongoing support, updates, and optimization to keep your applications running smoothly 24/7.",
+      description: "Ongoing support, updates, and optimization to keep your applications running smoothly after launch.",
       features: ["Bug Fixes", "Performance Optimization", "Security Updates", "Feature Enhancements"]
     }
   ];

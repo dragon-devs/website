@@ -4,9 +4,7 @@ import React from "react";
 export const CategoryTabs = ({activeTab, router}: any) => {
     const tabs = [
         {id: "all", label: "All Work", icon: Boxes},
-        {id: "client", label: "Client Projects", icon: Building2},
-        {id: "products", label: "Our Products", icon: Rocket},
-        {id: "opensource", label: "Open Source", icon: Heart}
+        {id: "products", label: "Our Products", icon: Rocket}
     ];
 
     const updateCategory = (cat:any) => {

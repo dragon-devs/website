@@ -1,3 +1,4 @@
+"use client";
 import SpotlightCard from "@/components/SpotlightCard";
 import {motion} from "motion/react";
 import Image from "next/image";
@@ -6,13 +7,18 @@ import Pill from "@/components/Pill";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {FaGithub} from "react-icons/fa6";
 import React from "react";
+import {useRouter} from "next/navigation";
+import {EASE} from "@/components/motion";
 
 export const ProjectCard = ({project, index}: any) => {
+    const router = useRouter();
     return (
         <SpotlightCard>
             <motion.div
+                initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                transition={{delay: index * 0.1}}
+                viewport={{once: true, amount: 0.2}}
+                transition={{duration: 0.55, ease: EASE, delay: (index % 2) * 0.1}}
                 className="relative flex flex-col h-full overflow-hidden group"
             >
                 <div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
@@ -72,6 +78,7 @@ export const ProjectCard = ({project, index}: any) => {
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
 				                className="flex justify-center items-center"
+				                onClick={() => window.open(project.liveUrl, "_blank", "noopener,noreferrer")}
 			                />
 		                )}
 
@@ -84,10 +91,11 @@ export const ProjectCard = ({project, index}: any) => {
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
 				                className="flex justify-center items-center"
+				                onClick={() => window.open(project.githubUrl, "_blank", "noopener,noreferrer")}
 			                />
 		                )}
 
-		                {project.caseStudy && (
+		                {project.caseStudy && project.caseStudyUrl && (
 			                <MagnetButton
 				                label="Case Study"
 				                icon={<ArrowRight size={14}/>}
@@ -96,6 +104,7 @@ export const ProjectCard = ({project, index}: any) => {
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
 				                className="flex justify-center items-center"
+				                onClick={() => router.push(project.caseStudyUrl)}
 			                />
 		                )}
 	                </div>

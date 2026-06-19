@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const BackToTopButton = () => {
 	const [isVisible, setIsVisible] = useState(false);
-	const scrollRef = useRef<HTMLElement | null>(null);
 	const { resolvedTheme } = useTheme();
 
 	// Precompute classes once (no re-render jitter)
@@ -19,23 +18,18 @@ const BackToTopButton = () => {
 	const iconColor = resolvedTheme === "dark" ? "text-muted-foreground" : "text-black/60";
 
 	useEffect(() => {
-		const sc = document.querySelector('[data-radix-scroll-area-viewport]') as HTMLElement;
-		if (!sc) return;
-
-		scrollRef.current = sc;
-
 		const handleScroll = () => {
-			setIsVisible(sc.scrollTop > 300);
+			setIsVisible(window.scrollY > 300);
 		};
 
-		sc.addEventListener('scroll', handleScroll, { passive: true });
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll();
 
-		return () => sc.removeEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	const scrollToTop = () => {
-		if (!scrollRef.current) return;
-		scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
 	return (

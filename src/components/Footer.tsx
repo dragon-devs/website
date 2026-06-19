@@ -12,23 +12,19 @@ export const Footer = () => {
   ];
 
   const footerLinks = {
-    company: [
-      { label: "About Us", link: "/about" },
-      { label: "Our Team", link: "#team" },
-      { label: "Careers", link: "#careers" },
-      { label: "Blog", link: "#blog" }
+    studio: [
+      { label: "About", link: "/about" },
+      { label: "Services", link: "/services" },
+      { label: "Work", link: "/case-studies" },
+      { label: "Contact", link: "/contact" }
     ],
-    services: [
-      { label: "Web Development", link: "#services" },
-      { label: "Custom Software", link: "#services" },
-      { label: "MVP Development", link: "#services" },
-      { label: "AI Integration", link: "#services" }
+    products: [
+      { label: "BizStock", link: "https://bizstock.net" },
+      { label: "Case Study", link: "/case-studies/bizstock-pos-inventory" }
     ],
-    resources: [
-      { label: "Case Studies", link: "/case-studies" },
-      { label: "Documentation", link: "#docs" },
-      { label: "Support", link: "#support" },
-      { label: "Privacy Policy", link: "#privacy" }
+    legal: [
+      { label: "Privacy Policy", link: "/privacy" },
+      { label: "Terms of Service", link: "/terms" }
     ]
   };
 
@@ -45,7 +41,8 @@ export const Footer = () => {
               <span className="text-2xl font-black text-foreground">dragon<span className="font-light">devs</span></span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Building innovative software solutions that empower businesses and transform ideas into reality.
+              A small digital product engineering studio. We design and build web apps,
+              custom software, and our own products — from idea to deployment.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -62,9 +59,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Company</p>
+            <p className="text-foreground font-semibold mb-4">Studio</p>
             <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
+              {footerLinks.studio.map((link, index) => (
                 <li key={index}>
                   <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
@@ -75,9 +72,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Services</p>
+            <p className="text-foreground font-semibold mb-4">Products</p>
             <ul className="space-y-3">
-              {footerLinks.services.map((link, index) => (
+              {footerLinks.products.map((link, index) => (
                 <li key={index}>
                   <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
@@ -88,9 +85,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Resources</p>
+            <p className="text-foreground font-semibold mb-4">Legal</p>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link, index) => (
+              {footerLinks.legal.map((link, index) => (
                 <li key={index}>
                   <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
                     {link.label}
@@ -107,12 +104,11 @@ export const Footer = () => {
 
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2025 dragondevs. All rights reserved.
+            © {new Date().getFullYear()} dragondevs. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Terms of Service</a>
-            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-muted-foreground hover:text-primary/80 transition-colors">Cookie Policy</a>
+            <a href="/terms" className="text-muted-foreground hover:text-primary/80 transition-colors">Terms of Service</a>
+            <a href="/privacy" className="text-muted-foreground hover:text-primary/80 transition-colors">Privacy Policy</a>
           </div>
         </div>
       </div>
