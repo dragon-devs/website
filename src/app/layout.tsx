@@ -10,6 +10,7 @@ import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
 import AnimatedCursor from "@/components/AnimatedCursor";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
+import {Toaster} from "@/components/ui/sonner";
 import React from "react";
 
 const geistSans = Geist({
@@ -175,6 +176,7 @@ export default function RootLayout({
 				<Footer/>
 			<BackToTopButton/>
 			<MinimalNavbar/>
+			<Toaster position="top-center" richColors/>
 		</ThemeProvider>
 		</body>
 		</html>

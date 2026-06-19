@@ -22,6 +22,7 @@ import Badge from "@/components/hero/Badge";
 import {HeroTitle} from "@/components/hero/HeroTitle";
 import {GradientText} from "@/components/hero/GradientText";
 import {Reveal, StaggerGroup, StaggerItem} from "@/components/motion";
+import {useRouter} from "next/navigation";
 
 const ServicesHero = () => (
 	<section className="scale-90 relative min-h-[60vh] flex items-center justify-center overflow-hidden">
@@ -40,6 +41,7 @@ const ServicesHero = () => (
 
 const services = [
 	{
+		slug: "web-app",
 		icon: Globe,
 		title: "Web apps & websites",
 		description: "Responsive, fast, SEO-friendly sites and web apps built with Next.js, React and Tailwind.",
@@ -47,6 +49,7 @@ const services = [
 		color: "from-blue-500 to-cyan-500"
 	},
 	{
+		slug: "custom-software",
 		icon: Code,
 		title: "Custom software",
 		description: "Software built around your workflow rather than forcing you into someone else's.",
@@ -54,6 +57,7 @@ const services = [
 		color: "from-violet-500 to-purple-500"
 	},
 	{
+		slug: "mvp",
 		icon: Rocket,
 		title: "MVP development",
 		description: "Get a real, usable version of your idea in front of users quickly — then iterate.",
@@ -61,6 +65,7 @@ const services = [
 		color: "from-orange-500 to-red-500"
 	},
 	{
+		slug: "management-system",
 		icon: Layers,
 		title: "Management systems",
 		description: "Dashboards, CMS and admin systems that make day-to-day operations easier.",
@@ -68,6 +73,7 @@ const services = [
 		color: "from-emerald-500 to-teal-500"
 	},
 	{
+		slug: "mobile",
 		icon: Smartphone,
 		title: "Cross-platform apps",
 		description: "Apps that work where your users are, from a single, maintainable codebase.",
@@ -75,6 +81,7 @@ const services = [
 		color: "from-pink-500 to-rose-500"
 	},
 	{
+		slug: "support",
 		icon: Cloud,
 		title: "Deploy & maintain",
 		description: "We don't disappear at launch. Deployment, monitoring and ongoing improvements.",
@@ -83,48 +90,61 @@ const services = [
 	}
 ];
 
-const CoreServices = () => (
-	<section className="py-24 relative">
-		<div className="max-w-7xl mx-auto md:px-6 px-4">
-			<Reveal className="text-center mb-16">
-				<span className="text-primary font-semibold text-sm tracking-wider uppercase">Services</span>
-				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">What we can build for you</h2>
-				<p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-					End-to-end product engineering. Pick a piece or the whole thing.
-				</p>
-			</Reveal>
+const CoreServices = () => {
+	const router = useRouter();
+	return (
+		<section className="py-24 relative">
+			<div className="max-w-7xl mx-auto md:px-6 px-4">
+				<Reveal className="text-center mb-16">
+					<span className="text-primary font-semibold text-sm tracking-wider uppercase">Services</span>
+					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">What we can build for you</h2>
+					<p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+						End-to-end product engineering. Pick a piece or the whole thing — tap any card to start a project.
+					</p>
+				</Reveal>
 
-			<StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
-				{services.map((service) => (
-					<StaggerItem key={service.title}>
-						<SpotlightCard className="h-full">
-							<div className="relative flex flex-col h-full overflow-hidden p-8">
-								<div className="absolute -right-10 -bottom-10 opacity-10">
-									<service.icon size={250} className="text-muted-foreground"/>
-								</div>
-								<div className="w-12 h-12 rounded-full flex items-center justify-center border border-border mb-4">
-									<service.icon size={24} className="text-primary"/>
-								</div>
-								<h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
-									{service.title}
-								</h3>
-								<p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
-								<ul className="space-y-2 mt-auto">
-									{service.features.map((feature) => (
-										<li key={feature} className="flex items-start gap-2 text-sm">
-											<ArrowRight size={15} className="text-primary flex-shrink-0 mt-0.5"/>
-											<span className="text-foreground/70">{feature}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</SpotlightCard>
-					</StaggerItem>
-				))}
-			</StaggerGroup>
-		</div>
-	</section>
-);
+				<StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
+					{services.map((service) => (
+						<StaggerItem key={service.slug}>
+							<SpotlightCard className="h-full">
+								<button
+									type="button"
+									onClick={() => router.push(`/contact?type=${service.slug}`)}
+									aria-label={`Start a ${service.title} project`}
+									className="group relative flex flex-col h-full w-full text-left overflow-hidden p-8 cursor-pointer
+										transition-colors hover:bg-foreground/[0.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+								>
+									<div className="absolute -right-10 -bottom-10 opacity-10">
+										<service.icon size={250} className="text-muted-foreground"/>
+									</div>
+									<div className="w-12 h-12 rounded-full flex items-center justify-center border border-border mb-4">
+										<service.icon size={24} className="text-primary"/>
+									</div>
+									<h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
+										{service.title}
+									</h3>
+									<p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
+									<ul className="space-y-2">
+										{service.features.map((feature) => (
+											<li key={feature} className="flex items-start gap-2 text-sm">
+												<ArrowRight size={15} className="text-primary flex-shrink-0 mt-0.5"/>
+												<span className="text-foreground/70">{feature}</span>
+											</li>
+										))}
+									</ul>
+									<span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary
+										opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+										Start a project <ArrowRight size={15}/>
+									</span>
+								</button>
+							</SpotlightCard>
+						</StaggerItem>
+					))}
+				</StaggerGroup>
+			</div>
+		</section>
+	);
+};
 
 const steps = [
 	{number: "01", title: "Discovery", description: "We talk through what you need, map requirements, and agree on scope and an honest estimate.", icon: Target},

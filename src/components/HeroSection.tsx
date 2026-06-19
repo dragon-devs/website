@@ -5,7 +5,8 @@ import { motion } from 'motion/react';
 import { Sparkles, Zap } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import MagnetButton from "@/components/custom/MagnetButton";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { goToContact } from "@/lib/contact-nav";
 import Image from "next/image";
 import { HeroTitle } from "@/components/hero/HeroTitle";
 import { GradientText } from '@/components/hero/GradientText';
@@ -18,6 +19,7 @@ const HeroSection = () => {
 	const [mounted, setMounted] = useState(false);
 
 	const router = useRouter();
+	const pathname = usePathname();
 
 	// Get current theme
 	const currentTheme = theme === 'system' ? systemTheme : theme;
@@ -100,7 +102,7 @@ const HeroSection = () => {
 						transition={{ delay: 0.8 }}
 						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
-						<MagnetButton label="Start Your Project" onClick={() => router.push("/#contact")} size={'lg'} />
+						<MagnetButton label="Start Your Project" onClick={() => goToContact(router, pathname)} size={'lg'} />
 						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-studies")}
 							size={'lg'} />
 					</motion.div>

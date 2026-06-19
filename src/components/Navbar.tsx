@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import Magnet from '@/components/Magnet';
 import { useTheme } from 'next-themes';
 import ThemeToggle from "@/components/ThemeToggle";
+import { goToContact } from "@/lib/contact-nav";
 
 const MinimalNavbar = () => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -49,7 +50,11 @@ const MinimalNavbar = () => {
             <div className="relative group">
                 <button
                     onClick={() => {
-                        router.push(item.href);
+                        if (item.id === 'contact') {
+                            goToContact(router, pathname);
+                        } else {
+                            router.push(item.href);
+                        }
                         if (isMobile) setIsMobileOpen(false);
                     }}
                     className={`
