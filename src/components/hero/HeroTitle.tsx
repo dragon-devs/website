@@ -41,16 +41,20 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 			initial={{ opacity: 0, y: 30 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: animationDelay }}
-			className={`tracking-tight font-bold mb-4 ${alignClass} ${className}`}
+			className={`tracking-tight font-bold mb-4 leading-[0.95] ${alignClass} ${className}`}
 		>
-			<GradientText tag="span" variant="primary" size="3xl" className="block">
+			{/*
+			  GradientText hardcodes `pb-2` so bg-clip-text has box to paint descenders
+			  into — without it the tail of a `g` or `y` loses its gradient. That padding
+			  also opened a gap between the two lines. `-mb-2` pulls the accent line back
+			  up without shrinking the padding box, so descenders stay painted on both.
+			*/}
+			<GradientText tag="span" variant="primary" size="3xl" className="block -mb-2">
 				{mainText}
 			</GradientText>
-			<span className="inline-block mt-2">
-				<GradientText tag="span" variant="accent" size="3xl">
-					{accentText}
-				</GradientText>
-			</span>
+			<GradientText tag="span" variant="accent" size="3xl" className="block">
+				{accentText}
+			</GradientText>
 		</motion.h1>
 	);
 };

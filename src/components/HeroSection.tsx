@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Sparkles, Zap } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import MagnetButton from "@/components/custom/MagnetButton";
@@ -12,6 +12,66 @@ import { HeroTitle } from "@/components/hero/HeroTitle";
 import { GradientText } from '@/components/hero/GradientText';
 import { SpotlightLogo } from "@/components/hero/SpotLightLog";
 import Badge from "@/components/hero/Badge";
+
+/**
+ * Scroll cue at the foot of the hero.
+ *
+ * Sits in the flex column rather than absolutely positioned, so it can never
+ * land on top of the CTA buttons on a short phone screen. It fades out once
+ * the reader has started scrolling — a cue that persists after it's been
+ * acted on is just clutter.
+ */
+const ScrollCue = () => {
+	const [visible, setVisible] = useState(true);
+	const reduceMotion = useReducedMotion();
+
+	useEffect(() => {
+		const onScroll = () => setVisible(window.scrollY < 80);
+		onScroll();
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
+
+	const scrollToContent = () => {
+		const hero = document.getElementById('hero');
+		window.scrollTo({
+			top: hero?.offsetHeight ?? window.innerHeight,
+			behavior: reduceMotion ? 'auto' : 'smooth',
+		});
+	};
+
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: visible ? 1 : 0 }}
+			transition={{ delay: visible ? 1.4 : 0, duration: 0.4 }}
+			className="relative z-10 flex justify-center pb-4 md:pb-8"
+			aria-hidden={!visible}
+		>
+			<button
+				type="button"
+				onClick={scrollToContent}
+				tabIndex={visible ? 0 : -1}
+				aria-label="Scroll to content"
+				className="group flex flex-col items-center gap-1.5 p-1 rounded-xl cursor-pointer
+					focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+			>
+				<span className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.2em] leading-none
+					text-muted-foreground group-hover:text-primary transition-colors">
+					Scroll
+				</span>
+				<div className="w-5 h-8 rounded-full border-2 border-border flex justify-center pt-1.5
+					group-hover:border-primary/60 transition-colors">
+					<motion.div
+						animate={reduceMotion ? undefined : { y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+						transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+						className="w-1 h-1.5 rounded-full bg-muted-foreground group-hover:bg-primary transition-colors"
+					/>
+				</div>
+			</button>
+		</motion.div>
+	);
+};
 
 const HeroSection = () => {
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -59,7 +119,10 @@ const HeroSection = () => {
 	}
 
 	return (
-		<div className="relative md:py-0 py-10 min-h-screen">
+		// 100svh, not 100vh: on mobile browsers vh is measured against the viewport
+		// with the URL bar hidden, so a 100vh hero is always taller than what the
+		// reader can actually see and the scroll cue sits below the fold.
+		<div id="hero" className="relative flex flex-col min-h-[100svh] md:py-0 py-10">
 			{/* Dynamic Gradient Orbs */}
 			<motion.div
 				className={`absolute w-96 h-96 rounded-full bg-gradient-to-r ${gradientColors.orb1} blur-3xl opacity-30`}
@@ -79,7 +142,7 @@ const HeroSection = () => {
 			/>
 
 			{/* Main Content */}
-			<div className="relative scale-90 z-10 flex items-center justify-center min-h-screen px-6">
+			<div className="relative scale-90 z-10 flex flex-1 items-center justify-center px-6">
 				<div className="max-w-7xl mx-auto text-center">
 					{/* Badge */}
 					<Badge icon={Zap}>
@@ -109,25 +172,7 @@ const HeroSection = () => {
 				</div>
 			</div>
 
-			{/* Scroll Indicator */}
-			{/* <motion.div
-				initial={{opacity: 0}}
-				animate={{opacity: 1}}
-				transition={{delay: 1.5}}
-				className="absolute md:bottom-0 bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-			>
-				<motion.div
-					animate={{y: [0, 10, 0]}}
-					transition={{duration: 2, repeat: Infinity}}
-					className="w-6 h-10 border-2 rounded-full border-border flex justify-center"
-				>
-					<motion.div
-						animate={{y: [0, 12, 0]}}
-						transition={{duration: 2, repeat: Infinity}}
-						className={`w-1 h-3 ${isDark ? 'bg-white/50' : 'bg-black/50'} rounded-full mt-2`}
-					/>
-				</motion.div>
-			</motion.div> */}
+			<ScrollCue/>
 
 			{/* Code-like decoration */}
 			<motion.div

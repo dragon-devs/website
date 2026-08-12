@@ -5,15 +5,20 @@ import {
 	ArrowRight,
 	Cloud,
 	Code,
+	Cpu,
 	Database,
 	Globe,
 	Layers,
+	Monitor,
 	Palette,
 	Rocket,
+	Server,
 	Smartphone,
 	Sparkles,
 	Target
 } from 'lucide-react';
+import {FaAndroid, FaApple} from "react-icons/fa6";
+import Link from "next/link";
 import {Separator} from "@/components/ui/separator";
 import SpotlightCard from "@/components/SpotlightCard";
 import {CTASection} from "@/components/CTASection";
@@ -44,7 +49,7 @@ const services = [
 		slug: "web-app",
 		icon: Globe,
 		title: "Web apps & websites",
-		description: "Responsive, fast, SEO-friendly sites and web apps built with Next.js, React and Tailwind.",
+		description: "Responsive, fast, search-friendly sites and web apps that load quickly and stay easy to change.",
 		features: ["Web applications", "Marketing & landing sites", "E-commerce", "Content-managed sites"],
 		color: "from-blue-500 to-cyan-500"
 	},
@@ -75,9 +80,9 @@ const services = [
 	{
 		slug: "mobile",
 		icon: Smartphone,
-		title: "Cross-platform apps",
+		title: "Mobile & desktop apps",
 		description: "Apps that work where your users are, from a single, maintainable codebase.",
-		features: ["Android", "Offline-first", "Web + mobile", "Local sync"],
+		features: ["iOS & Android", "Native desktop", "Offline-first", "Local sync"],
 		color: "from-pink-500 to-rose-500"
 	},
 	{
@@ -179,39 +184,201 @@ const ProcessSection = () => (
 	</section>
 );
 
-const techCategories = [
-	{category: "Frontend", technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"]},
-	{category: "Backend", technologies: ["Node.js", "PostgreSQL", "REST APIs", "Prisma"]},
-	{category: "Mobile", technologies: ["Android", "Offline-first", "Local sync"]},
-	{category: "Infra", technologies: ["Vercel", "Docker", "CI/CD", "Cloud hosting"]},
+const platforms = [
+	{icon: Globe, name: "Web", detail: "Browsers & PWAs"},
+	{icon: FaApple, name: "iOS", detail: "iPhone & iPad"},
+	{icon: FaAndroid, name: "Android", detail: "Phone & tablet"},
+	{icon: Monitor, name: "Desktop", detail: "Windows, macOS, Linux"},
+	{icon: Cloud, name: "Cloud", detail: "APIs & services"},
 ];
 
-const TechStack = () => (
+const disciplines = [
+	{
+		icon: Palette,
+		title: "Interface & experience",
+		color: "from-blue-500 to-cyan-400",
+		tint: "from-blue-500/25 to-cyan-400/5",
+		lead: "Interfaces people use without being taught. Correct on every screen size, and quick on the cheap phone your customer actually owns.",
+		capabilities: [
+			"Design systems",
+			"Responsive layouts",
+			"Motion & interaction",
+			"Accessibility (WCAG)",
+			"Bilingual & RTL",
+			"Component libraries",
+			"Prototyping",
+		],
+	},
+	{
+		icon: Server,
+		title: "Backend & APIs",
+		color: "from-violet-500 to-purple-400",
+		tint: "from-violet-500/25 to-purple-400/5",
+		lead: "The half nobody sees and everybody feels. Systems that stay correct under load, fail predictably, and never quietly lose a record.",
+		capabilities: [
+			"API design & versioning",
+			"Authentication & roles",
+			"Payments & billing",
+			"Third-party integrations",
+			"Background jobs & queues",
+			"Real-time & webhooks",
+			"Caching strategies",
+			"File & media pipelines",
+			"Rate limiting & abuse control",
+		],
+	},
+	{
+		icon: Smartphone,
+		title: "Mobile & desktop",
+		color: "from-pink-500 to-rose-400",
+		tint: "from-pink-500/25 to-rose-400/5",
+		lead: "One product across every device your users reach for — including the ones that spend half the day with no signal.",
+		capabilities: [
+			"iOS & Android",
+			"Native desktop",
+			"Offline-first sync",
+			"Conflict resolution",
+			"Push notifications",
+			"Camera & barcode",
+			"Store submission",
+			"Auto-update & releases",
+		],
+	},
+	{
+		icon: Database,
+		title: "Data & reporting",
+		color: "from-emerald-500 to-teal-400",
+		tint: "from-emerald-500/25 to-teal-400/5",
+		lead: "Schemas that still make sense three features from now, and numbers the business is willing to act on.",
+		capabilities: [
+			"Data modelling",
+			"Zero-downtime migrations",
+			"Dashboards & reporting",
+			"Full-text search",
+			"Import & export",
+			"Audit trails",
+			"Backup & recovery",
+		],
+	},
+	{
+		icon: Cpu,
+		title: "AI & automation",
+		color: "from-amber-500 to-orange-400",
+		tint: "from-amber-500/25 to-orange-400/5",
+		lead: "Models wired into real workflows rather than bolted on for the demo — in the cloud, or entirely on-device when the data shouldn't leave.",
+		capabilities: [
+			"LLM integration",
+			"On-device inference",
+			"Document processing",
+			"Structured extraction",
+			"Recommendations",
+			"Chat assistants",
+			"Workflow automation",
+		],
+	},
+	{
+		icon: Cloud,
+		title: "Cloud & reliability",
+		color: "from-sky-500 to-indigo-400",
+		tint: "from-sky-500/25 to-indigo-400/5",
+		lead: "Deploy on a Friday without flinching. Pipelines, monitoring and headroom put in place before you need them, not after an outage.",
+		capabilities: [
+			"Deployment pipelines",
+			"Horizontal scaling",
+			"Monitoring & alerting",
+			"Performance budgets",
+			"Encryption & secrets",
+			"Zero-downtime releases",
+			"Cost control",
+		],
+	},
+];
+
+const Expertise = () => (
 	<section className="py-24 relative">
-		<div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto md:px-6 px-4">
-			<Reveal>
-				<span className="text-primary font-semibold text-sm tracking-wider uppercase">Our tools</span>
-				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">Tech stack</h2>
-				<p className="text-muted-foreground text-lg">
-					Proven, modern tools we know well. We pick what fits the problem, not what's trendy.
+		<div className="max-w-7xl mx-auto md:px-6 px-4">
+			<Reveal className="text-center mb-16">
+				<span className="text-primary font-semibold text-sm tracking-wider uppercase">Expertise</span>
+				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">Every layer, every platform</h2>
+				<p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+					We don't lead with framework logos. There are hundreds of them and they turn over every
+					couple of years — what carries across is the engineering underneath. So this is what we
+					actually do, rather than what we happen to have installed.
 				</p>
 			</Reveal>
 
-			<StaggerGroup className="grid md:gap-6 gap-4">
-				{techCategories.map((category) => (
-					<StaggerItem key={category.category}>
-						<div className="relative border border-border p-6 hover:border-primary/50 duration-500 transition-all overflow-hidden">
-							<Database size={100} className="absolute right-0 top-0 text-muted-foreground opacity-[0.07]"/>
-							<h3 className="text-2xl tracking-tight font-bold text-foreground mb-4">{category.category}</h3>
-							<div className="flex flex-wrap gap-2">
-								{category.technologies.map((tech) => (
-									<Pill key={tech} label={tech}/>
-								))}
-							</div>
+			<StaggerGroup className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-6 gap-4 mb-16">
+				{platforms.map((platform) => (
+					<StaggerItem key={platform.name}>
+						<div className="group relative border border-border p-6 h-full flex flex-col items-center text-center gap-2
+							overflow-hidden hover:border-primary/50 duration-500 transition-all">
+							<div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent
+								opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"/>
+							<platform.icon size={28} className="relative text-primary mb-1 group-hover:scale-110 transition-transform duration-500"/>
+							<h3 className="relative text-lg font-bold text-foreground leading-none">{platform.name}</h3>
+							<p className="relative text-muted-foreground text-xs">{platform.detail}</p>
 						</div>
 					</StaggerItem>
 				))}
 			</StaggerGroup>
+
+			<StaggerGroup className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-4">
+				{disciplines.map((discipline) => (
+					<StaggerItem key={discipline.title}>
+						<SpotlightCard className="h-full group transition-colors duration-500 hover:border-primary/50">
+							<div className="relative h-full flex flex-col p-7">
+								{/* hairline that lights up along the top edge on hover */}
+								<div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${discipline.color}
+									opacity-0 group-hover:opacity-100 transition-opacity duration-500`}/>
+
+								{/* soft colour bloom in the corner, same language as the hero orbs */}
+								<div className={`absolute -right-20 -top-20 w-48 h-48 rounded-full blur-3xl pointer-events-none
+									bg-gradient-to-br ${discipline.tint} opacity-60 group-hover:opacity-100
+									group-hover:scale-125 transition-all duration-700`}/>
+
+								{/* oversized watermark of the discipline's own icon */}
+								<discipline.icon
+									size={150}
+									className="absolute -right-8 -bottom-8 text-foreground opacity-[0.04] pointer-events-none
+										group-hover:opacity-[0.08] group-hover:scale-110 transition-all duration-700"
+								/>
+
+								<h3 className={`relative text-2xl tracking-tight font-bold mb-3 w-fit
+									bg-gradient-to-r ${discipline.color} bg-clip-text text-transparent`}>
+									{discipline.title}
+								</h3>
+
+								<p className="relative text-muted-foreground text-sm leading-relaxed mb-6">{discipline.lead}</p>
+
+								<div className="relative mt-auto">
+									<div className="flex items-center gap-3 mb-3">
+										<span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70">
+											{discipline.capabilities.length} capabilities
+										</span>
+										<div className={`h-px flex-1 bg-gradient-to-r ${discipline.color} opacity-20
+											group-hover:opacity-50 transition-opacity duration-500`}/>
+									</div>
+									<div className="flex flex-wrap gap-2">
+										{discipline.capabilities.map((capability) => (
+											<Pill key={capability} label={capability}/>
+										))}
+									</div>
+								</div>
+							</div>
+						</SpotlightCard>
+					</StaggerItem>
+				))}
+			</StaggerGroup>
+
+			<Reveal className="text-center mt-16">
+				<p className="text-muted-foreground text-lg">
+					Working on something that isn't on this list? That's usually the interesting kind of problem.{" "}
+					<Link href="/contact" className="text-primary font-semibold hover:underline underline-offset-4">
+						Tell us about it
+					</Link>
+					.
+				</p>
+			</Reveal>
 		</div>
 	</section>
 );
@@ -224,7 +391,7 @@ const ServicesPage = () => (
 		<Separator/>
 		<ProcessSection/>
 		<Separator/>
-		<TechStack/>
+		<Expertise/>
 		<Separator/>
 		<CTASection/>
 	</main>
