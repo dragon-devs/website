@@ -24,11 +24,11 @@ const ContactHero = () => (
 );
 
 const ContactPage = () => (
-	<div className="min-h-screen">
+	<main className="min-h-screen">
 		<ContactHero/>
 		<Separator/>
 		<ContactSection/>
-	</div>
+	</main>
 );
 
 export default ContactPage;

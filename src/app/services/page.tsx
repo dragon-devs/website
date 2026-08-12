@@ -217,7 +217,7 @@ const TechStack = () => (
 );
 
 const ServicesPage = () => (
-	<div className="min-h-screen">
+	<main className="min-h-screen">
 		<ServicesHero/>
 		<Separator/>
 		<CoreServices/>
@@ -227,7 +227,7 @@ const ServicesPage = () => (
 		<TechStack/>
 		<Separator/>
 		<CTASection/>
-	</div>
+	</main>
 );
 
 export default ServicesPage;

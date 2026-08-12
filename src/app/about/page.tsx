@@ -128,7 +128,7 @@ const TeamNote = () => (
 );
 
 const AboutPage = () => (
-	<div className="min-h-screen">
+	<main className="min-h-screen">
 		<AboutHero/>
 		<Separator/>
 		<WhoWeAre/>
@@ -138,7 +138,7 @@ const AboutPage = () => (
 		<TeamNote/>
 		<Separator/>
 		<CTASection/>
-	</div>
+	</main>
 );
 
 export default AboutPage;

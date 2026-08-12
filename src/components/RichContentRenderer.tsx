@@ -17,8 +17,12 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 			{content.map((block, index) => {
 				switch (block.type) {
 					case 'h1':
+						// Intentionally rendered as an <h2>, not an <h1>. The page
+						// itself already provides the single <h1> (the case study
+						// hero title). Emitting another <h1> from body content would
+						// give the page two H1s — the exact SEO problem we're avoiding.
 						return (
-							<motion.h1
+							<motion.h2
 								key={index}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
@@ -26,8 +30,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 								className="text-4xl md:text-5xl font-bold mb-6"
 							>
 								{block.content}
-
-							</motion.h1>
+							</motion.h2>
 						);
 
 					case 'h2':

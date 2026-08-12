@@ -12,6 +12,7 @@ import AnimatedCursor from "@/components/AnimatedCursor";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 import {Toaster} from "@/components/ui/sonner";
 import React from "react";
+import {organizationSchema, websiteSchema} from "@/lib/seo";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -39,13 +40,17 @@ const bricolage_Grotesque = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "dragondevs — Digital product engineering studio",
+		default: "dragondevs | From idea to deployment",
 		template: "%s | dragondevs"
 	},
 	description:
-		"dragondevs is a small product engineering studio. We design and build web apps, custom software, and our own products like BizStock — from idea to deployment.",
+		"dragondevs is a small product engineering studio. We design and build SEO-friendly websites, web apps, custom software, and our own products like BizStock — from idea to deployment.",
 
 	metadataBase: new URL("https://dragondevs.co"),
+
+	// Homepage only. Every other route sets its own canonical in its segment
+	// layout — a canonical here would be inherited verbatim and would point
+	// every page at the homepage.
 	alternates: {
 		canonical: "/"
 	},
@@ -54,56 +59,47 @@ export const metadata: Metadata = {
 		"dragondevs",
 		"digital product engineering",
 		"custom software development",
+		"seo-friendly websites",
 		"web app development",
 		"MVP development",
+		"product development",
 		"Next.js developers",
 		"React developers",
 		"full stack development",
+		"AI web solutions",
+		"software agency",
 		"BizStock",
-		"product studio"
+		"product studio",
+		"From idea to deployment",
+		"Code beyond boundaries",
+		"skdrh"
 	],
 	openGraph: {
-		title: "dragondevs — Digital product engineering studio",
+		title: "dragondevs | From idea to deployment",
 		description:
 			"A small studio that designs and builds web apps, custom software, and its own products. From idea to deployment.",
 		url: "https://dragondevs.co",
 		siteName: "dragondevs",
 		type: "website",
 		locale: "en_US"
+		// `images` intentionally omitted — app/opengraph-image.tsx generates it.
+		// The previous hardcoded /og-image.jpg did not exist in public/, so every
+		// social share rendered a broken preview.
 	},
 
 	twitter: {
 		card: "summary_large_image",
-		title: "dragondevs — Digital product engineering studio",
+		title: "dragondevs – From idea to deployment | Product Builders",
 		description:
-			"A small studio that designs and builds web apps, custom software, and its own products.",
-		creator: "@dragondevs"
+			"dragondevs builds SEO-friendly websites, MVPs, and scalable full-stack applications for startups and enterprises.",
+		creator: "@dragondevs_"
 	},
 
 	icons: {
 		apple: "/apple-icon.png"
-	}
-};
-
-const organizationJsonLd = {
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	name: "dragondevs",
-	url: "https://dragondevs.co",
-	description:
-		"A small digital product engineering studio that designs and builds web apps, custom software, and its own products.",
-	email: "info@dragondevs.co",
-	telephone: "+92-346-6955928",
-	address: {
-		"@type": "PostalAddress",
-		addressLocality: "Islamabad",
-		addressCountry: "PK"
 	},
-	sameAs: [
-		"https://github.com/dragon-devs",
-		"https://www.linkedin.com/company/dragondevs/",
-		"https://x.com/dragondevs_"
-	]
+
+	manifest: "/manifest.json"
 };
 
 export default function RootLayout({
@@ -116,10 +112,16 @@ export default function RootLayout({
 		<head>
 			<link rel="apple-touch-icon" href="/apple-icon.png"/>
 
-			<Script
-				id="org-jsonld"
+			{/* Plain <script>, not next/script — structured data has to be in the
+			    server-rendered HTML. next/script defers to afterInteractive, which
+			    injects it client-side where crawlers may never see it. */}
+			<script
 				type="application/ld+json"
-				dangerouslySetInnerHTML={{__html: JSON.stringify(organizationJsonLd)}}
+				dangerouslySetInnerHTML={{__html: JSON.stringify(organizationSchema)}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{__html: JSON.stringify(websiteSchema)}}
 			/>
 
 			{/* ✅ Google Tag Manager */}

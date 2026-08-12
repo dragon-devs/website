@@ -6,6 +6,7 @@ import {caseStudies} from '@/lib/case-study';
 import {Separator} from "@/components/ui/separator";
 import {CTASection} from "@/components/CTASection";
 import React from "react";
+import {SITE_URL} from "@/lib/seo";
 
 interface PageProps {
 	params: Promise<{
@@ -39,6 +40,16 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
 
 	const {seo} = caseStudy;
 
+	// Only honour an authored canonical if it actually points at this site.
+	// The seed data shipped `https://yoursite.com/...`, which told Google the
+	// canonical version of this page lived on a foreign domain and dropped the
+	// page from the index. Anything off-domain falls back to the real path.
+	const canonicalPath = `/case-studies/${slug}`;
+	const canonical =
+		seo.canonical && seo.canonical.startsWith(SITE_URL)
+			? seo.canonical
+			: canonicalPath;
+
 	return {
 		title: seo.title,
 		description: seo.description,
@@ -51,7 +62,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
 		openGraph: {
 			title: seo.title,
 			description: seo.description,
-			url: seo.canonical || `https://dragondevs.co/case-studies/${slug}`,
+			url: canonical,
 			siteName: 'dragondevs',
 			images: [
 				{
@@ -71,7 +82,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
 			title: seo.title,
 			description: seo.description,
 			images: [seo.ogImage || caseStudy.heroImage],
-			creator: '@dragondevs',
+			creator: '@dragondevs_',
 		},
 
 		// Additional metadata
@@ -89,7 +100,7 @@ export async function generateMetadata({params}: PageProps): Promise<Metadata> {
 
 		// Canonical URL
 		alternates: {
-			canonical: seo.canonical || `https://dragondevs.co/case-studies/${slug}`,
+			canonical,
 		},
 
 		// Additional tags
@@ -109,13 +120,59 @@ const CaseStudyPage = async ({params}: PageProps) => {
 		notFound();
 	}
 
+	const canonicalUrl = `${SITE_URL}/case-studies/${slug}`;
+
+	// TechArticle structured data. Every field is sourced from the case study
+	// itself — nothing is fabricated. Helps search engines understand the page
+	// as a written case study authored by dragondevs.
+	const structuredData = {
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		headline: caseStudy.seo.title,
+		description: caseStudy.seo.description,
+		image: caseStudy.seo.ogImage || caseStudy.heroImage,
+		datePublished: `${caseStudy.year}-01-01`,
+		author: { "@type": "Organization", name: "dragondevs", url: SITE_URL },
+		publisher: {
+			"@type": "Organization",
+			name: "dragondevs",
+			logo: {
+				"@type": "ImageObject",
+				url: `${SITE_URL}/svg-transparent-black.svg`,
+			},
+		},
+		mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
+		keywords: caseStudy.seo.keywords.join(", "),
+		articleSection: caseStudy.category,
+	};
+
+	// Breadcrumb trail: Home › Case Studies › <this study>. Helps search engines
+	// render breadcrumbs in results and understand the site hierarchy.
+	const breadcrumbData = {
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		itemListElement: [
+			{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+			{ "@type": "ListItem", position: 2, name: "Case Studies", item: `${SITE_URL}/case-studies` },
+			{ "@type": "ListItem", position: 3, name: caseStudy.title, item: canonicalUrl },
+		],
+	};
+
 	return (
-		<div>
+		<main>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{__html: JSON.stringify(structuredData)}}
+			/>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbData)}}
+			/>
 			<CaseStudyDetailsPage caseStudy={caseStudy}/>
 			<Separator/>
 			<CTASection/>
 			<Separator/>
-		</div>
+		</main>
 	);
 }
 

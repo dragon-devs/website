@@ -2,24 +2,72 @@
   "projects": [
     {
       "id": 1,
-      "type": "products",
-      "category": "Our Product",
-      "title": "BizStock",
-      "description": "An offline-first POS and inventory system for retail shops. Sell first, manage later — billing, stock and reports keep working even when the internet doesn't, syncing across devices over the local network.",
+      "type": "client",
+      "slug": "craftflow-operations-platform",
+      "category": "Business Platform",
+      "title": "CraftFlow",
+      "description": "A bespoke operations platform for a Saudi design & craft studio — projects, clients, contracts and quotations unified in one bilingual, role-aware workspace.",
       "technologies": [
         "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "next-intl"
+      ],
+      "icon": "LayoutDashboard",
+      "image": "/about.jpeg",
+      "year": "2025",
+      "metrics": "One source of truth",
+      "status": "Live",
+      "statusIcon": "CheckCircle2",
+      "liveUrl": "https://craftksa.com",
+      "caseStudy": true,
+      "caseStudyUrl": "/case-studies/craftflow-operations-platform"
+    },
+    {
+      "id": 2,
+      "type": "client",
+      "slug": "alnada-cooling-ecommerce",
+      "category": "E-commerce",
+      "title": "Al Nada Store",
+      "description": "A full e-commerce and content platform for a 25-year cooling brand — bilingual storefront, guided product recommendations, secure local checkout and after-sales support.",
+      "technologies": [
+        "Next.js",
+        "Payload CMS",
+        "PostgreSQL",
+        "PayTabs"
+      ],
+      "icon": "ShoppingCart",
+      "image": "/about.jpeg",
+      "year": "2025",
+      "metrics": "Online end-to-end",
+      "status": "Live",
+      "statusIcon": "CheckCircle2",
+      "liveUrl": "https://store.alnada.sa",
+      "caseStudy": true,
+      "caseStudyUrl": "/case-studies/alnada-cooling-ecommerce"
+    },
+    {
+      "id": 3,
+      "type": "products",
+      "slug": "bizstock-inventory-pos-app",
+      "category": "SaaS Product",
+      "title": "Bizstock",
+      "description": "Our own offline-first inventory and point-of-sale product — cross-platform desktop and Android, real-time sync, barcode scanning, and full multilingual right-to-left support.",
+      "technologies": [
         "React",
-        "Android",
-        "Offline-first",
-        "LAN Sync"
+        "Tauri",
+        "SQLite",
+        "TypeScript"
       ],
       "icon": "Boxes",
-      "image": null,
+      "image": "/bizstock/img1.png",
       "year": "2025",
-      "status": "Live",
+      "metrics": "Offline-first",
+      "status": "Active",
+      "statusIcon": "Zap",
       "liveUrl": "https://bizstock.net",
       "caseStudy": true,
-      "caseStudyUrl": "/case-studies/bizstock-pos-inventory"
+      "caseStudyUrl": "/case-studies/bizstock-inventory-pos-app"
     }
   ]
 }

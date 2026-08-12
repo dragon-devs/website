@@ -24,7 +24,7 @@ export const ProjectCard = ({project, index}: any) => {
                 <div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
                     <div className="absolute inset-0 flex items-center justify-center">
                         {project.image ?
-                            <Image src={project.image} alt={project.name || "dragondevs work 01"} width={300} height={300}
+                            <Image src={project.image} alt={project.title ? `${project.title} — ${project.category} project by dragondevs` : "dragondevs project"} width={300} height={300}
                                    className={"w-full h-full object-cover"}/> :
                             <Boxes size={80} className="text-primary/30"/>}
 

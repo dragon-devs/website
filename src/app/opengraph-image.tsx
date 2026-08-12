@@ -1,6 +1,6 @@
 import {ImageResponse} from "next/og";
 
-export const alt = "dragondevs — Digital product engineering studio";
+export const alt = "dragondevs — From idea to deployment";
 export const size = {width: 1200, height: 630};
 export const contentType = "image/png";
 
@@ -14,39 +14,52 @@ export default function OpengraphImage() {
 					display: "flex",
 					flexDirection: "column",
 					justifyContent: "space-between",
-					background: "#0a0a0b",
+					background:
+						"radial-gradient(circle at 78% 18%, #27272a 0%, #09090b 62%)",
+					color: "#fafafa",
 					padding: "80px",
 					fontFamily: "sans-serif",
 				}}
 			>
-				{/* top: wordmark */}
-				<div style={{display: "flex", alignItems: "center", fontSize: 44, color: "#fff"}}>
-					<span style={{fontWeight: 800}}>dragon</span>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "baseline",
+						fontSize: 44,
+						letterSpacing: "-0.02em",
+					}}
+				>
+					<span style={{fontWeight: 900}}>dragon</span>
 					<span style={{fontWeight: 300}}>devs</span>
 				</div>
 
-				{/* middle: headline */}
-				<div style={{display: "flex", flexDirection: "column"}}>
-					<div style={{fontSize: 84, fontWeight: 800, color: "#fff", lineHeight: 1.05}}>
-						From idea to
+				<div style={{display: "flex", flexDirection: "column", gap: 24}}>
+					<div
+						style={{
+							fontSize: 78,
+							fontWeight: 700,
+							lineHeight: 1.05,
+							maxWidth: 920,
+							letterSpacing: "-0.03em",
+						}}
+					>
+						From idea to deployment
 					</div>
 					<div
 						style={{
-							fontSize: 84,
-							fontWeight: 800,
-							lineHeight: 1.05,
-							backgroundImage: "linear-gradient(90deg, #3b82f6, #a855f7, #10b981)",
-							backgroundClip: "text",
-							color: "transparent",
+							fontSize: 33,
+							color: "#a1a1aa",
+							maxWidth: 900,
+							lineHeight: 1.35,
 						}}
 					>
-						deployment.
+						Custom software, MVPs and full-stack web apps — built with Next.js,
+						shipped fast, engineered to scale.
 					</div>
 				</div>
 
-				{/* bottom: tagline */}
-				<div style={{display: "flex", fontSize: 34, color: "#a1a1aa"}}>
-					Digital product engineering studio
+				<div style={{display: "flex", fontSize: 28, color: "#71717a"}}>
+					dragondevs.co
 				</div>
 			</div>
 		),

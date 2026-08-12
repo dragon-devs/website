@@ -2,15 +2,27 @@ import type {Metadata} from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-	title: "Services",
+	title: "Next.js & Custom Software Development Services",
 	description:
-		"Web apps, custom software, MVPs and management systems — designed, built, shipped and maintained. End-to-end product engineering from dragondevs.",
-	alternates: {canonical: "/services"},
+		"Web apps, custom software, MVPs and management systems built with Next.js, React and Node.js — designed, built, shipped and maintained. End-to-end product engineering from dragondevs.",
+	keywords: [
+		"Next.js development agency",
+		"custom software development",
+		"MVP development company",
+		"custom inventory software development",
+		"SaaS MVP developers",
+		"React development services",
+		"management system development",
+	],
+	alternates: {
+		canonical: "/services",
+	},
 	openGraph: {
-		title: "Services | dragondevs",
+		title: "Next.js & Custom Software Development Services | dragondevs",
 		description:
 			"Web apps, custom software, MVPs and management systems — from idea to deployment.",
-		url: "https://dragondevs.co/services",
+		url: "/services",
+		type: "website",
 	},
 };
 

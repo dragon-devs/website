@@ -164,7 +164,7 @@ export const ContactSection = () => {
 				>
 					<div>
 						<span className="text-primary font-semibold text-sm tracking-wider uppercase">Get in touch</span>
-						<GradientText size="4-5" className="block font-bold my-4">
+						<GradientText tag="h2" size="4-5" className="block font-bold my-4">
 							Let's build something
 						</GradientText>
 						<p className="text-muted-foreground text-lg max-w-xl">

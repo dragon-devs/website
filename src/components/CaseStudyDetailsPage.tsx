@@ -17,7 +17,6 @@ import {CaseStudyDetails} from "@/lib/case-study";
 import SpotlightCard from "./SpotlightCard";
 import Pill from "@/components/Pill";
 import MagnetButton from "@/components/custom/MagnetButton";
-import {useRouter} from "next/navigation";
 import {FaGithub} from "react-icons/fa6";
 
 interface CaseStudyDetailsPageProps {
@@ -26,7 +25,6 @@ interface CaseStudyDetailsPageProps {
 
 const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 
-	const router = useRouter()
 	const getIcon = (iconName: string) => {
 		const icons: any = {
 			Zap, TrendingUp, TrendingDown, ShoppingCart
@@ -147,12 +145,12 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 							className="w-full flex gap-4 flex-wrap"
 						>
 							{caseStudy.liveUrl && (
-								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => router.push(caseStudy.liveUrl as string)}
+								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => window.open(caseStudy.liveUrl as string, "_blank", "noopener,noreferrer")}
 								              label={"View Live"} icon={<ExternalLink size={18}/>}/>
 
 							)}
 							{caseStudy.githubUrl && (
-								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => router.push(caseStudy.liveUrl as string)}
+								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => window.open(caseStudy.githubUrl as string, "_blank", "noopener,noreferrer")}
 								              variant={"secondary"}
 								              label={"View GitHub"} icon={<FaGithub size={18}/>}/>
 							)}

@@ -65,7 +65,7 @@ const ProjectsSection = () => {
 };
 
 const WorkPage = () => (
-	<div className="min-h-screen">
+	<main className="min-h-screen">
 		<WorkHero/>
 		<Separator/>
 		<Suspense fallback={<Loading/>}>
@@ -73,7 +73,7 @@ const WorkPage = () => (
 		</Suspense>
 		<Separator/>
 		<CTASection/>
-	</div>
+	</main>
 );
 
 export default WorkPage;
