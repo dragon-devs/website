@@ -748,4 +748,210 @@ export const caseStudies: CaseStudyDetails[] = [
 
 		relatedProjects: [1, 2],
 	},
+
+	// ─────────────────────────────────────────────────────────────────────────
+	// 4. Quickbeam — product, in development
+	// ─────────────────────────────────────────────────────────────────────────
+	{
+		id: 4,
+		slug: "quickbeam-offline-file-transfer",
+
+		title: "Quickbeam",
+		subtitle: "Move anything between your devices — with or without a network",
+		category: "Cross-platform App",
+		type: "products",
+
+		heroImage: "https://picsum.photos/seed/quickbeam-hero/1200/600",
+		thumbnail: "https://picsum.photos/seed/quickbeam-thumb/600/400",
+		gallery: [
+			"https://picsum.photos/seed/quickbeam-1/800/600",
+			"https://picsum.photos/seed/quickbeam-2/800/600",
+			"https://picsum.photos/seed/quickbeam-3/800/600",
+		],
+
+		description:
+			"Our own product — a cross-platform transfer app that moves files between devices over the local network, over a hotspot it creates itself, or over no network at all by sending the data as light.",
+
+		challenge:
+			"Every way of moving a file between two devices assumes something: an account, an internet connection, the same app installed on both ends, or a cable. None of those hold in the moment you actually need them — standing next to someone, two devices on different networks, no signal, and a file that needs to get across now.",
+
+		solution:
+			"Quickbeam picks the best channel available and falls back instead of failing. On a shared network the sending device runs a small web server and the other end collects the files in an ordinary browser, with nothing installed. With no shared network, the sender hosts a local-only hotspot and shows its credentials as a standard Wi-Fi join code that any phone camera already understands. And with no radio at all, it falls back to light — the file is encoded into QR frames animating on screen while the other device's camera reads them.",
+
+		results:
+			"Sending works end to end: a 5 MB file has been verified arriving byte-identical over the LAN at 38.5 MB/s. Because the receiver is just a web page the app serves itself, the other device needs nothing installed and no account. Quickbeam is in active development — encrypted transfers and saved pairings are the next milestones.",
+
+		owner: {
+			name: "dragondevs",
+			role: "Product & engineering",
+			website: "https://dragondevs.co",
+		},
+
+		year: "2026",
+		duration: "In development",
+		timeline: [
+			{
+				phase: "Transport",
+				duration: "Phase 1",
+				description: "Embedded web server, range-aware file streaming and the zero-install browser receiver.",
+			},
+			{
+				phase: "Pairing",
+				duration: "Phase 2",
+				description: "Scan-to-pair codes, plus six-digit codes resolved by discovery across the local network.",
+			},
+			{
+				phase: "Optical",
+				duration: "Phase 3",
+				description: "Fountain-coded QR frames, so a transfer can cross a gap with no network at all.",
+			},
+			{
+				phase: "Hotspot",
+				duration: "Phase 4",
+				description: "A device-hosted local network for when the two ends share nothing to connect over.",
+			},
+		],
+
+		team: {
+			size: "In-house product team",
+			roles: ["Product", "Cross-platform Development", "Protocol Design"],
+		},
+
+		technologies: ["Flutter", "Dart", "Kotlin", "Android", "Windows", "Fountain codes", "QR", "Local HTTP"],
+
+		technologiesDetails: [
+			{ name: "Flutter (Dart)", purpose: "One codebase across Android, Windows and the browser receiver." },
+			{ name: "Embedded web server", purpose: "The sending device serves the files itself — the receiver just opens a link." },
+			{ name: "Fountain codes", purpose: "Rateless coding, so the one-way optical link never has to ask for a frame again." },
+			{ name: "Platform channels (Kotlin)", purpose: "Android's local-only hotspot, for when there is no shared network." },
+		],
+
+		keyFeatures: [
+			"Full-speed transfer over the local network",
+			"Receiver needs nothing installed — any browser will do",
+			"Optical mode: send data as animated QR frames, with no network at all",
+			"Host a local-only hotspot, joined by scanning a standard Wi-Fi code",
+			"Pair by scanning a code or typing six digits",
+			"Resumable, range-aware transfers",
+			"Works entirely offline — the receiver page and its fonts are bundled, never fetched",
+		],
+
+		status: "In development",
+		statusIcon: "Rocket",
+
+		content: [
+			{
+				type: "paragraph",
+				content: "Quickbeam is our own product, and it started from a small annoyance: moving a file between two devices sitting on the same desk is still, somehow, harder than it should be. Every option assumes something — an account, a cable, an internet connection, or the same app on both ends.",
+			},
+			{
+				type: "h2",
+				content: "The Problem",
+			},
+			{
+				type: "paragraph",
+				content: "The moment you actually need to move a file is rarely the convenient one. You're next to someone, their laptop is on a different network from your phone, the venue Wi-Fi blocks devices from seeing each other, and the file is too big to email. Every tool that solves this in good conditions gives up in bad ones.",
+			},
+			{
+				type: "list",
+				items: [
+					"No account, no sign-up, and no round trip through the cloud",
+					"Nothing to install on the device receiving the files",
+					"Works when the two devices share a network — and when they share nothing",
+					"Fast enough that you don't go and do something else while it runs",
+				],
+			},
+			{
+				type: "image",
+				url: "https://picsum.photos/seed/quickbeam-modes/800/400",
+				alt: "Quickbeam transfer modes (placeholder)",
+			},
+			{
+				type: "h2",
+				content: "Our Approach",
+			},
+			{
+				type: "paragraph",
+				content: "Rather than one transport that works most of the time, Quickbeam has three that degrade in order. It takes the fastest path available, and when that path isn't there it drops to the next one instead of showing an error. The last of those three works with no network of any kind.",
+			},
+			{
+				type: "h2",
+				content: "What We Built",
+			},
+			{
+				type: "h3",
+				content: "Transfer Over the Local Network",
+			},
+			{
+				type: "paragraph",
+				content: "The sending device runs a small web server and streams the files straight off disk. The receiving end opens a link and collects them in whatever browser it already has — no install, no account, no matching app. Transfers are range-aware, so they can be resumed rather than restarted. A 5 MB file has been verified arriving byte-identical at 38.5 MB/s.",
+			},
+			{
+				type: "h3",
+				content: "Sending Data as Light",
+			},
+			{
+				type: "paragraph",
+				content: "When there is no network at all, Quickbeam falls back to the screen and the camera. The file becomes a stream of QR frames animating on the sender while the receiver films them. The hard part is that a camera has no way to answer back — it cannot ask for a frame it missed. So instead of numbering frames and hoping, the sender streams from a fountain code: every frame is a different combination of the file, and the receiver simply collects frames until it has enough to reconstruct the original. Which ones arrive doesn't matter. Missing one costs you a frame rather than a whole lap.",
+			},
+			{
+				type: "imageGrid",
+				images: [
+					{ url: "https://picsum.photos/seed/quickbeam-light/600/400", alt: "Optical transfer mode (placeholder)", caption: "Transfer by light — no network needed" },
+					{ url: "https://picsum.photos/seed/quickbeam-progress/600/400", alt: "Transfer progress (placeholder)", caption: "Live progress on both ends" },
+				],
+				gridCols: 2,
+			},
+			{
+				type: "h3",
+				content: "A Network Where There Isn't One",
+			},
+			{
+				type: "paragraph",
+				content: "When both devices have radios but nothing to meet on, the sender creates the network itself — a local-only hotspot that never touches the internet. Its credentials are generated fresh each time and shown as a standard Wi-Fi join code, so the other device joins by pointing its camera at the screen. No typing, no trip through Settings.",
+			},
+			{
+				type: "h3",
+				content: "Pairing Without Reading Out a Secret",
+			},
+			{
+				type: "paragraph",
+				content: "Pairing is a scan when the devices can see each other's screens, and six digits when they can't. Those six digits name a session and nothing else — no address, no key — because nobody reads a long secret down a phone line. The receiving device asks the local network which sender is holding that session, and gets back everything it needs. Wrong guesses are rate-limited, so the short code stays short without becoming a way in.",
+			},
+			{
+				type: "h2",
+				content: "Where It Stands",
+			},
+			{
+				type: "paragraph",
+				content: "Sending and receiving both work, across Android, Windows and the browser. Quickbeam is still in active development: encrypted transfers and standing pairings — so two devices you use often recognise each other without a code — are the next things we're building.",
+			},
+			{
+				type: "cta",
+				content: "Building something that has to work in the awkward conditions, not just the ideal ones?",
+				label: "Talk to us",
+				href: "/contact",
+			},
+		],
+
+		seo: {
+			title: "Quickbeam — Offline File Transfer App Case Study | dragondevs",
+			description:
+				"How we built Quickbeam: a cross-platform app that moves files over the local network, over a self-hosted hotspot, or over no network at all using fountain-coded QR frames.",
+			keywords: [
+				"offline file transfer app",
+				"send files without internet",
+				"cross-platform file sharing",
+				"QR code data transfer",
+				"Flutter app case study",
+				"local network file transfer",
+				"quickbeam",
+				"dragondevs",
+			],
+			ogImage: "https://picsum.photos/seed/quickbeam-og/1200/630",
+			canonical: "https://dragondevs.co/case-studies/quickbeam-offline-file-transfer",
+		},
+
+		relatedProjects: [3, 1],
+	},
 ];

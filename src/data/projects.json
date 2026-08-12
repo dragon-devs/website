@@ -68,6 +68,28 @@
       "liveUrl": "https://bizstock.net",
       "caseStudy": true,
       "caseStudyUrl": "/case-studies/bizstock-inventory-pos-app"
+    },
+    {
+      "id": 4,
+      "type": "products",
+      "slug": "quickbeam-offline-file-transfer",
+      "category": "Cross-platform App",
+      "title": "Quickbeam",
+      "description": "Move anything between your devices — over the local network, over a hotspot it creates itself, or over no network at all by sending the data as light.",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Kotlin",
+        "Fountain codes"
+      ],
+      "icon": "Zap",
+      "image": "/about.jpeg",
+      "year": "2026",
+      "metrics": "Works with no network",
+      "status": "In development",
+      "statusIcon": "Rocket",
+      "caseStudy": true,
+      "caseStudyUrl": "/case-studies/quickbeam-offline-file-transfer"
     }
   ]
 }
