@@ -4,7 +4,7 @@ import React, {forwardRef, useMemo, useRef, useLayoutEffect} from 'react';
 import {Canvas, useFrame, useThree, RootState} from '@react-three/fiber';
 import {Color, Mesh, ShaderMaterial} from 'three';
 import {IUniform} from 'three';
-import {useTheme} from "next-themes";
+import {useReducedMotion} from 'motion/react';
 
 type NormalizedRGB = [number, number, number];
 
@@ -92,14 +92,17 @@ interface SilkPlaneProps {
 }
 
 const SilkPlane = forwardRef<Mesh, SilkPlaneProps>(function SilkPlane({uniforms}, ref) {
-	const {viewport} = useThree();
+	const {viewport, invalidate} = useThree();
 
 	useLayoutEffect(() => {
 		const mesh = ref as React.MutableRefObject<Mesh | null>;
 		if (mesh.current) {
 			mesh.current.scale.set(viewport.width, viewport.height, 1);
+			// Under frameloop="demand" nothing draws unless we ask, so the plane
+			// has to request a frame after every resize.
+			invalidate();
 		}
-	}, [ref, viewport]);
+	}, [ref, viewport, invalidate]);
 
 	useFrame((_state: RootState, delta: number) => {
 		const mesh = ref as React.MutableRefObject<Mesh | null>;
@@ -130,6 +133,15 @@ export interface SilkProps {
 
 const Silk: React.FC<SilkProps> = ({speed = 5, scale = 1, color = '#7B7481', noiseIntensity = 1.5, rotation = 0}) => {
 	const meshRef = useRef<Mesh>(null);
+	const reduceMotion = useReducedMotion();
+
+	// Every time-dependent term in the shader is multiplied by uSpeed, so at
+	// speed 0 the output is a still image. Redrawing it 60 times a second kept
+	// a full-screen fragment shader busy for the life of the page — enough GPU
+	// load on a phone to make everything layered above it stutter, and enough
+	// to force the mobile menu's backdrop-filter to re-rasterise every frame,
+	// since its source pixels technically changed. Draw once instead.
+	const isStatic = speed === 0 || reduceMotion;
 
 	const uniforms = useMemo<SilkUniforms>(
 		() => ({
@@ -144,7 +156,14 @@ const Silk: React.FC<SilkProps> = ({speed = 5, scale = 1, color = '#7B7481', noi
 	);
 
 	return (
-		<Canvas dpr={[1, 2]} frameloop="always" className={"dark:opacity-50 opacity-20"}>
+		<Canvas
+			// Capped below the device pixel ratio: this is a soft noise wash at
+			// 20% opacity, so a 3x backing store only bought memory pressure.
+			dpr={[1, 1.5]}
+			frameloop={isStatic ? 'demand' : 'always'}
+			gl={{antialias: false, powerPreference: 'low-power'}}
+			className={"dark:opacity-50 opacity-20"}
+		>
 			<SilkPlane ref={meshRef} uniforms={uniforms}/>
 		</Canvas>
 	);

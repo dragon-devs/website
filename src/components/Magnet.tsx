@@ -1,6 +1,7 @@
 'use client';
 
 import React, {HTMLAttributes, ReactNode, useEffect, useRef, useState} from 'react';
+import {useFinePointer} from '@/lib/use-fine-pointer';
 
 interface MagnetProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -27,9 +28,17 @@ const Magnet: React.FC<MagnetProps> = ({
   const [isActive, setIsActive] = useState<boolean>(false);
   const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const magnetRef = useRef<HTMLDivElement>(null);
+  const finePointer = useFinePointer();
+
+  // A magnet needs a pointer to chase. On a touchscreen the handler can never
+  // produce a meaningful offset, but a tap still emits a synthetic mousemove —
+  // and with a dozen magnets on a page (every MagnetButton nests two) that is a
+  // dozen getBoundingClientRect calls and re-renders on every tap.
+  const enabled = finePointer && !disabled;
 
   useEffect(() => {
-    if (disabled) {
+    if (!enabled) {
+      setIsActive(false);
       setPosition({ x: 0, y: 0 });
       return;
     }
@@ -55,13 +64,14 @@ const Magnet: React.FC<MagnetProps> = ({
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [padding, disabled, magnetStrength]);
+  }, [padding, enabled, magnetStrength]);
 
   const transitionStyle = isActive ? activeTransition : inactiveTransition;
+  const atRest = position.x === 0 && position.y === 0;
 
   return (
     <div
@@ -73,9 +83,12 @@ const Magnet: React.FC<MagnetProps> = ({
       <div
         className={innerClassName}
         style={{
-          transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
+          // Both of these are deliberately dropped at rest. A permanent
+          // translate3d + will-change promoted a compositor layer for every
+          // magnet on the page, whether or not it would ever move.
+          transform: atRest ? undefined : `translate3d(${position.x}px, ${position.y}px, 0)`,
           transition: transitionStyle,
-          willChange: 'transform'
+          willChange: isActive ? 'transform' : undefined
         }}
       >
         {children}

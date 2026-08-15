@@ -20,13 +20,12 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
     const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
 
-    // ✅ Light & dark default colors
-    const defaultColor = spotlightColor
-        ? spotlightColor
-        : typeof window !== "undefined" &&
-        document.documentElement.classList.contains("dark")
-            ? "rgba(255, 255, 255, 0.15)" // dark mode glow
-            : "rgba(0, 0, 0, 0.15)";      // light mode glow
+    // Light & dark default colours, resolved by CSS rather than by reading the
+    // `dark` class during render. The `typeof window` branch this replaces made
+    // the server emit the light glow and the client the dark one, so every page
+    // with a card on it hydrated with a mismatch and React threw the tree away
+    // and re-rendered it.
+    const defaultColor = spotlightColor ?? "var(--spotlight-glow)";
 
     const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
         if (!divRef.current || isFocused) return;

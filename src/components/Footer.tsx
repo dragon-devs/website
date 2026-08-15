@@ -98,10 +98,18 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="my-6 w-screen relative left-1/2 right-1/2 -ml-[50vw]">
-          <Separator />
-        </div>
+      </div>
 
+      {/* Full-bleed rule. Rendered outside the padded container instead of with
+          the `w-screen` + `-ml-[50vw]` trick: 100vw counts the scrollbar, so
+          that version overhung the page by the scrollbar width and gave the
+          document a horizontal scroll. As a direct child of <footer> it is
+          already exactly as wide as the page, with no vw arithmetic. */}
+      <div className="my-6">
+        <Separator />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6">
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} dragondevs. All rights reserved.

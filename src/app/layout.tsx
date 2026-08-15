@@ -3,12 +3,10 @@ import {Geist, Geist_Mono, Chakra_Petch, Bricolage_Grotesque} from "next/font/go
 import "./globals.css";
 import Silk from "@/components/Silk";
 import {ThemeProvider} from "next-themes";
-import ClickSpark from "@/components/ClickSpark";
 import MinimalNavbar from "@/components/Navbar";
 import Script from "next/script";
 import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
-import AnimatedCursor from "@/components/AnimatedCursor";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 import {Toaster} from "@/components/ui/sonner";
 import React from "react";

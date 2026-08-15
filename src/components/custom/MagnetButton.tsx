@@ -62,12 +62,12 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
           { icon || variant === "primary" ?  (
             <div className="flex justify-center items-center gap-2 w-full">
               <p>{label}</p>
-              <motion.div
-                animate={icon ? {} : { x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
+              {/* CSS keyframes, not a motion `repeat: Infinity` tween. The
+                  motion version ticked on the main thread for the life of the
+                  page, once per button — and there are several per screen. */}
+              <div className={icon ? undefined : "nudge-x"}>
                 {icon || <ArrowRight size={size === "sm" ? 16 : size === "md" ? 20 : 24} />}
-              </motion.div>
+              </div>
             </div>
           ) : (
             <span>{label}</span>

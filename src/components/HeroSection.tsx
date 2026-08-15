@@ -1,17 +1,15 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
-import { Sparkles, Zap } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react';
+import { Zap } from 'lucide-react';
 import MagnetButton from "@/components/custom/MagnetButton";
 import { useRouter, usePathname } from "next/navigation";
 import { goToContact } from "@/lib/contact-nav";
-import Image from "next/image";
 import { HeroTitle } from "@/components/hero/HeroTitle";
 import { GradientText } from '@/components/hero/GradientText';
-import { SpotlightLogo } from "@/components/hero/SpotLightLog";
 import Badge from "@/components/hero/Badge";
+import { useFinePointer } from "@/lib/use-fine-pointer";
 
 /**
  * Scroll cue at the foot of the hero.
@@ -73,73 +71,68 @@ const ScrollCue = () => {
 	);
 };
 
-const HeroSection = () => {
-	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-	const { theme, systemTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
+/**
+ * The two blurred background orbs.
+ *
+ * They live in their own `overflow-hidden` layer because `w-96` anchored at
+ * `left: 10%` is wider than a phone viewport — unclipped, it stretched the
+ * document to 423px on a 393px screen, which is what pushed the fixed nav and
+ * theme buttons off the right edge and left the dead strip beside the content.
+ *
+ * The parallax follows the pointer through motion values rather than state, so
+ * mousemove never re-renders the hero, and the listener is only attached on
+ * devices that actually have a pointer to follow.
+ */
+const HeroOrbs = () => {
+	const finePointer = useFinePointer();
+	const reduceMotion = useReducedMotion();
 
+	const mouseX = useMotionValue(0);
+	const mouseY = useMotionValue(0);
+
+	const orb1X = useTransform(mouseX, v => v * 0.02);
+	const orb1Y = useTransform(mouseY, v => v * 0.02);
+	const orb2X = useTransform(mouseX, v => v * -0.015);
+	const orb2Y = useTransform(mouseY, v => v * -0.015);
+
+	useEffect(() => {
+		if (!finePointer || reduceMotion) return;
+
+		const onMouseMove = (e: MouseEvent) => {
+			mouseX.set(e.clientX);
+			mouseY.set(e.clientY);
+		};
+
+		window.addEventListener('mousemove', onMouseMove, { passive: true });
+		return () => window.removeEventListener('mousemove', onMouseMove);
+	}, [finePointer, reduceMotion, mouseX, mouseY]);
+
+	return (
+		<div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+			<motion.div
+				className="absolute w-96 h-96 rounded-full bg-gradient-to-r blur-3xl opacity-30
+					from-blue-400/30 to-purple-400/30 dark:from-blue-500/20 dark:to-purple-500/20"
+				style={{ left: '10%', top: '20%', x: orb1X, y: orb1Y }}
+			/>
+			<motion.div
+				className="absolute w-80 h-80 rounded-full bg-gradient-to-r blur-3xl opacity-30
+					from-emerald-400/25 to-cyan-400/25 dark:from-emerald-500/15 dark:to-cyan-500/15"
+				style={{ right: '15%', bottom: '20%', x: orb2X, y: orb2Y }}
+			/>
+		</div>
+	);
+};
+
+const HeroSection = () => {
 	const router = useRouter();
 	const pathname = usePathname();
-
-	// Get current theme
-	const currentTheme = theme === 'system' ? systemTheme : theme;
-	const isDark = currentTheme === 'dark';
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	useEffect(() => {
-		const handleMouseMove = (e) => {
-			setMousePosition({ x: e.clientX, y: e.clientY });
-		};
-		window.addEventListener('mousemove', handleMouseMove);
-		return () => window.removeEventListener('mousemove', handleMouseMove);
-	}, []);
-
-
-	// Memoize gradient colors
-	const gradientColors = useMemo(() => ({
-		badge: isDark ? 'text-primary/80' : 'text-primary',
-		heading: isDark
-			? 'from-white via-blue-100 to-purple-100'
-			: 'from-gray-900 via-blue-900 to-purple-900',
-		accent: isDark
-			? 'from-blue-400 via-purple-400 to-emerald-400'
-			: 'from-blue-600 via-purple-600 to-emerald-600',
-		subtitle: isDark ? 'text-foreground/80' : 'text-foreground/70',
-		stats: isDark ? 'text-foreground' : 'text-foreground',
-		orb1: isDark ? 'from-blue-500/20 to-purple-500/20' : 'from-blue-400/30 to-purple-400/30',
-		orb2: isDark ? 'from-emerald-500/15 to-cyan-500/15' : 'from-emerald-400/25 to-cyan-400/25',
-	}), [isDark]);
-
-	// Prevent hydration mismatch
-	if (!mounted) {
-		return null;
-	}
 
 	return (
 		// 100svh, not 100vh: on mobile browsers vh is measured against the viewport
 		// with the URL bar hidden, so a 100vh hero is always taller than what the
 		// reader can actually see and the scroll cue sits below the fold.
 		<div id="hero" className="relative flex flex-col min-h-[100svh] md:py-0 py-10">
-			{/* Dynamic Gradient Orbs */}
-			<motion.div
-				className={`absolute w-96 h-96 rounded-full bg-gradient-to-r ${gradientColors.orb1} blur-3xl opacity-30`}
-				animate={{
-					x: mousePosition.x * 0.02,
-					y: mousePosition.y * 0.02,
-				}}
-				style={{ left: '10%', top: '20%' }}
-			/>
-			<motion.div
-				className={`absolute w-80 h-80 rounded-full bg-gradient-to-r ${gradientColors.orb2} blur-3xl opacity-30`}
-				animate={{
-					x: mousePosition.x * -0.015,
-					y: mousePosition.y * -0.015,
-				}}
-				style={{ right: '15%', bottom: '20%' }}
-			/>
+			<HeroOrbs />
 
 			{/* Main Content */}
 			<div className="relative scale-90 z-10 flex flex-1 items-center justify-center px-6">
@@ -179,7 +172,7 @@ const HeroSection = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 0.1 }}
 				transition={{ delay: 2 }}
-				className={`absolute top-1/4 left-8 ${isDark ? 'text-green-400' : 'text-green-600'} font-mono text-sm hidden lg:block`}
+				className="absolute top-1/4 left-8 text-green-600 dark:text-green-400 font-mono text-sm hidden lg:block"
 			>
 				<div>{'{'}</div>
 				<div className="ml-4">"innovation": true,</div>
@@ -192,7 +185,7 @@ const HeroSection = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 0.1 }}
 				transition={{ delay: 2.2 }}
-				className={`absolute bottom-1/4 right-8 ${isDark ? 'text-blue-400' : 'text-blue-600'} font-mono text-sm hidden lg:block`}
+				className="absolute bottom-1/4 right-8 text-blue-600 dark:text-blue-400 font-mono text-sm hidden lg:block"
 			>
 				<div>const future = () =&gt; {'{'}</div>
 				<div className="ml-4">return innovation;</div>

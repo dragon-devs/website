@@ -1,8 +1,8 @@
 // components/hero/SpotlightLogo.tsx
 'use client';
 
-import React, {useEffect, useState, useMemo} from 'react';
-import {useTheme} from 'next-themes';
+import React, {useEffect, useMemo, useRef} from 'react';
+import {useFinePointer} from '@/lib/use-fine-pointer';
 
 interface SpotlightLogoProps {
 	/** SVG path data - the actual shape of your logo */
@@ -33,7 +33,6 @@ const dragonDevsLogoPaths = [
 	"M201.4,277.74H150.78a5.53,5.53,0,0,1-3.91-1.62l-94.5-94.5-.46-.46L35.45,164.7,17,146.29a5.51,5.51,0,0,1-1.25-5.92A217.89,217.89,0,0,1,33.1,105.73a5.54,5.54,0,0,1,8.63-1l10.64,10.65L70.81,133.8l30.9,30.9,63,63,40.63,40.63A5.53,5.53,0,0,1,201.4,277.74Z"
 ];
 
-
 export const SpotlightLogo: React.FC<SpotlightLogoProps> = ({
 	                                                            svgPaths = dragonDevsLogoPaths,
 	                                                            viewBox = "0 0 442.4 442.42",
@@ -45,77 +44,111 @@ export const SpotlightLogo: React.FC<SpotlightLogoProps> = ({
 	                                                            scale = 'scale-110',
 	                                                            className = ''
                                                             }) => {
-	const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
-	const {theme, systemTheme} = useTheme();
-	const [mounted, setMounted] = useState(false);
+	const finePointer = useFinePointer();
+	const highlightRef = useRef<HTMLDivElement>(null);
 
-	const currentTheme = theme === 'system' ? systemTheme : theme;
-	const isDark = currentTheme === 'dark';
-
+	/**
+	 * The spotlight mask is written straight to the node inside a rAF rather
+	 * than held in state. As state it re-rendered this component — and with it
+	 * two full-screen SVG trees — on every single mousemove.
+	 */
 	useEffect(() => {
-		setMounted(true);
-	}, []);
+		if (!finePointer) return;
 
-	useEffect(() => {
-		const handleMouseMove = (e: MouseEvent) => {
-			setMousePosition({x: e.clientX, y: e.clientY});
+		let frame = 0;
+		let x = 0;
+		let y = 0;
+
+		const apply = () => {
+			frame = 0;
+			const el = highlightRef.current;
+			if (!el) return;
+			const mask = `radial-gradient(circle ${spotlightRadius}px at ${x}px ${y}px, black 0%, transparent 100%)`;
+			el.style.maskImage = mask;
+			el.style.webkitMaskImage = mask;
 		};
-		window.addEventListener('mousemove', handleMouseMove);
-		return () => window.removeEventListener('mousemove', handleMouseMove);
-	}, []);
 
-	const logoStroke = useMemo(() => isDark ? strokeColor.dark : strokeColor.light, [isDark, strokeColor]);
-	const logoBaseOpacity = useMemo(() => isDark ? baseOpacity.dark : baseOpacity.light, [isDark, baseOpacity]);
-	const logoHighlightOpacity = useMemo(() => isDark ? highlightOpacity.dark : highlightOpacity.light, [isDark, highlightOpacity]);
+		const handleMouseMove = (e: MouseEvent) => {
+			x = e.clientX;
+			y = e.clientY;
+			if (!frame) frame = requestAnimationFrame(apply);
+		};
 
-	const SVGContent = useMemo(() => (
-		<>
-			<defs>
-				<style>{`.cls-1{fill:none;stroke:${logoStroke};stroke-miterlimit:10;}`}</style>
-			</defs>
-			<g id="Layer_2" data-name="Layer 2">
-				<g id="Layer_1-2" data-name="Layer 1">
-					{svgPaths.map((path, index) => (
-						<path key={index} className="cls-1" d={path} />
-					))}
-				</g>
+		window.addEventListener('mousemove', handleMouseMove, {passive: true});
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove);
+			if (frame) cancelAnimationFrame(frame);
+		};
+	}, [finePointer, spotlightRadius]);
+
+	// Stroke and opacity resolve through CSS variables and the `dark:` variant
+	// instead of a `resolvedTheme` branch, so the logo renders on the server.
+	// The previous mount gate meant it flashed in after hydration on every load.
+	const themeVars = useMemo(
+		() =>
+			({
+				'--logo-stroke-light': strokeColor.light,
+				'--logo-stroke-dark': strokeColor.dark,
+				'--logo-base-light': baseOpacity.light,
+				'--logo-base-dark': baseOpacity.dark,
+				'--logo-highlight-light': highlightOpacity.light,
+				'--logo-highlight-dark': highlightOpacity.dark,
+			}) as React.CSSProperties,
+		[strokeColor, baseOpacity, highlightOpacity]
+	);
+
+	const paths = useMemo(
+		() => (
+			<g>
+				{svgPaths.map((path, index) => (
+					<path
+						key={index}
+						d={path}
+						fill="none"
+						stroke="currentColor"
+						strokeMiterlimit={10}
+					/>
+				))}
 			</g>
-		</>
-	), [logoStroke, svgPaths]);
+		),
+		[svgPaths]
+	);
 
-	if (!mounted) {
-		return null;
-	}
+	const svgClass =
+		`w-full h-full ${scale} text-[var(--logo-stroke-light)] dark:text-[var(--logo-stroke-dark)]`;
 
 	return (
-		<div className={`mx-auto ${className}`}>
-			{/* High opacity layer - revealed by mouse */}
+		<div className={`mx-auto ${className}`} style={themeVars}>
+			{/* Mouse-revealed layer. Skipped outright on touch devices, where it
+			    can never be revealed but still costs a full-screen masked
+			    compositing layer on every paint. */}
+			{finePointer && (
+				<div
+					ref={highlightRef}
+					className={`absolute ${containerPadding} justify-center z-20 w-full h-full pointer-events-none`}
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox={viewBox}
+						className={`${svgClass} opacity-[var(--logo-highlight-light)] dark:opacity-[var(--logo-highlight-dark)]`}
+						aria-hidden="true"
+					>
+						{paths}
+					</svg>
+				</div>
+			)}
+
+			{/* Base layer - always visible at low opacity */}
 			<div
-				className={`absolute ${containerPadding} justify-center z-20 w-full h-full pointer-events-none`}
-				style={{
-					maskImage: `radial-gradient(circle ${spotlightRadius}px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 100%)`,
-					WebkitMaskImage: `radial-gradient(circle ${spotlightRadius}px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 100%)`,
-				}}
+				className={`absolute ${containerPadding} justify-center z-10 w-full h-full pointer-events-none`}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox={viewBox}
-					className={`w-full h-full ${scale}`}
-					style={{opacity: logoHighlightOpacity}}
+					className={`${svgClass} opacity-[var(--logo-base-light)] dark:opacity-[var(--logo-base-dark)]`}
+					aria-hidden="true"
 				>
-					{SVGContent}
-				</svg>
-			</div>
-
-			{/* Base layer - always visible at low opacity */}
-			<div className={`absolute ${containerPadding} justify-center z-10 w-full h-full pointer-events-none`}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox={viewBox}
-					className={`w-full h-full ${scale}`}
-					style={{opacity: logoBaseOpacity}}
-				>
-					{SVGContent}
+					{paths}
 				</svg>
 			</div>
 		</div>

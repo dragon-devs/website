@@ -76,6 +76,10 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.623 0.214 259.815);
+  /* Hover glow inside SpotlightCard. Lives here so the value follows the theme
+     class instead of being branched on in JS during render, which mismatched
+     between the server and client HTML. */
+  --spotlight-glow: rgba(0, 0, 0, 0.15);
 }
 
 .dark {
@@ -117,6 +121,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.72 0.145 259.815);
+  --spotlight-glow: rgba(255, 255, 255, 0.15);
 }
 
 @layer base {
@@ -151,6 +156,23 @@
     background-color: var(--muted-foreground);
     background-clip: padding-box;
   }
+}
+
+/* Arrow nudge on the primary buttons. Runs on the compositor, unlike the
+   motion `repeat: Infinity` tween it replaces, which kept a main-thread
+   animation alive per button for as long as the page was open. */
+@keyframes nudge-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.nudge-x {
+  animation: nudge-x 1.5s ease-in-out infinite;
 }
 
 /* Respect users who prefer less motion */
