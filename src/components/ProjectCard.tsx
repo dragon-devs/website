@@ -6,11 +6,9 @@ import Pill from "@/components/Pill";
 import MagnetButton from "@/components/custom/MagnetButton";
 import {FaGithub} from "react-icons/fa6";
 import React from "react";
-import {useRouter} from "next/navigation";
 import {InViewReveal} from "@/components/motion";
 
 export const ProjectCard = ({project, index}: any) => {
-    const router = useRouter();
     return (
         <SpotlightCard>
             <InViewReveal
@@ -74,7 +72,8 @@ export const ProjectCard = ({project, index}: any) => {
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
 				                className="flex justify-center items-center"
-				                onClick={() => window.open(project.liveUrl, "_blank", "noopener,noreferrer")}
+				                href={project.liveUrl}
+				                external
 			                />
 		                )}
 
@@ -87,20 +86,23 @@ export const ProjectCard = ({project, index}: any) => {
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
 				                className="flex justify-center items-center"
-				                onClick={() => window.open(project.githubUrl, "_blank", "noopener,noreferrer")}
+				                href={project.githubUrl}
+				                external
 			                />
 		                )}
 
 		                {project.caseStudy && project.caseStudyUrl && (
 			                <MagnetButton
-				                label="Case Study"
+				                // Descriptive rather than a bare "Case Study" on every card:
+				                // repeated anchor text tells a crawler nothing about the target.
+				                label={`${project.title} case study`}
 				                icon={<ArrowRight size={14}/>}
 				                size="sm"
 				                variant="secondary"
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
-				                className="flex justify-center items-center"
-				                onClick={() => router.push(project.caseStudyUrl)}
+				                className="flex justify-center items-center text-center leading-tight"
+				                href={project.caseStudyUrl}
 			                />
 		                )}
 	                </div>

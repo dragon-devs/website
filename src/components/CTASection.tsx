@@ -24,8 +24,28 @@ export const CTASection = () => {
             and how we'd approach it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <MagnetButton label={"Start Your Project"} onClick={() => goToContact(router, pathname)} />
-              <MagnetButton variant={'secondary'} label={"Schedule a Call"} onClick={() => router.push("https://calendly.com/dragondevs/30min")} />
+              {/* Real hrefs, then the click handler takes over. Previously both
+                  were plain buttons, so the site's primary call to action was
+                  a link no crawler could follow — and neither could a reader
+                  middle-clicking to open it in a new tab. */}
+              <MagnetButton
+                // This section renders at the foot of every page, so its label
+                // has to stay distinct from the CTAs already in the page body —
+                // "Start Your Project" in the hero, "Tell us about it" on
+                // /services. Repeated anchor text is the thing being avoided.
+                label={"Start the Conversation"}
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToContact(router, pathname);
+                }}
+              />
+              <MagnetButton
+                variant={'secondary'}
+                label={"Schedule a Call"}
+                href="https://calendly.com/dragondevs/30min"
+                external
+              />
           </div>
         </InViewReveal>
       </div>

@@ -8,7 +8,18 @@ import {cn} from "@/lib/utils";
 
 interface MagnetButtonProps {
   label: string;
-  onClick?: () => void;
+  /** Receives the event so an `href` variant can `preventDefault()` and handle
+   *  the navigation itself while still shipping a real, crawlable link. */
+  onClick?: (event: React.MouseEvent) => void;
+  /**
+   * Navigate to this URL. Anything that changes the page must use `href`
+   * rather than an `onClick` handler: a crawler cannot execute a click, so a
+   * `router.push` button is invisible to it and the destination page ends up
+   * with no internal links pointing at it.
+   */
+  href?: string;
+  /** Open `href` in a new tab. Adds the matching `rel` for `target="_blank"`. */
+  external?: boolean;
   icon?: React.ReactNode;
   className?: string
   wrapperClassName?: string;
@@ -21,6 +32,8 @@ interface MagnetButtonProps {
 const MagnetButton: React.FC<MagnetButtonProps> = ({
                                                      label,
                                                      onClick,
+                                                     href,
+                                                     external = false,
                                                      icon,
                                                      className,
                                                      wrapperClassName,
@@ -36,9 +49,16 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
     lg: "px-8 py-4 text-lg",
   };
 
+  // A disabled control is not navigable, so it stays a <button> even with an href.
+  const asLink = Boolean(href) && !disabled;
+  const Component = asLink ? motion.a : motion.button;
+  const navProps = asLink
+    ? { href, ...(external ? { target: "_blank", rel: "noopener noreferrer" } : {}) }
+    : { type: "button" as const, disabled };
+
   return (
     <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={magnetStrength}>
-      <motion.button
+      <Component
         whileHover={{
           scale: 1.02,
           ...(variant === "primary" && {
@@ -47,9 +67,10 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
         }}
         whileTap={{ scale: 0.98 }}
         onClick={onClick}
-        disabled={disabled}
+        {...navProps}
         className={cn(
-          "w-full rounded-full font-semibold",
+          // <a> is inline by default; centre its contents like the button.
+          "w-full rounded-full font-semibold flex items-center justify-center",
           sizes[size],
           variant === "primary" &&
           "bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white/80 dark:text-white shadow-xl flex items-center gap-3",
@@ -73,7 +94,7 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
             <span>{label}</span>
           )}
         </Magnet>
-      </motion.button>
+      </Component>
     </Magnet>
   );
 };

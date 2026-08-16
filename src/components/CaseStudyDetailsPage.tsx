@@ -138,12 +138,12 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 							className="w-full flex gap-4 flex-wrap"
 						>
 							{caseStudy.liveUrl && (
-								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => window.open(caseStudy.liveUrl as string, "_blank", "noopener,noreferrer")}
+								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} href={caseStudy.liveUrl} external
 								              label={"View Live"} icon={<ExternalLink size={18}/>}/>
 
 							)}
 							{caseStudy.githubUrl && (
-								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} onClick={() => window.open(caseStudy.githubUrl as string, "_blank", "noopener,noreferrer")}
+								<MagnetButton wrapperClassName="w-full md:w-auto" size={"sm"} href={caseStudy.githubUrl} external
 								              variant={"secondary"}
 								              label={"View GitHub"} icon={<FaGithub size={18}/>}/>
 							)}

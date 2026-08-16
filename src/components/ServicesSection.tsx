@@ -88,7 +88,7 @@ export const ServicesSection = () => {
         </div>
 
         <InViewReveal className="text-center mt-12">
-          <MagnetButton label={"View All Services"} onClick={()=> router.push("/services")} />
+          <MagnetButton label={"View All Services"} href="/services" />
         </InViewReveal>
       </div>
     </section>

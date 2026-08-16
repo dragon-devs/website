@@ -159,8 +159,8 @@ const HeroSection = () => {
 						style={{ '--reveal-delay': '0.8s' } as React.CSSProperties}
 						className="reveal-up flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
-						<MagnetButton label="Start Your Project" onClick={() => goToContact(router, pathname)} size={'lg'} />
-						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-studies")}
+						<MagnetButton label="Start Your Project" href="/#contact" onClick={(e) => { e.preventDefault(); goToContact(router, pathname); }} size={'lg'} />
+						<MagnetButton label="View Our Work" variant="secondary" href="/case-studies"
 							size={'lg'} />
 					</div>
 				</div>

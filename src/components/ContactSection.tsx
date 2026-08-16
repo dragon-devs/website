@@ -26,6 +26,21 @@ const BUDGETS = [
 
 const TIMELINES = ["ASAP", "1–3 months", "3–6 months", "Flexible / not sure"];
 
+const NEXT_STEPS = [
+	{
+		title: "We read it properly",
+		body: "Your message reaches the people who would actually build the thing, not a ticket queue. Expect a reply within one business day.",
+	},
+	{
+		title: "A short call, if it helps",
+		body: "Thirty minutes to understand the problem, the constraints you're working within and the deadline you're working to. No pitch deck, no obligation.",
+	},
+	{
+		title: "A scoped plan and a quote",
+		body: "A written breakdown of what we would build, in what order, what it costs and when it ships — yours to keep whether or not you hire us.",
+	},
+];
+
 const contactInfo = [
 	{icon: Mail, label: "Email", value: "info@dragondevs.co", link: "mailto:info@dragondevs.co"},
 	{icon: Phone, label: "Phone", value: "+92 346 6955928", link: "tel:+923466955928"},
@@ -171,15 +186,20 @@ export const ContactSection = () => {
 					<div className="grid gap-4">
 						{contactInfo.map((info, index) => (
 							<InViewReveal
-								as="a"
-								href={info.link ?? "#"}
+								// Location has no destination; href="#" shipped a link to
+								// nowhere instead of a plain block of text.
+								as={info.link ? "a" : "div"}
+								{...(info.link ? {href: info.link} : {})}
 								key={info.label}
 								from={{opacity: 0, y: 16}}
 								delay={index * 0.08}
 								className="relative group overflow-hidden border border-border p-5 hover:border-primary/50 transition-all duration-500"
 							>
 								<info.icon size={120} className="absolute -right-2 -bottom-6 text-muted-foreground opacity-[0.07]"/>
-								<h4 className="text-foreground font-semibold mb-1 text-lg tracking-tight">{info.label}</h4>
+								{/* h3, not h4: these sit directly under the section h2, and jumping
+									    h2 -> h4 is a heading-structure error. The size here comes
+									    from the classes, so nothing moves visually. */}
+									<h3 className="text-foreground font-semibold mb-1 text-lg tracking-tight">{info.label}</h3>
 								<p className="text-muted-foreground group-hover:text-primary/80 transition-colors">{info.value}</p>
 							</InViewReveal>
 						))}
@@ -326,12 +346,35 @@ export const ContactSection = () => {
 						</button>
 
 						<p className="text-xs text-muted-foreground text-center">
-							We typically reply within a day. Your details are only used to respond — see our{" "}
-							<a href="/privacy" className="underline underline-offset-2 hover:text-primary">privacy policy</a>.
+							We typically reply within a day. Your details are only used to respond — see{" "}
+							<a href="/privacy" className="underline underline-offset-2 hover:text-primary">how we handle your details</a>.
 						</p>
 					</form>
 				</InViewReveal>
 			</div>
+
+			<InViewReveal className="max-w-7xl mx-auto md:px-6 px-4 mt-16">
+				<h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">What happens next</h3>
+				<p className="text-muted-foreground mb-8 max-w-2xl">
+					No sales funnel and no chasing. This is how a project actually starts with us, from
+					the moment your message lands.
+				</p>
+
+				<div className="grid md:grid-cols-3 gap-4">
+					{NEXT_STEPS.map((step, index) => (
+						<InViewReveal
+							key={step.title}
+							from={{opacity: 0, y: 16}}
+							delay={index * 0.08}
+							className="border border-border p-5 hover:border-primary/50 transition-all duration-500"
+						>
+							<span className="text-primary font-semibold text-sm tracking-wider">0{index + 1}</span>
+							<h4 className="text-foreground font-semibold mt-2 mb-1 text-lg tracking-tight">{step.title}</h4>
+							<p className="text-muted-foreground">{step.body}</p>
+						</InViewReveal>
+					))}
+				</div>
+			</InViewReveal>
 		</section>
 	);
 };

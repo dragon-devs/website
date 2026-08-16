@@ -78,7 +78,7 @@ export const AboutSection = () => {
         </div>
 
         <InViewReveal className="text-center">
-          <MagnetButton label={"Learn More About Us"}  onClick={()=> router.push("/about")} />
+          <MagnetButton label={"Learn More About Us"} href="/about" />
         </InViewReveal>
       </div>
     </section>

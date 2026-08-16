@@ -926,12 +926,6 @@ export const caseStudies: CaseStudyDetails[] = [
 				type: "paragraph",
 				content: "Sending and receiving both work, across Android, Windows and the browser. Quickbeam is still in active development: encrypted transfers and standing pairings — so two devices you use often recognise each other without a code — are the next things we're building.",
 			},
-			{
-				type: "cta",
-				content: "Building something that has to work in the awkward conditions, not just the ideal ones?",
-				label: "Talk to us",
-				href: "/contact",
-			},
 		],
 
 		seo: {
