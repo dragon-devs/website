@@ -40,10 +40,13 @@ const ScrollCue = () => {
 
 	return (
 		<motion.div
-			initial={{ opacity: 0 }}
+			// `initial={false}` keeps the server-rendered markup visible; the CSS
+			// class below supplies the delayed fade-in that `initial` used to.
+			initial={false}
 			animate={{ opacity: visible ? 1 : 0 }}
-			transition={{ delay: visible ? 1.4 : 0, duration: 0.4 }}
-			className="relative z-10 flex justify-center pb-4 md:pb-8"
+			transition={{ duration: 0.4 }}
+			style={{ '--reveal-delay': '1.4s' } as React.CSSProperties}
+			className="reveal-fade relative z-10 flex justify-center pb-4 md:pb-8"
 			aria-hidden={!visible}
 		>
 			<button
@@ -152,45 +155,43 @@ const HeroSection = () => {
 						</GradientText>
 					</div>
 					{/* CTA Buttons */}
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ delay: 0.8 }}
-						className="flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
+					<div
+						style={{ '--reveal-delay': '0.8s' } as React.CSSProperties}
+						className="reveal-up flex flex-col sm:flex-row gap-6 justify-center items-center select-none"
 					>
 						<MagnetButton label="Start Your Project" onClick={() => goToContact(router, pathname)} size={'lg'} />
 						<MagnetButton label="View Our Work" variant="secondary" onClick={() => router.push("/case-studies")}
 							size={'lg'} />
-					</motion.div>
+					</div>
 				</div>
 			</div>
 
 			<ScrollCue/>
 
-			{/* Code-like decoration */}
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 0.1 }}
-				transition={{ delay: 2 }}
-				className="absolute top-1/4 left-8 text-green-600 dark:text-green-400 font-mono text-sm hidden lg:block"
+			{/* Code-like decoration. `aria-hidden` because it is texture, not content —
+			    and now that it is in the server-rendered HTML unhidden, it would
+			    otherwise be read out and counted as page copy. */}
+			<div
+				aria-hidden="true"
+				style={{ '--reveal-delay': '2s' } as React.CSSProperties}
+				className="reveal-fade opacity-10 absolute top-1/4 left-8 text-green-600 dark:text-green-400 font-mono text-sm hidden lg:block"
 			>
 				<div>{'{'}</div>
 				<div className="ml-4">"innovation": true,</div>
 				<div className="ml-4">"quality": "premium",</div>
 				<div className="ml-4">"delivery": "on-time"</div>
 				<div>{'}'}</div>
-			</motion.div>
+			</div>
 
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 0.1 }}
-				transition={{ delay: 2.2 }}
-				className="absolute bottom-1/4 right-8 text-blue-600 dark:text-blue-400 font-mono text-sm hidden lg:block"
+			<div
+				aria-hidden="true"
+				style={{ '--reveal-delay': '2.2s' } as React.CSSProperties}
+				className="reveal-fade opacity-10 absolute bottom-1/4 right-8 text-blue-600 dark:text-blue-400 font-mono text-sm hidden lg:block"
 			>
 				<div>const future = () =&gt; {'{'}</div>
 				<div className="ml-4">return innovation;</div>
 				<div>{'}'}</div>
-			</motion.div>
+			</div>
 		</div>
 	);
 };

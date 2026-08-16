@@ -1,6 +1,5 @@
 "use client";
 import SpotlightCard from "@/components/SpotlightCard";
-import {motion} from "motion/react";
 import Image from "next/image";
 import {ArrowRight, Boxes, Calendar, CheckCircle2, ExternalLink, TrendingUp} from "lucide-react";
 import Pill from "@/components/Pill";
@@ -8,17 +7,14 @@ import MagnetButton from "@/components/custom/MagnetButton";
 import {FaGithub} from "react-icons/fa6";
 import React from "react";
 import {useRouter} from "next/navigation";
-import {EASE} from "@/components/motion";
+import {InViewReveal} from "@/components/motion";
 
 export const ProjectCard = ({project, index}: any) => {
     const router = useRouter();
     return (
         <SpotlightCard>
-            <motion.div
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true, amount: 0.2}}
-                transition={{duration: 0.55, ease: EASE, delay: (index % 2) * 0.1}}
+            <InViewReveal
+                delay={(index % 2) * 0.1}
                 className="relative flex flex-col h-full overflow-hidden group"
             >
                 <div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
@@ -109,7 +105,7 @@ export const ProjectCard = ({project, index}: any) => {
 		                )}
 	                </div>
                 </div>
-            </motion.div>
+            </InViewReveal>
         </SpotlightCard>
     );
 };

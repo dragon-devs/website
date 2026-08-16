@@ -1,7 +1,7 @@
 'use client'
 import {CheckCircle2, ChevronRight, Code, Cpu, Globe, Layers, Rocket, Shield} from "lucide-react";
-import {motion} from "motion/react";
 import React from "react";
+import {InViewReveal} from "@/components/motion";
 import {useRouter} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
 import SpotlightCard from "@/components/SpotlightCard";
@@ -52,12 +52,7 @@ export const ServicesSection = () => {
   return (
     <section id={"services"} className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-end text-end mb-16"
-        >
+        <InViewReveal className="flex flex-col items-end text-end mb-16">
           <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Services</span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
             Comprehensive Digital Solutions
@@ -65,17 +60,13 @@ export const ServicesSection = () => {
           <p className="text-muted-foreground text-lg max-w-3xl">
             From concept to deployment, we offer end-to-end development services tailored to your business needs.
           </p>
-        </motion.div>
+        </InViewReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
           {services.slice(0, 3).map((service, index) => (
             <SpotlightCard key={index}>
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+            <InViewReveal
+              delay={index * 0.1}
               className="relative p-8 transition-all group"
             >
               <div className="absolute -right-10 -bottom-10  opacity-10">
@@ -91,19 +82,14 @@ export const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </InViewReveal>
             </SpotlightCard>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
+        <InViewReveal className="text-center mt-12">
           <MagnetButton label={"View All Services"} onClick={()=> router.push("/services")} />
-        </motion.div>
+        </InViewReveal>
       </div>
     </section>
   );

@@ -175,6 +175,51 @@
   animation: nudge-x 1.5s ease-in-out infinite;
 }
 
+/* ---------------------------------------------------------------------------
+   On-load entrance reveals.
+
+   These replace motion's `initial={{opacity: 0, y: 30}}` on above-the-fold
+   content. `initial` is serialised into the server-rendered HTML as
+   `style="opacity:0;transform:translateY(30px)"`, and only cleared once the
+   client bundle hydrates. Crawlers that read HTML without executing JavaScript
+   — SEO auditors, Bing, and most AI/LLM crawlers — read that as hidden
+   content, which is why audits reported "no H1 heading specified" on pages
+   whose <h1> is plainly in the markup.
+
+   A CSS animation has no such problem: the element's *resting* style is
+   visible, and `animation-fill-mode: backwards` supplies the hidden start
+   state only while the animation is pending or running. Nothing is hidden in
+   the HTML, and the reveal now also runs before hydration rather than after.
+   --------------------------------------------------------------------------- */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 1.875rem));
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.reveal-up,
+.reveal-fade {
+  animation-duration: var(--reveal-duration, 0.6s);
+  animation-delay: var(--reveal-delay, 0s);
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: backwards;
+}
+
+.reveal-up {
+  animation-name: reveal-up;
+}
+
+.reveal-fade {
+  animation-name: reveal-fade;
+}
+
 /* Respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -184,6 +229,9 @@
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    /* Without this, a `backwards`-filled reveal would sit at its hidden start
+       state for the whole delay before snapping in. */
+    animation-delay: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }

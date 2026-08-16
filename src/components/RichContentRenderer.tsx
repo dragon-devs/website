@@ -1,9 +1,18 @@
 import React from 'react';
-import {motion} from 'motion/react';
 import {ArrowRight, CheckCircle2, ExternalLink, Quote, ShoppingCart, TrendingDown, TrendingUp, Zap} from 'lucide-react';
 import {Separator} from "@/components/ui/separator";
+import {InViewReveal} from "@/components/motion";
 
-// Content Renderer Component
+/**
+ * Renders a case study body.
+ *
+ * Every block reveals on scroll through `InViewReveal` rather than
+ * `<motion.x initial={{opacity: 0}} whileInView={…}>`. This is the whole
+ * article text — headings, paragraphs, lists — so it is also the bulk of what
+ * a crawler should be reading. Motion's `initial` ships as `style="opacity:0"`
+ * in the server HTML, which made the entire case study invisible to anything
+ * that does not run JavaScript. See `components/motion/index.tsx`.
+ */
 export const RichContentRenderer = ({ content }: { content: any[] }) => {
 	const getIcon = (iconName: string) => {
 		const icons: any = {
@@ -22,63 +31,54 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 						// hero title). Emitting another <h1> from body content would
 						// give the page two H1s — the exact SEO problem we're avoiding.
 						return (
-							<motion.h2
+							<InViewReveal
+								as="h2"
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className="text-4xl md:text-5xl font-bold mb-6"
 							>
 								{block.content}
-							</motion.h2>
+							</InViewReveal>
 						);
 
 					case 'h2':
 						return (
-							<motion.h2
+							<InViewReveal
+								as="h2"
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className="text-3xl md:text-4xl font-bold mb-4 mt-10"
 							>
 								{block.content}
-							</motion.h2>
+							</InViewReveal>
 						);
 
 					case 'h3':
 						return (
-							<motion.h3
+							<InViewReveal
+								as="h3"
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className="text-2xl md:text-3xl font-bold mb-3 mt-8"
 							>
 								{block.content}
-							</motion.h3>
+							</InViewReveal>
 						);
 
 					case 'paragraph':
 						return (
-							<motion.p
+							<InViewReveal
+								as="p"
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className="text-lg text-muted-foreground leading-relaxed"
 							>
 								{block.content}
-							</motion.p>
+							</InViewReveal>
 						);
 
 					case 'image':
 						return (
-							<motion.div
+							<InViewReveal
 								key={index}
-								initial={{ opacity: 0, scale: 0.95 }}
-								whileInView={{ opacity: 1, scale: 1 }}
-								viewport={{ once: true }}
+								from={{ opacity: 0, scale: 0.95 }}
+								to={{ opacity: 1, scale: 1 }}
 								className="rounded-lg overflow-hidden my-8"
 							>
 								<img
@@ -86,16 +86,13 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 									alt={block.alt}
 									className="w-full h-auto"
 								/>
-							</motion.div>
+							</InViewReveal>
 						);
 
 					case 'imageGrid':
 						return (
-							<motion.div
+							<InViewReveal
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className={`grid gap-4 my-8 ${
 									block.gridCols === 2 ? 'md:grid-cols-2' :
 										block.gridCols === 3 ? 'md:grid-cols-3' :
@@ -113,33 +110,32 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 										)}
 									</div>
 								))}
-							</motion.div>
+							</InViewReveal>
 						);
 
 					case 'list':
 						const ListTag = block.ordered ? 'ol' : 'ul';
 						return (
-							<motion.div
+							<InViewReveal
 								key={index}
-								initial={{ opacity: 0, x: -20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
+								from={{ opacity: 0, x: -20 }}
+								to={{ opacity: 1, x: 0 }}
 							>
 								<ListTag className={`space-y-2 pl-8 ${block.ordered ? 'list-decimal' : 'list-disc'} list-outside text-lg text-muted-foreground`}>
 									{block.items?.map((item: string, i: number) => (
 										<li key={i}>{item}</li>
 									))}
 								</ListTag>
-							</motion.div>
+							</InViewReveal>
 						);
 
 					case 'quote':
 						return (
-							<motion.blockquote
+							<InViewReveal
+								as="blockquote"
 								key={index}
-								initial={{ opacity: 0, x: -20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
+								from={{ opacity: 0, x: -20 }}
+								to={{ opacity: 1, x: 0 }}
 								className="border-l-4 border-primary pl-6 px-4 py-4 my-8 bg-muted/30 rounded-r-lg"
 							>
 								<Quote className="text-primary mb-2" size={24} />
@@ -149,44 +145,40 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 										— {block.author}
 									</footer>
 								)}
-							</motion.blockquote>
+							</InViewReveal>
 						);
 
 					case 'link':
 						return (
-							<motion.a
+							<InViewReveal
+								as="a"
 								key={index}
 								href={block.href}
-								initial={{ opacity: 0 }}
-								whileInView={{ opacity: 1 }}
-								viewport={{ once: true }}
+								from={{ opacity: 0 }}
+								to={{ opacity: 1 }}
 								className="inline-flex items-center gap-2 text-primary hover:underline"
 							>
 								{block.label || block.content}
 								<ExternalLink size={16} />
-							</motion.a>
+							</InViewReveal>
 						);
 
 					case 'divider':
 						return (
-							<motion.div
+							<InViewReveal
 								key={index}
-								initial={{ opacity: 0, scaleX: 0 }}
-								whileInView={{ opacity: 1, scaleX: 1 }}
-								viewport={{ once: true }}
+								from={{ opacity: 0, scaleX: 0 }}
+								to={{ opacity: 1, scaleX: 1 }}
 								className="my-12"
 							>
 								<Separator />
-							</motion.div>
+							</InViewReveal>
 						);
 
 					case 'cta':
 						return (
-							<motion.div
+							<InViewReveal
 								key={index}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
 								className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center my-12"
 							>
 								<p className="text-2xl font-bold mb-4">{block.content}</p>
@@ -197,7 +189,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 									{block.label}
 									<ArrowRight size={20} />
 								</a>
-							</motion.div>
+							</InViewReveal>
 						);
 
 					default:

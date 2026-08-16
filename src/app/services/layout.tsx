@@ -4,7 +4,7 @@ import React from "react";
 export const metadata: Metadata = {
 	title: "Next.js & Custom Software Development Services",
 	description:
-		"Web apps, custom software, MVPs and management systems built with Next.js, React and Node.js — designed, built, shipped and maintained. End-to-end product engineering from dragondevs.",
+		"Web apps, custom software, MVPs and management systems built with Next.js, React and Node.js — designed, built, shipped and maintained.",
 	keywords: [
 		"Next.js development agency",
 		"custom software development",

@@ -4,7 +4,7 @@ import React from "react";
 export const metadata: Metadata = {
 	title: "Contact",
 	description:
-		"Start a project with dragondevs. Tell us what you're building and we'll come back with scope, timeline and cost — send a message, book a call, or email info@dragondevs.co.",
+		"Tell us what you're building and we'll come back with scope, timeline and cost. Send a message, book a call, or email info@dragondevs.co.",
 	keywords: ["contact dragondevs", "hire Next.js developers", "software development quote"],
 	alternates: {
 		canonical: "/contact",

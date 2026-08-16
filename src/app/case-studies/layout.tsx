@@ -4,7 +4,7 @@ import React from "react";
 export const metadata: Metadata = {
 	title: "Case Studies & Client Work",
 	description:
-		"Real projects from dragondevs — the problem, the approach, the stack and the measured outcome for each build, including our offline-first POS and inventory system, BizStock.",
+		"Real dragondevs projects — the problem, the approach, the stack and the outcome, including our offline-first POS system, BizStock.",
 	keywords: [
 		"software development case studies",
 		"Next.js case study",

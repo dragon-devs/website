@@ -11,8 +11,9 @@ import {
 	TrendingUp,
 	Zap
 } from "lucide-react";
+import React from "react";
 import {RichContentRenderer} from "./RichContentRenderer";
-import {motion} from "motion/react";
+import {InViewReveal} from "@/components/motion";
 import {CaseStudyDetails} from "@/lib/case-study";
 import SpotlightCard from "./SpotlightCard";
 import Pill from "@/components/Pill";
@@ -46,19 +47,17 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 				<div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"/>
 
 				<div className="relative lg:max-w-7xl container mx-auto md:px-6 px-4 h-full flex items-end pb-24">
-					<motion.div
-						initial={{opacity: 0, y: 30}}
-						animate={{opacity: 1, y: 0}}
-						transition={{duration: 0.6}}
-						className="max-w-4xl"
-					>
+					{/* CSS entrance, not motion: this block holds the page's only <h1>,
+					    and a motion `initial` would render it as `style="opacity:0"` on
+					    the server — invisible to crawlers that don't run JavaScript. */}
+					<div className="reveal-up max-w-4xl">
 						<h1 className="text-4xl md:text-6xl font-bold mb-4">
 							{caseStudy.title}
 						</h1>
 						<p className="text-xl md:text-2xl text-muted-foreground">
 							{caseStudy.subtitle}
 						</p>
-					</motion.div>
+					</div>
 				</div>
 			</section>
 
@@ -72,17 +71,14 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 						{icon: CheckCircle2, label: "Status", value: caseStudy.status}
 					].map((item, i) => (
 						<SpotlightCard key={i}>
-							<motion.div
-								key={i}
-								initial={{opacity: 0, y: 20}}
-								animate={{opacity: 1, y: 0}}
-								transition={{delay: i * 0.1}}
-								className="backdrop-blur-sm md:p-6 p-4"
+							<div
+								className="reveal-up backdrop-blur-sm md:p-6 p-4"
+								style={{"--reveal-delay": `${i * 0.1}s`} as React.CSSProperties}
 							>
 								<item.icon className="size-6 text-primary mb-2"/>
 								<p className="text-sm text-muted-foreground mb-1">{item.label}</p>
 								<p className="font-semibold text-xl">{item.value}</p>
-							</motion.div>
+							</div>
 						</SpotlightCard>
 					))}
 				</div>
@@ -100,27 +96,25 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 					<aside className="md:space-y-6 space-y-4 lg:col-span-1 lg:sticky lg:top-6 h-fit">
 						{/* Technologies */}
 						<SpotlightCard>
-							<motion.div
-								initial={{opacity: 0, x: 20}}
-								whileInView={{opacity: 1, x: 0}}
-								viewport={{once: true}}
+							<InViewReveal
+								from={{opacity: 0, x: 20}}
+								to={{opacity: 1, x: 0}}
 								className="md:p-6 p-4 backdrop-blur-xs"
 							>
 								<h3 className="text-xl font-bold mb-4">Technologies</h3>
 								<div className="flex flex-wrap gap-2">
 									{caseStudy.technologies.map((tech, i) => (
-										<Pill label={tech}/>
+										<Pill key={i} label={tech}/>
 									))}
 								</div>
-							</motion.div>
+							</InViewReveal>
 						</SpotlightCard>
 						{/* Timeline */}
 						{caseStudy.timeline && (
 							<SpotlightCard>
-								<motion.div
-									initial={{opacity: 0, x: 20}}
-									whileInView={{opacity: 1, x: 0}}
-									viewport={{once: true}}
+								<InViewReveal
+									from={{opacity: 0, x: 20}}
+									to={{opacity: 1, x: 0}}
 									className="p-4 md:p-6 backdrop-blur-xs"
 								>
 									<h3 className="text-xl font-bold mb-4">Timeline</h3>
@@ -133,15 +127,14 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 											</div>
 										))}
 									</div>
-								</motion.div>
+								</InViewReveal>
 							</SpotlightCard>
 						)}
 
 						{/* Links */}
-						<motion.div
-							initial={{opacity: 0, x: 20}}
-							whileInView={{opacity: 1, x: 0}}
-							viewport={{once: true}}
+						<InViewReveal
+							from={{opacity: 0, x: 20}}
+							to={{opacity: 1, x: 0}}
 							className="w-full flex gap-4 flex-wrap"
 						>
 							{caseStudy.liveUrl && (
@@ -154,7 +147,7 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 								              variant={"secondary"}
 								              label={"View GitHub"} icon={<FaGithub size={18}/>}/>
 							)}
-						</motion.div>
+						</InViewReveal>
 					</aside>
 				</div>
 			</section>

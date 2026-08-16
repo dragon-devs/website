@@ -1,8 +1,8 @@
 "use client";
 
 import {ArrowRight, Calendar, Mail, MapPin, Phone} from "lucide-react";
-import {motion} from "motion/react";
 import React, {useEffect, useMemo, useState} from "react";
+import {InViewReveal} from "@/components/motion";
 import {toast} from "sonner";
 import {GradientText} from "@/components/hero/GradientText";
 
@@ -156,12 +156,7 @@ export const ContactSection = () => {
 		<section id="contact" className="scroll-mt-4 pt-10 pb-24 relative">
 			<div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto md:px-6 px-4">
 				{/* Left: intro + contact details */}
-				<motion.div
-					initial={{opacity: 0, y: 20}}
-					whileInView={{opacity: 1, y: 0}}
-					viewport={{once: true, amount: 0.2}}
-					className="flex flex-col gap-6 justify-between"
-				>
+				<InViewReveal className="flex flex-col gap-6 justify-between">
 					<div>
 						<span className="text-primary font-semibold text-sm tracking-wider uppercase">Get in touch</span>
 						<GradientText tag="h2" size="4-5" className="block font-bold my-4">
@@ -175,19 +170,18 @@ export const ContactSection = () => {
 
 					<div className="grid gap-4">
 						{contactInfo.map((info, index) => (
-							<motion.a
+							<InViewReveal
+								as="a"
 								href={info.link ?? "#"}
 								key={info.label}
-								initial={{opacity: 0, y: 16}}
-								whileInView={{opacity: 1, y: 0}}
-								viewport={{once: true}}
-								transition={{delay: index * 0.08}}
+								from={{opacity: 0, y: 16}}
+								delay={index * 0.08}
 								className="relative group overflow-hidden border border-border p-5 hover:border-primary/50 transition-all duration-500"
 							>
 								<info.icon size={120} className="absolute -right-2 -bottom-6 text-muted-foreground opacity-[0.07]"/>
 								<h4 className="text-foreground font-semibold mb-1 text-lg tracking-tight">{info.label}</h4>
 								<p className="text-muted-foreground group-hover:text-primary/80 transition-colors">{info.value}</p>
-							</motion.a>
+							</InViewReveal>
 						))}
 
 						<a
@@ -200,15 +194,10 @@ export const ContactSection = () => {
 							Prefer to talk? Book a 30-min call
 						</a>
 					</div>
-				</motion.div>
+				</InViewReveal>
 
 				{/* Right: form */}
-				<motion.div
-					initial={{opacity: 0, y: 20}}
-					whileInView={{opacity: 1, y: 0}}
-					viewport={{once: true, amount: 0.2}}
-					className="border border-border md:p-8 p-5"
-				>
+				<InViewReveal className="border border-border md:p-8 p-5">
 					<h3 className="text-2xl font-bold text-foreground mb-6">Start a project</h3>
 
 					<form className="space-y-5" onSubmit={handleSubmit} noValidate>
@@ -341,7 +330,7 @@ export const ContactSection = () => {
 							<a href="/privacy" className="underline underline-offset-2 hover:text-primary">privacy policy</a>.
 						</p>
 					</form>
-				</motion.div>
+				</InViewReveal>
 			</div>
 		</section>
 	);

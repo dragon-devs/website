@@ -4,7 +4,7 @@ import React from "react";
 export const metadata: Metadata = {
 	title: "About Us",
 	description:
-		"dragondevs is a small digital product engineering studio — engineers first, agency second. Who we are, how we work, and why we build offline-first, performance-minded software.",
+		"A small digital product engineering studio — engineers first, agency second. How we work, and why we build offline-first, fast software.",
 	keywords: ["about dragondevs", "software development team", "software agency Pakistan"],
 	alternates: {
 		canonical: "/about",

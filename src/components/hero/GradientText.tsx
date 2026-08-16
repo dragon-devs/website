@@ -1,7 +1,4 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'motion/react';
 
 interface GradientTextProps {
 	/** The text content */
@@ -31,6 +28,11 @@ interface GradientTextProps {
  * only appeared after client hydration. Crawlers and SEO audits saw a page with
  * no <h1>. Rendering plain markup on the server fixes that and removes the
  * hydration flash.
+ *
+ * The entrance animation is CSS (`.reveal-up`) for the same reason. The motion
+ * wrapper this replaced emitted `style="opacity:0"` into the server HTML, which
+ * put the heading text back out of a crawler's reach even though the element
+ * itself was present. See `app/globals.css`.
  */
 const gradientPresets = {
 	primary:
@@ -79,13 +81,12 @@ export const GradientText: React.FC<GradientTextProps> = ({
 
 	if (animate) {
 		return (
-			<motion.div
-				initial={{ opacity: 0, y: 30 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: animationDelay }}
+			<div
+				className="reveal-up"
+				style={{ '--reveal-delay': `${animationDelay}s` } as React.CSSProperties}
 			>
 				{content}
-			</motion.div>
+			</div>
 		);
 	}
 

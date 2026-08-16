@@ -1,19 +1,21 @@
 "use client";
-import {motion} from "motion/react";
-import React, {useState} from "react";
+import React from "react";
+import {InViewReveal} from "@/components/motion";
 import {useRouter, useSearchParams} from "next/navigation";
 import MagnetButton from "@/components/custom/MagnetButton";
 import projectsData from "@/data/projects.json";
 import {ProjectCard} from "@/components/ProjectCard";
 import {CategoryTabs} from "@/components/CategoryTabs";
 
-
-export const WorkSection = () => {
+/**
+ * Featured work, filtered by an explicit `category` rather than by reading the
+ * URL itself. `FilteredWorkSection` is the only part that touches search
+ * params; keeping the two separate lets the homepage prerender this section
+ * unfiltered instead of prerendering a spinner. See `app/page.tsx`.
+ */
+export const WorkSection = ({category = "all"}: {category?: string}) => {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const category = searchParams?.get("category") ?? "all";
-
-    const [projects, setProjects] = useState(projectsData.projects || []);
+    const projects = projectsData.projects || [];
 
     const filteredProjects =
         category === "all"
@@ -25,10 +27,7 @@ export const WorkSection = () => {
     return (
         <section className="py-24 relative">
             <div className="max-w-7xl mx-auto md:px-6 px-4">
-                <motion.div
-                    initial={{opacity: 0, y: 20}}
-                    whileInView={{opacity: 1, y: 0}}
-                    viewport={{once: true}}
+                <InViewReveal
                     className="mb-16 flex flex-col items-center justify-center text-center"
                 >
             <span className="text-primary font-semibold text-sm tracking-widest uppercase">
@@ -44,7 +43,7 @@ export const WorkSection = () => {
                         delivering
                         outstanding results for every client.
                     </p>
-                </motion.div>
+                </InViewReveal>
 
                 <div className="text-center mb-16">
                     <CategoryTabs activeTab={category} router={router}/>
@@ -66,6 +65,12 @@ export const WorkSection = () => {
             </div>
         </section>
     );
+};
+
+/** Reads the category off the URL. Isolated so only this reads search params. */
+export const FilteredWorkSection = () => {
+    const searchParams = useSearchParams();
+    return <WorkSection category={searchParams?.get("category") ?? "all"}/>;
 };
 
 

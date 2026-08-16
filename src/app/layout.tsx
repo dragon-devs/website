@@ -41,8 +41,12 @@ export const metadata: Metadata = {
 		default: "dragondevs | From idea to deployment",
 		template: "%s | dragondevs"
 	},
+	// Kept under ~150 characters. Google truncates a description at roughly
+	// 160, and SEO auditors measure the rendered width against a 1000px budget —
+	// the previous 181-character copy was flagged at 1006px and cut off in the
+	// SERP mid-sentence.
 	description:
-		"dragondevs is a small product engineering studio. We design and build SEO-friendly websites, web apps, custom software, and our own products like BizStock — from idea to deployment.",
+		"dragondevs designs and builds SEO-friendly websites, web apps and custom software. A small product studio, from idea to deployment.",
 
 	metadataBase: new URL("https://dragondevs.co"),
 
