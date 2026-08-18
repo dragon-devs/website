@@ -14,6 +14,7 @@ import {
 import React from "react";
 import {RichContentRenderer} from "./RichContentRenderer";
 import {InViewReveal} from "@/components/motion";
+import {themedSrc, useIsLightTheme} from "@/lib/themed-image";
 import {CaseStudyDetails} from "@/lib/case-study";
 import SpotlightCard from "./SpotlightCard";
 import Pill from "@/components/Pill";
@@ -25,6 +26,7 @@ interface CaseStudyDetailsPageProps {
 }
 
 const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
+	const isLight = useIsLightTheme();
 
 	const getIcon = (iconName: string) => {
 		const icons: any = {
@@ -40,7 +42,7 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 			<section
 				className="relative h-[60vh] min-h-[400px] bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
 				<img
-					src={caseStudy.heroImage}
+					src={themedSrc(caseStudy.heroImage, isLight)}
 					alt={caseStudy.title}
 					className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
 				/>

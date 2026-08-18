@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="843e37f5-d142-4155-ae14-c57a544ce8e4" name="Changes" comment="feat: implement `useFinePointer` hook and optimize components&#10;&#10;- Added `useFinePointer` hook to detect precise, hovering pointer devices and prevent unnecessary event listeners/animations on touch devices.&#10;- Replaced motion-based infinite animations in `MagnetButton` with CSS keyframes to improve main thread performance.&#10;- Updated `ThemeToggle` to optimize hydration and client render consistency using `useFinePointer`.&#10;- Refined full-bleed rule handling in `Footer` to remove horizontal scrollbar issues.&#10;- Replaced mousemove state in `HeroSection` and `SpotlightLogo` with motion values, reducing re-renders and improving performance.&#10;- Simplified spotlight glow behavior in `SpotlightCard` with CSS-resolved defaults.&#10;- Transitioned `Silk` shader animations to demand-based rendering, removing redundant GPU load for static or reduced motion users." />
+    <list default="true" id="843e37f5-d142-4155-ae14-c57a544ce8e4" name="Changes" comment="feat: update BizStock case study and project entry  &#10;&#10;- Replaced deprecated BizStock images with new assets (e.g., dashboard, POS, stock levels).  &#10;- Enhanced case study gallery with updated visuals, replacing placeholders.  &#10;- Updated project details in `projects.json` (refined description, SEO keywords, metrics, tech stack).  &#10;- Improved case study consistency by aligning text, slug, and metadata with current conventions.  &#10;- Corrected and extended multilingual and offline highlights in results section.">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CaseStudyDetailsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CaseStudyDetailsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RichContentRenderer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RichContentRenderer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/projects.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/projects.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/case-study.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/case-study.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="117" />
+    <option name="cachedIndexableFilesCount" value="133" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -101,6 +108,7 @@
       <workItem from="1784914507100" duration="855000" />
       <workItem from="1786567044639" duration="2831000" />
       <workItem from="1786807367155" duration="2719000" />
+      <workItem from="1787011652872" duration="729000" />
     </task>
     <task id="LOCAL-00001" summary="feat: implement ScrollCue, update platform and expertise sections  &#10;&#10;- Introduced `ScrollCue` in `HeroSection` for improved user experience with scroll guidance.  &#10;- Reworked the platforms and disciplines layout in `services` for clearer presentation and extended coverage.  &#10;- Replaced &quot;Tech Stack&quot; section with &quot;Expertise&quot; section, focusing on capabilities instead of specific tools.  &#10;- Enhanced `HeroTitle` styles for consistent accent alignment and improved visual hierarchy.  &#10;- Expanded `about` page with SpotlightCards, richer values, and updated team details for better engagement and clarity.">
       <option name="closed" value="true" />
@@ -118,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1786807733180</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: update BizStock case study and project entry  &#10;&#10;- Replaced deprecated BizStock images with new assets (e.g., dashboard, POS, stock levels).  &#10;- Enhanced case study gallery with updated visuals, replacing placeholders.  &#10;- Updated project details in `projects.json` (refined description, SEO keywords, metrics, tech stack).  &#10;- Improved case study consistency by aligning text, slug, and metadata with current conventions.  &#10;- Corrected and extended multilingual and offline highlights in results section.">
+      <option name="closed" value="true" />
+      <created>1787011683980</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1787011683980</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +155,7 @@
     <MESSAGE value="feat: implement ScrollCue, update platform and expertise sections  &#10;&#10;- Introduced `ScrollCue` in `HeroSection`" />
     <MESSAGE value="feat: implement ScrollCue, update platform and expertise sections  &#10;&#10;- Introduced `ScrollCue` in `HeroSection` for improved user experience with scroll guidance.  &#10;- Reworked the platforms and disciplines layout in `services` for clearer presentation and extended coverage.  &#10;- Replaced &quot;Tech Stack&quot; section with &quot;Expertise&quot; section, focusing on capabilities instead of specific tools.  &#10;- Enhanced `HeroTitle` styles for consistent accent alignment and improved visual hierarchy.  &#10;- Expanded `about` page with SpotlightCards, richer values, and updated team details for better engagement and clarity." />
     <MESSAGE value="feat: implement `useFinePointer` hook and optimize components&#10;&#10;- Added `useFinePointer` hook to detect precise, hovering pointer devices and prevent unnecessary event listeners/animations on touch devices.&#10;- Replaced motion-based infinite animations in `MagnetButton` with CSS keyframes to improve main thread performance.&#10;- Updated `ThemeToggle` to optimize hydration and client render consistency using `useFinePointer`.&#10;- Refined full-bleed rule handling in `Footer` to remove horizontal scrollbar issues.&#10;- Replaced mousemove state in `HeroSection` and `SpotlightLogo` with motion values, reducing re-renders and improving performance.&#10;- Simplified spotlight glow behavior in `SpotlightCard` with CSS-resolved defaults.&#10;- Transitioned `Silk` shader animations to demand-based rendering, removing redundant GPU load for static or reduced motion users." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implement `useFinePointer` hook and optimize components&#10;&#10;- Added `useFinePointer` hook to detect precise, hovering pointer devices and prevent unnecessary event listeners/animations on touch devices.&#10;- Replaced motion-based infinite animations in `MagnetButton` with CSS keyframes to improve main thread performance.&#10;- Updated `ThemeToggle` to optimize hydration and client render consistency using `useFinePointer`.&#10;- Refined full-bleed rule handling in `Footer` to remove horizontal scrollbar issues.&#10;- Replaced mousemove state in `HeroSection` and `SpotlightLogo` with motion values, reducing re-renders and improving performance.&#10;- Simplified spotlight glow behavior in `SpotlightCard` with CSS-resolved defaults.&#10;- Transitioned `Silk` shader animations to demand-based rendering, removing redundant GPU load for static or reduced motion users." />
+    <MESSAGE value="feat: update BizStock case study and project entry  &#10;&#10;- Replaced deprecated BizStock images with new assets (e.g., dashboard, POS, stock levels).  &#10;- Enhanced case study gallery with updated visuals, replacing placeholders.  &#10;- Updated project details in `projects.json` (refined description, SEO keywords, metrics, tech stack).  &#10;- Improved case study consistency by aligning text, slug, and metadata with current conventions.  &#10;- Corrected and extended multilingual and offline highlights in results section." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update BizStock case study and project entry  &#10;&#10;- Replaced deprecated BizStock images with new assets (e.g., dashboard, POS, stock levels).  &#10;- Enhanced case study gallery with updated visuals, replacing placeholders.  &#10;- Updated project details in `projects.json` (refined description, SEO keywords, metrics, tech stack).  &#10;- Improved case study consistency by aligning text, slug, and metadata with current conventions.  &#10;- Corrected and extended multilingual and offline highlights in results section." />
   </component>
 </project>

@@ -7,8 +7,11 @@ import MagnetButton from "@/components/custom/MagnetButton";
 import {FaGithub} from "react-icons/fa6";
 import React from "react";
 import {InViewReveal} from "@/components/motion";
+import {themedSrc, useIsLightTheme} from "@/lib/themed-image";
 
 export const ProjectCard = ({project, index}: any) => {
+    const isLight = useIsLightTheme();
+
     return (
         <SpotlightCard>
             <InViewReveal
@@ -18,7 +21,7 @@ export const ProjectCard = ({project, index}: any) => {
                 <div className="relative h-52 md:h-72 bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
                     <div className="absolute inset-0 flex items-center justify-center">
                         {project.image ?
-                            <Image src={project.image} alt={project.title ? `${project.title} — ${project.category} project by dragondevs` : "dragondevs project"} width={300} height={300}
+                            <Image src={themedSrc(project.image, isLight)} alt={project.title ? `${project.title} — ${project.category} project by dragondevs` : "dragondevs project"} width={300} height={300}
                                    className={"w-full h-full object-cover"}/> :
                             <Boxes size={80} className="text-primary/30"/>}
 

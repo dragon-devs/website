@@ -587,7 +587,7 @@ export const caseStudies: CaseStudyDetails[] = [
 			website: "https://bizstock.net",
 		},
 
-		year: "2025",
+		year: "2025 — present",
 		duration: "Ongoing product",
 		timeline: [
 			{

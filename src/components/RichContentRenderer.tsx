@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import {ArrowRight, CheckCircle2, ExternalLink, Quote, ShoppingCart, TrendingDown, TrendingUp, Zap} from 'lucide-react';
 import {Separator} from "@/components/ui/separator";
 import {InViewReveal} from "@/components/motion";
+import {themedSrc, useIsLightTheme} from "@/lib/themed-image";
 
 /**
  * Renders a case study body.
@@ -14,6 +17,8 @@ import {InViewReveal} from "@/components/motion";
  * that does not run JavaScript. See `components/motion/index.tsx`.
  */
 export const RichContentRenderer = ({ content }: { content: any[] }) => {
+	const isLight = useIsLightTheme();
+
 	const getIcon = (iconName: string) => {
 		const icons: any = {
 			Zap, TrendingUp, TrendingDown, ShoppingCart, CheckCircle2
@@ -82,7 +87,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 								className="rounded-lg overflow-hidden my-8"
 							>
 								<img
-									src={block.url}
+									src={themedSrc(block.url, isLight)}
 									alt={block.alt}
 									className="w-full h-auto"
 								/>
@@ -102,7 +107,7 @@ export const RichContentRenderer = ({ content }: { content: any[] }) => {
 							>
 								{block.images?.map((img: any, i: number) => (
 									<div key={i} className="rounded-lg overflow-hidden">
-										<img src={img.url} alt={img.alt} className="w-full h-auto" />
+										<img src={themedSrc(img.url, isLight)} alt={img.alt} className="w-full h-auto" />
 										{img.caption && (
 											<p className="text-sm text-muted-foreground mt-2 text-center">
 												{img.caption}
