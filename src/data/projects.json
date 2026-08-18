@@ -2,6 +2,29 @@
   "projects": [
     {
       "id": 1,
+      "type": "products",
+      "slug": "bizstock-inventory-pos-app",
+      "category": "SaaS Product",
+      "title": "Bizstock",
+      "description": "Our own offline-first inventory and point-of-sale product — billing, stock, batches and customer ledgers that run with no internet at all, then sync across desktop and Android when you want them to.",
+      "technologies": [
+        "React",
+        "Tauri",
+        "SQLite",
+        "TypeScript"
+      ],
+      "icon": "Boxes",
+      "image": "/bizstock/dashboard-dark.png",
+      "year": "2025",
+      "metrics": "Offline-first",
+      "status": "Active",
+      "statusIcon": "Zap",
+      "liveUrl": "https://bizstock.net",
+      "caseStudy": true,
+      "caseStudyUrl": "/case-studies/bizstock-inventory-pos-app"
+    },
+    {
+      "id": 2,
       "type": "client",
       "slug": "craftflow-operations-platform",
       "category": "Business Platform",
@@ -24,7 +47,7 @@
       "caseStudyUrl": "/case-studies/craftflow-operations-platform"
     },
     {
-      "id": 2,
+      "id": 3,
       "type": "client",
       "slug": "alnada-cooling-ecommerce",
       "category": "E-commerce",
@@ -45,29 +68,6 @@
       "liveUrl": "https://store.alnada.sa",
       "caseStudy": true,
       "caseStudyUrl": "/case-studies/alnada-cooling-ecommerce"
-    },
-    {
-      "id": 3,
-      "type": "products",
-      "slug": "bizstock-inventory-pos-app",
-      "category": "SaaS Product",
-      "title": "Bizstock",
-      "description": "Our own offline-first inventory and point-of-sale product — cross-platform desktop and Android, real-time sync, barcode scanning, and full multilingual right-to-left support.",
-      "technologies": [
-        "React",
-        "Tauri",
-        "SQLite",
-        "TypeScript"
-      ],
-      "icon": "Boxes",
-      "image": "/bizstock/img1.png",
-      "year": "2025",
-      "metrics": "Offline-first",
-      "status": "Active",
-      "statusIcon": "Zap",
-      "liveUrl": "https://bizstock.net",
-      "caseStudy": true,
-      "caseStudyUrl": "/case-studies/bizstock-inventory-pos-app"
     },
     {
       "id": 4,

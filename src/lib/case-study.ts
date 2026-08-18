@@ -559,12 +559,14 @@ export const caseStudies: CaseStudyDetails[] = [
 		category: "SaaS Product",
 		type: "products",
 
-		heroImage: "/bizstock/img1.png",
-		thumbnail: "/bizstock/img1.png",
+		heroImage: "/bizstock/dashboard-dark.png",
+		thumbnail: "/bizstock/dashboard-dark.png",
 		gallery: [
-			"/bizstock/img1.png",
-			"https://picsum.photos/seed/bizstock-2/800/600",
-			"https://picsum.photos/seed/bizstock-3/800/600",
+			"/bizstock/dashboard-dark.png",
+			"/bizstock/pos-dark.png",
+			"/bizstock/purchase-dark.png",
+			"/bizstock/ledger-dark.png",
+			"/bizstock/reports-dark.png",
 		],
 
 		description:
@@ -577,7 +579,7 @@ export const caseStudies: CaseStudyDetails[] = [
 			"Bizstock is built local-first: data lives on the device in a local database, so the app stays instant and fully usable offline, then syncs in real time when it's back online. Native barcode scanning, label generation and Excel / PDF export make everyday stock work fast — and it ships from a single codebase to both desktop and Android, fully multilingual with right-to-left support.",
 
 		results:
-			"An actively developed product that runs across desktop and mobile from one codebase, works offline by design, and serves users in English, Arabic and Urdu — including full right-to-left layouts.",
+			"An actively developed product that runs across desktop and mobile from one codebase, works offline by design, and serves users in English and Urdu — including full right-to-left layouts, with Arabic next.",
 
 		owner: {
 			name: "dragondevs",
@@ -663,8 +665,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			},
 			{
 				type: "image",
-				url: "https://picsum.photos/seed/bizstock-app/800/400",
-				alt: "Bizstock inventory view (placeholder)",
+				url: "/bizstock/stock-dark.png",
+				alt: "Bizstock stock levels by batch, with low-stock warnings and expiry dates",
 			},
 			{
 				type: "h2",
@@ -697,8 +699,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			{
 				type: "imageGrid",
 				images: [
-					{ url: "https://picsum.photos/seed/bizstock-pos/600/400", alt: "Point of sale (placeholder)", caption: "Fast point-of-sale" },
-					{ url: "https://picsum.photos/seed/bizstock-scan/600/400", alt: "Barcode scanning (placeholder)", caption: "Native barcode scanning" },
+					{ url: "/bizstock/pos-dark.png", alt: "Bizstock point of sale with a product grid and a live cart", caption: "Fast point-of-sale" },
+					{ url: "/bizstock/search-dark.png", alt: "Ctrl+K search in Bizstock reaching any screen, setting or report", caption: "Search reaches every screen" },
 				],
 				gridCols: 2,
 			},
@@ -742,7 +744,7 @@ export const caseStudies: CaseStudyDetails[] = [
 				"bizstock",
 				"dragondevs",
 			],
-			ogImage: "/bizstock/img1.png",
+			ogImage: "/bizstock/dashboard-dark.png",
 			canonical: "https://dragondevs.co/case-studies/bizstock-inventory-pos-app",
 		},
 
