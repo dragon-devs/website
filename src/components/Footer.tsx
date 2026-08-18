@@ -133,15 +133,12 @@ export const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* The Terms/Privacy pair that used to sit here repeated the Legal
+            column verbatim — the same anchor text pointing at the same URL
+            twice on every page. One link per destination. */}
+        <div className="pt-8">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} dragondevs. All rights reserved.
-          </p>
-          {/* The Terms/Privacy pair that used to sit here repeated the Legal
-              column verbatim — the same anchor text pointing at the same URL
-              twice on every page. One link per destination. */}
-          <p className="text-muted-foreground text-sm">
-            Built in Islamabad, Pakistan.
           </p>
         </div>
       </div>
