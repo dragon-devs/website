@@ -157,7 +157,7 @@ export const caseStudies: CaseStudyDetails[] = [
 			"/craftflow/dashboard-dark.png",
 			"/craftflow/workspace-dark.png",
 			"/craftflow/contract-detail-dark.png",
-			"/craftflow/task-gallery-dark.png",
+			"/craftflow/task-gallery-light.png",
 		],
 
 		description:
@@ -366,12 +366,15 @@ export const caseStudies: CaseStudyDetails[] = [
 		category: "E-commerce",
 		type: "client",
 
-		heroImage: "https://picsum.photos/seed/alnada-hero/1200/600",
-		thumbnail: "https://picsum.photos/seed/alnada-thumb/600/400",
+		heroImage: "/alnada/landing-dark.png",
+		thumbnail: "/alnada/storefront-dark.png",
 		gallery: [
-			"https://picsum.photos/seed/alnada-1/800/600",
-			"https://picsum.photos/seed/alnada-2/800/600",
-			"https://picsum.photos/seed/alnada-3/800/600",
+			"/alnada/landing-dark.png",
+			"/alnada/storefront-dark.png",
+			"/alnada/catalogue-dark.png",
+			"/alnada/product-dark.png",
+			"/alnada/recommendations-dark.png",
+			"/alnada/blog-dark.png",
 		],
 
 		description:
@@ -476,8 +479,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			},
 			{
 				type: "image",
-				url: "https://picsum.photos/seed/alnada-storefront/800/400",
-				alt: "Al Nada storefront (placeholder)",
+				url: "/alnada/storefront-dark.png",
+				alt: "Al Nada storefront landing page",
 			},
 			{
 				type: "h2",
@@ -510,8 +513,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			{
 				type: "imageGrid",
 				images: [
-					{ url: "https://picsum.photos/seed/alnada-product/600/400", alt: "Product detail (placeholder)", caption: "Spec-rich product pages" },
-					{ url: "https://picsum.photos/seed/alnada-recommend/600/400", alt: "Recommendation flow (placeholder)", caption: "Guided recommendations" },
+					{ url: "/alnada/product-dark.png", alt: "Al Nada product detail page", caption: "Spec-rich product pages" },
+					{ url: "/alnada/recommendations-dark.png", alt: "Al Nada guided recommendation flow", caption: "Guided recommendations" },
 				],
 				gridCols: 2,
 			},
@@ -554,7 +557,7 @@ export const caseStudies: CaseStudyDetails[] = [
 				"Arabic English storefront",
 				"dragondevs",
 			],
-			ogImage: "https://picsum.photos/seed/alnada-og/1200/630",
+			ogImage: "/alnada/landing-dark.png",
 			canonical: "https://dragondevs.co/case-studies/alnada-cooling-ecommerce",
 		},
 
@@ -777,12 +780,16 @@ export const caseStudies: CaseStudyDetails[] = [
 		category: "Cross-platform App",
 		type: "products",
 
-		heroImage: "https://picsum.photos/seed/quickbeam-hero/1200/600",
-		thumbnail: "https://picsum.photos/seed/quickbeam-thumb/600/400",
+		heroImage: "/quickbeam/main-dark.png",
+		thumbnail: "/quickbeam/main-dark.png",
 		gallery: [
-			"https://picsum.photos/seed/quickbeam-1/800/600",
-			"https://picsum.photos/seed/quickbeam-2/800/600",
-			"https://picsum.photos/seed/quickbeam-3/800/600",
+			"/quickbeam/main-dark.png",
+			"/quickbeam/send-dark.png",
+			"/quickbeam/sending-dark.png",
+			"/quickbeam/beambylight-dark.png",
+			"/quickbeam/beam-dark.png",
+			"/quickbeam/history-dark.png",
+			"/quickbeam/settings-dark.png",
 		],
 
 		description:
@@ -879,8 +886,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			},
 			{
 				type: "image",
-				url: "https://picsum.photos/seed/quickbeam-modes/800/400",
-				alt: "Quickbeam transfer modes (placeholder)",
+				url: "/quickbeam/send-dark.png",
+				alt: "Quickbeam file send screen",
 			},
 			{
 				type: "h2",
@@ -913,8 +920,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			{
 				type: "imageGrid",
 				images: [
-					{ url: "https://picsum.photos/seed/quickbeam-light/600/400", alt: "Optical transfer mode (placeholder)", caption: "Transfer by light — no network needed" },
-					{ url: "https://picsum.photos/seed/quickbeam-progress/600/400", alt: "Transfer progress (placeholder)", caption: "Live progress on both ends" },
+					{ url: "/quickbeam/beambylight-dark.png", alt: "Quickbeam optical transfer mode via QR frames", caption: "Transfer by light — no network needed" },
+					{ url: "/quickbeam/sending-dark.png", alt: "Quickbeam live transfer progress", caption: "Live progress on both ends" },
 				],
 				gridCols: 2,
 			},
@@ -958,7 +965,7 @@ export const caseStudies: CaseStudyDetails[] = [
 				"quickbeam",
 				"dragondevs",
 			],
-			ogImage: "https://picsum.photos/seed/quickbeam-og/1200/630",
+			ogImage: "/quickbeam/main-dark.png",
 			canonical: "https://dragondevs.co/case-studies/quickbeam-offline-file-transfer",
 		},
 

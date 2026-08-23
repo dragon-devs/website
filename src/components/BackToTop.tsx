@@ -11,7 +11,7 @@ const BackToTopButton = () => {
 
 	// Precompute classes once (no re-render jitter)
 	const baseStyles =
-		"fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 size-12 rounded-full flex items-center justify-center backdrop-blur-sm border transition-colors duration-300 hover:shadow-lg hover:shadow-primary/20";
+		"fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 size-12 chamfer flex items-center justify-center backdrop-blur-sm transition-colors duration-300 hover:shadow-lg hover:shadow-primary/20";
 
 	const themeBg = resolvedTheme === "dark" ? "bg-foreground/5" : "bg-black/5";
 	const themeBorder = resolvedTheme === "dark" ? "border-foreground/20" : "border-black/20";

@@ -102,15 +102,13 @@ export const ProjectCard = ({project, index}: any) => {
 
 		                {project.caseStudy && project.caseStudyUrl && (
 			                <MagnetButton
-				                // Descriptive rather than a bare "Case Study" on every card:
-				                // repeated anchor text tells a crawler nothing about the target.
-				                label={`${project.title} case study`}
+				                label="Case Study"
 				                icon={<ArrowRight size={14}/>}
 				                size="sm"
 				                variant="secondary"
 				                magnetStrength={0}
 				                wrapperClassName="w-full"
-				                className="flex justify-center items-center text-center leading-tight"
+				                className="flex justify-center items-center"
 				                href={project.caseStudyUrl}
 			                />
 		                )}

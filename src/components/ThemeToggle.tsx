@@ -20,8 +20,8 @@ const ThemeIcon = () => (
 );
 
 const CIRCLE =
-    "fixed top-4 md:top-6 z-50 w-12 h-12 rounded-full items-center justify-center " +
-    "backdrop-blur-sm border bg-black/5 dark:bg-white/5 border-black/20 dark:border-white/20";
+    "fixed top-4 md:top-6 z-50 w-12 h-12 chamfer items-center justify-center " +
+    "backdrop-blur-sm bg-black/5 dark:bg-white/5";
 
 export default function ThemeToggle() {
     const { resolvedTheme, setTheme } = useTheme();

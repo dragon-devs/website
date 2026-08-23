@@ -31,8 +31,8 @@ const navItems: NavItem[] = [
  * next-themes resolved, and rendered the buttons unstyled until it did.
  */
 const CIRCLE =
-    'w-12 h-12 rounded-full flex items-center justify-center border ' +
-    'bg-black/5 dark:bg-white/5 border-black/20 dark:border-white/20';
+    'chamfer w-12 h-12 flex items-center justify-center ' +
+    'bg-black/5 dark:bg-white/5';
 
 const isItemActive = (item: NavItem, pathname: string) =>
     pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
@@ -76,8 +76,8 @@ const NavIcon = ({ item, mobile = false, onNavigate }: NavIconProps) => {
                     // no second blur.
                     mobile
                         ? 'transition-colors duration-200'
-                        : 'backdrop-blur-sm transition-[transform,background-color,border-color,box-shadow] duration-300 hover:bg-black/10 dark:hover:bg-white/10 hover:scale-110 hover:shadow-lg',
-                    isActive && 'bg-primary/20 border-primary/40 shadow-primary/25 text-primary'
+                        : 'backdrop-blur-sm transition-[transform,background-color,box-shadow] duration-300 hover:bg-black/10 dark:hover:bg-white/10 hover:scale-110 hover:shadow-lg',
+                    isActive && 'bg-primary/20 shadow-primary/25 text-primary'
                 )}
             >
                 {/* Magnet is a mousemove listener with a getBoundingClientRect per
@@ -90,24 +90,23 @@ const NavIcon = ({ item, mobile = false, onNavigate }: NavIconProps) => {
                 ) : (
                     icon
                 )}
-
-                <span
-                    className={cn(
-                        'absolute right-16 top-1/2 -translate-y-1/2 w-28 text-sm font-semibold',
-                        'text-center whitespace-nowrap border py-1.5 px-2',
-                        'border-black/20 dark:border-white/20',
-                        isActive
-                            ? 'bg-primary/20 text-primary border-primary/40 shadow-primary/25'
-                            : 'bg-black/5 dark:bg-white/5',
-                        mobile
-                            ? 'opacity-100 visible'
-                            : 'backdrop-blur-md opacity-0 translate-x-2 invisible transition-all duration-300 ' +
-                              'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible'
-                    )}
-                >
-                    {item.label}
-                </span>
             </button>
+
+            <span
+                className={cn(
+                    'chamfer-sm absolute right-16 top-1/2 -translate-y-1/2 w-32 text-base font-semibold pointer-events-none',
+                    'text-center whitespace-nowrap py-1.5 px-3',
+                    isActive
+                        ? 'bg-primary/20 text-primary shadow-primary/25'
+                        : 'bg-black/5 dark:bg-white/5 text-foreground',
+                    mobile
+                        ? 'opacity-100 visible'
+                        : 'backdrop-blur-md opacity-0 translate-x-2 invisible transition-all duration-300 ' +
+                          'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible'
+                )}
+            >
+                {item.label}
+            </span>
         </div>
     );
 };

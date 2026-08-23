@@ -56,7 +56,7 @@ const sizeClasses = {
 	xl: 'text-lg md:text-xl leading-relaxed',
 	'2xl': 'text-2xl md:text-4xl',
 	'4-5': 'text-4xl md:text-5xl',
-	'3xl': 'text-[3.25rem] leading-[0.88] md:text-8xl lg:text-[7.5rem]',
+	'3xl': 'text-[3.25rem] leading-[0.88] md:text-7xl lg:text-[5.5rem]',
 };
 
 export const GradientText: React.FC<GradientTextProps> = ({

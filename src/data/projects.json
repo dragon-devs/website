@@ -37,7 +37,7 @@
         "next-intl"
       ],
       "icon": "LayoutDashboard",
-      "image": "/about.jpeg",
+      "image": "/craftflow/dashboard-dark.png",
       "year": "2025",
       "metrics": "One source of truth",
       "status": "Live",
@@ -60,7 +60,7 @@
         "PayTabs"
       ],
       "icon": "ShoppingCart",
-      "image": "/about.jpeg",
+      "image": "/alnada/storefront-dark.png",
       "year": "2025",
       "metrics": "Online end-to-end",
       "status": "Live",
@@ -83,7 +83,7 @@
         "Fountain codes"
       ],
       "icon": "Zap",
-      "image": "/about.jpeg",
+      "image": "/quickbeam/main-dark.png",
       "year": "2026",
       "metrics": "Works with no network",
       "status": "In development",
