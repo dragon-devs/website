@@ -26,29 +26,6 @@
     {
       "id": 2,
       "type": "client",
-      "slug": "craftflow-operations-platform",
-      "category": "Business Platform",
-      "title": "CraftFlow",
-      "description": "A bespoke operations platform for a Saudi design & craft studio — projects, clients, contracts and quotations unified in one bilingual, role-aware workspace.",
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "PostgreSQL",
-        "next-intl"
-      ],
-      "icon": "LayoutDashboard",
-      "image": "/craftflow/dashboard-dark.png",
-      "year": "2025",
-      "metrics": "One source of truth",
-      "status": "Live",
-      "statusIcon": "CheckCircle2",
-      "liveUrl": "https://craftksa.com",
-      "caseStudy": true,
-      "caseStudyUrl": "/case-studies/craftflow-operations-platform"
-    },
-    {
-      "id": 3,
-      "type": "client",
       "slug": "alnada-cooling-ecommerce",
       "category": "E-commerce",
       "title": "Al Nada Store",
@@ -68,6 +45,29 @@
       "liveUrl": "https://store.alnada.sa",
       "caseStudy": true,
       "caseStudyUrl": "/case-studies/alnada-cooling-ecommerce"
+    },
+    {
+      "id": 3,
+      "type": "client",
+      "slug": "craftflow-operations-platform",
+      "category": "Business Platform",
+      "title": "CraftFlow",
+      "description": "A bespoke operations platform for a Saudi design & craft studio — projects, clients, contracts and quotations unified in one bilingual, role-aware workspace.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "next-intl"
+      ],
+      "icon": "LayoutDashboard",
+      "image": "/craftflow/dashboard-dark.png",
+      "year": "2025",
+      "metrics": "One source of truth",
+      "status": "Live",
+      "statusIcon": "CheckCircle2",
+      "liveUrl": "https://craftksa.com",
+      "caseStudy": true,
+      "caseStudyUrl": "/case-studies/craftflow-operations-platform"
     },
     {
       "id": 4,

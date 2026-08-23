@@ -364,6 +364,40 @@
     mix-blend-mode: soft-light;
     pointer-events: none;
   }
+  /* Toast: chamfered glass plate. Inherits the chamfer-sm cut so it reads as
+     a surface in the same family as pills, badges and the back-to-top button,
+     but never as a pressable control (no forge-fill). */
+  .toast-chamfer {
+    clip-path: polygon(
+      var(--chamfer-sm) 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 var(--chamfer-sm)
+    );
+  }
+  /* Forge-edge glow across the top — same trick as every card hover. */
+  .toast-chamfer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 1px;
+    background-image: var(--forge);
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  /* Success: ember-tinted left accent strip */
+  .toast-success {
+    box-shadow:
+      inset 3px 0 0 var(--primary),
+      0 4px 24px -4px color-mix(in oklab, var(--primary) 12%, transparent);
+  }
+  /* Error: destructive left accent strip */
+  .toast-error {
+    box-shadow:
+      inset 3px 0 0 var(--destructive),
+      0 4px 24px -4px color-mix(in oklab, var(--destructive) 12%, transparent);
+  }
 }
 
 /* Arrow nudge on the primary buttons. Runs on the compositor, unlike the

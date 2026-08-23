@@ -4,45 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dc423b-9a87-47a3-a0bc-cc55b58ed1c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/alnada/blog-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/blog-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/catalogue-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/catalogue-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/landing-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/landing-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/product-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/product-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/recommendations-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/recommendations-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/storefront-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/alnada/storefront-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/beam-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/beam-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/beambylight-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/beambylight-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/history-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/history-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/main-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/main-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/send-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/send-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/sending-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/sending-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/settings-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/quickbeam/settings-light.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/craftflow/task-gallery-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/craftflow/task-gallery-dark.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/craftflow/task-gallery-light.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/craftflow/task-gallery-light.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BackToTop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BackToTop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ThemeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThemeToggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hero/GradientText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hero/GradientText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/projects.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/projects.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/themed-images.generated.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/themed-images.generated.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/case-study.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/case-study.ts" afterDir="false" />
-    </list>
+    <list default="true" id="b8dc423b-9a87-47a3-a0bc-cc55b58ed1c5" name="Changes" comment="**feat: refine dark mode palette and adjust Spotlight logo scaling**&#10;&#10;- Updated dark mode color variables (`--background`, `--card`, `--popover`, etc.) for improved contrast and softer visuals.&#10;- Reduced `--grain-opacity` and modified the noise grain filter for a subtler effect.&#10;- Switched `SpotLightLog` scaling from `scale-[0.62]` to `scale-[0.82]` for better readability and balance.&#10;- Applied finishing touches to `mix-blend-mode` and background sizing for a cleaner, polished look." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,22 +17,59 @@
     <commands />
     <urls />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "main",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "D:/Projects/websites/dragondevs-website/public/quickbeam",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "ts.external.directory.path": "D:\\Projects\\websites\\dragondevs-website\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/websites/dragondevs-website/public/quickbeam&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Projects\\websites\\dragondevs-website\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\websites\dragondevs-website\public\quickbeam" />
       <recent name="D:\Projects\websites\dragondevs-website\public\alnada" />
     </key>
   </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="**feat: update assets for case studies and apply theme refinements**&#10;&#10;- Replaced placeholder images with theme-specific assets in `Craftflow`, `Al Nada`, and `Quickbeam` case studies.&#10;- Optimized `GradientText`, `ThemeToggle`, `BackToTop`, and `Navbar` components to align with updated styles (chamfer edges, reduced borders).&#10;- Improved dark mode compatibility and ensured consistency in hover effects and theming across components.">
+      <option name="closed" value="true" />
+      <created>1787510569245</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787510569245</updated>
+    </task>
+    <task id="LOCAL-00002" summary="**feat: refine dark mode palette and adjust Spotlight logo scaling**&#10;&#10;- Updated dark mode color variables (`--background`, `--card`, `--popover`, etc.) for improved contrast and softer visuals.&#10;- Reduced `--grain-opacity` and modified the noise grain filter for a subtler effect.&#10;- Switched `SpotLightLog` scaling from `scale-[0.62]` to `scale-[0.82]` for better readability and balance.&#10;- Applied finishing touches to `mix-blend-mode` and background sizing for a cleaner, polished look.">
+      <option name="closed" value="true" />
+      <created>1787510894444</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787510894444</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="**feat: update assets for case studies and apply theme refinements**&#10;&#10;- Replaced placeholder images with theme-specific assets in `Craftflow`, `Al Nada`, and `Quickbeam` case studies.&#10;- Optimized `GradientText`, `ThemeToggle`, `BackToTop`, and `Navbar` components to align with updated styles (chamfer edges, reduced borders).&#10;- Improved dark mode compatibility and ensured consistency in hover effects and theming across components." />
+    <MESSAGE value="**feat: refine dark mode palette and adjust Spotlight logo scaling**&#10;&#10;- Updated dark mode color variables (`--background`, `--card`, `--popover`, etc.) for improved contrast and softer visuals.&#10;- Reduced `--grain-opacity` and modified the noise grain filter for a subtler effect.&#10;- Switched `SpotLightLog` scaling from `scale-[0.62]` to `scale-[0.82]` for better readability and balance.&#10;- Applied finishing touches to `mix-blend-mode` and background sizing for a cleaner, polished look." />
+    <option name="LAST_COMMIT_MESSAGE" value="**feat: refine dark mode palette and adjust Spotlight logo scaling**&#10;&#10;- Updated dark mode color variables (`--background`, `--card`, `--popover`, etc.) for improved contrast and softer visuals.&#10;- Reduced `--grain-opacity` and modified the noise grain filter for a subtler effect.&#10;- Switched `SpotLightLog` scaling from `scale-[0.62]` to `scale-[0.82]` for better readability and balance.&#10;- Applied finishing touches to `mix-blend-mode` and background sizing for a cleaner, polished look." />
   </component>
 </project>

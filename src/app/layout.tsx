@@ -171,7 +171,7 @@ export default function RootLayout({
 				<Footer/>
 			<BackToTopButton/>
 			<MinimalNavbar/>
-			<Toaster position="top-center" richColors/>
+			<Toaster position="top-center"/>
 		</ThemeProvider>
 		</body>
 		</html>
