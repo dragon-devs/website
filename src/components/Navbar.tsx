@@ -60,6 +60,61 @@ const NavIcon = ({ item, mobile = false, onNavigate }: NavIconProps) => {
         />
     );
 
+    const iconButton = (
+        <div
+            className={cn(
+                CIRCLE,
+                mobile
+                    ? 'transition-colors duration-200'
+                    : 'backdrop-blur-sm transition-[transform,background-color,box-shadow] duration-300 hover:bg-black/10 dark:hover:bg-white/10 hover:scale-110 hover:shadow-lg',
+                isActive && 'bg-primary/20 shadow-primary/25 text-primary'
+            )}
+        >
+            {finePointer && !mobile ? (
+                <Magnet padding={25} magnetStrength={6}>
+                    {icon}
+                </Magnet>
+            ) : (
+                icon
+            )}
+        </div>
+    );
+
+    const label = (
+        <span
+            className={cn(
+                'chamfer-sm w-32 text-base font-semibold text-center whitespace-nowrap py-1.5 px-3',
+                isActive
+                    ? 'bg-primary/20 text-primary shadow-primary/25'
+                    : 'bg-black/5 dark:bg-white/5 text-foreground',
+                mobile
+                    ? 'opacity-100 visible'
+                    : 'absolute right-16 top-1/2 -translate-y-1/2 pointer-events-none backdrop-blur-md opacity-0 translate-x-2 invisible transition-all duration-300 ' +
+                      'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible'
+            )}
+        >
+            {item.label}
+        </span>
+    );
+
+    /* On mobile the whole row — icon + label — must be one tap target.
+       Previously the label was `pointer-events-none` so tapping on it fell
+       through to the backdrop, which closed the menu instead of navigating. */
+    if (mobile) {
+        return (
+            <button
+                type="button"
+                onClick={() => onNavigate(item)}
+                aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
+                className="flex items-center gap-3 flex-row-reverse"
+            >
+                {iconButton}
+                {label}
+            </button>
+        );
+    }
+
     return (
         <div className="relative group">
             <button
@@ -67,46 +122,10 @@ const NavIcon = ({ item, mobile = false, onNavigate }: NavIconProps) => {
                 onClick={() => onNavigate(item)}
                 aria-label={item.label}
                 aria-current={isActive ? 'page' : undefined}
-                className={cn(
-                    CIRCLE,
-                    // The sheet already sits on a blurred backdrop, so a further
-                    // backdrop-filter per pill softens pixels that are already
-                    // soft — while stacking eleven blur layers on the phone GPU,
-                    // the single biggest reason the menu stuttered. Same fill,
-                    // no second blur.
-                    mobile
-                        ? 'transition-colors duration-200'
-                        : 'backdrop-blur-sm transition-[transform,background-color,box-shadow] duration-300 hover:bg-black/10 dark:hover:bg-white/10 hover:scale-110 hover:shadow-lg',
-                    isActive && 'bg-primary/20 shadow-primary/25 text-primary'
-                )}
             >
-                {/* Magnet is a mousemove listener with a getBoundingClientRect per
-                    event — pure overhead on a touchscreen, where it can never fire
-                    meaningfully but still runs on the synthetic move a tap emits. */}
-                {finePointer && !mobile ? (
-                    <Magnet padding={25} magnetStrength={6}>
-                        {icon}
-                    </Magnet>
-                ) : (
-                    icon
-                )}
+                {iconButton}
             </button>
-
-            <span
-                className={cn(
-                    'chamfer-sm absolute right-16 top-1/2 -translate-y-1/2 w-32 text-base font-semibold pointer-events-none',
-                    'text-center whitespace-nowrap py-1.5 px-3',
-                    isActive
-                        ? 'bg-primary/20 text-primary shadow-primary/25'
-                        : 'bg-black/5 dark:bg-white/5 text-foreground',
-                    mobile
-                        ? 'opacity-100 visible'
-                        : 'backdrop-blur-md opacity-0 translate-x-2 invisible transition-all duration-300 ' +
-                          'group-hover:opacity-100 group-hover:translate-x-0 group-hover:visible'
-                )}
-            >
-                {item.label}
-            </span>
+            {label}
         </div>
     );
 };

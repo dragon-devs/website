@@ -180,7 +180,7 @@ export const caseStudies: CaseStudyDetails[] = [
 		},
 
 		year: "2025",
-		duration: "Multi-phase engagement",
+		duration: "Multi-phase",
 		timeline: [
 			{
 				phase: "Discovery",
@@ -366,12 +366,12 @@ export const caseStudies: CaseStudyDetails[] = [
 		category: "E-commerce",
 		type: "client",
 
-		heroImage: "/alnada/landing-dark.png",
+		heroImage: "/alnada/catalogue-dark.png",
 		thumbnail: "/alnada/storefront-dark.png",
 		gallery: [
-			"/alnada/landing-dark.png",
-			"/alnada/storefront-dark.png",
 			"/alnada/catalogue-dark.png",
+			"/alnada/storefront-dark.png",
+			"/alnada/landing-dark.png",
 			"/alnada/product-dark.png",
 			"/alnada/recommendations-dark.png",
 			"/alnada/blog-dark.png",
@@ -397,7 +397,7 @@ export const caseStudies: CaseStudyDetails[] = [
 		},
 
 		year: "2025",
-		duration: "Multi-phase engagement",
+		duration: "Multi-phase",
 		timeline: [
 			{
 				phase: "Discovery",
@@ -557,7 +557,7 @@ export const caseStudies: CaseStudyDetails[] = [
 				"Arabic English storefront",
 				"dragondevs",
 			],
-			ogImage: "/alnada/landing-dark.png",
+			ogImage: "/alnada/catalogue-dark.png",
 			canonical: "https://dragondevs.co/case-studies/alnada-cooling-ecommerce",
 		},
 
@@ -604,7 +604,7 @@ export const caseStudies: CaseStudyDetails[] = [
 			website: "https://bizstock.net",
 		},
 
-		year: "2025 — present",
+		year: "2026",
 		duration: "Ongoing product",
 		timeline: [
 			{

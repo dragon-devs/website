@@ -15,7 +15,7 @@ export default function OpengraphImage() {
 					flexDirection: "column",
 					justifyContent: "space-between",
 					background:
-						"radial-gradient(circle at 50% -10%, #2a2018 0%, #0b0b0e 58%)",
+						"radial-gradient(circle at 50% -10%, #152238 0%, #0b0b0e 58%)",
 					color: "#fafafa",
 					padding: "80px",
 					fontFamily: "sans-serif",
@@ -59,7 +59,7 @@ export default function OpengraphImage() {
 				</div>
 
 				<div style={{display: "flex", alignItems: "center", gap: 16, fontSize: 26, color: "#8a8a93"}}>
-					<div style={{width: 120, height: 2, background: "linear-gradient(90deg,#dba36b,#5c3018)"}}/>
+					<div style={{width: 120, height: 2, background: "linear-gradient(90deg,#60a5fa,#1d4ed8)"}}/>
 					dragondevs.co
 				</div>
 			</div>

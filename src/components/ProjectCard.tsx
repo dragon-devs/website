@@ -1,6 +1,7 @@
 "use client";
 import SpotlightCard from "@/components/SpotlightCard";
 import Image from "next/image";
+import Link from "next/link";
 import {ArrowRight, Boxes, Calendar, ExternalLink, TrendingUp} from "lucide-react";
 import Pill from "@/components/Pill";
 import MagnetButton from "@/components/custom/MagnetButton";
@@ -46,7 +47,13 @@ export const ProjectCard = ({project, index}: any) => {
 
                 <div className="p-6 flex flex-col flex-grow">
 	                <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-		                {project.title}
+		                {project.caseStudy && project.caseStudyUrl ? (
+			                <Link href={project.caseStudyUrl} className="hover:underline underline-offset-4">
+				                {project.title}
+			                </Link>
+		                ) : (
+			                project.title
+		                )}
 	                </h3>
 
 	                <p className="text-muted-foreground mb-4">{project.description}</p>

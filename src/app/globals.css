@@ -45,13 +45,11 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Palette — "cold forge".
+   Palette — "electric forge".
 
-   One chroma in the whole system. The accent is a burnished copper; every
-   neutral is a cool steel (hue ~258, chroma <= 0.008). Warm against cold is
-   the only colour relationship on the site, which is what lets a single accent
-   read as deliberate rather than decorative. Everything that used to be blue,
-   violet, emerald or rose now resolves through --primary.
+   One chroma in the whole system. The accent is an electric sapphire blue;
+   every neutral is a cool steel (hue ~258, chroma <= 0.008).
+   Vibrant blue against cool slate is the core visual relationship.
    --------------------------------------------------------------------------- */
 :root {
   /* Small and engineered. The design is square-edged; radius only shows up on
@@ -71,10 +69,9 @@
   --popover: oklch(0.995 0.002 255);
   --popover-foreground: oklch(0.17 0.008 258);
 
-  /* Burnt copper. Dark enough to carry 11px mono eyebrow text at 4.9:1 on the
-     paper ground, which the #2b7fff blue it replaces only just managed. */
-  --primary: oklch(0.455 0.125 45);
-  --primary-foreground: oklch(0.985 0.004 70);
+  /* Electric sapphire blue. Clean contrast on light backgrounds. */
+  --primary: oklch(0.52 0.22 255);
+  --primary-foreground: oklch(0.985 0.005 255);
 
   --secondary: oklch(0.955 0.003 255);
   --secondary-foreground: oklch(0.21 0.008 258);
@@ -85,49 +82,43 @@
   --destructive: oklch(0.55 0.2 27);
   --border: oklch(0.87 0.004 258);
   --input: oklch(0.9 0.004 258);
-  --ring: oklch(0.455 0.125 45);
+  --ring: oklch(0.52 0.22 255);
 
   /* Metal ramp stops. --ember-hot is the specular highlight: much lighter and
-     much less saturated, because a highlight on metal is the light source
-     rather than the metal. --ember-deep is the shadowed side of the surface. */
+     ice/cyan tinted. --ember-deep is the shadowed cobalt side of the surface. */
   --ember: var(--primary);
-  --ember-hot: oklch(0.72 0.075 58);
-  --ember-deep: oklch(0.34 0.09 40);
-  /* Deliberately a *narrow* ramp — a filled surface has to keep its label
-     legible at both ends of the slide, so the light and dark ends are one
-     luminance step apart rather than the full spread used for type. */
+  --ember-hot: oklch(0.78 0.12 245);
+  --ember-deep: oklch(0.36 0.18 260);
+  /* Deliberately a narrow ramp — a filled surface has to keep its label
+     legible at both ends of the slide. */
   --forge-fill: linear-gradient(
     180deg,
-    oklch(0.5 0.13 47) 0%,
-    oklch(0.395 0.115 42) 100%
+    oklch(0.56 0.21 252) 0%,
+    oklch(0.44 0.20 258) 100%
   );
 
-  --chart-1: oklch(0.455 0.125 45);
-  --chart-2: oklch(0.58 0.09 55);
-  --chart-3: oklch(0.7 0.06 62);
+  --chart-1: oklch(0.52 0.22 255);
+  --chart-2: oklch(0.62 0.16 245);
+  --chart-3: oklch(0.72 0.11 235);
   --chart-4: oklch(0.5 0.02 258);
   --chart-5: oklch(0.68 0.012 258);
 
   --sidebar: oklch(0.985 0.002 255);
   --sidebar-foreground: oklch(0.17 0.008 258);
-  --sidebar-primary: oklch(0.455 0.125 45);
-  --sidebar-primary-foreground: oklch(0.985 0.004 70);
+  --sidebar-primary: oklch(0.52 0.22 255);
+  --sidebar-primary-foreground: oklch(0.985 0.005 255);
   --sidebar-accent: oklch(0.955 0.003 255);
   --sidebar-accent-foreground: oklch(0.21 0.008 258);
   --sidebar-border: oklch(0.87 0.004 258);
-  --sidebar-ring: oklch(0.455 0.125 45);
+  --sidebar-ring: oklch(0.52 0.22 255);
 
-  /* Hover glow inside SpotlightCard. Lives here so the value follows the theme
-     class instead of being branched on in JS during render, which mismatched
-     between the server and client HTML. Now ember-tinted: the cursor reads as
-     a heat source passing over the plate rather than a generic white wash. */
-  --spotlight-glow: color-mix(in oklab, var(--primary) 12%, transparent);
+  /* Hover glow inside SpotlightCard */
+  --spotlight-glow: color-mix(in oklab, var(--primary) 14%, transparent);
 
-  /* Atmosphere: a single light from above, plus film grain. Replaces the two
-     blurred pastel orbs and the full-screen WebGL noise plane. */
+  /* Atmosphere: overhead blue light, plus film grain */
   --atmosphere-wash: radial-gradient(
     115% 70% at 50% -12%,
-    color-mix(in oklab, var(--primary) 7%, transparent) 0%,
+    color-mix(in oklab, var(--primary) 9%, transparent) 0%,
     transparent 62%
   );
   --grain-opacity: 0.4;
@@ -141,11 +132,9 @@
   --popover: oklch(0.11 0.005 258);
   --popover-foreground: oklch(0.965 0.004 90);
 
-  /* Brass. Lifted well clear of the light-theme copper — reusing one value in
-     both themes is what made the old blue read muddy on the near-black ground.
-     8.9:1 on --background, 7.6:1 on --card. */
-  --primary: oklch(0.775 0.115 62);
-  --primary-foreground: oklch(0.18 0.03 55);
+  /* Radiant electric cyber blue in dark mode. High contrast & luminous. */
+  --primary: oklch(0.75 0.17 248);
+  --primary-foreground: oklch(0.12 0.04 255);
 
   --secondary: oklch(0.15 0.006 258);
   --secondary-foreground: oklch(0.965 0.004 90);
@@ -156,37 +145,37 @@
   --destructive: oklch(0.7 0.19 22);
   --border: oklch(1 0 0 / 9%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.775 0.115 62);
+  --ring: oklch(0.75 0.17 248);
 
   --ember: var(--primary);
-  --ember-hot: oklch(0.94 0.045 80);
-  --ember-deep: oklch(0.52 0.1 48);
+  --ember-hot: oklch(0.92 0.07 240);
+  --ember-deep: oklch(0.52 0.17 255);
   --forge-fill: linear-gradient(
     180deg,
-    oklch(0.845 0.095 72) 0%,
-    oklch(0.725 0.12 55) 100%
+    oklch(0.80 0.15 245) 0%,
+    oklch(0.68 0.18 252) 100%
   );
 
-  --chart-1: oklch(0.775 0.115 62);
-  --chart-2: oklch(0.66 0.1 50);
-  --chart-3: oklch(0.55 0.08 45);
+  --chart-1: oklch(0.75 0.17 248);
+  --chart-2: oklch(0.65 0.15 240);
+  --chart-3: oklch(0.55 0.13 235);
   --chart-4: oklch(0.7 0.012 258);
   --chart-5: oklch(0.45 0.008 258);
 
   --sidebar: oklch(0.11 0.005 258);
   --sidebar-foreground: oklch(0.965 0.004 90);
-  --sidebar-primary: oklch(0.775 0.115 62);
-  --sidebar-primary-foreground: oklch(0.18 0.03 55);
+  --sidebar-primary: oklch(0.75 0.17 248);
+  --sidebar-primary-foreground: oklch(0.12 0.04 255);
   --sidebar-accent: oklch(0.15 0.006 258);
   --sidebar-accent-foreground: oklch(0.965 0.004 90);
   --sidebar-border: oklch(1 0 0 / 9%);
-  --sidebar-ring: oklch(0.775 0.115 62);
+  --sidebar-ring: oklch(0.75 0.17 248);
 
-  --spotlight-glow: color-mix(in oklab, var(--primary) 16%, transparent);
+  --spotlight-glow: color-mix(in oklab, var(--primary) 18%, transparent);
 
   --atmosphere-wash: radial-gradient(
     115% 70% at 50% -12%,
-    color-mix(in oklab, var(--primary) 4%, transparent) 0%,
+    color-mix(in oklab, var(--primary) 6%, transparent) 0%,
     transparent 62%
   );
   --grain-opacity: 0.2;
@@ -386,7 +375,7 @@
     opacity: 0.55;
     pointer-events: none;
   }
-  /* Success: ember-tinted left accent strip */
+  /* Success: primary-tinted left accent strip */
   .toast-success {
     box-shadow:
       inset 3px 0 0 var(--primary),

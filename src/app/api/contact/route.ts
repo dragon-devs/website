@@ -185,7 +185,7 @@ function renderEmail(d: EmailData) {
 				<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(15,23,42,0.08)">
 
 					<!-- gradient accent bar -->
-					<tr><td style="height:4px;background:#8b4a26;background-image:linear-gradient(90deg,#5c3018,#b3743f,#e0b07e,#b3743f,#5c3018);font-size:0;line-height:0">&nbsp;</td></tr>
+					<tr><td style="height:4px;background:#2563eb;background-image:linear-gradient(90deg,#1e40af,#3b82f6,#93c5fd,#3b82f6,#1e40af);font-size:0;line-height:0">&nbsp;</td></tr>
 
 					<!-- header -->
 					<tr>
@@ -232,7 +232,7 @@ function renderEmail(d: EmailData) {
 						<td style="padding:24px 36px 32px">
 							<table role="presentation" cellpadding="0" cellspacing="0">
 								<tr>
-									<td style="background:#8b4a26;background-image:linear-gradient(180deg,#9d5730,#6f3a1c)">
+									<td style="background:#2563eb;background-image:linear-gradient(180deg,#3b82f6,#1d4ed8)">
 										<a href="mailto:${safeEmail}?subject=Re:%20your%20enquiry%20to%20dragondevs"
 											style="display:inline-block;padding:13px 28px;color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;font-family:Helvetica,Arial,sans-serif">
 											Reply to ${safeName}
