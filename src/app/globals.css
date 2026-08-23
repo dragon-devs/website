@@ -134,11 +134,11 @@
 }
 
 .dark {
-  --background: oklch(0.145 0.006 258);
+  --background: oklch(0.07 0.005 258);
   --foreground: oklch(0.965 0.004 90);
-  --card: oklch(0.185 0.006 258);
+  --card: oklch(0.11 0.005 258);
   --card-foreground: oklch(0.965 0.004 90);
-  --popover: oklch(0.185 0.006 258);
+  --popover: oklch(0.11 0.005 258);
   --popover-foreground: oklch(0.965 0.004 90);
 
   /* Brass. Lifted well clear of the light-theme copper — reusing one value in
@@ -147,15 +147,15 @@
   --primary: oklch(0.775 0.115 62);
   --primary-foreground: oklch(0.18 0.03 55);
 
-  --secondary: oklch(0.245 0.006 258);
+  --secondary: oklch(0.15 0.006 258);
   --secondary-foreground: oklch(0.965 0.004 90);
-  --muted: oklch(0.245 0.006 258);
+  --muted: oklch(0.15 0.006 258);
   --muted-foreground: oklch(0.665 0.008 258);
-  --accent: oklch(0.245 0.006 258);
+  --accent: oklch(0.15 0.006 258);
   --accent-foreground: oklch(0.965 0.004 90);
   --destructive: oklch(0.7 0.19 22);
-  --border: oklch(1 0 0 / 11%);
-  --input: oklch(1 0 0 / 14%);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.775 0.115 62);
 
   --ember: var(--primary);
@@ -173,23 +173,23 @@
   --chart-4: oklch(0.7 0.012 258);
   --chart-5: oklch(0.45 0.008 258);
 
-  --sidebar: oklch(0.185 0.006 258);
+  --sidebar: oklch(0.11 0.005 258);
   --sidebar-foreground: oklch(0.965 0.004 90);
   --sidebar-primary: oklch(0.775 0.115 62);
   --sidebar-primary-foreground: oklch(0.18 0.03 55);
-  --sidebar-accent: oklch(0.245 0.006 258);
+  --sidebar-accent: oklch(0.15 0.006 258);
   --sidebar-accent-foreground: oklch(0.965 0.004 90);
-  --sidebar-border: oklch(1 0 0 / 11%);
+  --sidebar-border: oklch(1 0 0 / 9%);
   --sidebar-ring: oklch(0.775 0.115 62);
 
   --spotlight-glow: color-mix(in oklab, var(--primary) 16%, transparent);
 
   --atmosphere-wash: radial-gradient(
     115% 70% at 50% -12%,
-    color-mix(in oklab, var(--primary) 9%, transparent) 0%,
+    color-mix(in oklab, var(--primary) 4%, transparent) 0%,
     transparent 62%
   );
-  --grain-opacity: 0.55;
+  --grain-opacity: 0.2;
 }
 
 /* ---------------------------------------------------------------------------
@@ -227,7 +227,7 @@
     var(--foreground) 0%,
     color-mix(in oklab, var(--foreground) 72%, var(--background)) 100%
   );
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 @layer base {
@@ -359,8 +359,10 @@
     position: absolute;
     inset: 0;
     background-image: var(--grain);
+    background-size: 140px 140px;
     opacity: var(--grain-opacity);
-    mix-blend-mode: overlay;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
   }
 }
 

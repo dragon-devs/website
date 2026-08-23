@@ -45,7 +45,7 @@ export const SpotlightLogo: React.FC<SpotlightLogoProps> = ({
 	                                                            // the mark stopped reading as a mark at all — the arcs ran off every
 	                                                            // edge and what was left looked like stray construction lines behind
 	                                                            // the copy. Smaller, it resolves, and it stops competing with the H1.
-	                                                            scale = 'scale-[0.62]',
+	                                                            scale = 'scale-[0.82]',
 	                                                            className = ''
                                                             }) => {
 	const finePointer = useFinePointer();
