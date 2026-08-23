@@ -1,5 +1,5 @@
 'use client'
-import {CheckCircle2, ChevronRight, Code, Cpu, Globe, Layers, Rocket, Shield} from "lucide-react";
+import {Code, Cpu, Globe, Layers, Rocket, Shield} from "lucide-react";
 import React from "react";
 import {InViewReveal} from "@/components/motion";
 import {useRouter} from "next/navigation";
@@ -53,8 +53,8 @@ export const ServicesSection = () => {
     <section id={"services"} className="py-24 relative">
       <div className="max-w-7xl mx-auto md:px-6 px-4">
         <InViewReveal className="flex flex-col items-end text-end mb-16">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">Our Services</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
+          <span className="eyebrow">Our Services</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-5 mb-6">
             Comprehensive Digital Solutions
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl">
@@ -67,17 +67,20 @@ export const ServicesSection = () => {
             <SpotlightCard key={index}>
             <InViewReveal
               delay={index * 0.1}
-              className="relative p-8 transition-all group"
+              className="relative p-8 group"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+                opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
               <div className="absolute -right-10 -bottom-10  opacity-10">
                 <service.icon size={250} className="text-primary"/>
               </div>
-              <h3 className="text-2xl tracking-tight font-bold text-foreground mb-3">{service.title}</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed ">{service.description}</p>
               <ul className="space-y-2">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-foreground/80">
-                    <CheckCircle2 size={16} className="text-green-400 flex-shrink-0"/>
+                  <li key={idx} className="flex items-center gap-3 text-foreground/75 text-[0.9375rem]">
+                    {/* A tick in a fifth colour said nothing a rule cannot. */}
+                    <span aria-hidden="true" className="w-3 h-px bg-primary flex-shrink-0"/>
                     {feature}
                   </li>
                 ))}

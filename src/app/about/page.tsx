@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {Award, Heart, Lightbulb, Sparkles, Target, Users} from 'lucide-react';
+import {Award, Heart, Lightbulb, Target, Users} from 'lucide-react';
 import SpotlightCard from "@/components/SpotlightCard";
 import {CTASection} from "@/components/CTASection";
 import {Separator} from "@/components/ui/separator";
@@ -11,10 +11,10 @@ import {GradientText} from "@/components/hero/GradientText";
 import {Reveal, StaggerGroup, StaggerItem} from "@/components/motion";
 
 const AboutHero = () => (
-	<section className="scale-90 relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+	<section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
 		<div className="relative z-10 flex items-center justify-center min-h-[60vh] px-6">
 			<div className="max-w-5xl mx-auto text-center">
-				<Badge icon={Sparkles}>About dragondevs</Badge>
+				<Badge>About dragondevs</Badge>
 				<HeroTitle mainText="A small studio that" accentText="ships real products"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 					We're a tight team of engineers. We build software for clients and our own
@@ -29,7 +29,7 @@ const WhoWeAre = () => (
 	<section className="py-24 relative">
 		<div className="max-w-7xl mx-auto md:px-6 px-4">
 			<Reveal className="mb-12">
-				<span className="text-primary font-semibold text-sm tracking-wider uppercase">Who we are</span>
+				<span className="eyebrow">Who we are</span>
 				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">
 					Engineers first, agency second
 				</h2>
@@ -58,14 +58,15 @@ const WhoWeAre = () => (
 				<Reveal delay={0.1}>
 					<SpotlightCard className="h-full group transition-colors duration-500 hover:border-primary/50">
 						<div className="relative h-full p-8">
-							<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-blue-500 to-cyan-400
+							{/* The forge edge: one hairline, one hue, brightest at its centre.
+							    It replaces a blue-to-cyan ramp, and the blurred corner bloom
+							    that sat under it is gone — SpotlightCard already lights the
+							    plate under the cursor, so the bloom was a second, static
+							    answer to the same question at the cost of a full blur layer. */}
+							<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
 								opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
-							<div className="absolute -right-20 -top-20 w-48 h-48 rounded-full blur-3xl pointer-events-none
-								bg-gradient-to-br from-blue-500/20 to-cyan-400/5 opacity-60
-								group-hover:opacity-100 group-hover:scale-125 transition-all duration-700"/>
 
-							<h3 className="relative text-2xl font-bold mb-4 tracking-tight w-fit
-								bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+							<h3 className="relative text-2xl font-bold mb-4 w-fit text-foreground">
 								How we work
 							</h3>
 							<p className="relative text-muted-foreground leading-relaxed mb-4">
@@ -87,29 +88,21 @@ const values = [
 	{
 		icon: Target,
 		title: "Mission-driven",
-		color: "from-blue-500 to-cyan-400",
-		tint: "from-blue-500/25 to-cyan-400/5",
 		description: "We build things that solve a real problem, not features for their own sake.",
 	},
 	{
 		icon: Heart,
 		title: "Honest",
-		color: "from-pink-500 to-rose-400",
-		tint: "from-pink-500/25 to-rose-400/5",
 		description: "Clear estimates, clear trade-offs, and a straight answer when something won't work.",
 	},
 	{
 		icon: Lightbulb,
 		title: "Pragmatic",
-		color: "from-amber-500 to-orange-400",
-		tint: "from-amber-500/25 to-orange-400/5",
 		description: "Modern tools, sensible architecture, and code we'd be happy to maintain later.",
 	},
 	{
 		icon: Award,
 		title: "Quality over volume",
-		color: "from-emerald-500 to-teal-400",
-		tint: "from-emerald-500/25 to-teal-400/5",
 		description: "A few projects done well beats a pipeline of half-finished ones.",
 	},
 ];
@@ -118,7 +111,7 @@ const ValuesSection = () => (
 	<section className="py-24 relative">
 		<div className="max-w-7xl mx-auto md:px-6 px-4">
 			<Reveal className="mb-12">
-				<span className="text-primary font-semibold text-sm tracking-wider uppercase">What we value</span>
+				<span className="eyebrow">What we value</span>
 				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4">
 					The way we like to work
 				</h2>
@@ -129,19 +122,19 @@ const ValuesSection = () => (
 					<StaggerItem key={value.title}>
 						<SpotlightCard className="h-full group transition-colors duration-500 hover:border-primary/50">
 							<div className="relative flex flex-col h-full p-8">
-								<div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${value.color}
-									opacity-0 group-hover:opacity-100 transition-opacity duration-500`}/>
-								<div className={`absolute -right-20 -top-20 w-48 h-48 rounded-full blur-3xl pointer-events-none
-									bg-gradient-to-br ${value.tint} opacity-60 group-hover:opacity-100
-									group-hover:scale-125 transition-all duration-700`}/>
+								<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+									opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
 								<value.icon
 									size={180}
 									className="absolute -right-8 -bottom-8 text-foreground opacity-[0.05] pointer-events-none
 										group-hover:opacity-[0.09] group-hover:scale-110 transition-all duration-700"
 								/>
 
-								<h3 className={`relative text-xl font-bold mb-2 w-fit
-									bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>
+								{/* Solid, not coloured. Four cards in four different hues is what
+								    made this row read as a colour swatch rather than as a set of
+								    four related ideas; the accent is spent on the eyebrow above
+								    them and on the edge that lights up under the cursor. */}
+								<h3 className="relative text-xl font-bold mb-2 w-fit text-foreground">
 									{value.title}
 								</h3>
 								<p className="relative text-muted-foreground leading-relaxed text-sm">{value.description}</p>
@@ -160,20 +153,16 @@ const TeamNote = () => (
 			<Reveal>
 				<SpotlightCard className="group transition-colors duration-500 hover:border-primary/50">
 					<div className="relative p-10 md:p-12">
-						<div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-violet-500 via-primary to-cyan-400
+						<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
 							opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
-						<div className="absolute -right-24 -top-24 w-72 h-72 rounded-full blur-3xl pointer-events-none
-							bg-gradient-to-br from-violet-500/20 to-cyan-400/5 opacity-60
-							group-hover:opacity-100 group-hover:scale-125 transition-all duration-700"/>
 						<Users
 							size={220}
 							className="absolute -right-10 -bottom-10 text-foreground opacity-[0.05] pointer-events-none
 								group-hover:opacity-[0.09] group-hover:scale-105 transition-all duration-700"
 						/>
 
-						<span className="relative text-primary font-semibold text-sm tracking-wider uppercase">The team</span>
-						<h3 className="relative text-3xl font-bold mt-4 mb-4 w-fit
-							bg-gradient-to-r from-violet-500 to-cyan-400 bg-clip-text text-transparent">
+						<span className="eyebrow relative">The team</span>
+						<h3 className="relative text-3xl font-bold mt-4 mb-4 w-fit text-foreground">
 							Small on purpose
 						</h3>
 						<p className="relative text-muted-foreground leading-relaxed max-w-3xl">

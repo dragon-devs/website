@@ -1,7 +1,6 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono, Chakra_Petch, Bricolage_Grotesque} from "next/font/google";
+import {Geist, Geist_Mono, Bricolage_Grotesque} from "next/font/google";
 import "./globals.css";
-import Silk from "@/components/Silk";
 import {ThemeProvider} from "next-themes";
 import MinimalNavbar from "@/components/Navbar";
 import Script from "next/script";
@@ -19,12 +18,6 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
-
-const chakraPetch = Chakra_Petch({
-	variable: "--font-chakra-petch",
-	weight: ["700", "600", "500", "400", "300"],
 	subsets: ["latin"],
 });
 
@@ -144,7 +137,7 @@ export default function RootLayout({
 		</head>
 
 		<body
-			className={`${geistSans.variable} ${geistMono.variable} ${chakraPetch.variable} ${bricolage_Grotesque.variable} antialiased relative overflow-x-clip`}
+			className={`${geistSans.variable} ${geistMono.variable} ${bricolage_Grotesque.variable} antialiased relative overflow-x-clip`}
 		>
 		{/* ✅ Google Tag Manager (noscript) */}
 		<noscript>
@@ -162,19 +155,17 @@ export default function RootLayout({
 			enableSystem
 			disableTransitionOnChange
 		>
-			{/* Optional: <SplashCursor /> */}
-			<div className="fixed inset-0 -z-50 pointer-events-none">
-				<SpotlightLogo
-					spotlightRadius={150}
-					scale=""
-				/>
-				<Silk
-					speed={0}
-					scale={0.5}
-					color="#52525b"
-					noiseIntensity={10}
-					rotation={0}
-				/>
+			{/*
+			  Atmosphere: one overhead light and a layer of film grain, both from
+			  CSS (see `.atmosphere` in globals.css). This replaced a full-screen
+			  three.js/react-three-fiber shader plane that was drawing a *static*
+			  image — `speed={0}` — at the cost of shipping the whole of three to
+			  every page. The mottled grey wash it produced also sat badly under
+			  the light theme, where it read as a dirty page rather than a
+			  textured one.
+			*/}
+			<div className="atmosphere fixed inset-0 -z-50 pointer-events-none">
+				<SpotlightLogo spotlightRadius={170}/>
 			</div>
 				{children}
 				<Footer/>

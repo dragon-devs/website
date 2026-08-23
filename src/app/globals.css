@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-bricolage);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -37,91 +38,196 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
 }
 
+/* ---------------------------------------------------------------------------
+   Palette — "cold forge".
+
+   One chroma in the whole system. The accent is a burnished copper; every
+   neutral is a cool steel (hue ~258, chroma <= 0.008). Warm against cold is
+   the only colour relationship on the site, which is what lets a single accent
+   read as deliberate rather than decorative. Everything that used to be blue,
+   violet, emerald or rose now resolves through --primary.
+   --------------------------------------------------------------------------- */
 :root {
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.623 0.214 259.815);
-  --primary-foreground: oklch(0.97 0.014 254.604);
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.456 0.011 285.944);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.748 0.003 286.331);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.623 0.214 259.815);
-  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  /* Small and engineered. The design is square-edged; radius only shows up on
+     inputs and dialogs, where a hairline round keeps them from looking crude. */
+  --radius: 0.25rem;
+  /* 45-degree cut taken out of the top-left of interactive surfaces. Echoes the
+     bevelled cuts in the dragon mark. Content plates stay square — a CSS border
+     loses its diagonal under clip-path, and the cut is more useful as the thing
+     that marks a surface as pressable. */
+  --chamfer: 0.75rem;
+  --chamfer-sm: 0.5rem;
+
+  --background: oklch(0.98 0.003 255);
+  --foreground: oklch(0.17 0.008 258);
+  --card: oklch(0.995 0.002 255);
+  --card-foreground: oklch(0.17 0.008 258);
+  --popover: oklch(0.995 0.002 255);
+  --popover-foreground: oklch(0.17 0.008 258);
+
+  /* Burnt copper. Dark enough to carry 11px mono eyebrow text at 4.9:1 on the
+     paper ground, which the #2b7fff blue it replaces only just managed. */
+  --primary: oklch(0.455 0.125 45);
+  --primary-foreground: oklch(0.985 0.004 70);
+
+  --secondary: oklch(0.955 0.003 255);
+  --secondary-foreground: oklch(0.21 0.008 258);
+  --muted: oklch(0.955 0.003 255);
+  --muted-foreground: oklch(0.48 0.008 258);
+  --accent: oklch(0.955 0.003 255);
+  --accent-foreground: oklch(0.21 0.008 258);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.87 0.004 258);
+  --input: oklch(0.9 0.004 258);
+  --ring: oklch(0.455 0.125 45);
+
+  /* Metal ramp stops. --ember-hot is the specular highlight: much lighter and
+     much less saturated, because a highlight on metal is the light source
+     rather than the metal. --ember-deep is the shadowed side of the surface. */
+  --ember: var(--primary);
+  --ember-hot: oklch(0.72 0.075 58);
+  --ember-deep: oklch(0.34 0.09 40);
+  /* Deliberately a *narrow* ramp — a filled surface has to keep its label
+     legible at both ends of the slide, so the light and dark ends are one
+     luminance step apart rather than the full spread used for type. */
+  --forge-fill: linear-gradient(
+    180deg,
+    oklch(0.5 0.13 47) 0%,
+    oklch(0.395 0.115 42) 100%
+  );
+
+  --chart-1: oklch(0.455 0.125 45);
+  --chart-2: oklch(0.58 0.09 55);
+  --chart-3: oklch(0.7 0.06 62);
+  --chart-4: oklch(0.5 0.02 258);
+  --chart-5: oklch(0.68 0.012 258);
+
+  --sidebar: oklch(0.985 0.002 255);
+  --sidebar-foreground: oklch(0.17 0.008 258);
+  --sidebar-primary: oklch(0.455 0.125 45);
+  --sidebar-primary-foreground: oklch(0.985 0.004 70);
+  --sidebar-accent: oklch(0.955 0.003 255);
+  --sidebar-accent-foreground: oklch(0.21 0.008 258);
+  --sidebar-border: oklch(0.87 0.004 258);
+  --sidebar-ring: oklch(0.455 0.125 45);
+
   /* Hover glow inside SpotlightCard. Lives here so the value follows the theme
      class instead of being branched on in JS during render, which mismatched
-     between the server and client HTML. */
-  --spotlight-glow: rgba(0, 0, 0, 0.15);
+     between the server and client HTML. Now ember-tinted: the cursor reads as
+     a heat source passing over the plate rather than a generic white wash. */
+  --spotlight-glow: color-mix(in oklab, var(--primary) 12%, transparent);
+
+  /* Atmosphere: a single light from above, plus film grain. Replaces the two
+     blurred pastel orbs and the full-screen WebGL noise plane. */
+  --atmosphere-wash: radial-gradient(
+    115% 70% at 50% -12%,
+    color-mix(in oklab, var(--primary) 7%, transparent) 0%,
+    transparent 62%
+  );
+  --grain-opacity: 0.4;
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.985 0 0);
-  /* Lifted for dark mode. The light-theme blue (L 0.623) was being reused here
-     almost verbatim (L 0.619) — both resolved to the same #2b7fff, so the accent
-     got no dark adaptation at all and read muddy against the near-black ground.
-     Raising lightness and tapering chroma keeps the brand hue while restoring
-     contrast: 7.9:1 on --background, 7.0:1 on --card. */
-  --primary: oklch(0.72 0.145 259.815);
-  --primary-foreground: oklch(0.2 0.045 265);
-  --secondary: oklch(0.274 0.006 286.033);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  /* Was oklch(0.488 0.243 264.376) — only 2.9:1 against --background, so the
-     keyboard focus ring was nearly invisible in dark mode. Matched to --primary. */
-  --ring: oklch(0.72 0.145 259.815);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.72 0.145 259.815);
-  --sidebar-primary-foreground: oklch(0.2 0.045 265);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.72 0.145 259.815);
-  --spotlight-glow: rgba(255, 255, 255, 0.15);
+  --background: oklch(0.145 0.006 258);
+  --foreground: oklch(0.965 0.004 90);
+  --card: oklch(0.185 0.006 258);
+  --card-foreground: oklch(0.965 0.004 90);
+  --popover: oklch(0.185 0.006 258);
+  --popover-foreground: oklch(0.965 0.004 90);
+
+  /* Brass. Lifted well clear of the light-theme copper — reusing one value in
+     both themes is what made the old blue read muddy on the near-black ground.
+     8.9:1 on --background, 7.6:1 on --card. */
+  --primary: oklch(0.775 0.115 62);
+  --primary-foreground: oklch(0.18 0.03 55);
+
+  --secondary: oklch(0.245 0.006 258);
+  --secondary-foreground: oklch(0.965 0.004 90);
+  --muted: oklch(0.245 0.006 258);
+  --muted-foreground: oklch(0.665 0.008 258);
+  --accent: oklch(0.245 0.006 258);
+  --accent-foreground: oklch(0.965 0.004 90);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.775 0.115 62);
+
+  --ember: var(--primary);
+  --ember-hot: oklch(0.94 0.045 80);
+  --ember-deep: oklch(0.52 0.1 48);
+  --forge-fill: linear-gradient(
+    180deg,
+    oklch(0.845 0.095 72) 0%,
+    oklch(0.725 0.12 55) 100%
+  );
+
+  --chart-1: oklch(0.775 0.115 62);
+  --chart-2: oklch(0.66 0.1 50);
+  --chart-3: oklch(0.55 0.08 45);
+  --chart-4: oklch(0.7 0.012 258);
+  --chart-5: oklch(0.45 0.008 258);
+
+  --sidebar: oklch(0.185 0.006 258);
+  --sidebar-foreground: oklch(0.965 0.004 90);
+  --sidebar-primary: oklch(0.775 0.115 62);
+  --sidebar-primary-foreground: oklch(0.18 0.03 55);
+  --sidebar-accent: oklch(0.245 0.006 258);
+  --sidebar-accent-foreground: oklch(0.965 0.004 90);
+  --sidebar-border: oklch(1 0 0 / 11%);
+  --sidebar-ring: oklch(0.775 0.115 62);
+
+  --spotlight-glow: color-mix(in oklab, var(--primary) 16%, transparent);
+
+  --atmosphere-wash: radial-gradient(
+    115% 70% at 50% -12%,
+    color-mix(in oklab, var(--primary) 9%, transparent) 0%,
+    transparent 62%
+  );
+  --grain-opacity: 0.55;
+}
+
+/* ---------------------------------------------------------------------------
+   The forge edge.
+
+   Every gradient on the site is now this one, or a vertical cut of it. It is a
+   luminance ramp through a single hue — dim, ember, specular, ember, dim —
+   which is how light actually falls across a bevelled metal edge. The old
+   two- and three-stop hue ramps (blue to purple, emerald to cyan, amber to
+   orange) are gone; nothing travels between two different hues any more.
+   --------------------------------------------------------------------------- */
+:root,
+.dark {
+  --forge: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--ember) 35%, transparent) 16%,
+    var(--ember) 36%,
+    var(--ember-hot) 50%,
+    var(--ember) 64%,
+    color-mix(in oklab, var(--ember) 35%, transparent) 84%,
+    transparent 100%
+  );
+  /* Vertical cut of the same material, for type and fills: lit from above. */
+  --forge-vertical: linear-gradient(
+    180deg,
+    var(--ember-hot) 0%,
+    var(--ember) 46%,
+    var(--ember-deep) 100%
+  );
+  /* Neutral cut, for display type that should stay achromatic but still catch
+     the light. */
+  --forge-steel: linear-gradient(
+    180deg,
+    var(--foreground) 0%,
+    color-mix(in oklab, var(--foreground) 72%, var(--background)) 100%
+  );
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 @layer base {
@@ -134,8 +240,31 @@
     scroll-padding-top: 5rem;
   }
   body {
-    font-family: "Bricolage Grotesque", sans-serif;
+    /* Geist carries the running text; Bricolage is reserved for headings below.
+       Bricolage used to set everything, so display and body shared one voice
+       and no size on the page read as a deliberate choice. */
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
     @apply bg-background text-foreground;
+  }
+
+  /* One rule re-typesets every heading on the site. Bricolage is a wide,
+     confident grotesque and has to be set far tighter than its defaults before
+     it reads as display type rather than as oversized body copy. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.032em;
+  }
+  h1 {
+    letter-spacing: -0.045em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 28%, transparent);
   }
 
   /* Subtle native scrollbar */
@@ -158,6 +287,83 @@
   }
 }
 
+@layer components {
+  /* Section eyebrow. Mono, small, wide-tracked — the register of a spec sheet
+     rather than a marketing kicker, which is the difference between a studio
+     that builds software and one that sells it. */
+  .eyebrow {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  /* The 45-degree cut. Applied to things you can press, never to content
+     plates — see the note on --chamfer. */
+  .chamfer {
+    clip-path: polygon(
+      var(--chamfer) 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 var(--chamfer)
+    );
+  }
+  .chamfer-sm {
+    clip-path: polygon(
+      var(--chamfer-sm) 0,
+      100% 0,
+      100% 100%,
+      0 100%,
+      0 var(--chamfer-sm)
+    );
+  }
+
+  /* Type struck in metal: one hue, lit from above. Replaces the three-stop
+     hue-travelling gradients the headings used to run through. */
+  .metal-type {
+    background-image: var(--forge-vertical);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .steel-type {
+    background-image: var(--forge-steel);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* A slab of the same metal. The ramp is drawn oversized and the window on
+     it slides upward on hover, so the light appears to rake across the face of
+     the plate rather than the whole thing simply getting lighter. */
+  .forge-fill {
+    background-image: var(--forge-fill);
+    background-size: 100% 220%;
+    background-position: 0% 62%;
+    transition: background-position 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .forge-fill:hover {
+    background-position: 0% 6%;
+  }
+
+  /* Film grain and a single overhead light, on one fixed layer. */
+  .atmosphere {
+    background-image: var(--atmosphere-wash);
+  }
+  .atmosphere::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--grain);
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+  }
+}
+
 /* Arrow nudge on the primary buttons. Runs on the compositor, unlike the
    motion `repeat: Infinity` tween it replaces, which kept a main-thread
    animation alive per button for as long as the page was open. */
@@ -167,12 +373,33 @@
     transform: translateX(0);
   }
   50% {
-    transform: translateX(5px);
+    transform: translateX(4px);
   }
 }
 
 .nudge-x {
-  animation: nudge-x 1.5s ease-in-out infinite;
+  animation: nudge-x 2.4s ease-in-out infinite;
+}
+
+/* Scroll cue: a spark running down a wire. transform + opacity only, so it
+   stays on the compositor. */
+@keyframes spark-fall {
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  22%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(420%);
+    opacity: 0;
+  }
+}
+
+.spark-fall {
+  animation: spark-fall 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* ---------------------------------------------------------------------------

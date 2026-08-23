@@ -40,11 +40,11 @@ const CaseStudyDetailsPage = ({caseStudy}: CaseStudyDetailsPageProps) => {
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<section
-				className="relative h-[60vh] min-h-[400px] bg-gradient-to-br from-primary/20 via-purple-500/10 to-emerald-500/10">
+				className="relative h-[60vh] min-h-[400px] bg-foreground/[0.05]">
 				<img
 					src={themedSrc(caseStudy.heroImage, isLight)}
 					alt={caseStudy.title}
-					className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+					className="absolute inset-0 w-full h-full object-cover opacity-90"
 				/>
 				<div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"/>
 

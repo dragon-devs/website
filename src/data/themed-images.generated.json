@@ -8,6 +8,12 @@
     "/bizstock/purchase-dark.png",
     "/bizstock/reports-dark.png",
     "/bizstock/search-dark.png",
-    "/bizstock/stock-dark.png"
+    "/bizstock/stock-dark.png",
+    "/craftflow/contract-detail-dark.png",
+    "/craftflow/contracts-dark.png",
+    "/craftflow/dashboard-dark.png",
+    "/craftflow/projects-dark.png",
+    "/craftflow/task-gallery-dark.png",
+    "/craftflow/workspace-dark.png"
   ]
 }

@@ -25,6 +25,11 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
     // the server emit the light glow and the client the dark one, so every page
     // with a card on it hydrated with a mismatch and React threw the tree away
     // and re-rendered it.
+    //
+    // The glow is ember-tinted (see --spotlight-glow), so the cursor reads as a
+    // heat source moving across the plate. It is also why the static blurred
+    // corner blooms these cards used to carry are gone: two answers to "light
+    // up on hover", one of which cost a full blur layer per card.
     const defaultColor = spotlightColor ?? "var(--spotlight-glow)";
 
     const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = e => {
@@ -52,7 +57,8 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
             onBlur={handleBlur}
             onMouseEnter={() => setOpacity(0.5)}
             onMouseLeave={() => setOpacity(0)}
-            className={`relative border border-border overflow-hidden ${className}`}
+            className={`relative border border-border overflow-hidden
+                transition-colors duration-500 hover:border-foreground/20 ${className}`}
         >
             <div
                 className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"

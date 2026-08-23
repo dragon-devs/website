@@ -18,14 +18,15 @@ export const CategoryTabs = ({activeTab, router}: any) => {
                 <button
                     key={tab.id}
                     onClick={() => updateCategory(tab.id)}
-                    className={`px-6 py-3 rounded-full border transition-all duration-300 flex items-center gap-2 ${
+                    className={`chamfer-sm px-5 py-3 transition-colors duration-300 flex items-center gap-2.5
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary ${
                         activeTab === tab.id
-                            ? "bg-primary/20 text-primary border-primary/40"
-                            : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                            ? "bg-primary/15 text-primary"
+                            : "bg-foreground/[0.045] text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground"
                     }`}
                 >
-                    <tab.icon size={18}/>
-                    <span className="font-medium">{tab.label}</span>
+                    <tab.icon size={15} strokeWidth={2}/>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.16em]">{tab.label}</span>
                 </button>
             ))}
         </div>

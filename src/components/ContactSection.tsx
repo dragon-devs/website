@@ -70,7 +70,7 @@ const EMPTY: FormState = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const fieldBase =
-	"w-full px-4 py-3 bg-background/60 border text-foreground placeholder-muted-foreground focus:outline-none transition-all";
+	"w-full px-4 py-3 bg-foreground/[0.03] border text-foreground placeholder-muted-foreground focus:outline-none transition-colors duration-300";
 
 export const ContactSection = () => {
 	const [form, setForm] = useState<FormState>(EMPTY);
@@ -165,7 +165,7 @@ export const ContactSection = () => {
 	};
 
 	const errClass = (key: keyof FormState) =>
-		errors[key] ? "border-red-500/70 focus:border-red-500" : "border-border focus:border-primary/50";
+		errors[key] ? "border-destructive/70 focus:border-destructive" : "border-border focus:border-primary/60";
 
 	return (
 		<section id="contact" className="scroll-mt-4 pt-10 pb-24 relative">
@@ -173,7 +173,7 @@ export const ContactSection = () => {
 				{/* Left: intro + contact details */}
 				<InViewReveal className="flex flex-col gap-6 justify-between">
 					<div>
-						<span className="text-primary font-semibold text-sm tracking-wider uppercase">Get in touch</span>
+						<span className="eyebrow">Get in touch</span>
 						<GradientText tag="h2" size="4-5" className="block font-bold my-4">
 							Let's build something
 						</GradientText>
@@ -193,13 +193,16 @@ export const ContactSection = () => {
 								key={info.label}
 								from={{opacity: 0, y: 16}}
 								delay={index * 0.08}
-								className="relative group overflow-hidden border border-border p-5 hover:border-primary/50 transition-all duration-500"
+								className="relative group overflow-hidden border border-border p-5
+									hover:border-foreground/20 transition-colors duration-500"
 							>
+								<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+									opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
 								<info.icon size={120} className="absolute -right-2 -bottom-6 text-muted-foreground opacity-[0.07]"/>
 								{/* h3, not h4: these sit directly under the section h2, and jumping
 									    h2 -> h4 is a heading-structure error. The size here comes
 									    from the classes, so nothing moves visually. */}
-									<h3 className="text-foreground font-semibold mb-1 text-lg tracking-tight">{info.label}</h3>
+									<h3 className="text-foreground font-semibold mb-1 text-lg">{info.label}</h3>
 								<p className="text-muted-foreground group-hover:text-primary/80 transition-colors">{info.value}</p>
 							</InViewReveal>
 						))}
@@ -208,9 +211,12 @@ export const ContactSection = () => {
 							href="https://calendly.com/dragondevs/30min"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center justify-center gap-2 border border-border p-4 hover:border-primary/50 transition-all duration-500 font-medium"
+							className="group relative flex items-center justify-center gap-2.5 border border-border p-4
+								hover:border-foreground/20 transition-colors duration-500 font-medium"
 						>
-							<Calendar size={18} className="text-primary"/>
+							<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+								opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+							<Calendar size={17} className="text-primary"/>
 							Prefer to talk? Book a 30-min call
 						</a>
 					</div>
@@ -245,7 +251,7 @@ export const ContactSection = () => {
 									placeholder="Jane Doe"
 									className={`${fieldBase} ${errClass("name")}`}
 								/>
-								{errors.name && <p className="text-red-500 text-xs mt-1.5">{errors.name}</p>}
+								{errors.name && <p className="text-destructive text-xs mt-1.5">{errors.name}</p>}
 							</div>
 							<div>
 								<label htmlFor="email" className="block text-foreground/80 mb-2 text-sm font-medium">Email *</label>
@@ -258,7 +264,7 @@ export const ContactSection = () => {
 									placeholder="jane@company.com"
 									className={`${fieldBase} ${errClass("email")}`}
 								/>
-								{errors.email && <p className="text-red-500 text-xs mt-1.5">{errors.email}</p>}
+								{errors.email && <p className="text-destructive text-xs mt-1.5">{errors.email}</p>}
 							</div>
 						</div>
 
@@ -277,7 +283,7 @@ export const ContactSection = () => {
 										<option key={t.value} value={t.value} className="text-foreground bg-background">{t.label}</option>
 									))}
 								</select>
-								{errors.projectType && <p className="text-red-500 text-xs mt-1.5">{errors.projectType}</p>}
+								{errors.projectType && <p className="text-destructive text-xs mt-1.5">{errors.projectType}</p>}
 							</div>
 							<div>
 								<label htmlFor="budget" className="block text-foreground/80 mb-2 text-sm font-medium">Budget range</label>
@@ -334,13 +340,15 @@ export const ContactSection = () => {
 								placeholder="What are you building, and what does success look like?"
 								className={`${fieldBase} ${errClass("message")} resize-none`}
 							/>
-							{errors.message && <p className="text-red-500 text-xs mt-1.5">{errors.message}</p>}
+							{errors.message && <p className="text-destructive text-xs mt-1.5">{errors.message}</p>}
 						</div>
 
 						<button
 							type="submit"
 							disabled={submitting}
-							className="w-full px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+							className="chamfer forge-fill w-full px-8 py-4 font-medium tracking-tight text-primary-foreground
+								flex items-center justify-center gap-2.5 disabled:opacity-60 disabled:cursor-not-allowed
+								focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
 						>
 							{submitting ? "Sending…" : <>Send message <ArrowRight size={20}/></>}
 						</button>
@@ -354,7 +362,7 @@ export const ContactSection = () => {
 			</div>
 
 			<InViewReveal className="max-w-7xl mx-auto md:px-6 px-4 mt-16">
-				<h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">What happens next</h3>
+				<h3 className="text-2xl font-bold text-foreground mb-2">What happens next</h3>
 				<p className="text-muted-foreground mb-8 max-w-2xl">
 					No sales funnel and no chasing. This is how a project actually starts with us, from
 					the moment your message lands.
@@ -366,10 +374,12 @@ export const ContactSection = () => {
 							key={step.title}
 							from={{opacity: 0, y: 16}}
 							delay={index * 0.08}
-							className="border border-border p-5 hover:border-primary/50 transition-all duration-500"
+							className="group relative border border-border p-5 hover:border-foreground/20 transition-colors duration-500"
 						>
-							<span className="text-primary font-semibold text-sm tracking-wider">0{index + 1}</span>
-							<h4 className="text-foreground font-semibold mt-2 mb-1 text-lg tracking-tight">{step.title}</h4>
+							<div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+								opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
+							<span className="eyebrow">Step 0{index + 1}</span>
+							<h4 className="text-foreground font-semibold mt-3 mb-1.5 text-lg">{step.title}</h4>
 							<p className="text-muted-foreground">{step.body}</p>
 						</InViewReveal>
 					))}

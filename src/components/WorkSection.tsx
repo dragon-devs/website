@@ -30,11 +30,9 @@ export const WorkSection = ({category = "all"}: {category?: string}) => {
                 <InViewReveal
                     className="mb-16 flex flex-col items-center justify-center text-center"
                 >
-            <span className="text-primary font-semibold text-sm tracking-widest uppercase">
-                Our Work
-            </span>
+            <span className="eyebrow">Our Work</span>
 
-                    <h2 className="mt-4 mb-6 text-4xl md:text-5xl font-bold text-foreground">
+                    <h2 className="mt-5 mb-6 text-4xl md:text-5xl font-bold text-foreground">
                         Featured Projects
                     </h2>
 

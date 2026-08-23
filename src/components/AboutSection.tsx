@@ -20,8 +20,8 @@ export const AboutSection = () => {
 
       <div className="max-w-7xl mx-auto md:px-6 px-4 relative z-10">
         <InViewReveal className=" mb-16">
-          <span className="text-primary font-semibold text-sm tracking-wider uppercase">About dragondevs</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6 tracking-tight">
+          <span className="eyebrow">About dragondevs</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-5 mb-6">
             Building the Future, One Line at a Time
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl  ">
@@ -33,7 +33,7 @@ export const AboutSection = () => {
         <div className="grid md:grid-cols-2 items-center mb-6 lg:h-80 md:gap-6 gap-4">
           <InViewReveal from={{ opacity: 0, x: -30 }} to={{ opacity: 1, x: 0 }}>
             <div className="p-8 lg:h-80 border border-border">
-              <h3 className="text-3xl font-bold text-foreground mb-4 tracking-tight">Our Story</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
                 We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
@@ -68,10 +68,13 @@ export const AboutSection = () => {
             <InViewReveal
               key={index}
               delay={index * 0.1}
-              className="relative overflow-hidden border border-border md:p-6 p-4  hover:border-primary/50 transition-all duration-700"
+              className="group relative overflow-hidden border border-border md:p-6 p-4
+                hover:border-foreground/20 transition-colors duration-500"
             >
+              <div className="absolute inset-x-0 top-0 h-px bg-[image:var(--forge)]
+                opacity-0 group-hover:opacity-100 transition-opacity duration-500"/>
               <value.icon size={100} className="absolute -right-4 opacity-10 -bottom-8  mx-auto mb-4 text-muted-foreground"/>
-              <h4 className="text-foreground font-semibold mb-2 tracking-tight text-2xl">{value.title}</h4>
+              <h4 className="text-foreground font-semibold mb-2 text-2xl">{value.title}</h4>
               <p className="text-muted-foreground text-sm">{value.desc}</p>
             </InViewReveal>
           ))}

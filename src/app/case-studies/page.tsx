@@ -1,7 +1,6 @@
 'use client';
 
 import React, {Suspense} from 'react';
-import {Sparkles} from 'lucide-react';
 import {Separator} from '@/components/ui/separator';
 import {CTASection} from "@/components/CTASection";
 import Badge from "@/components/hero/Badge";
@@ -14,10 +13,10 @@ import {CategoryTabs} from "@/components/CategoryTabs";
 import {Reveal} from "@/components/motion";
 
 const WorkHero = () => (
-	<section className="scale-90 relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+	<section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
 		<div className="relative z-10 flex items-center justify-center min-h-[60vh] px-6">
 			<div className="max-w-4xl mx-auto text-center">
-				<Badge icon={Sparkles}>Our work</Badge>
+				<Badge>Our work</Badge>
 				<HeroTitle mainText="Things we've" accentText="designed and built"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 					A look at the products we build and the work we ship. We'd rather show a few
@@ -44,8 +43,8 @@ const ProjectsSection = ({category}: {category: string}) => {
 		<section className="py-24 relative">
 			<div className="max-w-7xl mx-auto md:px-6 px-4">
 				<Reveal className="text-center mb-12">
-					<span className="text-primary font-semibold text-sm tracking-wider uppercase">Portfolio</span>
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">Selected work</h2>
+					<span className="eyebrow">Portfolio</span>
+					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-5 mb-6">Selected work</h2>
 					<CategoryTabs activeTab={category} router={router}/>
 				</Reveal>
 

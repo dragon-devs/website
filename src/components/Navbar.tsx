@@ -232,7 +232,7 @@ const MinimalNavbar = () => {
                     )}
                 >
                     {isMobileOpen ? (
-                        <X size={18} className="text-red-400" />
+                        <X size={18} className="text-foreground" />
                     ) : (
                         <Menu size={18} className="text-foreground" />
                     )}

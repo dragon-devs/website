@@ -7,9 +7,9 @@ import {caseStudies} from "@/lib/case-study";
 export const Footer = () => {
   const socialLinks = [
     { icon: FaGithub, label: "GitHub", link: "https://github.com/dragon-devs" },
-    { icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/", color: "text-blue-500" },
+    { icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/" },
     { icon: FaXTwitter, label: "X", link: "https://x.com/dragondevs_" },
-    { icon: FaWhatsapp, label: "Whatsapp", link: "https://wa.me/+923466955928?text=Hello%20%2C%20I'm%20interested%20in%20your%20services!" , color: "text-green-500", }
+    { icon: FaWhatsapp, label: "Whatsapp", link: "https://wa.me/+923466955928?text=Hello%20%2C%20I'm%20interested%20in%20your%20services!" }
   ];
 
   const footerLinks = {
@@ -60,20 +60,23 @@ export const Footer = () => {
                   key={index}
                   href={social.link}
                   aria-label={social.label}
-                  className="w-10 h-10 border border-muted-foreground/50 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary/80 hover:border-blue-500/30 transition-all"
+                  className="chamfer-sm w-10 h-10 flex items-center justify-center bg-foreground/[0.055]
+                    text-muted-foreground hover:text-primary hover:bg-foreground/[0.1] transition-colors duration-300"
                 >
-                  <social.icon className={social.color} size={20}/>
+                  {/* One colour per network turned the row into a logo sheet.
+                      They are links to the same studio, so they are set alike. */}
+                  <social.icon size={17}/>
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Studio</p>
+            <p className="eyebrow mb-5">Studio</p>
             <ul className="space-y-3">
               {footerLinks.studio.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -82,11 +85,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Case studies</p>
+            <p className="eyebrow mb-5">Case studies</p>
             <ul className="space-y-3">
               {footerLinks.work.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -95,11 +98,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Products</p>
+            <p className="eyebrow mb-5">Products</p>
             <ul className="space-y-3">
               {footerLinks.products.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>
@@ -108,11 +111,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="text-foreground font-semibold mb-4">Legal</p>
+            <p className="eyebrow mb-5">Legal</p>
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-primary/80 transition-colors">
+                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
                     {link.label}
                   </a>
                 </li>

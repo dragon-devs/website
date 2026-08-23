@@ -36,12 +36,16 @@ const dragonDevsLogoPaths = [
 export const SpotlightLogo: React.FC<SpotlightLogoProps> = ({
 	                                                            svgPaths = dragonDevsLogoPaths,
 	                                                            viewBox = "0 0 442.4 442.42",
-	                                                            baseOpacity = {dark: 0.05, light: 0.05},
-	                                                            highlightOpacity = {dark: 0.3, light: 0.3},
+	                                                            baseOpacity = {dark: 0.075, light: 0.06},
+	                                                            highlightOpacity = {dark: 0.4, light: 0.3},
 	                                                            spotlightRadius = 150,
 	                                                            strokeColor = {dark: '#fff', light: '#000'},
 	                                                            containerPadding = 'md:p-14 p-4',
-	                                                            scale = 'scale-110',
+	                                                            // Held to roughly two thirds of the viewport height. Drawn full-bleed
+	                                                            // the mark stopped reading as a mark at all — the arcs ran off every
+	                                                            // edge and what was left looked like stray construction lines behind
+	                                                            // the copy. Smaller, it resolves, and it stops competing with the H1.
+	                                                            scale = 'scale-[0.62]',
 	                                                            className = ''
                                                             }) => {
 	const finePointer = useFinePointer();

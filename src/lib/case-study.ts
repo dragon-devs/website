@@ -151,12 +151,13 @@ export const caseStudies: CaseStudyDetails[] = [
 		category: "Business Platform",
 		type: "client",
 
-		heroImage: "https://picsum.photos/seed/craftflow-hero/1200/600",
-		thumbnail: "https://picsum.photos/seed/craftflow-thumb/600/400",
+		heroImage: "/craftflow/dashboard-dark.png",
+		thumbnail: "/craftflow/dashboard-dark.png",
 		gallery: [
-			"https://picsum.photos/seed/craftflow-1/800/600",
-			"https://picsum.photos/seed/craftflow-2/800/600",
-			"https://picsum.photos/seed/craftflow-3/800/600",
+			"/craftflow/dashboard-dark.png",
+			"/craftflow/workspace-dark.png",
+			"/craftflow/contract-detail-dark.png",
+			"/craftflow/task-gallery-dark.png",
 		],
 
 		description:
@@ -255,8 +256,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			},
 			{
 				type: "image",
-				url: "https://picsum.photos/seed/craftflow-challenge/800/400",
-				alt: "CraftFlow dashboard overview (placeholder)",
+				url: "/craftflow/dashboard-dark.png",
+				alt: "CraftFlow dashboard overview, shown in dark mode",
 			},
 			{
 				type: "h2",
@@ -280,6 +281,19 @@ export const caseStudies: CaseStudyDetails[] = [
 			},
 			{
 				type: "h3",
+				content: "Task Image Gallery",
+			},
+			{
+				type: "paragraph",
+				content: "Teams can attach and review visual handover evidence directly on a task, keeping images and project context together.",
+			},
+			{
+				type: "image",
+				url: "/craftflow/task-gallery-dark.png",
+				alt: "CraftFlow task detail with an image gallery for handover evidence",
+			},
+			{
+				type: "h3",
 				content: "Quotations & Contracts, Made Consistent",
 			},
 			{
@@ -289,8 +303,8 @@ export const caseStudies: CaseStudyDetails[] = [
 			{
 				type: "imageGrid",
 				images: [
-					{ url: "https://picsum.photos/seed/craftflow-quote/600/400", alt: "Quotation view (placeholder)", caption: "Template-driven quotations" },
-					{ url: "https://picsum.photos/seed/craftflow-projects/600/400", alt: "Projects table (placeholder)", caption: "Searchable project records" },
+					{ url: "/craftflow/contract-detail-dark.png", alt: "CraftFlow contract detail with payment milestones", caption: "Contracts and payment tracking" },
+					{ url: "/craftflow/projects-dark.png", alt: "CraftFlow searchable projects table", caption: "Searchable project records" },
 				],
 				gridCols: 2,
 			},
@@ -333,7 +347,7 @@ export const caseStudies: CaseStudyDetails[] = [
 				"quotation management",
 				"dragondevs",
 			],
-			ogImage: "https://picsum.photos/seed/craftflow-og/1200/630",
+			ogImage: "/craftflow/dashboard-dark.png",
 			canonical: "https://dragondevs.co/case-studies/craftflow-operations-platform",
 		},
 

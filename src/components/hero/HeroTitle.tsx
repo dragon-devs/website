@@ -17,8 +17,8 @@ interface HeroTitleProps {
 /**
  * Renders a SINGLE <h1> per page. The two coloured lines used to be two
  * separate <h1> elements, which gave every page two H1s — a recurring SEO
- * warning. They are now gradient <span>s inside one <h1>, so the document
- * outline has exactly one top-level heading.
+ * warning. They are now <span>s inside one <h1>, so the document outline has
+ * exactly one top-level heading.
  *
  * This is the only <h1> on the homepage, /about, /services, /case-studies and
  * /contact, so it is also the element that has to survive a crawler that does
@@ -28,6 +28,10 @@ interface HeroTitleProps {
  * as hidden by SEO auditors, hence the recurring "Add a H1 heading to this
  * page" finding. The entrance is now a CSS animation whose resting state is
  * visible; see `.reveal-up` in `app/globals.css`.
+ *
+ * Only the second line takes colour. One coloured word per page is the whole
+ * accent budget, and spending it on the word the page is actually about is
+ * what makes it read as an argument rather than as decoration.
  */
 export const HeroTitle: React.FC<HeroTitleProps> = ({
 	mainText,
@@ -44,16 +48,17 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 
 	return (
 		<h1
-			className={`reveal-up tracking-tight font-bold mb-4 leading-[0.95] ${alignClass} ${className}`}
+			className={`reveal-up font-bold mb-6 ${alignClass} ${className}`}
 			style={{ '--reveal-delay': `${animationDelay}s` } as React.CSSProperties}
 		>
 			{/*
-			  GradientText hardcodes `pb-2` so bg-clip-text has box to paint descenders
-			  into — without it the tail of a `g` or `y` loses its gradient. That padding
-			  also opened a gap between the two lines. `-mb-2` pulls the accent line back
-			  up without shrinking the padding box, so descenders stay painted on both.
+			  GradientText hardcodes `pb-2` so background-clip: text has a box to
+			  paint descenders into — without it the tail of a `g` or `y` loses its
+			  finish. That padding also opens a gap between the two lines; `-mb-3`
+			  pulls the accent line back up without shrinking the padding box, so
+			  descenders stay painted on both.
 			*/}
-			<GradientText tag="span" variant="primary" size="3xl" className="block -mb-2">
+			<GradientText tag="span" variant="primary" size="3xl" className="block -mb-3">
 				{mainText}
 			</GradientText>
 			{/*

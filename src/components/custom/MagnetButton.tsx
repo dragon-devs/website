@@ -29,6 +29,21 @@ interface MagnetButtonProps {
   size?: "sm" | "md" | "lg";
 }
 
+/**
+ * Two slabs with a 45-degree cut off the top-left corner, echoing the bevels
+ * in the dragon mark.
+ *
+ * The primary is a piece of metal: `.forge-fill` paints an oversized copper
+ * luminance ramp and slides the window on it upward on hover, so the light
+ * rakes across the face rather than the whole surface simply brightening. It
+ * replaces a `from-blue-600 to-purple-600` pill with a 40px blue drop shadow.
+ *
+ * Neither variant carries a border. `clip-path` shears a CSS border away along
+ * the diagonal, so the cut corner has to be drawn by the fill itself — which
+ * is also why the chamfer marks pressable surfaces and never content plates.
+ * For the same reason the focus ring is inset: an `outline` sits outside the
+ * border box and would be clipped off entirely.
+ */
 const MagnetButton: React.FC<MagnetButtonProps> = ({
                                                      label,
                                                      onClick,
@@ -42,11 +57,12 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
                                                      variant = "primary",
                                                      size = "md",
                                                    }) => {
-  // Size variants
+  // Size variants. Mono at the small end, where the label is metadata; the
+  // body face once it is a real call to action.
   const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-4 py-2.5 text-[0.8125rem]",
+    md: "px-6 py-3.5 text-[0.9375rem]",
+    lg: "px-8 py-4 text-base",
   };
 
   // A disabled control is not navigable, so it stays a <button> even with an href.
@@ -59,35 +75,30 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
   return (
     <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={magnetStrength}>
       <Component
-        whileHover={{
-          scale: 1.02,
-          ...(variant === "primary" && {
-            boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
-          }),
-        }}
-        whileTap={{ scale: 0.98 }}
+        whileTap={{ scale: 0.985 }}
         onClick={onClick}
         {...navProps}
         className={cn(
           // <a> is inline by default; centre its contents like the button.
-          "w-full rounded-full font-semibold flex items-center justify-center",
+          "chamfer w-full flex items-center justify-center font-medium tracking-tight",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary",
           sizes[size],
           variant === "primary" &&
-          "bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 text-white/80 dark:text-white shadow-xl flex items-center gap-3",
+          "forge-fill text-primary-foreground",
           variant === "secondary" &&
-          "border border-border text-foreground backdrop-blur-sm hover:bg-muted transition-all duration-300",
+          "bg-foreground/[0.055] text-foreground hover:bg-foreground/[0.1] transition-colors duration-300",
           className
         )}
       >
         <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={8}>
           { icon || variant === "primary" ?  (
-            <div className="flex justify-center items-center gap-2 w-full">
+            <div className="flex justify-center items-center gap-2.5 w-full">
               <p>{label}</p>
               {/* CSS keyframes, not a motion `repeat: Infinity` tween. The
                   motion version ticked on the main thread for the life of the
                   page, once per button — and there are several per screen. */}
               <div className={icon ? undefined : "nudge-x"}>
-                {icon || <ArrowRight size={size === "sm" ? 16 : size === "md" ? 20 : 24} />}
+                {icon || <ArrowRight size={size === "sm" ? 14 : 17} strokeWidth={2.25} />}
               </div>
             </div>
           ) : (
