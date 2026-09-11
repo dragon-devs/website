@@ -1,13 +1,21 @@
-'use client';
+"use client";
 
-import React from "react";
-import {motion} from "motion/react";
-import {ArrowRight} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+import type React from "react";
 import Magnet from "@/components/Magnet";
-import {cn} from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 interface MagnetButtonProps {
   label: string;
+  /**
+   * Visually hidden text appended to the label, for links whose visible
+   * wording repeats across a page — two cards both reading "Case Study"
+   * point at different case studies. Screen readers announce the full
+   * string, and a crawler reads one unique anchor text per destination
+   * instead of the same label twice.
+   */
+  srSuffix?: string;
   /** Receives the event so an `href` variant can `preventDefault()` and handle
    *  the navigation itself while still shipping a real, crawlable link. */
   onClick?: (event: React.MouseEvent) => void;
@@ -21,7 +29,7 @@ interface MagnetButtonProps {
   /** Open `href` in a new tab. Adds the matching `rel` for `target="_blank"`. */
   external?: boolean;
   icon?: React.ReactNode;
-  className?: string
+  className?: string;
   wrapperClassName?: string;
   magnetStrength?: number;
   disabled?: boolean;
@@ -45,18 +53,19 @@ interface MagnetButtonProps {
  * border box and would be clipped off entirely.
  */
 const MagnetButton: React.FC<MagnetButtonProps> = ({
-                                                     label,
-                                                     onClick,
-                                                     href,
-                                                     external = false,
-                                                     icon,
-                                                     className,
-                                                     wrapperClassName,
-                                                     magnetStrength = 10,
-                                                     disabled = false,
-                                                     variant = "primary",
-                                                     size = "md",
-                                                   }) => {
+  label,
+  srSuffix,
+  onClick,
+  href,
+  external = false,
+  icon,
+  className,
+  wrapperClassName,
+  magnetStrength = 10,
+  disabled = false,
+  variant = "primary",
+  size = "md",
+}) => {
   // Size variants. Mono at the small end, where the label is metadata; the
   // body face once it is a real call to action.
   const sizes = {
@@ -69,11 +78,19 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
   const asLink = Boolean(href) && !disabled;
   const Component = asLink ? motion.a : motion.button;
   const navProps = asLink
-    ? { href, ...(external ? { target: "_blank", rel: "noopener noreferrer" } : {}) }
+    ? {
+        href,
+        ...(external ? { target: "_blank", rel: "noopener noreferrer" } : {}),
+      }
     : { type: "button" as const, disabled };
 
   return (
-    <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={magnetStrength}>
+    <Magnet
+      padding={25}
+      disabled={disabled}
+      wrapperClassName={wrapperClassName}
+      magnetStrength={magnetStrength}
+    >
       <Component
         whileTap={{ scale: 0.985 }}
         onClick={onClick}
@@ -83,26 +100,41 @@ const MagnetButton: React.FC<MagnetButtonProps> = ({
           "chamfer w-full flex items-center justify-center font-medium tracking-tight",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary",
           sizes[size],
-          variant === "primary" &&
-          "forge-fill text-primary-foreground",
+          variant === "primary" && "forge-fill text-primary-foreground",
           variant === "secondary" &&
-          "bg-foreground/[0.055] text-foreground hover:bg-foreground/[0.1] transition-colors duration-300",
-          className
+            "bg-foreground/[0.055] text-foreground hover:bg-foreground/[0.1] transition-colors duration-300",
+          className,
         )}
       >
-        <Magnet padding={25} disabled={disabled} wrapperClassName={wrapperClassName} magnetStrength={8}>
-          { icon || variant === "primary" ?  (
+        <Magnet
+          padding={25}
+          disabled={disabled}
+          wrapperClassName={wrapperClassName}
+          magnetStrength={8}
+        >
+          {icon || variant === "primary" ? (
             <div className="flex justify-center items-center gap-2.5 w-full">
-              <p>{label}</p>
+              <p>
+                {label}
+                {srSuffix && <span className="sr-only">{srSuffix}</span>}
+              </p>
               {/* CSS keyframes, not a motion `repeat: Infinity` tween. The
                   motion version ticked on the main thread for the life of the
                   page, once per button — and there are several per screen. */}
               <div className={icon ? undefined : "nudge-x"}>
-                {icon || <ArrowRight size={size === "sm" ? 14 : 17} strokeWidth={2.25} />}
+                {icon || (
+                  <ArrowRight
+                    size={size === "sm" ? 14 : 17}
+                    strokeWidth={2.25}
+                  />
+                )}
               </div>
             </div>
           ) : (
-            <span>{label}</span>
+            <span>
+              {label}
+              {srSuffix && <span className="sr-only">{srSuffix}</span>}
+            </span>
           )}
         </Magnet>
       </Component>

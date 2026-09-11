@@ -1,15 +1,28 @@
-
+import Image from "next/image";
 import React from "react";
-import Image from "next/image"
-import {Separator} from "@/components/ui/separator";
-import {FaGithub, FaLinkedinIn, FaWhatsapp, FaXTwitter} from "react-icons/fa6";
-import {caseStudies} from "@/lib/case-study";
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaWhatsapp,
+  FaXTwitter,
+} from "react-icons/fa6";
+import ShareLinks from "@/components/ShareLinks";
+import { Separator } from "@/components/ui/separator";
+import { caseStudies } from "@/lib/case-study";
 export const Footer = () => {
   const socialLinks = [
     { icon: FaGithub, label: "GitHub", link: "https://github.com/dragon-devs" },
-    { icon: FaLinkedinIn, label: "LinkedIn", link: "https://www.linkedin.com/company/dragondevs/" },
+    {
+      icon: FaLinkedinIn,
+      label: "LinkedIn",
+      link: "https://www.linkedin.com/company/dragondevs/",
+    },
     { icon: FaXTwitter, label: "X", link: "https://x.com/dragondevs_" },
-    { icon: FaWhatsapp, label: "Whatsapp", link: "https://wa.me/+923466955928?text=Hello%20%2C%20I'm%20interested%20in%20your%20services!" }
+    {
+      icon: FaWhatsapp,
+      label: "Whatsapp",
+      link: "https://wa.me/+923466955928?text=Hello%20%2C%20I'm%20interested%20in%20your%20services!",
+    },
   ];
 
   const footerLinks = {
@@ -17,7 +30,7 @@ export const Footer = () => {
       { label: "About", link: "/about" },
       { label: "Services", link: "/services" },
       { label: "Work", link: "/case-studies" },
-      { label: "Contact", link: "/contact" }
+      { label: "Contact", link: "/contact" },
     ],
     // Derived from the case-study data rather than written out by hand. The
     // entry that used to live here pointed at /case-studies/bizstock-pos-inventory,
@@ -27,15 +40,13 @@ export const Footer = () => {
     // page, which is what those pages were missing.
     work: caseStudies.map((study) => ({
       label: study.title,
-      link: `/case-studies/${study.slug}`
+      link: `/case-studies/${study.slug}`,
     })),
-    products: [
-      { label: "BizStock", link: "https://bizstock.net" }
-    ],
+    products: [{ label: "BizStock", link: "https://bizstock.net" }],
     legal: [
       { label: "Privacy Policy", link: "/privacy" },
-      { label: "Terms of Service", link: "/terms" }
-    ]
+      { label: "Terms of Service", link: "/terms" },
+    ],
   };
 
   return (
@@ -45,14 +56,35 @@ export const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 p-1 rounded-lg flex items-center justify-center">
-                <Image alt={"dragondevs"} className="dark:block hidden" width={50} height={50} src="/svg-transparent-white.svg" />
-                <Image alt={"dragondevs"} className="dark:hidden block" width={50} height={50} src="/svg-transparent-black.svg" />
+                <Image
+                  alt={"dragondevs"}
+                  className="dark:block hidden"
+                  width={50}
+                  height={50}
+                  src="/svg-transparent-white.svg"
+                />
+                <Image
+                  alt={"dragondevs"}
+                  className="dark:hidden block"
+                  width={50}
+                  height={50}
+                  src="/svg-transparent-black.svg"
+                />
               </div>
-              <span className="text-2xl font-black text-foreground">dragon<span className="font-light">devs</span></span>
+              <span className="text-2xl font-black text-foreground">
+                dragon<span className="font-light">devs</span>
+              </span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              A small <strong className="font-semibold text-foreground">digital product engineering studio</strong>. We design and build <strong className="font-semibold text-foreground">web apps</strong>,
-              custom software, and our own products — from idea to deployment.
+              A small{" "}
+              <strong className="font-semibold text-foreground">
+                digital product engineering studio
+              </strong>
+              . We design and build{" "}
+              <strong className="font-semibold text-foreground">
+                web apps
+              </strong>
+              , custom software, and our own products — from idea to deployment.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -65,7 +97,7 @@ export const Footer = () => {
                 >
                   {/* One colour per network turned the row into a logo sheet.
                       They are links to the same studio, so they are set alike. */}
-                  <social.icon size={17}/>
+                  <social.icon size={17} />
                 </a>
               ))}
             </div>
@@ -76,7 +108,10 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.studio.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  <a
+                    href={link.link}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -89,8 +124,16 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.work.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  <a
+                    href={link.link}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
                     {link.label}
+                    {/* The project cards link the bare title at this same URL.
+                        Identical anchor text on two links is what an auditor
+                        flags, and "Bizstock" alone does not say where the link
+                        goes when it is read out of context. */}
+                    <span className="sr-only"> case study</span>
                   </a>
                 </li>
               ))}
@@ -102,8 +145,14 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.products.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  <a
+                    href={link.link}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
                     {link.label}
+                    {/* /about links the same product by the same bare name in
+                        its prose, which made two links with identical text. */}
+                    <span className="sr-only"> product site</span>
                   </a>
                 </li>
               ))}
@@ -115,7 +164,10 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a href={link.link} className="text-muted-foreground hover:text-foreground transition-colors duration-200">
+                  <a
+                    href={link.link}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -123,7 +175,6 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-
       </div>
 
       {/* Full-bleed rule. Rendered outside the padded container instead of with
@@ -139,10 +190,11 @@ export const Footer = () => {
         {/* The Terms/Privacy pair that used to sit here repeated the Legal
             column verbatim — the same anchor text pointing at the same URL
             twice on every page. One link per destination. */}
-        <div className="pt-8">
+        <div className="pt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-6">
           <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} dragondevs. All rights reserved.
           </p>
+          <ShareLinks />
         </div>
       </div>
     </footer>
