@@ -8,6 +8,7 @@ import {Footer} from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTop";
 import {SpotlightLogo} from "@/components/hero/SpotLightLog";
 import {Toaster} from "@/components/ui/sonner";
+import RouteTransitionLoader from "@/components/RouteTransitionLoader";
 import React from "react";
 import {organizationSchema, websiteSchema} from "@/lib/seo";
 
@@ -169,6 +170,7 @@ export default function RootLayout({
 			</div>
 				{children}
 				<Footer/>
+			<RouteTransitionLoader/>
 			<BackToTopButton/>
 			<MinimalNavbar/>
 			<Toaster position="top-center"/>

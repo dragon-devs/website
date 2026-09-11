@@ -2,6 +2,8 @@ import React from 'react';
 import { GradientText } from './GradientText';
 
 interface HeroTitleProps {
+	/** Optional keyword line rendered as the first line INSIDE the <h1>. */
+	lead?: string;
 	/** Main title text (before accent) */
 	mainText: string | React.ReactNode;
 	/** Accent text (highlighted part) */
@@ -34,6 +36,7 @@ interface HeroTitleProps {
  * what makes it read as an argument rather than as decoration.
  */
 export const HeroTitle: React.FC<HeroTitleProps> = ({
+	lead,
 	mainText,
 	accentText,
 	className = '',
@@ -51,6 +54,23 @@ export const HeroTitle: React.FC<HeroTitleProps> = ({
 			className={`reveal-up font-bold mb-6 ${alignClass} ${className}`}
 			style={{ '--reveal-delay': `${animationDelay}s` } as React.CSSProperties}
 		>
+			{/*
+			  The keyword line lives INSIDE the <h1>, not in a <Badge> above it.
+			  The heading is what a search engine weighs, and "From Idea to
+			  Deployment" on its own never says what the studio does. Spans, not
+			  the <div> Badge renders: <h1> takes phrasing content only.
+			*/}
+			{lead && (
+				<>
+					<span className="chamfer-sm inline-flex items-center gap-2.5 mb-8
+						bg-foreground/[0.055] px-3.5 py-2.5">
+						<span aria-hidden="true" className="size-1.5 rotate-45 bg-primary"/>
+						<span className="eyebrow">{lead}</span>
+					</span>
+					{/* Real space, same reason as the one between the two lines below. */}
+					{' '}
+				</>
+			)}
 			{/*
 			  GradientText hardcodes `pb-2` so background-clip: text has a box to
 			  paint descenders into — without it the tail of a `g` or `y` loses its

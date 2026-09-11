@@ -51,7 +51,7 @@ export const Footer = () => {
               <span className="text-2xl font-black text-foreground">dragon<span className="font-light">devs</span></span>
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              A small digital product engineering studio. We design and build web apps,
+              A small <strong className="font-semibold text-foreground">digital product engineering studio</strong>. We design and build <strong className="font-semibold text-foreground">web apps</strong>,
               custom software, and our own products — from idea to deployment.
             </p>
             <div className="flex gap-4">

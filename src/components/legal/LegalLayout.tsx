@@ -15,7 +15,9 @@ interface LegalLayoutProps {
  */
 export function LegalLayout({title, updated, intro, children}: LegalLayoutProps) {
 	return (
-		<div className="min-h-screen">
+		// <main>, not <div>: /privacy and /terms were the only two routes
+		// without a main landmark, so their content sat outside any region.
+		<main className="min-h-screen">
 			<section className="pt-28 md:pt-32 pb-12">
 				<div className="max-w-3xl mx-auto md:px-6 px-4">
 					<h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">{title}</h1>
@@ -41,6 +43,6 @@ export function LegalLayout({title, updated, intro, children}: LegalLayoutProps)
 					{children}
 				</div>
 			</section>
-		</div>
+		</main>
 	);
 }

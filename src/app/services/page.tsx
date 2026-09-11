@@ -35,7 +35,7 @@ const ServicesHero = () => (
 				<Badge>What we do</Badge>
 				<HeroTitle mainText="From idea to" accentText="deployment"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
-					Design, build and ship web apps and custom software. We work end to end —
+					Design, build and ship <strong className="font-semibold text-foreground">web apps and custom software</strong>. We work <strong className="font-semibold text-foreground">end to end</strong> —
 					and we keep maintaining what we launch.
 				</GradientText>
 			</div>
@@ -97,7 +97,7 @@ const CoreServices = () => {
 					<span className="eyebrow">Services</span>
 					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">What we can build for you</h2>
 					<p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-						End-to-end product engineering. Pick a piece or the whole thing — tap any card to start a project.
+						<strong className="font-semibold text-foreground">End-to-end product engineering</strong>. Pick a piece or the whole thing — tap any card to start a project.
 					</p>
 				</Reveal>
 
@@ -293,7 +293,7 @@ const Expertise = () => (
 				<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-6">Every layer, every platform</h2>
 				<p className="text-muted-foreground text-lg max-w-3xl mx-auto">
 					We don't lead with framework logos. There are hundreds of them and they turn over every
-					couple of years — what carries across is the engineering underneath. So this is what we
+					couple of years — what carries across is <strong className="font-semibold text-foreground">the engineering underneath</strong>. So this is what we
 					actually do, rather than what we happen to have installed.
 				</p>
 			</Reveal>
@@ -357,7 +357,7 @@ const Expertise = () => (
 
 			<Reveal className="text-center mt-16">
 				<p className="text-muted-foreground text-lg">
-					Working on something that isn't on this list? That's usually the interesting kind of problem.{" "}
+					<strong className="font-semibold text-foreground">Working on something that isn't on this list</strong>? That's usually the interesting kind of problem.{" "}
 					<Link href="/contact" className="text-primary font-semibold hover:underline underline-offset-4">
 						Tell us about it
 					</Link>

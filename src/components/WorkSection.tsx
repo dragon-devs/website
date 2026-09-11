@@ -37,7 +37,7 @@ export const WorkSection = ({category = "all"}: {category?: string}) => {
                     </h2>
 
                     <p className="max-w-3xl text-lg text-muted-foreground">
-                        Explore our portfolio of projects that highlight our expertise, creativity, and dedication to
+                        Explore our portfolio of projects that highlight our <strong className="font-semibold text-foreground">expertise, creativity, and dedication</strong> to
                         delivering
                         outstanding results for every client.
                     </p>

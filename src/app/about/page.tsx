@@ -40,15 +40,15 @@ const WhoWeAre = () => (
 					<div className="space-y-6 text-muted-foreground leading-relaxed">
 						{/* opening paragraph set larger — it carries the definition, the rest qualifies it */}
 						<p className="text-xl md:text-2xl leading-relaxed text-foreground/80 font-light">
-							<span className="text-primary font-semibold">dragondevs</span> is a digital
-							product engineering studio. We started out building software for other people
+							<span className="text-primary font-semibold">dragondevs</span> is a <strong className="font-semibold text-foreground">digital
+							product engineering studio</strong>. We started out building software for other people
 							and never stopped — but along the way we also began building products of our own,
 							like <a href="https://bizstock.net" target="_blank" rel="noopener noreferrer"
 							         className="text-primary underline underline-offset-4 decoration-primary/40
 							         hover:decoration-primary transition-colors">BizStock</a>.
 						</p>
 						<p className="text-lg border-l-2 border-primary/30 pl-6">
-							Being small is the point. You talk directly to the people writing the code, decisions
+							<strong className="font-semibold text-foreground">Being small is the point</strong>. You talk <strong className="font-semibold text-foreground">directly to the people writing the code</strong>, decisions
 							are quick, and nothing gets lost in layers of account management. We take on work we
 							can do properly and say so when we're not the right fit.
 						</p>
@@ -70,11 +70,11 @@ const WhoWeAre = () => (
 								How we work
 							</h3>
 							<p className="relative text-muted-foreground leading-relaxed mb-4">
-								Short feedback loops, working software early, and honest estimates. Our client
+								<strong className="font-semibold text-foreground">Short feedback loops</strong>, working software early, and <strong className="font-semibold text-foreground">honest estimates</strong>. Our client
 								work informs the products we build, and the products keep our engineering sharp.
 							</p>
 							<p className="relative text-muted-foreground leading-relaxed">
-								From idea to deployment — design, build, ship, and maintain.
+								<strong className="font-semibold text-foreground">From idea to deployment</strong> — design, build, ship, and maintain.
 							</p>
 						</div>
 					</SpotlightCard>

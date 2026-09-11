@@ -14,8 +14,8 @@ const ContactHero = () => (
 				<Badge>Get in touch</Badge>
 				<HeroTitle mainText="Tell us what" accentText="you're building"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
-					Send a message or book a call. We'll get back to you quickly — and tell you
-					honestly whether we're the right fit.
+					Send a message or book a call. We'll <strong className="font-semibold text-foreground">get back to you quickly</strong> — and tell you
+					<strong className="font-semibold text-foreground">honestly whether we're the right fit</strong>.
 				</GradientText>
 			</div>
 		</div>

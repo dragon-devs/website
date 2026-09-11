@@ -25,8 +25,8 @@ export const AboutSection = () => {
             Building the Future, One Line at a Time
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl  ">
-            We're a passionate team of developers and designers committed to creating exceptional digital experiences.
-            While we work with clients today, we're building our own innovative products for tomorrow.
+            We're a passionate team of developers and designers committed to creating <strong className="font-semibold text-foreground">exceptional digital experiences</strong>.
+            While we work with clients today, we're building our own <strong className="font-semibold text-foreground">innovative products</strong> for tomorrow.
           </p>
         </InViewReveal>
 
@@ -35,8 +35,8 @@ export const AboutSection = () => {
             <div className="p-8 lg:h-80 border border-border">
               <h3 className="text-3xl font-bold text-foreground mb-4">Our Story</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                dragondevs was founded with a vision to bridge the gap between cutting-edge technology and real-world business needs.
-                We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a product company.
+                dragondevs was founded with a vision to bridge the gap between <strong className="font-semibold text-foreground">cutting-edge technology</strong> and <strong className="font-semibold text-foreground">real-world business needs</strong>.
+                We started as freelancers, helping businesses transform their digital presence, and now we're evolving into a <strong className="font-semibold text-foreground">product company</strong>.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Our dual focus allows us to stay grounded in client needs while pursuing innovation. Every project we take on

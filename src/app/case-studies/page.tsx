@@ -19,7 +19,7 @@ const WorkHero = () => (
 				<Badge>Our work</Badge>
 				<HeroTitle mainText="Things we've" accentText="designed and built"/>
 				<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
-					A look at the products we build and the work we ship. We'd rather show a few
+					A look at <strong className="font-semibold text-foreground">the products we build</strong> and <strong className="font-semibold text-foreground">the work we ship</strong>. We'd rather show a few
 					things properly than pad this page out.
 				</GradientText>
 			</div>

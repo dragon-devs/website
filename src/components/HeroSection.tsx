@@ -7,7 +7,6 @@ import { useRouter, usePathname } from "next/navigation";
 import { goToContact } from "@/lib/contact-nav";
 import { HeroTitle } from "@/components/hero/HeroTitle";
 import { GradientText } from '@/components/hero/GradientText';
-import Badge from "@/components/hero/Badge";
 
 /**
  * Scroll cue at the foot of the hero.
@@ -94,11 +93,15 @@ const HeroSection = () => {
 			*/}
 			<div className="relative z-10 flex flex-1 items-center justify-center px-6">
 				<div className="max-w-5xl mx-auto text-center">
-					<Badge>Digital product engineering studio</Badge>
 					<div className="max-w-4xl mx-auto text-center mb-10">
 						<HeroTitle
+							lead="Digital Product Engineering Studio"
 							mainText="From Idea to"
 							accentText="Deployment"
+							// Was 0.4s with the eyebrow revealing separately at 0.2s. The
+							// eyebrow is part of the heading now, so the block reveals once,
+							// on the beat the eyebrow used to.
+							animationDelay={0.2}
 						/>
 						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 							We're a small studio that designs and builds web apps and custom software —

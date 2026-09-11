@@ -178,7 +178,7 @@ export const ContactSection = () => {
 							Let's build something
 						</GradientText>
 						<p className="text-muted-foreground text-lg max-w-xl">
-							Tell us what you're working on. We'll reply quickly — and tell you honestly whether
+							Tell us what you're working on. We'll <strong className="font-semibold text-foreground">reply quickly</strong> — and tell you honestly whether
 							we're the right fit and how we'd approach it.
 						</p>
 					</div>

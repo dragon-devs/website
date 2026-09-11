@@ -58,7 +58,7 @@ export const ServicesSection = () => {
             Comprehensive Digital Solutions
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl">
-            From concept to deployment, we offer end-to-end development services tailored to your business needs.
+            From concept to deployment, we offer <strong className="font-semibold text-foreground">end-to-end development services</strong> tailored to your business needs.
           </p>
         </InViewReveal>
 

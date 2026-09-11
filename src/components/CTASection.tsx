@@ -20,7 +20,7 @@ export const CTASection = () => {
             Have an idea worth building?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-            Tell us what you're working on. We'll tell you honestly whether we're the right fit
+            Tell us what you're working on. We'll tell you <strong className="font-semibold text-foreground">honestly whether we're the right fit</strong>
             and how we'd approach it.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
