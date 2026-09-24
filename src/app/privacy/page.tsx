@@ -75,7 +75,7 @@ export default function PrivacyPage() {
 
 			<h2>8. Third-party links</h2>
 			<p>
-				Our site links to third-party websites and products (including our own product, BizStock,
+				Our site links to third-party websites and products (including our own product, Bizstock,
 				at bizstock.net). We are not responsible for the privacy practices of other sites; please
 				review their policies separately.
 			</p>

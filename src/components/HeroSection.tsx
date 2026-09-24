@@ -105,7 +105,7 @@ const HeroSection = () => {
 						/>
 						<GradientText variant="subtle" size="xl" animate animationDelay={0.6}>
 							We're a small studio that designs and builds web apps and custom software —
-							and our own products like BizStock. Tight team, direct communication, shipped work.
+							and our own products like Bizstock. Tight team, direct communication, shipped work.
 						</GradientText>
 					</div>
 					{/* CTA Buttons */}

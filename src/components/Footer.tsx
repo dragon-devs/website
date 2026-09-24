@@ -42,7 +42,7 @@ export const Footer = () => {
       label: study.title,
       link: `/case-studies/${study.slug}`,
     })),
-    products: [{ label: "BizStock", link: "https://bizstock.net" }],
+    products: [{ label: "Bizstock", link: "https://bizstock.net" }],
     legal: [
       { label: "Privacy Policy", link: "/privacy" },
       { label: "Terms of Service", link: "/terms" },

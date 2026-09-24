@@ -48,7 +48,7 @@ const WhoWeAre = () => (
 							and never stopped — but along the way we also began building products of our own,
 							like <a href="https://bizstock.net" target="_blank" rel="noopener noreferrer"
 							         className="text-primary underline underline-offset-4 decoration-primary/40
-							         hover:decoration-primary transition-colors">BizStock</a>.
+							         hover:decoration-primary transition-colors">Bizstock</a>.
 						</p>
 						<p className="text-lg border-l-2 border-primary/30 pl-6">
 							<strong className="font-semibold text-foreground">Being small is the point</strong>. You talk <strong className="font-semibold text-foreground">directly to the people writing the code</strong>, decisions
@@ -112,7 +112,9 @@ const Founder = () => (
 								width={FOUNDER.photo.width}
 								height={FOUNDER.photo.height}
 								sizes="(min-width: 1280px) 480px, (min-width: 1024px) 38vw, (min-width: 480px) 448px, 100vw"
-								className="block w-full h-auto"
+								// Square, anchored to the top: the face leads and the
+								// bottom of the chair is what gets cropped.
+								className="block aspect-square w-full h-auto object-cover object-top"
 							/>
 						</div>
 						<figcaption className="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -134,7 +136,7 @@ const Founder = () => (
 					<p className="text-lg text-muted-foreground leading-relaxed">
 						Salman founded dragondevs and still writes the code. A <strong className="font-semibold text-foreground">software
 						architect and product builder</strong> with 8+ years and 30+ projects shipped end to end, and the
-						sole builder of <strong className="font-semibold text-foreground">BizStock</strong>, our
+						sole builder of <strong className="font-semibold text-foreground">Bizstock</strong>, our
 						offline-first inventory and POS.
 					</p>
 

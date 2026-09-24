@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 		"full stack development",
 		"AI web solutions",
 		"software agency",
-		"BizStock",
+		"Bizstock",
 		"product studio",
 		"From idea to deployment",
 		"Code beyond boundaries",

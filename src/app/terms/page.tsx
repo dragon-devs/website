@@ -38,7 +38,7 @@ export default function TermsPage() {
 
 			<h2>4. Our products</h2>
 			<p>
-				We also build and operate our own products, including BizStock (bizstock.net). Those products
+				We also build and operate our own products, including Bizstock (bizstock.net). Those products
 				are provided under their own terms and licensing, which apply in addition to these Terms.
 			</p>
 
