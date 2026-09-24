@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8dc423b-9a87-47a3-a0bc-cc55b58ed1c5" name="Changes" comment="**feat: enhance toast styles and structure**&#10;&#10;- Refined `Toaster` setup to remove `richColors` for simplified theming.&#10;- Added chamfered glass styling and accent strip effects (`toast-chamfer`, `toast-success`, `toast-error`) for consistency with UI components.&#10;- Consolidated toast styles and optimized hover/interaction effects for better visual clarity.&#10;- Updated `">
+    <list default="true" id="b8dc423b-9a87-47a3-a0bc-cc55b58ed1c5" name="Changes" comment="**feat: refine case study details and update UI styles**&#10;&#10;- Simplified case study duration string and adjusted project years for accuracy.&#10;- Updated `heroImage`, `ogImage`, and gallery assets for improved content quality.&#10;- Enhanced `ProjectCard` with links to case studies for better accessibility.&#10;- Adjusted navbar interaction logic for mobile-friendly usability.&#10;- Refined email template gradient colors for improved visual aesthetics.&#10;- Redesigned global palette, transitioning from copper to electric sapphire blue for a modernized theme.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/contact/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/contact/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/opengraph-image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/opengraph-image.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/projects.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/projects.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/case-study.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/case-study.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,32 +44,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/Projects/websites/dragondevs-website/public/quickbeam",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "D:\\Projects\\websites\\dragondevs-website\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/websites/dragondevs-website/public/quickbeam&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Projects\\websites\\dragondevs-website\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\websites\dragondevs-website\public\quickbeam" />
@@ -129,7 +122,8 @@
       <option name="presentableId" value="Default" />
       <updated>1787511654848</updated>
       <workItem from="1787511657598" duration="233000" />
-      <workItem from="1787512640246" duration="860000" />
+      <workItem from="1787512640246" duration="983000" />
+      <workItem from="1787597320517" duration="1195000" />
     </task>
     <task id="LOCAL-00003" summary="**feat: enhance toast styles and structure**&#10;&#10;- Refined `Toaster` setup to remove `richColors` for simplified theming.&#10;- Added chamfered glass styling and accent strip effects (`toast-chamfer`, `toast-success`, `toast-error`) for consistency with UI components.&#10;- Consolidated toast styles and optimized hover/interaction effects for better visual clarity.&#10;- Updated `projects.json` structure to correct and align project entries.">
       <option name="closed" value="true" />
@@ -139,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1787511870570</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="**feat: refine case study details and update UI styles**&#10;&#10;- Simplified case study duration string and adjusted project years for accuracy.&#10;- Updated `heroImage`, `ogImage`, and gallery assets for improved content quality.&#10;- Enhanced `ProjectCard` with links to case studies for better accessibility.&#10;- Adjusted navbar interaction logic for mobile-friendly usability.&#10;- Refined email template gradient colors for improved visual aesthetics.&#10;- Redesigned global palette, transitioning from copper to electric sapphire blue for a modernized theme.">
+      <option name="closed" value="true" />
+      <created>1787513611108</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1787513611108</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +151,7 @@
     <MESSAGE value="**feat: update assets for case studies and apply theme refinements**&#10;&#10;- Replaced placeholder images with theme-specific assets in `Craftflow`, `Al Nada`, and `Quickbeam` case studies.&#10;- Optimized `GradientText`, `ThemeToggle`, `BackToTop`, and `Navbar` components to align with updated styles (chamfer edges, reduced borders).&#10;- Improved dark mode compatibility and ensured consistency in hover effects and theming across components." />
     <MESSAGE value="**feat: refine dark mode palette and adjust Spotlight logo scaling**&#10;&#10;- Updated dark mode color variables (`--background`, `--card`, `--popover`, etc.) for improved contrast and softer visuals.&#10;- Reduced `--grain-opacity` and modified the noise grain filter for a subtler effect.&#10;- Switched `SpotLightLog` scaling from `scale-[0.62]` to `scale-[0.82]` for better readability and balance.&#10;- Applied finishing touches to `mix-blend-mode` and background sizing for a cleaner, polished look." />
     <MESSAGE value="**feat: enhance toast styles and structure**&#10;&#10;- Refined `Toaster` setup to remove `richColors` for simplified theming.&#10;- Added chamfered glass styling and accent strip effects (`toast-chamfer`, `toast-success`, `toast-error`) for consistency with UI components.&#10;- Consolidated toast styles and optimized hover/interaction effects for better visual clarity.&#10;- Updated `" />
-    <option name="LAST_COMMIT_MESSAGE" value="**feat: enhance toast styles and structure**&#10;&#10;- Refined `Toaster` setup to remove `richColors` for simplified theming.&#10;- Added chamfered glass styling and accent strip effects (`toast-chamfer`, `toast-success`, `toast-error`) for consistency with UI components.&#10;- Consolidated toast styles and optimized hover/interaction effects for better visual clarity.&#10;- Updated `" />
+    <MESSAGE value="**feat: refine case study details and update UI styles**&#10;&#10;- Simplified case study duration string and adjusted project years for accuracy.&#10;- Updated `heroImage`, `ogImage`, and gallery assets for improved content quality.&#10;- Enhanced `ProjectCard` with links to case studies for better accessibility.&#10;- Adjusted navbar interaction logic for mobile-friendly usability.&#10;- Refined email template gradient colors for improved visual aesthetics.&#10;- Redesigned global palette, transitioning from copper to electric sapphire blue for a modernized theme." />
+    <option name="LAST_COMMIT_MESSAGE" value="**feat: refine case study details and update UI styles**&#10;&#10;- Simplified case study duration string and adjusted project years for accuracy.&#10;- Updated `heroImage`, `ogImage`, and gallery assets for improved content quality.&#10;- Enhanced `ProjectCard` with links to case studies for better accessibility.&#10;- Adjusted navbar interaction logic for mobile-friendly usability.&#10;- Refined email template gradient colors for improved visual aesthetics.&#10;- Redesigned global palette, transitioning from copper to electric sapphire blue for a modernized theme." />
   </component>
 </project>

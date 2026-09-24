@@ -25,6 +25,33 @@ export const WHATSAPP_E164 = "+923466955928";
 export const CONTACT_EMAIL = "info@dragondevs.co";
 
 /**
+ * The founder, as shown on /about.
+ *
+ * `id` is the @id the founder's own site (salman.dragondevs.co) gives this
+ * Person, and that site's graph names this Organization as the employer under
+ * `${SITE_URL}/#organization` — so the two graphs reconcile in both
+ * directions instead of describing two unrelated people.
+ */
+export const FOUNDER = {
+	id: "https://salman.dragondevs.co/#person",
+	name: "Salman Khan",
+	alias: "skdrh",
+	role: "Founder & Principal Engineer",
+	url: "https://salman.dragondevs.co",
+	photo: {
+		src: "/salman-khan-skdrh.jpg",
+		width: 1189,
+		height: 1280,
+		alt: "Salman Khan (skdrh), founder of dragondevs, seated in front of the dragondevs logo",
+	},
+	profiles: {
+		x: "https://x.com/skdrh_",
+		linkedin: "https://www.linkedin.com/in/skdrh/",
+		github: "https://github.com/skdrh",
+	},
+} as const;
+
+/**
  * Organization schema.
  *
  * NOTE: deliberately NOT `LocalBusiness`. LocalBusiness requires a full street
@@ -51,6 +78,16 @@ export const organizationSchema = {
 		addressCountry: "PK",
 	},
 	sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin, SOCIAL_LINKS.x],
+	founder: {
+		"@type": "Person",
+		"@id": FOUNDER.id,
+		name: FOUNDER.name,
+		alternateName: [FOUNDER.alias, "skdrh_"],
+		jobTitle: FOUNDER.role,
+		url: FOUNDER.url,
+		image: `${SITE_URL}${FOUNDER.photo.src}`,
+		sameAs: [FOUNDER.profiles.x, FOUNDER.profiles.linkedin, FOUNDER.profiles.github],
+	},
 	contactPoint: [
 		{
 			"@type": "ContactPoint",

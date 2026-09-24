@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import {Award, Heart, Lightbulb, Target, Users} from 'lucide-react';
+import Image from 'next/image';
+import {ArrowUpRight, Award, Globe, Heart, Lightbulb, Target, Users} from 'lucide-react';
+import {FaGithub, FaLinkedinIn, FaXTwitter} from 'react-icons/fa6';
 import SpotlightCard from "@/components/SpotlightCard";
 import {CTASection} from "@/components/CTASection";
 import {Separator} from "@/components/ui/separator";
@@ -9,6 +11,7 @@ import Badge from "@/components/hero/Badge";
 import {HeroTitle} from "@/components/hero/HeroTitle";
 import {GradientText} from "@/components/hero/GradientText";
 import {Reveal, StaggerGroup, StaggerItem} from "@/components/motion";
+import {FOUNDER} from "@/lib/seo";
 
 const AboutHero = () => (
 	<section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
@@ -78,6 +81,86 @@ const WhoWeAre = () => (
 							</p>
 						</div>
 					</SpotlightCard>
+				</Reveal>
+			</div>
+		</div>
+	</section>
+);
+
+// Each link shows where it goes rather than a platform name, so no two links
+// on the page share an anchor text with the footer's icon row.
+const founderLinks = [
+	{icon: Globe, label: "salman.dragondevs.co", title: "Portfolio", href: FOUNDER.url},
+	{icon: FaXTwitter, label: "@skdrh_", title: "X", href: FOUNDER.profiles.x},
+	{icon: FaLinkedinIn, label: "in/skdrh", title: "LinkedIn", href: FOUNDER.profiles.linkedin},
+	{icon: FaGithub, label: "github.com/skdrh", title: "GitHub", href: FOUNDER.profiles.github},
+];
+
+const Founder = () => (
+	<section id="founder" className="py-24 relative scroll-mt-24">
+		<div className="max-w-7xl mx-auto md:px-6 px-4">
+			<div className="grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-16 items-center">
+				<Reveal>
+					<figure className="max-w-md mx-auto lg:max-w-none">
+						<div className="relative border border-border overflow-hidden bg-foreground/[0.04]">
+							{/* The forge edge, as on the cards: this is the plate the
+							    page is about. */}
+							<div className="absolute inset-x-0 top-0 h-px z-10 bg-[image:var(--forge)]"/>
+							<Image
+								src={FOUNDER.photo.src}
+								alt={FOUNDER.photo.alt}
+								width={FOUNDER.photo.width}
+								height={FOUNDER.photo.height}
+								sizes="(min-width: 1280px) 480px, (min-width: 1024px) 38vw, (min-width: 480px) 448px, 100vw"
+								className="block w-full h-auto"
+							/>
+						</div>
+						<figcaption className="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+							<span aria-hidden="true" className="size-1 rotate-45 bg-primary"/>
+							{FOUNDER.name} · {FOUNDER.alias} — founder of dragondevs
+						</figcaption>
+					</figure>
+				</Reveal>
+
+				<Reveal delay={0.1}>
+					<span className="eyebrow">The founder</span>
+					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-4 mb-3">
+						{FOUNDER.name} <span className="font-light text-muted-foreground">({FOUNDER.alias})</span>
+					</h2>
+					<p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground mb-8">
+						{FOUNDER.role}
+					</p>
+
+					<p className="text-lg text-muted-foreground leading-relaxed">
+						Salman founded dragondevs and still writes the code. A <strong className="font-semibold text-foreground">software
+						architect and product builder</strong> with 8+ years and 30+ projects shipped end to end, and the
+						sole builder of <strong className="font-semibold text-foreground">BizStock</strong>, our
+						offline-first inventory and POS.
+					</p>
+
+					<blockquote className="mt-8 border-l-2 border-primary/30 pl-6 text-xl md:text-2xl leading-relaxed text-foreground/80 font-light">
+						&ldquo;I build products end to end: the idea, the architecture, the UI, the API, the database, the
+						AI, even the deploy script. Bring me a real problem and I&apos;ll hand you back a real
+						product, fast.&rdquo;
+					</blockquote>
+
+					<ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+						{founderLinks.map(({icon: Icon, label, title, href}) => (
+							<li key={href}>
+								<a
+									href={href}
+									target="_blank"
+									rel="noopener noreferrer"
+									title={`${FOUNDER.name} on ${title}`}
+									className="group inline-flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-foreground transition-colors"
+								>
+									<Icon size={15}/>
+									{label}
+									<ArrowUpRight size={13} className="transition-transform group-hover:-translate-y-px group-hover:translate-x-px"/>
+								</a>
+							</li>
+						))}
+					</ul>
 				</Reveal>
 			</div>
 		</div>
@@ -183,6 +266,8 @@ const AboutPage = () => (
 		<AboutHero/>
 		<Separator/>
 		<WhoWeAre/>
+		<Separator/>
+		<Founder/>
 		<Separator/>
 		<ValuesSection/>
 		<Separator/>
