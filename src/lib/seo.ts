@@ -27,17 +27,17 @@ export const CONTACT_EMAIL = "info@dragondevs.co";
 /**
  * The founder, as shown on /about.
  *
- * `id` is the @id the founder's own site (salman.dragondevs.co) gives this
+ * `id` is the @id the founder's own site (skdrh.dragondevs.co) gives this
  * Person, and that site's graph names this Organization as the employer under
  * `${SITE_URL}/#organization` — so the two graphs reconcile in both
  * directions instead of describing two unrelated people.
  */
 export const FOUNDER = {
-	id: "https://salman.dragondevs.co/#person",
+	id: "https://skdrh.dragondevs.co/#person",
 	name: "Salman Khan",
 	alias: "skdrh",
 	role: "Founder & Principal Engineer",
-	url: "https://salman.dragondevs.co",
+	url: "https://skdrh.dragondevs.co",
 	photo: {
 		src: "/salman-khan-skdrh.jpg",
 		width: 1189,

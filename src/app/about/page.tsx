@@ -90,7 +90,7 @@ const WhoWeAre = () => (
 // Each link shows where it goes rather than a platform name, so no two links
 // on the page share an anchor text with the footer's icon row.
 const founderLinks = [
-	{icon: Globe, label: "salman.dragondevs.co", title: "Portfolio", href: FOUNDER.url},
+	{icon: Globe, label: "skdrh.dragondevs.co", title: "Portfolio", href: FOUNDER.url},
 	{icon: FaXTwitter, label: "@skdrh_", title: "X", href: FOUNDER.profiles.x},
 	{icon: FaLinkedinIn, label: "in/skdrh", title: "LinkedIn", href: FOUNDER.profiles.linkedin},
 	{icon: FaGithub, label: "github.com/skdrh", title: "GitHub", href: FOUNDER.profiles.github},
